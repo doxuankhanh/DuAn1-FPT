@@ -39,9 +39,9 @@ class CateController {
         $result = $this->cate->delete($id);
         if($result) {
             header("Location".URL."Cate");
+            $this->view("admin.Views.Cate.list",['cates' => $this->cate->all()]);
         }
         return false;
-        $this->view("admin.Views.Cate.list",['cates' => $this->cate->all()]);
     }
 }
 ?>

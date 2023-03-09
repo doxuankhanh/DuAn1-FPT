@@ -11,7 +11,11 @@ class BookController  {
         $this->cate = $this->model("CateModel");
     }
     function index() {
-        $this->view("admin.Views.Book.list",['books' => $this->book->all()]);
+        $this->view("admin.Views.Book.list",
+        ['books' => $this->book->loadAll(),
+        'cates' => $this->cate->all()
+        ]
+    );
     }
     //Methods new 
     function new() {
@@ -22,7 +26,6 @@ class BookController  {
             if($result) {
                 header("Location:".URL."Book");
             }
-            return false;
         }
         $this->view("admin.Views.Book.add",['cates' => $this->cate->all()]);
     }
@@ -55,8 +58,8 @@ class BookController  {
         $result = $this->book->delete($id);
         if($result) {
             header("Location:".URL."Book");
+            $this->view("admin.Views.Book.list",['books' => $this->book->all()]);
         }
-        $this->view("admin.Views.Book.list",['books' => $this->book->all()]);
     }
 }
 
