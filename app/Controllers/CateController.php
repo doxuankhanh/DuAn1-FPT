@@ -10,7 +10,7 @@ class CateController {
     }
     // index là nới load tất cả danh sách
     function index() {
-        $this->view("admin.list",["cates" => $this->cate->all()]);
+        $this->view("admin.Views.Cate.list",["cates" => $this->cate->all()]);
     }
     // Phương thức tạo mới
     function new() {
@@ -19,8 +19,9 @@ class CateController {
             if($result) {
                 header("Location:".URL."Cate");
             }
+            return false;
         }
-        $this->view("admin.add");
+        $this->view("admin.Views.Cate.add");
     }
     // Phương thức update
     function update($id) {
@@ -29,8 +30,9 @@ class CateController {
             if($result) {
                 header("Location:".URL."Cate");
             }
+            return false;
         }
-        $this->view("admin.update",['cate' => $this->cate->getOne($id)]);
+        $this->view("admin.Views.Cate.update",['cate' => $this->cate->getOne($id)]);
     }
     // Phương thức delete
     function delete($id) {
@@ -38,7 +40,8 @@ class CateController {
         if($result) {
             header("Location".URL."Cate");
         }
-        $this->view("admin.list",['cates' => $this->cate->all()]);
+        return false;
+        $this->view("admin.Views.Cate.list",['cates' => $this->cate->all()]);
     }
 }
 ?>

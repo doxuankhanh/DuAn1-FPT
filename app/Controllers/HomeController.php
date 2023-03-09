@@ -3,13 +3,13 @@
 class HomeController {
 
     use Controller;
-    protected $home;
+    private $home;
     function __construct()
     {
-        $this->home = $this->model("BaseModel");
+        $this->home = $this->model("CateModel");
     }
     function index() {
-        $this->home->all();
+        $this->view("client.common.list",['cates' => $this->home->all()]);
     }
 
 }

@@ -1,4 +1,5 @@
 <a href="<?= URL?>Cate/new">Tạo mới</a>
+<a href="<?= URL?>Home">Home</a>
 <table style="width: 100%;">
     <thead style="background-color: wheat;">
         <tr>
