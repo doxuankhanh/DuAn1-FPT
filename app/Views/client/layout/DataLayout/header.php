@@ -58,7 +58,7 @@
                 </li>
                 <li class="li-nav"><a href="#">SÁCH KHUYẾN MẠI</a>
                 <ul class="ul-child-list">
-                        <li class="li-child-list"><a href="#">VĂN HỌC VIỆT NAM</a>
+                        <li class="li-child-list"><a href="#"> VIỆT NAM</a>
                             <!-- <ul class="ul-child-last-list">
                                 <li class="li-child-last-list">Tác phẩm 1</li>
                                 <li class="li-child-last-list">Tác phẩm 2</li>
@@ -66,12 +66,13 @@
                             </ul> -->
 
                         </li>
-                        <li class="li-child-list"><a href="#">VĂN HỌC NƯỚC NGOÀI</a>
+                        <li class="li-child-list"><a href="#">NƯỚC NGOÀI</a>
                         </li>
                         <li class="li-child-list"><a href="#">VĂN HỌC 3</a></li>
                         <li class="li-child-list"><a href="#">VĂN HỌC 4</a></li>
                         <li class="li-child-list"><a href="#">VĂN HỌC 5</a></li>
-                    </ul></li>
+                    </li>
+                </ul>
                 <li class="li-nav"><a href="#">CHƯƠNG TRÌNH KHUYẾN MẠI</a></li>
                 <li class="li-nav"><a href="#">GIẢM GIÁ ĐẶC BIỆT</a></li>
             </ul>
