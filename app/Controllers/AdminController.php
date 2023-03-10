@@ -11,13 +11,29 @@ class AdminController{
         $this->cate = $this->model("CateModel");
     }
     function index() {
-        $this->view("admin.layout.index");
+        $this->view("admin.layout.index",);
     }
-    // function listBook() {
-    //     $this->view("admin.Views.Book.list",['books' => $this->book->loadAll()]);
-    // }
-    // function listCate(){
-    //     $this->view("admin.Views.Cate.list",['cates' => $this->cate->all()]);
-    // }
+    function listBook() {
+        $page = $this->book->loadAll();
+        $pages = ceil(count($page) / 6);
+        $this->view("admin.Views.Book.list",
+        [   
+            'books' => $this->book->getPage(),
+            'pages' => $pages,
+        ]
+    );
+    }
+    function listCate(){
+        $page = $this->cate->all();
+        $pages = ceil(count($page) / 6);
+        // _dump($pages);
+        $this->view("admin.Views.Cate.list",
+        [
+            'cates' => $this->cate->getPage(),
+            'pages' => $pages
+        ]
+    );
+    
+    }
 }
 ?>

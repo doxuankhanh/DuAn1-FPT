@@ -16,7 +16,7 @@
   <!-- Begin Header -->
   <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand mx-2" href="#">DANH SÁCH DANH MỤC</a>
+      <a class="navbar-brand mx-2" href="<?= URL?>Admin/listCate">DANH SÁCH DANH MỤC</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -49,10 +49,10 @@
     </table>
     <nav aria-label="Page navigation example" style="display: flex; justify-content: center;">
       <ul class="pagination">
-        <!-- <?php for ($i = 1; $i <= $pages; $i++) { ?>
-            <li class="page-item"><a class="page-link" href="index.php?act=cateList&page=<?= $i ?>"><?= $i ?></a></li>
-            <?php } ?> -->
-            <li class="page-item"><a class="page-link" href="">1</a></li>
+        <?php for ($i = 1; $i <= $data['pages']; $i++) { ?>
+            <li class="page-item"><a class="page-link" href="<?= URL?>Admin/listCate/page/<?= $i?>"><?= $i ?></a></li>
+            <?php } ?>
+            <!-- <li class="page-item"><a class="page-link" href="">1</a></li> -->
       </ul>
     </nav>
   </main>
@@ -66,3 +66,7 @@
 </body>
 
 </html>
+<?php
+
+// _dump($data['pages']);
+?>

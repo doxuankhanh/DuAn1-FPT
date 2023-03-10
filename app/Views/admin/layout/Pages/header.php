@@ -41,7 +41,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="index.php">
+                <a class="nav-link" href="<?= URL?>Admin">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -61,8 +61,8 @@
                 </a>
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="<?= URL?>Cate">Danh Mục</a>
-                        <a class="collapse-item" href="<?= URL?>Book">Sản Phẩm</a>
+                        <a class="collapse-item" href="<?= URL?>Admin/listCate">Danh Mục</a>
+                        <a class="collapse-item" href="<?= URL?>Admin/listBook">Sản Phẩm</a>
                         <a class="collapse-item" href="<?= URL?>">Khách Hàng</a>
                         <a class="collapse-item" href="<?= URL?>">Bình Luận</a>
                         <a class="collapse-item" href="<?= URL?>">Thống Kê</a>

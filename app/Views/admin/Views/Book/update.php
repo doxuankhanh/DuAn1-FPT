@@ -46,13 +46,25 @@
                 </select>
             </div>
             <div class="form-group">
+                <label for="">Trạng Thái</label>
+                <select class="form-control" id="" name="statusID">
+                    <?php foreach ($data['status'] as $status) : ?>
+                        <?php if($status['id'] === $data['book']['statusID']):?>
+                            <option value="<?= $status['id'] ?>" selected><?= $status['statusName'] ?></option>
+                            <?php else:?>
+                    <option value="<?= $status['id'] ?>"><?= $status['statusName'] ?></option>
+                    <?php endif?>
+                    <?php endforeach ?>
+                </select>
+            </div>
+            <div class="form-group">
                 <label for="">Tên Sản Phẩm</label>
                 <input type="text" class="form-control" id="" placeholder="" name="bookName" value="<?=  $data['book']['bookName'] ?? ''?>">
             </div>
             <div class="form-group">
                 <label for="">Image</label>
                 <input type="file" class="form-control" id="" placeholder="" name="image">
-                <div><img src="../../Public/upload/<?= $data['book']['image']?>" alt="" style="width: 120px;"></div>
+                <div style="margin: 20px 0;"><img src="../../Public/upload/<?= $data['book']['image']?>" alt="" style="width: 120px;"></div>
             </div>
             <div class="form-group">
                 <label for="">Tác Giả</label>
@@ -67,8 +79,8 @@
                 <input type="text" class="form-control" id="" placeholder="" name="description" value="<?=  $data['book']['description'] ?? ''?>">
             </div>
                 <div class="form-group mx-auto my-2">
-                    <input type="submit" name="btn-update" value="Thêm Mới" class="btn btn-primary">
-                    <a href="<?= URL?>Book" class="btn btn-primary">Danh Sách</a>
+                    <input type="submit" name="btn-update" value="Cập Nhật" class="btn btn-primary">
+                    <a href="<?= URL?>Admin/listBook" class="btn btn-primary">Danh Sách</a>
                 </div>
         </form>
     </main>

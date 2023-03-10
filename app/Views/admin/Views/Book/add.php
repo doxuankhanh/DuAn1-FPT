@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
 
@@ -41,6 +42,15 @@
                     <?php endforeach ?>
                 </select>
             </div>
+            <div class="form-group">
+                <label for="">Trạng Thái</label>
+                <select class="form-control" id="" name="statusID">
+                    <?php foreach ($data['status'] as $status) : ?>
+                    <option value="<?= $status['id'] ?>"><?= $status['statusName'] ?></option>
+                    <?php endforeach ?>
+                </select>
+            </div>
+            
             <div class="form-group">
                 <label for="">Tên Sản Phẩm</label>
                 <input type="text" class="form-control" id="" placeholder="" name="bookName">

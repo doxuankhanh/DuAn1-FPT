@@ -43,5 +43,8 @@ class CateController {
         }
         return false;
     }
+    // Phân trang
+
+   
 }
 ?>

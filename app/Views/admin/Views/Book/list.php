@@ -52,6 +52,7 @@
           <th scope="col">#</th>
           <th scope="col">Tên Sản Phẩm</th>
           <th scope="col">Tên Danh Mục</th>
+          <th scope="col">Trạng Thái</th>
           <th scope="col">Ảnh</th>
           <th scope="col">Tác Giả</th>
           <th scope="col">Giá</th>
@@ -66,7 +67,8 @@
               <th scope="row"><?= $book['id'] ?></th>
               <th scope="row"><?= $book['bookName'] ?></th>
               <th scope="row"><?= $book['cateName'] ?? 'Nothing'?></th>
-              <th><img src="Public/upload/<?= $book['image'] ?>" alt="." style="height: 120px;"></th>
+              <th scope="row"><?= $book['statusName'] ?? 'Nothing'?></th>
+              <th><img src="../Public/upload/<?= $book['image'] ?>" alt="." style="height: 120px;"></th>
               <th scope="row"><?= $book['author'] ?></th>
               <th scope="row"><?= number_format($book['price']) ?></th>
               <th scope="row"><p style="text-overflow: ellipsis; overflow: hidden; -webkit-line-clamp: 2; display: -webkit-box; -webkit-box-orient: vertical; width: 20%;"><?= $book['description'] ?></p></th>
@@ -88,10 +90,10 @@
             <span aria-hidden="true">&laquo;</span>
           </a>
         </li> -->
-        <!-- <?php for ($i = 1; $i <= $pages; $i++) { ?>
-          <li class="page-item"><a class="page-link" href="index.php?act=productList&page=<?= $i ?>"><?= $i ?></a></li>
-        <?php } ?> -->
-        <li class="page-item"><a class="page-link" href="">1</a></li>
+        <?php for ($i = 1; $i <= $data['pages']; $i++) { ?>
+          <li class="page-item"><a class="page-link" href="<?= URL?>Admin/listBook/page/<?= $i?>"><?= $i ?></a></li>
+        <?php } ?>
+        <!-- <li class="page-item"><a class="page-link" href="">1</a></li> -->
         <!-- <li class="page-item">
           <a class="page-link" href="index.php?act=productList&page=<?= $pages+=1?>" aria-label="Next">
             <span aria-hidden="true">&raquo;</span>
