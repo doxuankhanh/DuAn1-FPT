@@ -9,7 +9,7 @@ class HomeController {
         $this->home = $this->model("CateModel");
     }
     function index() {
-        $this->view("client.common.list",['cates' => $this->home->all()]);
+        $this->view("client.layout.index");
     }
 
 }
