@@ -23,11 +23,27 @@
                     <h3>SÁCH MỚI TÁI BẢN</h3>
                 </div>
                 <ul class="listbook">
-                    <li>
+                    <li class="li-book">
                         <a href="#">
-                            <img src="Public/images/product/pro1.jpg" alt="">
+                            <img src="Public/images/product/pro1.jpg" alt="" title="Sản phẩm số 1">
                         </a>
+                        <ul class="div-popup" id="#pop-up">
+                            <div class="div-content-popup">
+                                <h3>Sản phẩm 3</h3>
+                            </div>
+                    </ul>
                     </li>
+                    <li class="li-book">
+                        <a href="#">
+                            <img src="Public/images/product/pro1.jpg" alt="" title="Sản phẩm số 1">
+                        </a>                      
+                        <ul class="div-popup" id="pop-up">
+                        <div class="div-content-popup">
+                                <h3>Sản phẩm 1</h3>
+                            </div>
+                        </ul>
+                    </li>
+
                 </ul>
             </div>
             <!-- End sách mới tái bản -->
@@ -38,10 +54,15 @@
                 </div>
                 <ul class="listbook">
                    
-                    <li>
+                    <li class="li-book">
                         <a href="#">
-                            <img src="Public/images/product/pro1.jpg" alt="">
+                            <img src="Public/images/product/pro1.jpg" alt="" title="Sản phẩm số 1">
                         </a>
+                        <ul class="div-popup" id="#pop-up">
+                            <div class="div-content-popup">
+                                <h3>Sản phẩm 3</h3>
+                            </div>
+                    </ul>
                     </li>
                 </ul>
             </div>
@@ -53,10 +74,15 @@
                 </div>
                 <ul class="listbook">
                     
-                    <li>
+                    <li class="li-book">
                         <a href="#">
-                            <img src="Public/images/product/pro1.jpg" alt="">
+                            <img src="Public/images/product/pro1.jpg" alt="" title="Sản phẩm số 1">
                         </a>
+                        <ul class="div-popup" id="#pop-up">
+                            <div class="div-content-popup">
+                                <h3>Sản phẩm 3</h3>
+                            </div>
+                    </ul>
                     </li>
                 </ul>
             </div>
@@ -68,10 +94,15 @@
                 </div>
                 <ul class="listbook">
                    
-                    <li>
+                    <li class="li-book">
                         <a href="#">
-                            <img src="Public/images/product/pro1.jpg" alt="">
+                            <img src="Public/images/product/pro1.jpg" alt="" title="Sản phẩm số 1">
                         </a>
+                        <ul class="div-popup" id="#pop-up">
+                            <div class="div-content-popup">
+                                <h3>Sản phẩm 3</h3>
+                            </div>
+                    </ul>
                     </li>
                 </ul>
             </div>
@@ -83,10 +114,15 @@
                 </div>
                 <ul class="listbook">
                    
-                    <li>
+                    <li class="li-book">
                         <a href="#">
-                            <img src="Public/images/product/pro1.jpg" alt="">
+                            <img src="Public/images/product/pro1.jpg" alt="" title="Sản phẩm số 1">
                         </a>
+                        <ul class="div-popup" id="#pop-up">
+                            <div class="div-content-popup">
+                                <h3>Sản phẩm 3</h3>
+                            </div>
+                    </ul>
                     </li>
                 </ul>
             </div>
@@ -97,10 +133,15 @@
                     <h3>THỜI SỰ - CHÍNH TRỊ</h3>
                 </div>
                 <ul class="listbook">
-                    <li>
+                    <li class="li-book">
                         <a href="#">
-                            <img src="Public/images/product/pro1.jpg" alt="">
+                            <img src="Public/images/product/pro1.jpg" alt="" title="Sản phẩm số 1">
                         </a>
+                        <ul class="div-popup" id="#pop-up">
+                            <div class="div-content-popup">
+                                <h3>Sản phẩm 3</h3>
+                            </div>
+                    </ul>
                     </li>
                 </ul>
             </div>
@@ -112,10 +153,15 @@
                 </div>
                 <ul class="listbook">
                    
-                    <li>
+                    <li class="li-book">
                         <a href="#">
-                            <img src="Public/images/product/pro1.jpg" alt="">
+                            <img src="Public/images/product/pro1.jpg" alt="" title="Sản phẩm số 1">
                         </a>
+                        <ul class="div-popup" id="#pop-up">
+                            <div class="div-content-popup">
+                                <h3>Sản phẩm 3</h3>
+                            </div>
+                    </ul>
                     </li>
                 </ul>
             </div>
@@ -127,10 +173,15 @@
                 </div>
                 <ul class="listbook">
                    
-                    <li>
+                    <li class="li-book">
                         <a href="#">
-                            <img src="Public/images/product/pro1.jpg" alt="">
+                            <img src="Public/images/product/pro1.jpg" alt="" title="Sản phẩm số 1" >
                         </a>
+                        <ul class="div-popup" id="#pop-up">
+                            <div class="div-content-popup">
+                                <h3>Sản phẩm 3</h3>
+                            </div>
+                    </ul>
                     </li>
                 </ul>
             </div>

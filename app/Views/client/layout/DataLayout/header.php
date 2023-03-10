@@ -21,8 +21,8 @@
                 <a class="anchor-a" href="#">kIỂM TRA ĐƠN HÀNG</a>
             </div>
             <div class="div-login-site">
-                <a class="anchor-a" href="">ĐĂNG NHẬP</a>
-                <a class="anchor-a" href="#">ĐĂNG KÝ</a>
+                <a class="anchor-a" href="login.php">ĐĂNG NHẬP</a>
+                <a class="anchor-a" href="signin.php">ĐĂNG KÝ</a>
             </div>
         </header>
         <div class="div-banner">
@@ -49,11 +49,6 @@
 
                         </li>
                         <li class="li-child-list"><a href="#">VĂN HỌC NƯỚC NGOÀI</a>
-                            <ul class="ul-child-last-list">
-                                <li class="li-child-last-list">Tác phẩm 1</li>
-                                <li class="li-child-last-list">Tác phẩm 2</li>
-                                <li class="li-child-last-list">Tác phẩm 3</li>
-                            </ul>
                         </li>
                         <li class="li-child-list"><a href="#">VĂN HỌC 3</a></li>
                         <li class="li-child-list"><a href="#">VĂN HỌC 4</a></li>
@@ -61,7 +56,22 @@
                     </ul>
 
                 </li>
-                <li class="li-nav"><a href="#">SÁCH KHUYẾN MẠI</a></li>
+                <li class="li-nav"><a href="#">SÁCH KHUYẾN MẠI</a>
+                <ul class="ul-child-list">
+                        <li class="li-child-list"><a href="#">VĂN HỌC VIỆT NAM</a>
+                            <!-- <ul class="ul-child-last-list">
+                                <li class="li-child-last-list">Tác phẩm 1</li>
+                                <li class="li-child-last-list">Tác phẩm 2</li>
+                                <li class="li-child-last-list">Tác phẩm 3</li>
+                            </ul> -->
+
+                        </li>
+                        <li class="li-child-list"><a href="#">VĂN HỌC NƯỚC NGOÀI</a>
+                        </li>
+                        <li class="li-child-list"><a href="#">VĂN HỌC 3</a></li>
+                        <li class="li-child-list"><a href="#">VĂN HỌC 4</a></li>
+                        <li class="li-child-list"><a href="#">VĂN HỌC 5</a></li>
+                    </ul></li>
                 <li class="li-nav"><a href="#">CHƯƠNG TRÌNH KHUYẾN MẠI</a></li>
                 <li class="li-nav"><a href="#">GIẢM GIÁ ĐẶC BIỆT</a></li>
             </ul>
