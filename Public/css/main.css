@@ -343,11 +343,20 @@ text-decoration: underline;
     padding: 40px;
    
 }
+
 .div-form-site{
    margin: auto auto !important;;
     background-image: url(../images/product/headerbg.png);
     width: 55%;
     min-height: 400px ;
+   border-radius: 85% 15% 89% 11% / 10% 85% 15% 90%;
+    
+}
+.div-formSignIn-site{
+    margin: auto auto !important;;
+    background-image: url(../images/product/headerbg.png);
+    width: 55%;
+    min-height: 600px ;
    border-radius: 85% 15% 89% 11% / 10% 85% 15% 90%;
     
 }
@@ -366,6 +375,7 @@ text-decoration: underline;
     
 }
 .input-form-login {
+    padding-left: 20px;
     height: 40px;
     border-radius: 30px;
     transition: border-radius 1s ease-in-out;
