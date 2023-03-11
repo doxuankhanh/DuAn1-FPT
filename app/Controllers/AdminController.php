@@ -18,7 +18,7 @@ class AdminController{
         $pages = ceil(count($page) / 6);
         $this->view("admin.Views.Book.list",
         [   
-            'books' => $this->book->getPage(),
+            'books' => $this->book->searchAndPaging(),
             'pages' => $pages,
         ]
     );

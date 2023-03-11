@@ -76,11 +76,23 @@ class BookController  {
         ['book' => $this->book->bookFollowCategories($cateID)]
     );
     }
-    // chi tiết sản phẩ<m></m>
+    // chi tiết sản phẩm
     function bookDetail($id) {
         $this->view("client.layout.bookDetail",[
             'book' => $this->book->bookDetail($id)
         ]);
+    }
+    // search và phân trang
+    function searchAndPaging() {
+        if(isset($_POST['btn-search'])) {
+            $result = $this->book->searchAndPaging($_POST['bookName'],$_POST['cateID']);
+            if($result) {
+                header("Location:".URL."Admin/listBook");
+            }
+        }
+        $this->view("admin.Views.Book.list",
+        ['books' => $this->book->loadAll()]
+    );
     }
 }
 

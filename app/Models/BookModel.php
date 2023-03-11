@@ -16,7 +16,6 @@ class BookModel extends BaseModel{
     // Methods Limit 10 sp mới nhất theo status
     function limit10FollowStatus($statusID) {
         if($this->table !== null) {
-            
             $sql = $this->_selectQuery(). " WHERE statusID = ? LIMIT 10";
             $this->_query($sql)->execute([$statusID]);
             $data = $this->stmt->fetchAll();
@@ -58,7 +57,7 @@ class BookModel extends BaseModel{
     }
 
     //Phân trang
-    function getPage() {
+    function searchAndPaging($bookName='',$cateID ='') {
         if($this->table !== null) {
             if(isset($_REQUEST['page'])) {
                 $page = $_REQUEST['page'];
@@ -67,12 +66,23 @@ class BookModel extends BaseModel{
             }
             $end = 6;
             $from = ($page - 1) * $end;
-            $sql = $this->_selectQuery() ." LIMIT $from,$end";
-            $this->_query($sql)->execute();
+            $sql = $this->_selectQuery(). " AND $this->table.bookName LIKE ? AND $this->table.cateID LIKE ?";
+            $sql.= " ORDER BY $this->table.id LIMIT $from,$end";
+            $this->_query($sql)->execute([$bookName,$cateID]);
             $data = $this->stmt->fetchAll();
             return $data;
         }
     }
+
+    // Search Sản phẩm
+    // function searchBook($bookName = '', $cateID = '') {
+    //     if($this->table !== null) {
+    //         $sql = $this->_selectQuery() . " AND $this->table.bookName LIKE ? AND $this->table.cateID LIKE ?";
+    //         $this->_query($sql)->execute([$bookName,$cateID]);
+    //         $data = $this->stmt->fetchAll();
+    //         return $data;
+    //     }
+    // }
 
     private function _selectQuery() {
         $sql = "SELECT $this->table.id,$this->table.bookName,$this->table.image,$this->table.author,$this->table.price,$this->table.description,$this->table.cateID,$this->table.view,$this->table.statusID,categories.cateName,status.statusName FROM $this->table LEFT JOIN categories ON $this->table.cateID = categories.id JOIN status ON $this->table.statusID = status.id";

@@ -26,7 +26,7 @@
     <form action="" method="POST">
       <h6 class="mx-2">Tìm Kiếm Sản Phẩm</h6>
       <div class="form-group mx-2 my-2">
-        <input type="search" name="proName" id="" class="form-control" placeholder="Tìm kiếm sản phẩm của bạn...">
+        <input type="search" name="bookName" id="" class="form-control" placeholder="Tìm kiếm sản phẩm của bạn...">
       </div>
       <div class="form-group  mx-2">
         <select name="cateID" id="" class="form-control">
@@ -91,7 +91,7 @@
           </a>
         </li> -->
         <?php for ($i = 1; $i <= $data['pages']; $i++) { ?>
-          <li class="page-item"><a class="page-link" href="<?= URL?>Admin/listBook/page/<?= $i?>"><?= $i ?></a></li>
+          <li class="page-item"><a class="page-link" href="<?= URL?>Admin/listBook/page=<?= $i?>"><?= $i ?></a></li>
         <?php } ?>
         <!-- <li class="page-item"><a class="page-link" href="">1</a></li> -->
         <!-- <li class="page-item">
