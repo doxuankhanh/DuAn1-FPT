@@ -24,11 +24,29 @@
                 </div>
                 <ul class="listbook">
                     <?php foreach($data['books'] as $book):?>
-                    <li>
+                    <li class="li-book">
                         <a href="<?= URL?>Book/bookDetail/<?= $book['id']?>">
-                            <img style="" src="Public/upload/<?= $book['image']?>" alt="">
+                            <img style="" src="Public/upload/<?= $book['image']?>" alt="" title="<?= $book['bookName']?>">
                         </a>
+                        <ul class="div-popup">
+                        <div class="div-content-popup">
+                                <p class="p-bookname-popup"><?= $book['bookName']?></p>
+                                <div class="div-infor-book">
+                                <ul class="ul-infor-book">
+                                    <li class="li-infor-book"><?= $book['cateName']?></li>
+                                    <li class="li-infor-book"><?= $book['author']?></li>
+                                    <li class="li-infor-book"><?= $book['dateAdded']?></li>
+                                </ul>
+                                </div>
+                                <p class="p-price">
+                                <?= number_format($book['price'])?>
+                                </p>
+                                <a href="#" class="a-addCart">Thêm vào giỏ hàng</a>
+                                <a href="#" class="a-buyNow">Mua ngay</a>
+                        </div>
+                    </ul>
                     </li>
+                    
                     <?php endforeach?>
                 </ul>
             </div>
