@@ -75,7 +75,7 @@ class BookModel extends BaseModel{
     }
 
     private function _selectQuery() {
-        $sql = "SELECT $this->table.id,$this->table.bookName,$this->table.image,$this->table.author,$this->table.price,$this->table.description,$this->table.cateID,$this->table.view,$this->table.statusID,categories.cateName,status.statusName FROM $this->table LEFT JOIN categories ON $this->table.cateID = categories.id JOIN status ON $this->table.statusID = status.id";
+        $sql = "SELECT $this->table.id,$this->table.bookName,$this->table.image,$this->table.author,$this->table.dateAdded,$this->table.price,$this->table.description,$this->table.cateID,$this->table.view,$this->table.statusID,categories.cateName,status.statusName FROM $this->table LEFT JOIN categories ON $this->table.cateID = categories.id JOIN status ON $this->table.statusID = status.id";
         return $sql;
     }
 }
