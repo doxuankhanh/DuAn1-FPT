@@ -438,17 +438,31 @@ button:hover {
 }
 .li-book .div-infor-book{
     height: 50px;
-    margin: 30px 0 0 50px ;
+    transform: translate(20%);
+    
 }
 .li-book .p-price{
-    margin: 20px auto;
+    
     width: 100px;
     background: #033801;
     font-size: 24px;
-    padding: 10px;
     text-align: center;
     color: #c2c2c2;
+    transform: translate(80px, 40px);
 }
 .p-bookname-popup{
     overflow: hidden;
+}
+.a-addCart, .a-buyNow{
+    text-decoration: none;
+    padding-bottom: 10px;
+    position: absolute;
+    bottom: 100px; 
+   
+}
+.a-addCart{
+    left: 110px;
+}
+.a-buyNow{
+    left: 10px;
 }
