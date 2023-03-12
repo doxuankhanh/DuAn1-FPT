@@ -794,3 +794,20 @@ a {
     margin-left: 70px;
     margin-top: 20px;
 }
+/* Contact */
+.div-bg{
+    background-image: url(../images/product/bg_pattern.jpg);
+    padding: 30px;
+}
+.div-main-contact{
+    width: 60%;
+    margin: 0 auto;
+    background-image: url(../images/product/headerbg.png);
+    padding: 20px;
+}
+.h2-contact{
+    padding-bottom: 10px;
+}
+.p-contact-main{
+    line-height: 24px;
+}
