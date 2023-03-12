@@ -39,7 +39,6 @@
                                 <a href="#" class="a-price">Mua ngay</a>
                                 <a href="#" class="a-buyNow"> <?= number_format($book['price'])?>đ</a>
                                 </p>
-                                
                         </div>
                     </ul>
                 </li>
