@@ -33,7 +33,8 @@
                                 <div class="div-bookname-popup">
                                 <p class="p-bookname-popup"><?= $book['bookName']?></p>
                                 </div>
-                                <div class="div-infor-book">
+                               <div class="div-main-content-popup">
+                               <div class="div-infor-book">
                                 <ul class="ul-infor-book">
                                     <li class="li-infor-book"><?= $book['cateName']?></li>
                                     <li class="li-infor-book"><?= $book['author']?></li>
@@ -44,6 +45,7 @@
                                 <a href="#" class="a-price">Mua ngay</a>
                                 <a href="#" class="a-buyNow"> <?= number_format($book['price'])?>đ</a>
                                 </p>
+                               </div>
                                 
                         </div>
                     </ul>

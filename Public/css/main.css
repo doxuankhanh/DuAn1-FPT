@@ -271,8 +271,8 @@ header {
 }
 
 .div-content-popup {
-    width: 300px;
-    height: 300px;
+    width: 500px;
+    height: 800px;
     background-repeat: no-repeat;
     background-image: url(../images/product/book_hover.png);
 }
@@ -471,52 +471,56 @@ button:hover {
 /* PopUpContent-detail */
 .li-book .p-bookname-popup {
     height: fit-content;
-    width: 80%;
+    width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
     line-height: 20px;
     font-weight: bold;
-    margin: 0 auto;
+    margin: 0 30px;
     padding-top: 20px;
-
+   
     font-size: 16px;
     color: #dcdcdd;
-    text-overflow: ellipsis;
-    overflow: hidden;
+    
     -webkit-line-clamp: 2;
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    white-space: nowrap;
+    
 }
 
 .li-book .ul-infor-book {
-    margin: 5px 0;
-    padding: 0;
+  margin-top: 20px;
+  margin-left: 50px;  
+
 }
 
 .li-book .li-infor-book {
-    font-size: 16px;
-    color: #666;
-    margin-bottom: 5px;
+  padding: 5px;
+}
+.div-main-content-popup{
+    
+    
+  
 }
 
-
 .li-book .div-infor-book {
-    height: 50px;
-    transform: translate(20%, 60%);
+    
 
 }
 
 .li-book .p-price {
-    height: 50px;
-    width: 200px;
+    margin-top: 0px;
+    margin-left: 30px;
     background: #033801;
     font-size: 24px;
-    text-align: center;
+    padding: 3px;
     color: #c2c2c2;
-    margin: 60px 30px;
-    padding: 10px;
-    transform-origin: right left;
-
+    display: inline-block;
+   
+    
     border-radius: 4px;
+    
 }
 
 .a-price {
@@ -525,63 +529,57 @@ button:hover {
 }
 
 .div-bookname-popup {
-    height: 20px;
-    margin: 5px 0;
+   
 }
 
 .a-buyNow {
 
-    position: absolute;
+ 
     text-align: center;
-    width: 200px;
-    margin: 3px -10px;
-    padding: 10px;
+  
+    padding: 3px;
+  
     border-radius: 4px;
-    background: #e64747;
+    background: #033801;
     color: #fff;
     text-decoration: none;
-    font-size: 16px;
-    left: 30px;
-    top: 150px;
-
+    font-size: 10px;
+    
 }
 
-.p-price:hover .a-buyNow {
-    background: linear-gradient(to right, #033801 50%, #e64747 50%);
+ .p-price:hover .a-buyNow{
+    background: linear-gradient(to left,#033801 50%, #e64747 50%);
     background-size: 200% 100%;
-    animation: slide 2s linear forwards;
-    margin-top: 50px;
-
-    animation: slider 1s linear forwards;
+    animation: slide 0.3s linear forwards;
+    animation: slider 0.3s linear forwards;
+   
 }
 
 
-.p-price:hover .p-price {
-    background: #e64747;
-    background-size: 200% 100%;
-    background: linear-gradient(to left, #033801 50%, #e64747 50%);
-    animation: slide 2s linear forwards;
-}
+
 
 @keyframes slide {
     from {
+        font-size: 10px;
         background-position: 0 0;
     }
 
     to {
+        font-size: 16px;
         background-position: -100% 0;
     }
 }
 
 @keyframes slider {
     from {
-        margin-top: 0;
-        background-position: 0 0;
+        font-size: 10px;
+        background-position: -100% 0;
+        
     }
 
     to {
-        margin-top: 50px;
-        background-position: -100% 0;
+        font-size: 16px;
+        background-position: 0 0;
     }
 }
 
