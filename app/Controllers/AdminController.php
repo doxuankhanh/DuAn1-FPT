@@ -16,9 +16,9 @@ class AdminController{
     function listBook() {
         $page = $this->book->loadAll();
         $pages = ceil(count($page) / 6);
-        $this->view("admin.Views.Book.list",
+        $this->view("admin.layout.Components.Book.list",
         [   
-            'books' => $this->book->searchAndPaging(),
+            'books' => $this->book->loadAll(),
             'pages' => $pages,
         ]
     );
@@ -27,7 +27,7 @@ class AdminController{
         $page = $this->cate->all();
         $pages = ceil(count($page) / 6);
         // _dump($pages);
-        $this->view("admin.Views.Cate.list",
+        $this->view("admin.layout.Components.Cate.list",
         [
             'cates' => $this->cate->getPage(),
             'pages' => $pages

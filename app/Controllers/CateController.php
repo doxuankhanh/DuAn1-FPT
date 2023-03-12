@@ -21,7 +21,7 @@ class CateController {
             }
             return false;
         }
-        $this->view("admin.Views.Cate.add");
+        $this->view("admin.layout.Components.Cate.add");
     }
     // Phương thức update
     function update($id) {
@@ -32,14 +32,14 @@ class CateController {
             }
             return false;
         }
-        $this->view("admin.Views.Cate.update",['cate' => $this->cate->getOne($id)]);
+        $this->view("admin.layout.Components.Cate.update",['cate' => $this->cate->getOne($id)]);
     }
     // Phương thức delete
     function delete($id) {
         $result = $this->cate->delete($id);
         if($result) {
             header("Location".URL."Admin/listCate");
-            $this->view("admin.Views.Cate.list",['cates' => $this->cate->all()]);
+            $this->view("admin.layout.Components.Cate.add",['cates' => $this->cate->all()]);
         }
         return false;
     }

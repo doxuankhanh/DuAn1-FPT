@@ -1,4 +1,5 @@
-
+<?php require_once "./app/Views/admin/layout/Pages/header.php";
+?>
 <!doctype html>
 <html lang="en">
 
@@ -87,3 +88,5 @@
 </body>
 
 </html>
+<?php require_once "./app/Views/admin/layout/Pages/footer.php";
+?>

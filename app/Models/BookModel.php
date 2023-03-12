@@ -57,7 +57,7 @@ class BookModel extends BaseModel{
     }
 
     //Phân trang
-    function searchAndPaging($bookName='',$cateID ='') {
+    function searchAndPaging() {
         if($this->table !== null) {
             if(isset($_REQUEST['page'])) {
                 $page = $_REQUEST['page'];
@@ -66,9 +66,9 @@ class BookModel extends BaseModel{
             }
             $end = 6;
             $from = ($page - 1) * $end;
-            $sql = $this->_selectQuery(). " AND $this->table.bookName LIKE ? AND $this->table.cateID LIKE ?";
-            $sql.= " ORDER BY $this->table.id LIMIT $from,$end";
-            $this->_query($sql)->execute([$bookName,$cateID]);
+            // $sql = $this->_selectQuery(). " AND $this->table.bookName LIKE ? AND $this->table.cateID LIKE ?";
+            $sql = $this->_selectQuery() ." ORDER BY $this->table.id LIMIT $from,$end";
+            $this->_query($sql)->execute();
             $data = $this->stmt->fetchAll();
             return $data;
         }
