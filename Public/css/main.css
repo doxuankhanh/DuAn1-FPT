@@ -71,9 +71,10 @@ header {
 }
 
 .img-banner {
+    width: 150px;
     position: absolute;
     left: 16em;
-    top: 3em;
+    top: 0em;
 }
 
 .div-searchsite {
