@@ -501,6 +501,7 @@ header {
    left: 1px;
    padding: 10px;
    pointer-events: none;
+   border-bottom: 3px solid #ececec;
 }
 .span-err{
     position: absolute;
