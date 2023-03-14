@@ -6,7 +6,7 @@ _dump($data['book']);
     <div class="detail-content">
         <div class="detail-row flex">
             <div>
-                <img src="Public/upload/<?= $data['book']['image'] ?>" alt="img" />
+                <img src="./Public/upload/sach1.jpg" alt="img" />
             </div>
             <div>
                 <h2 class="detail-title">
