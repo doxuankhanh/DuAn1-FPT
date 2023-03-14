@@ -13,7 +13,7 @@ trait Controller {
     function view($view,$data = []) {
         $view = str_replace('.','/',$view);
         if(file_exists('./app/Views/'.$view.'.php')) {
-            return require_once "./app/Views/".$view.".php";
+            require_once "./app/Views/".$view.".php";
         }
     }
 }
