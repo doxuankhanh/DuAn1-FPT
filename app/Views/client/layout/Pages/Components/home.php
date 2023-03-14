@@ -4,11 +4,11 @@
         <!-- Additional required wrapper -->
         <div class="swiper-wrapper">
             <!-- Slides -->
-            <div class="swiper-slide" style="background-image: url(Public/images/product/slide1.jpg);background-size: contain;background-position: center;">
+            <div class="swiper-slide" style="background-image: url(../../../../../../../DuAn1-FPT/Public/images/product/slide1.jpg);background-size: contain;background-position: center;">
             </div>
-            <div class="swiper-slide" style="background-image: url(Public/images/product/slide2.jpg);background-size: contain;background-position: center;">
+            <div class="swiper-slide" style="background-image: url(../../../../../../../DuAn1-FPT/Public/images/product/slide2.jpg);background-size: contain;background-position: center;">
             </div>
-            <div class="swiper-slide" style="background-image: url(Public/images/product/slide3.jpg);background-size: contain;background-position: center;">
+            <div class="swiper-slide" style="background-image: url(../../../../../../../DuAn1-FPT/Public/images/product/slide3.jpg);background-size: contain;background-position: center;">
             </div>
         </div>
         <!-- If we need pagination -->
@@ -21,8 +21,8 @@
         <ul class="listbook">
             <?php foreach ($data['bookNew'] as $bookNew) : ?>
                 <li class="li-book">
-                    <a href="<?= URL ?>Home/bookDetail/<?= $bookNew['id'] ?>">
-                        <img style="" src="Public/upload/<?= $bookNew['image'] ?>" alt="" title="<?= $bookNew['bookName'] ?>">
+                    <a href="<?= URL ?>Home/bookDetail/<?= $bookNew['id'] ?>/<?= $bookNew['cateID']?>">
+                        <img style="" src="../../../../../../../DuAn1-FPT/Public/upload/<?= $bookNew['image'] ?>" alt="" title="<?= $bookNew['bookName'] ?>">
                     </a>
                     <ul class="div-popup">
                         <div class="div-content-popup">
@@ -55,8 +55,8 @@
         <ul class="listbook">
             <?php foreach ($data['bookSeller'] as $bookSeller) : ?>
                 <li class= "li-book">
-                    <a href="<?= URL ?>Home/bookDetail/<?= $bookSeller['id'] ?>">
-                        <img style="" src="Public/upload/<?= $bookSeller['image'] ?>" alt="" title="<?= $bookSeller['bookName'] ?>">
+                    <a href="<?= URL ?>Home/bookDetail/<?= $bookSeller['id'] ?>/<?= $bookSeller['cateID']?>">
+                        <img style="" src="../../../../../../../DuAn1-FPT/Public/upload/<?= $bookSeller['image'] ?>" alt="" title="<?= $bookSeller['bookName'] ?>">
                     </a>
                     <ul class="div-popup">
                         <div class="div-content-popup">
@@ -88,8 +88,8 @@
         <ul class="listbook">
             <?php foreach($data['literatureVN'] as $literatureVN):?>
         <li class= "li-book">
-                    <a href="<?= URL ?>Home/bookDetail/<?= $literatureVN['id'] ?>">
-                        <img style="" src="Public/upload/<?= $literatureVN['image'] ?>" alt="" title="<?= $literatureVN['bookName'] ?>">
+                    <a href="<?= URL ?>Home/bookDetail/<?= $literatureVN['id'] ?>/<?= $literatureVN['cateID']?>">
+                        <img style="" src="../../../../../../../DuAn1-FPT/Public/upload/<?= $literatureVN['image'] ?>" alt="" title="<?= $literatureVN['bookName'] ?>">
                     </a>
                     <ul class="div-popup">
                         <div class="div-content-popup">
@@ -121,7 +121,7 @@
         <ul class="listbook">
             <?php foreach($data['literature'] as $literature):?>
         <li class= "li-book">
-                    <a href="<?= URL ?>Home/bookDetail/<?= $literature['id'] ?>">
+                    <a href="<?= URL ?>Home/bookDetail/<?= $literature['id'] ?>/<?= $literature['cateID']?>">
                         <img style="" src="Public/upload/<?= $literature['image'] ?>" alt="" title="<?= $literature['bookName'] ?>">
                     </a>
                     <ul class="div-popup">
@@ -154,7 +154,7 @@
         <ul class="listbook">
             <?php foreach($data['children'] as $children):?>
         <li class= "li-book">
-                    <a href="<?= URL ?>Home/bookDetail/<?= $children['id'] ?>">
+                    <a href="<?= URL ?>Home/bookDetail/<?= $children['id'] ?>/<?= $children['cateID']?>">
                         <img style="" src="Public/upload/<?= $children['image'] ?>" alt="" title="<?= $children['bookName'] ?>">
                     </a>
                     <ul class="div-popup">

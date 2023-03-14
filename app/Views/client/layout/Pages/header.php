@@ -21,11 +21,15 @@
                 <a class="anchor-a" href="#">kIỂM TRA ĐƠN HÀNG</a>
             </div>
             <div class="div-login-site">
+                <?php if(!isset($_SESSION['userID'])):?>
                 <a class="anchor-a" href="<?= URL?>Home/login">ĐĂNG NHẬP</a>
                 <a class="anchor-a" href="<?= URL?>Home/register">ĐĂNG KÝ</a>
-                <a class="anchor-a" href="<?= URL?>Home/destroy/action=logout">ĐĂNG XUẤT</a>
-                <!-- <?php if(isset($data['user'])) {?>
-                <?php }?> -->
+                <?php elseif(isset($_SESSION['username']) && $_SESSION['role'] === '0'):?>
+                <a class="anchor-a" href="<?= URL?>Home/destroy">ĐĂNG XUẤT</a>
+                <a class="anchor-a" href="<?= URL?>Admin">ADMIN</a>
+                <?php else:?>
+                <a class="anchor-a" href="<?= URL?>Home/destroy">ĐĂNG XUẤT</a>
+                <?php endif?>
             </div>
         </header>
         <div class="div-banner">
@@ -56,8 +60,8 @@
                         <?php endforeach?>
                     </ul>
                 </li>
-                <li class="li-nav"><a href="#">SÁCH KHUYẾN MẠI</a></li>
-                <li class="li-nav"><a href="#">CHƯƠNG TRÌNH KHUYẾN MẠI</a></li>
+                <li class="li-nav"><a href="<?= URL?>Home/loadBookView">SÁCH CÓ LƯỢT XEM NHIỀU NHẤT</a></li>
+                <li class="li-nav"><a href="#">CHƯƠNG TRÌNH KHUYẾN MÃI</a></li>
                 <li class="li-nav"><a href="#">GIẢM GIÁ ĐẶC BIỆT</a></li>
             </ul>
         </div>

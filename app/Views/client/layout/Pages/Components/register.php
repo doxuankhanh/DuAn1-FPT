@@ -9,9 +9,12 @@
             <label for="mail">Email :</label>
             <input type="email" name="email" class="input-form-login" value="<?= $data['email'] ?? ''?> ">
             <span class="span-err" style="color:red;font-weight:bold;font-style:i"><?= $data['email_err'] ?? '' ?></span>
-            <label for="name">Tên đăng nhập :</label>
-            <input type="text" name="fullname" class="input-form-login" value="<?= $data['fullname'] ?? ''?>" >
-            <span class="span-err" style="color:red;font-weight:bold;font-style:i"><?= $data['fullname_err'] ?? ''?></span>
+            <label for="name">FullName :</label>
+            <input type="text" name="username" class="input-form-login" value="<?= $data['username'] ?? ''?>" >
+            <span class="span-err" style="color:red;font-weight:bold;font-style:i"><?= $data['username_err'] ?? ''?></span>
+            <label for="name">Account :</label>
+            <input type="text" name="accountName" class="input-form-login" value="<?= $data['accountName'] ?? ''?>" >
+            <span class="span-err" style="color:red;font-weight:bold;font-style:i"><?= $data['accountName_err'] ?? ''?></span>
             <label for="pwd">Mật khẩu :</label>
             <input type="password" name="password" class="input-form-login" value="<?= $data['password'] ?? ''?>" >
             <span class="span-err" style="color:red;font-weight:bold;font-style:i"><?= $data['password_err'] ?? ''?></span>

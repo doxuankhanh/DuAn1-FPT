@@ -7,6 +7,7 @@ class CateController {
     function __construct()
     {
         $this->cate = $this->model("CateModel");
+        session_start();
     }
     // index là nới load tất cả danh sách
     function index() {
@@ -17,7 +18,8 @@ class CateController {
         if(isset($_POST['btn-new'])) {
             $result = $this->cate->new($_POST['cateName']);
             if($result) {
-                header("Location:".URL."Admin/listCate");
+                _redirectLo(URL."Admin/listCate");
+                // header("Location:".URL."Admin/listCate");
             }
             return false;
         }
@@ -28,7 +30,8 @@ class CateController {
         if(isset($_POST['btn-update'])) {
             $result = $this->cate->update($_POST['cateName'],$id);
             if($result) {
-                header("Location:".URL."Admin/listCate");
+                // header("Location:".URL."Admin/listCate");
+                _redirectLo(URL."Admin/listCate");
             }
             return false;
         }
@@ -38,12 +41,12 @@ class CateController {
     function delete($id) {
         $result = $this->cate->delete($id);
         if($result) {
-            header("Location".URL."Admin/listCate");
+            // header("Location".URL."Admin/listCate");
+            _redirectLo(URL."Admin/listCate");
             $this->view("admin.layout.Components.Cate.add",['cates' => $this->cate->all()]);
         }
         return false;
     }
-    // Phân trang
 
    
 }

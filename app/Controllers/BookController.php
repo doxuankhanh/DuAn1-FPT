@@ -11,6 +11,7 @@ class BookController  {
         $this->book = $this->model("BookModel");
         $this->cate = $this->model("CateModel");
         $this->status = $this->model("StatusModel");
+        session_start();
     }
     function index() {
         $this->view("admin.layout.Components.Book.list",
@@ -28,7 +29,8 @@ class BookController  {
             $result = $this->book->new($_POST['cateID'],$_POST['bookName'],$img,$_POST['author'],date("Y/m/d H:i:a"),$_POST['price'],$_POST['description'],$_POST['statusID']);
             move_uploaded_file($_FILES['image']['tmp_name'], "Public/upload/" . basename($img));
             if($result) {
-                header("Location:".URL."Admin/listBook");
+                _redirectLo(URL."Admin/listBook");
+                // header("Location:".URL."Admin/listBook");
             }
         }
         $this->view("admin.layout.Components.Book.add",
@@ -49,9 +51,9 @@ class BookController  {
                 move_uploaded_file($_FILES['image']['tmp_name'], "Public/upload/".basename($img));
             }
             $result = $this->book->update($_POST['cateID'],$_POST['bookName'],$img,$_POST['author'],date("Y/m/d H:i:a"),$_POST['price'],$_POST['description'],$_POST['statusID'],$id);
-            // _dump($result);die;
             if($result) {
-                header("Location:".URL."Admin/listBook");
+                _redirectLo(URL."Admin/listBook");
+                // header("Location:".URL."Admin/listBook");
             }
         }
         $this->view("admin.layout.Components.Book.update",
@@ -66,7 +68,8 @@ class BookController  {
     function delete($id) {
         $result = $this->book->delete($id);
         if($result) {
-            header("Location:".URL."Admin/listBook");
+            // header("Location:".URL."Admin/listBook");
+            _redirectLo(URL."Admin/listBook");
             $this->view("admin.layout.Components.Book.list",['books' => $this->book->all()]);
         }
     }

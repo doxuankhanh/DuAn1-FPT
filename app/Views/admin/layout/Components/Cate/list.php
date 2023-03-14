@@ -1,3 +1,4 @@
+<?php require_once "./app/Views/admin/layout/Components/header.php";?>
 <!doctype html>
 <html lang="en">
 
@@ -21,7 +22,21 @@
         <span class="navbar-toggler-icon"></span>
       </button>
     </nav>
-    <a href="<?= URL?>Cate/new" class="btn btn-primary mx-2">Thêm mới</a>
+    <form action="<?= URL?>Admin/listCate" method="POST">
+      <h6 class="mx-2">Tìm Kiếm Danh Mục</h6>
+      <div class="form-group  mx-2">
+        <select name="cateID" id="" class="form-control">
+          <option value="" selected> -- Tất Cả -- </option>
+          <?php foreach ($data['cates'] as $cate) : ?>
+            <option value="<?= $cate['id'] ?>"><?= $cate['cateName'] ?></option>
+          <?php endforeach ?>
+        </select>
+      </div>
+      <div class="form-group mx-2 my-2">
+        <input type="submit" value="Tìm Kiếm" name="btn-search" class="btn btn-info">
+        <a href="<?= URL?>Cate/new" class="btn btn-primary">Thêm mới</a>
+      </div>
+    </form>
   </header>
   <!-- End Header -->
 
@@ -36,8 +51,8 @@
         </tr>
       </thead>
       <tbody>
-        <?php
-        foreach ($data['cates'] as $cate) : ?>
+        <?php if(count($data['cates']) > 0):?>
+        <?php foreach ($data['cates'] as $cate) : ?>
           <tr>
             <td scope="row"><?= $cate['id'] ?></td>
             <td scope="row"><?= $cate['cateName'] ?></td>
@@ -45,12 +60,15 @@
             <td><a href="<?= URL?>Cate/delete/<?= $cate['id']?>" onclick="return confirm('Bạn có muốn xóa không?');" class="btn btn-danger">Delete</a></td>
           </tr>
         <?php endforeach ?>
+        <?php else:?>
+        <div>Không có sản phẩm bạn muốn tìm</div>
+          <?php endif?>
       </tbody>
     </table>
     <nav aria-label="Page navigation example" style="display: flex; justify-content: center;">
       <ul class="pagination">
         <?php for ($i = 1; $i <= $data['pages']; $i++) { ?>
-            <li class="page-item"><a class="page-link" href="<?= URL?>Admin/listCate/page=<?= $i?>"><?= $i ?></a></li>
+            <li class="page-item"><a class="page-link" href="<?= URL?>Admin/listCate/<?= $i?>"><?= $i ?></a></li>
             <?php } ?>
             <!-- <li class="page-item"><a class="page-link" href="">1</a></li> -->
       </ul>
@@ -66,7 +84,4 @@
 </body>
 
 </html>
-<?php
-
-// _dump($data['pages']);
-?>
+<?php require_once "./app/Views/admin/layout/Components/footer.php";?>

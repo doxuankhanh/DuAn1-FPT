@@ -12,6 +12,7 @@ class HomeController
         $this->cate = $this->model("CateModel");
         $this->book = $this->model("BookModel");
         $this->user = $this->model("UserModel");
+        // session_start();
     }
     function index()
     {
@@ -28,15 +29,27 @@ class HomeController
         );
     }
     // chi tiết sản phẩm
-    function bookDetail($id)
+    function bookDetail($id,$cateID)
     {
         $this->view(
             "client.layout.Pages.Components.bookDetail",
             [
                 'cates' => $this->cate->all(),
-                'book' => $this->book->bookDetail($id)
+                'similarBook' => $this->book->similarBook(id:$id,cateID:$cateID),
+                'view' => $this->book->updateView($id),
+                'book' => $this->book->bookDetail($id),
             ]
         );
+    }
+
+    // load sp theo view
+    function loadBookView() {
+        $this->view("client.layout.Pages.Components.topView",
+        [   
+            'cates' => $this->cate->all(),
+            'viewBook' => $this->book->bookView()
+        ]
+    );
     }
     // lấy sản phẩm theo cateID
     function bookFollowCategories($cateID)
@@ -45,11 +58,25 @@ class HomeController
             "client.layout.Pages.Components.followCate",
             [
                 'cates' => $this->cate->all(),
+                'cate' => $this->cate->getOne($cateID),
                 'book' => $this->book->bookFollowCategories($cateID)
             ]
         );
     }
+    // tạo session khi login thành công
+    function createUserSession($user) {
+        // $_SESSION['client'] = $user;
 
+        $_SESSION['userID'] = $user['clientID'];
+        $_SESSION['username'] = $user['username'];
+        $_SESSION['accountName'] = $user['accountName'];
+        $_SESSION['avatarUser'] = $user['avatar'];
+        $_SESSION['email'] = $user['email'];
+        $_SESSION['role'] = $user['role'];
+        _redirectRe(URL."Home");
+
+        
+    }
     //Login
     function login()
     {
@@ -80,15 +107,10 @@ class HomeController
             // k có lỗi 
             if (empty($data['email_err']) && empty($data['password_err'])) {
                 $user = $this->user->login($data['email']);
-                // _dump($user);
-                // _dump($data['password']);
-                // die;
                 if (!$user || !password_verify($data['password'], $user['password'])) {
                     $data['msgErr'] = "Thông tin tài khoản hoặc mật khẩu không chính xác";
                 }else {
-                    // $data['user'] = $_SESSION[$user['email']];
-                    header("refresh:1;url=" . URL . "Home");
-                    $this->view("client.layout.Pages.header", $data);
+                    $this->createUserSession($user);
                 }
             }
         } else {
@@ -106,11 +128,8 @@ class HomeController
 
     //đăng xuất
     function destroy() {
-        if(isset($_GET['action']) && $_GET['action'] === 'logout') {
-            die("alo");
-            session_destroy();
-            header("Location:".URL."Home");
-        }
+        session_destroy();
+        _redirectRe(URL."Home/login");
     }
     //Đăng ký
     function register()
@@ -120,14 +139,16 @@ class HomeController
             $_POST = filter_input_array(INPUT_POST);
             $data = [
                 'email' => trim($_POST['email']),
-                'fullname' => trim($_POST['fullname']),
+                'username' => trim($_POST['username']),
+                'accountName' => trim($_POST['accountName']),
                 'password' => trim($_POST['password']),
                 'passwordRepeat' => trim($_POST['passwordRepeat']),
                 'address' => trim($_POST['address']),
                 'phoneNumber' => trim($_POST['phoneNumber']),
                 //
                 'email_err' => "",
-                'fullname_err' => "",
+                'username_err' => "",
+                'accountName_err' => "",
                 'password_err' => "",
                 'passwordRepeat_err' => "",
                 'address_err' => "",
@@ -144,8 +165,11 @@ class HomeController
                 }
             }
             // Validate fullname
-            if (empty($data['fullname'])) {
-                $data['fullname_err'] = "Please enter your fullname";
+            if (empty($data['username'])) {
+                $data['username_err'] = "Please enter your username";
+            }
+            if (empty($data['accountName'])) {
+                $data['accountName_err'] = "Please enter your account name";
             }
             // validate password
             if (empty($data['password'])) {
@@ -166,13 +190,13 @@ class HomeController
                 $data['phoneNumber_err'] = "Please enter your phone number";
             }
             // kiểm tra k có lỗi thì tiến hành đăng ký
-            if (empty($data['email_err']) && empty($data['fullname_err']) && empty($data['password_err']) && empty($data['passwordRepeat_err']) && empty($data['address_err']) && empty($data['phoneNumber_err'])) {
+            if (empty($data['email_err']) && empty($data['username_err']) && empty($data['accountName_err'])&& empty($data['password_err']) && empty($data['passwordRepeat_err']) && empty($data['address_err']) && empty($data['phoneNumber_err'])) {
                 // mã hóa
                 $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
-                $result = $this->user->register($data['fullname'], $data['email'], $data['password'], $data['address'], $data['phoneNumber']);
+                $result = $this->user->register($data['username'],$data['accountName'], $data['email'], $data['password'], $data['address'], $data['phoneNumber']);
                 if ($result) {
                     $data['msgSuccess'] = "Chúc mừng bạn đã đăng ký thành công! Hãy đăng nhập để mua sắm";
-                    header("refresh:2;url=" . URL . "Home/login");
+                    // _redirectRe(URL."Home/login");
                 } else {
                     return false;
                 }
@@ -183,14 +207,16 @@ class HomeController
             // data chứa các giá trị rỗng nếu k tồn tại thì khi in lỗi bên form sẽ k hiện undefine 
             $data = [
                 'email' => '',
-                'fullname' => '',
+                'username' => '',
+                'accountName' => '',
                 'password' => '',
                 'passwordRepeat' => '',
                 'address' => '',
                 'phoneNumber' => '',
 
                 'email_err' => "",
-                'fullname_err' => "",
+                'username_err' => "",
+                'accountName_err' => "",
                 'password_err' => "",
                 'passwordRepeat_err' => "",
                 'address_err' => "",
@@ -200,4 +226,6 @@ class HomeController
         }
         $this->view("client.layout.Pages.Components.register", $data);
     }
+
+    
 }
