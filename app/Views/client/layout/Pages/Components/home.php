@@ -35,10 +35,10 @@
                                 </ul>
                             </div>
                             <p class="p-price">
-                                <?= number_format($bookNew['price']) ?>
+                                
+                                <a href="#" class="a-price"><?= number_format($bookNew['price']) ?></a>
+                                <a href="#" class="a-buyNow">Mua ngay</a>
                             </p>
-                            <a href="#" class="a-addCart">Thêm vào giỏ hàng</a>
-                            <a href="#" class="a-buyNow">Mua ngay</a>
                         </div>
                     </ul>
                 </li>

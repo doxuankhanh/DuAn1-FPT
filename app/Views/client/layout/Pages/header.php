@@ -13,6 +13,44 @@
 </head>
 
 <body>
+<div class="div-cart-popup-container">
+    <div class="div-cart-popup-content">
+        <header class="header-cart"><h3>Giỏ hàng</h3></header>
+        <button class="closeBtn">X</button>
+        <table border="1">
+            <tr>
+                <th>STT</th>
+                <th>Tên sản phẩm</th>
+                <th>Giá</th>
+                <th>Số lượng</th>
+                <th>Tổng cộng</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>Sách 18+</td>
+                <td>699600₫</td>
+                <td>1</td>
+                <td>699600₫</td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div class="div-popup-searching">
+    <div class="div-content-searching">
+        <h3>Tìm kiếm với từ khóa : </h3>
+        <div class="listSearch">
+            <ul class="ul-listSearch">
+                <li class="li-listSearch">Sản phẩm 1</li>
+                <li class="li-listSearch">Sản phẩm 2</li>
+                <li class="li-listSearch">Sản phẩm 3</li>
+                <li class="li-listSearch">Sản phẩm 1</li>
+                <li class="li-listSearch">Sản phẩm 2</li>
+                <li class="li-listSearch">Sản phẩm 3</li>
+            </ul>
+        </div>
+        <p class="p-closeSearchBox">Đóng tìm kiếm</p>
+    </div>
+</div>
     <div class="div-container">
         <header>
             <div class="div-introduct">
@@ -30,6 +68,12 @@
                 <?php else:?>
                 <a class="anchor-a" href="<?= URL?>Home/destroy">ĐĂNG XUẤT</a>
                 <?php endif?>
+                <div class="p-setting anchor-a " style="display: inline;" href="#"><img class="img-setting" src="../../../../../../../DuAn1-FPT/Public/images/product/settings-icon-13.png" alt="">
+                <div class="ul-setting">
+                    <p class="li-setting">Tên Người Dùng</p>
+                    <p class="li-setting"><a href="">Tên người dùng</a></p>
+                    <p class="li-setting"><a href="">LogOut</a></p>
+                </div>
             </div>
         </header>
         <div class="div-banner">
@@ -38,7 +82,7 @@
             </a>
             <div class="div-searchsite">
                 <a href="#" class="cart"></a>
-                <form action="" method="get">
+                <form action="" method="post">
                     <input type="text" class="search-box" placeholder="Tìm kiếm sách của bạn...">
                     <input type="image" type="submit" name="search-btn" src="../../../../../../DuAn1-FPT/Public/images/product/searchbg.png" value="Tìm kiếm"
                         class="search-btn">

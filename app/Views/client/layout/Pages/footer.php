@@ -29,7 +29,9 @@
         <!-- FOOTER -->
     </div>
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-    <script src="../../../../../../DuAn1-FPT/Public/js/slider/script.js"></script>
+    <script src="../../../../../../DuAn1-FPT/Public/js/slider/script.js"></script>    
+    <script src="../../../../../../DuAn1-FPT/Public/js/popup-cart/script.js"></script>
+    <script src="../../../../../../DuAn1-FPT/Public/js/searching-popup/script.js"></script>
 </body>
 
 </html>
