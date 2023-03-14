@@ -31,6 +31,7 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     <script src="Public/js/slider/script.js"></script>
     <script src="Public/js/detail_product/detail.js"></script>
+    <script src="Public/js/popup-cart/script.js"></script>
 </body>
 
 </html>
