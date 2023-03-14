@@ -12,11 +12,12 @@
     <title>Dashboard</title>
 
     <!-- Custom fonts for this template-->
-    <link href="Public/fontawesome-free-6.1.1-web/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="../../../../../../DuAn1-FPT/Public/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="Public/styles/css/sb-admin-2.min.css" rel="stylesheet">
+    <!-- <link href="Public/styles/css/sb-admin-2.min.css" rel="stylesheet"> -->
+    <link href="../../../../../../DuAn1-FPT/Public/styles/css/sb-admin-2.min.css" rel="stylesheet">
 
 </head>
 
@@ -255,9 +256,8 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small" style="text-transform: uppercase; font-size: 16px;">Admin</span>
-                                <img class="img-profile rounded-circle"
-                                src="">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small" style="text-transform: uppercase; font-size: 16px;"><?= $_SESSION['username'] ?? ''?></span>
+                                <img class="img-profile rounded-circle" src="../../../../../../DuAn1-FPT/Public/upload/<?= $_SESSION['avatarUser']?>">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
