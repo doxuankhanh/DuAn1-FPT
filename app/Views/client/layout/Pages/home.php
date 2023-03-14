@@ -1,6 +1,7 @@
 <div class="div-cart-popup-container">
     <div class="div-cart-popup-content">
         <header class="header-cart"><h3>Giỏ hàng</h3></header>
+        <button class="closeBtn">X</button>
         <table border="1">
             <tr>
                 <th>STT</th>
