@@ -7,7 +7,6 @@ class CateController {
     function __construct()
     {
         $this->cate = $this->model("CateModel");
-        session_start();
     }
     // index là nới load tất cả danh sách
     function index() {

@@ -12,7 +12,6 @@ class HomeController
         $this->cate = $this->model("CateModel");
         $this->book = $this->model("BookModel");
         $this->user = $this->model("UserModel");
-        // session_start();
     }
     function index()
     {
@@ -117,7 +116,7 @@ class HomeController
             $data = [
                 'email' => "",
                 'password' => "",
-
+                'cates' => $this->cate->all(),
 
                 'email_err' => "",
                 'password_err' => "",
@@ -145,6 +144,7 @@ class HomeController
                 'passwordRepeat' => trim($_POST['passwordRepeat']),
                 'address' => trim($_POST['address']),
                 'phoneNumber' => trim($_POST['phoneNumber']),
+                'cates' => $this->cate->all(),
                 //
                 'email_err' => "",
                 'username_err' => "",
@@ -154,7 +154,6 @@ class HomeController
                 'address_err' => "",
                 'phoneNumber_err' => "",
                 'msgSuccess' => "",
-                'cates' => $this->cate->all(),
             ];
             // Validate email
             if (empty($data['email'])) {
@@ -213,6 +212,8 @@ class HomeController
                 'passwordRepeat' => '',
                 'address' => '',
                 'phoneNumber' => '',
+                'cates' => $this->cate->all(),
+
 
                 'email_err' => "",
                 'username_err' => "",

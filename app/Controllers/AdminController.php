@@ -9,7 +9,6 @@ class AdminController{
     {
         $this->book = $this->model("BookModel");
         $this->cate = $this->model("CateModel");
-        session_start();
         if(!isset($_SESSION['userID'])) {
             _redirectLo(URL."Home");
         }

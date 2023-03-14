@@ -11,7 +11,6 @@ class BookController  {
         $this->book = $this->model("BookModel");
         $this->cate = $this->model("CateModel");
         $this->status = $this->model("StatusModel");
-        session_start();
     }
     function index() {
         $this->view("admin.layout.Components.Book.list",
