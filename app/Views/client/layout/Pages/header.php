@@ -34,7 +34,7 @@
         <div class="div-banner">
             <img src="Public/images/product/logo.png" alt="" class="img-banner">
             <div class="div-searchsite">
-                <a href="#" class="cart"></a>
+                <div class="cart"></div>
                 <form action="" method="get">
                     <input type="text" class="search-box" placeholder="Tìm kiếm sách của bạn...">
                     <input type="image" type="submit" name="search-btn" src="Public/images/product/searchbg.png" value="Tìm kiếm" class="search-btn">

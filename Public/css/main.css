@@ -289,7 +289,37 @@ header {
     position: relative;
 
 }
+/*  PopUpCart and ProductDetail */
+.div-cart-popup-container{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    z-index: 10;
+}
 
+.header-cart h3{
+    float: left;
+}
+.div-cart-popup-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    width: 400px;
+    min-height: 200px;
+}
+.div-cart-popup-container.show{
+    display: block;
+}
+.delete-btn{
+    width: 100px;
+}
 .div-popup {
     position: absolute;
     width: 300px;
@@ -471,13 +501,14 @@ header {
    left: 1px;
    padding: 10px;
    pointer-events: none;
+   border-bottom: 3px solid #ececec;
 }
 .span-err{
     position: absolute;
     top: 50px;
     right: 0;
 }
-button {
+.submit-btn {
     background-color: #4CAF50;
     /* Green */
     border: none;
@@ -539,7 +570,7 @@ button:hover {
     line-height: 20px;
     font-weight: bold;
     margin: 0 30px;
-    padding-top: 10px;
+    padding-top: 17px;
    
     font-size: 16px;
     color: #dcdcdd;
@@ -551,7 +582,7 @@ button:hover {
 }
 
 .li-book .ul-infor-book {
-  margin-top: 20px;
+  margin-top: 10px;
   margin-left: 50px;  
 
 }
@@ -593,7 +624,7 @@ button:hover {
 }
 
 .div-bookname-popup {
-   
+   margin-bottom: 10px;
 }
 
 .a-buyNow {
@@ -794,4 +825,21 @@ a {
     column-gap: 20px;
     margin-left: 70px;
     margin-top: 20px;
+}
+/* Contact */
+.div-bg{
+    background-image: url(../images/product/bg_pattern.jpg);
+    padding: 30px;
+}
+.div-main-contact{
+    width: 60%;
+    margin: 0 auto;
+    background-image: url(../images/product/headerbg.png);
+    padding: 20px;
+}
+.h2-contact{
+    padding-bottom: 10px;
+}
+.p-contact-main{
+    line-height: 24px;
 }

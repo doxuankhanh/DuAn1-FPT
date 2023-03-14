@@ -34,7 +34,7 @@
                 <span class="span-err" style="color:red;font-weight:bold;font-style:italic">OkKhum</span>
             </div>
             <div class="div-input-box">
-                <button type="submit">Đăng Ký</button>
+                <button class="submit-btn" type="submit">Đăng Ký</button>
             </div>
         </form>
     </div>
