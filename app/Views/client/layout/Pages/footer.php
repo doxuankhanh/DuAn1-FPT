@@ -32,6 +32,7 @@
     <script src="Public/js/slider/script.js"></script>
     <script src="Public/js/detail_product/detail.js"></script>
     <script src="Public/js/popup-cart/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 
 </html>
