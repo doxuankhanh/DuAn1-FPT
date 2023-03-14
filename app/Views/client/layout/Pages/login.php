@@ -18,7 +18,7 @@
             </div>
             
            <div class="div-input-box">
-           <button type="submit">Đăng nhập</button>
+           <button class="submit-btn" type="submit">Đăng nhập</button>
            </div>
         </form>
     </div>

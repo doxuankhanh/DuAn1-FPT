@@ -1,3 +1,25 @@
+<div class="div-cart-popup-container">
+    <div class="div-cart-popup-content">
+        <header class="header-cart"><h3>Giỏ hàng</h3></header>
+        <button class="closeBtn">X</button>
+        <table border="1">
+            <tr>
+                <th>STT</th>
+                <th>Tên sản phẩm</th>
+                <th>Giá</th>
+                <th>Số lượng</th>
+                <th>Tổng cộng</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>Sách 18+</td>
+                <td>699600₫</td>
+                <td>1</td>
+                <td>699600₫</td>
+            </tr>
+        </table>
+    </div>
+</div>
 <div class="div-main-content">
     <div class="swiper" style="padding: 30px;">
         <!-- Additional required wrapper -->
@@ -12,7 +34,6 @@
         </div>
         <!-- If we need pagination -->
     </div>
-
     <div>
         <div class="div-title-banner">
             <h3>SÁCH MỚI TÁI BẢN</h3>
@@ -39,7 +60,6 @@
                                 <a href="#" class="a-price">Mua ngay</a>
                                 <a href="#" class="a-buyNow"> <?= number_format($book['price'])?>đ</a>
                                 </p>
-                                
                         </div>
                     </ul>
                 </li>
