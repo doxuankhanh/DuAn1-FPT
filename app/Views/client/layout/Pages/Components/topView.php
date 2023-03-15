@@ -22,7 +22,7 @@
         <ul class="listbook">
             <?php foreach ($data['viewBook'] as $viewBook) : ?>
                 <li class="li-book">
-                    <a href="<?= URL ?>Home/bookDetail/<?= $viewBook['id'] ?>">
+                    <a href="<?= URL ?>Home/bookDetail/<?= $viewBook['id'] ?>/<?= $viewBook['cateID']?>">
                         <img style="" src="../../../../../../../DuAn1-FPT/Public/upload/<?= $viewBook['image'] ?>" alt="" title="<?= $viewBook['bookName'] ?>">
                     </a>
                     <ul class="div-popup">

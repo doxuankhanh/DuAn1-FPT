@@ -31,12 +31,18 @@
                                     <div class="quantity">
                                         <span id="abatement">-</span>
                                         <!-- <span class="span-cart">1</span> -->
-                                        <input id="input-detail" type="number" value="1" class="span-cart"/>
+                                        <input id="input-detail" type="number" value="1" class="span-cart" name="quantity" />
                                         <span id="augment">+</span>
                                     </div>
+                                    <div><?= $_SESSION['msgCartIsset'] ?? '';
+                                            unset($_SESSION['msgCartIsset']) ?>
+                                    </div>
+                                    <div><?= $_SESSION['msgEmptyID'] ?? '';
+                                            unset($_SESSION['msgEmptyID']) ?>
+                                    </div>
                                     <div>
-                                        <button class="detail-btn" type="submit">Thêm vào giỏ hàng</button>
-                                        <button class="detail-btn" type="submit">Mua ngay</button>
+                                        <button class="detail-btn" type="submit" name="btn-add-cart">Thêm vào giỏ hàng</button>
+                                        <button class="detail-btn" type="submit" name="btn-buy-cart">Mua ngay</button>
                                     </div>
                                 </div>
                             </div>
@@ -77,10 +83,20 @@
                 <span class="detail-title2">Bình luận</span>
             </div>
             <div class="flex col-gap-20">
-
+                <div class="box-comment">
+                    <form action="" method="post" id="comment-form">
+                        <input type="text" name="note" id="comment" placeholder="Comment here..." class="input-comment">
+                        <input type="submit" value="POST" class="btn-comment" id="submit-comment" name="btn-comment">
+                    </form>
+                    <div id="result-comment">
+                        <?= _dump($data['comments'] ?? '') ?>
+                    </div>
+                    <div style="font-size: 18px; color:tomato"><?= $_SESSION['msgCmtEmpty'] ?? '';
+                            unset($_SESSION['msgCmtEmpty']) ?>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
-
 <?php require_once "./app/Views/client/layout/Pages/footer.php"; ?>

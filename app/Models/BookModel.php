@@ -67,21 +67,22 @@ class BookModel extends BaseModel
     function searchAndPaging($bookName = '', $cateID = '')
     {
         if ($this->table !== null) {
-            if($bookName !== '') {
-                $sql = $this->_selectQuery() . " AND $this->table.bookName LIKE '%$bookName%'";
-            }
-            if($cateID > 0) {
-                $sql = $this->_selectQuery() ." AND $this->table.cateID LIKE '%$cateID%'";
-            }
+            
             if(isset($_GET['page'])) {
-                $page = 1;
-            }else {
                 $page = $_GET['page'];
+            }else {
+                $page = 1;
             }
             // $page = 1;
             $end = 6;
             $from = ($page - 1) * $end;
-            $sql .= " ORDER BY $this->table.id LIMIT $from,$end";
+            if($bookName !== null) {
+                $sql = $this->_selectQuery() . " AND $this->table.bookName LIKE '%$bookName%' ORDER BY $this->table.id LIMIT $from,$end";
+            }
+            if($cateID > 0) {
+                $sql = $this->_selectQuery() ." AND $this->table.cateID LIKE '%$cateID%' ORDER BY $this->table.id LIMIT $from,$end";
+            }
+            $sql = $this->_selectQuery(). " ORDER BY $this->table.id LIMIT $from,$end";
             $this->stmt = $this->connect->prepare($sql);
             $this->stmt->execute();
             $data = $this->stmt->fetchAll();

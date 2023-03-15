@@ -68,7 +68,7 @@
     <nav aria-label="Page navigation example" style="display: flex; justify-content: center;">
       <ul class="pagination">
         <?php for ($i = 1; $i <= $data['pages']; $i++) { ?>
-            <li class="page-item"><a class="page-link" href="<?= URL?>Admin/listCate/<?= $i?>"><?= $i ?></a></li>
+            <li class="page-item"><a class="page-link" href="<?= URL?>Admin/listCate?page=<?= $i?>"><?= $i ?></a></li>
             <?php } ?>
             <!-- <li class="page-item"><a class="page-link" href="">1</a></li> -->
       </ul>
