@@ -69,10 +69,10 @@
                                 </ul>
                             </div>
                             <p class="p-price">
-                                <?= number_format($bookSeller['price']) ?>
+                                
+                                <a href="#" class="a-price"><?= number_format($bookSeller['price']) ?></a>
+                                <a href="#" class="a-buyNow">Mua ngay</a>
                             </p>
-                            <a href="#" class="a-addCart">Thêm vào giỏ hàng</a>
-                            <a href="#" class="a-buyNow">Mua ngay</a>
                         </div>
                     </ul>
                 </li>
@@ -102,10 +102,10 @@
                                 </ul>
                             </div>
                             <p class="p-price">
-                                <?= number_format($literatureVN['price']) ?>
+                                
+                                <a href="#" class="a-price"><?= number_format($literatureVN['price']) ?></a>
+                                <a href="#" class="a-buyNow">Mua ngay</a>
                             </p>
-                            <a href="#" class="a-addCart">Thêm vào giỏ hàng</a>
-                            <a href="#" class="a-buyNow">Mua ngay</a>
                         </div>
                     </ul>
                 </li>
@@ -135,10 +135,10 @@
                                 </ul>
                             </div>
                             <p class="p-price">
-                                <?= number_format($literature['price']) ?>
+                                
+                                <a href="#" class="a-price"><?= number_format($literature['price']) ?></a>
+                                <a href="#" class="a-buyNow">Mua ngay</a>
                             </p>
-                            <a href="#" class="a-addCart">Thêm vào giỏ hàng</a>
-                            <a href="#" class="a-buyNow">Mua ngay</a>
                         </div>
                     </ul>
                 </li>
@@ -168,10 +168,10 @@
                                 </ul>
                             </div>
                             <p class="p-price">
-                                <?= number_format($children['price']) ?>
+                                
+                                <a href="#" class="a-price"><?= number_format($children['price']) ?></a>
+                                <a href="#" class="a-buyNow">Mua ngay</a>
                             </p>
-                            <a href="#" class="a-addCart">Thêm vào giỏ hàng</a>
-                            <a href="#" class="a-buyNow">Mua ngay</a>
                         </div>
                     </ul>
                 </li>

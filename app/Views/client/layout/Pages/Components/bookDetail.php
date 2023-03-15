@@ -56,14 +56,17 @@
             <div class="dt">
                 <span class="detail-title2">SÁCH CÙNG DANH MỤC</span>
             </div>
-            <div class="flex col-gap-20">
+            <div class="slide flex col-gap-20">
                 <!-- <div style="width: 20%; flex-wrap: wrap;"> -->
-                <?php if (count($data['similarBook']) > 0) : ?>
+               <?php if (count($data['similarBook']) > 0) : ?>
                     <?php foreach ($data['similarBook'] as $similarBook) : ?>
+                        <div class="content">
                         <a href="<?= URL ?>Home/bookDetail/<?= $similarBook['id'] ?>/<?= $similarBook['cateID'] ?>">
                             <img style="" src="../../../../../../../DuAn1-FPT/Public/upload/<?= $similarBook['image'] ?>" alt="" title="<?= $similarBook['bookName'] ?>">
                         </a>
+                        </div>
                     <?php endforeach ?>
+              
                 <?php else : ?>
                     </center>
                     <div>Không có sản phẩm cùng danh mục</div>

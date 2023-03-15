@@ -1,9 +1,11 @@
 $(document).ready(function(){
-    $('.slider').slick({
-        slidesToShow: 3,
+    $('.slide').slick({
+        slidesToShow: 5,
         slidesToScroll: 1,
         autoplay: true,
-        autoplaySpeed: 2000,
+        autoplaySpeed: 1000,
+        arrows:false
+    
       });
     $('.slick-prev').click(function(){
         $('.slider').slick('slickPrev');
