@@ -797,7 +797,7 @@ a {
 .detail-content {
     width: 1000px;
     margin: 0px auto;
-    background: url('../img/headerbg.png');
+    background: url('../images/product/headerbg.png');
     padding: 70px 70px 70px 0;
 
 }
@@ -824,12 +824,17 @@ a {
     padding: 30px 0;
 }
 
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
 #input-detail {
     width: 30px;
+ 
 }
 
 .detail-btn {
-    background: url('../img/menubg.png');
+    background: url('../images/product/menubg.png');
     color: white;
     padding: 10px 0;
     text-align: center;
@@ -865,23 +870,39 @@ a {
 
 .quantity {
     margin-top: 5px;
+    position: relative;
 }
 
-.quantity button {
-    padding: 3px 8px;
+.subtracts{
+    background-image: url('../images/product/arrright.png');
+    width: 20px;
+    height: 20px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: absolute;
+    left: -5px;
+    border: none;
 }
-
-.quantity input {
-    padding: 2.75px 0;
+.plus{
+    background-image: url('../images/product/arrright.png');
+    width: 20px;
+    height: 20px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: absolute;
+    right: -5px;
+    transform: rotate(180deg);
+    border: none;
 }
-
 .price-old {
     text-decoration: line-through;
     display: inline;
 }
 
 .shop-pr {
-    background: url('../img/menubg.png');
+    background: url('../images/product/menubg.png');
     margin-top: 5px;
     padding: 15px 5px;
     color: white;
@@ -904,7 +925,7 @@ a {
 }
 
 .detail-title2 {
-    background: url('../img/menubg.png');
+    background: url('../images/product/menubg.png');
     padding: 10px;
     color: #fff;
     display: inline-block;
@@ -915,7 +936,10 @@ a {
     margin-left: 70px;
     margin-top: 20px;
 }
-/* Contact */
+
+  
+  
+    /* Contact */
 .div-bg{
     background-image: url(../images/product/bg_pattern.jpg);
     padding: 30px;

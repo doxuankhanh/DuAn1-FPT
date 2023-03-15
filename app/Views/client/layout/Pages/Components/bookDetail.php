@@ -14,7 +14,7 @@
                     <ul class="detail-ul">
                         <li>Mã sản phẩm: <a href="#"> <?= $data['book']['id'] ?></a></li>
                         <li>Tác giả: <a href="#"><?= $data['book']['author'] ?></a></li>
-                        <li>Lượt xem: <?= $data['book']['view']?></li>
+                        <li>Lượt xem: <?= $data['book']['view'] ?></li>
                         <!-- <li>Dịch giả: <a href="#">Hoàng Đức Long</a></li>
                         <li>Nhà xuất bản: <a href="#">Thế Giới</a></li>
                         <li>Số trang: 622</li>
@@ -27,10 +27,13 @@
                         <div class="q">
                             <span>SỐ LƯỢNG:</span>
                             <div class="flex e">
+                              
                                 <div class="quantity">
-                                    <button id="abatement">-</button>
-                                    <input id="input-detail" disabled type="number" value="1" />
-                                    <button id="augment">+</button>
+                                    
+                                    <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="subtracts"></button>
+                                    <input id="input-detail" type="number" value="1" style="-webkit-appearance: none;">
+                                    <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
+
                                 </div>
                                 <div>
                                     <span class="detail-btn">Thêm vào giỏ hàng</span>
@@ -55,19 +58,20 @@
             </div>
             <div class="flex col-gap-20">
                 <!-- <div style="width: 20%; flex-wrap: wrap;"> -->
-                    <?php if(count($data['similarBook']) > 0):?>
-                <?php foreach($data['similarBook'] as $similarBook):?>
-                    <a href="<?= URL ?>Home/bookDetail/<?= $similarBook['id'] ?>/<?= $similarBook['cateID']?>">
-                        <img style="" src="../../../../../../../DuAn1-FPT/Public/upload/<?= $similarBook['image'] ?>" alt="" title="<?= $similarBook['bookName'] ?>">
-                    </a>
-                <?php endforeach?>
-                <?php else:?>
-                </center><div>Không có sản phẩm cùng danh mục</div>
-                <?php endif?>
+                <?php if (count($data['similarBook']) > 0) : ?>
+                    <?php foreach ($data['similarBook'] as $similarBook) : ?>
+                        <a href="<?= URL ?>Home/bookDetail/<?= $similarBook['id'] ?>/<?= $similarBook['cateID'] ?>">
+                            <img style="" src="../../../../../../../DuAn1-FPT/Public/upload/<?= $similarBook['image'] ?>" alt="" title="<?= $similarBook['bookName'] ?>">
+                        </a>
+                    <?php endforeach ?>
+                <?php else : ?>
+                    </center>
+                    <div>Không có sản phẩm cùng danh mục</div>
+                <?php endif ?>
                 <!-- </div> -->
             </div>
         </div>
-
+ 
         <div>
             <div class="dt">
                 <span class="detail-title2">Bình luận</span>
