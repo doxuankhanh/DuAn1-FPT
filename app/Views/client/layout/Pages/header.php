@@ -34,7 +34,7 @@
         </header>
         <div class="div-banner">
             <a href="<?= URL?>Home">
-                <img src="../../../../../../DuAn1-FPT/Public/images/product/logo.png" alt="" class="img-banner">
+                <img src="../../../../../../DuAn1-FPT/Public/images/product/banner.png" alt="" class="img-banner">
             </a>
             <div class="div-searchsite">
                 <a href="#" class="cart"></a>
