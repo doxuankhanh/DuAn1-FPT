@@ -23,6 +23,7 @@ header {
 .p-setting {
     padding: 5px;
     position: relative;
+    cursor: pointer;
 }
 .img-setting{
     
@@ -42,6 +43,7 @@ header {
 .p-setting:hover .ul-setting{
     visibility: visible;
     opacity: 1;
+    
 }
 .li-setting{
     padding: 3px;
@@ -553,7 +555,7 @@ header {
 .span-err{
     position: absolute;
     top: 50px;
-    right: 0;
+    right: -60px;
 }
 .submit-btn {
     background-color: #4CAF50;

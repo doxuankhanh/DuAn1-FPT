@@ -15,7 +15,10 @@
            <span class="span-label">Mật khẩu</span>
             <span class="span-err" style="color:red;font-weight:bold;font-style:italic"><?= $data['password_err'] ?? ''?></span>
            </div>
-           <span class="span-err" style="color:red;font-weight:bold;font-style:i"><?= $data['msgErr'] ?? ''?></span>
+       
+           <span class="span-err" style="color:red;font-weight:bold;font-style:italic"><?= $data['msgErr'] ?? ''?></span>
+            
+            
            <div class="div-input-box">
            <button class="submit-btn login" type="submit">Đăng nhập</button>
            </div>
