@@ -24,8 +24,13 @@
                 <td class="td-cart">Magenlan</td>
                 <td class="td-cart">120.000₫</td>
                 <td class="td-cart">22/12/2202</td>
-                <td class="td-cart"><input type="number" value="1">
-                            <button class="updateBtn">Update</button></td>
+                <td class="td-cart">  <form action="" class="quantity" method="post">
+                                        
+                                        <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="subtracts"></button>
+                                        <input type="number" value="1" style="-webkit-appearance: none;" min="1" name="quantity">
+                                          <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>  
+                                          <button class="updateBtn">Update</button></td>
+                                        </form>
                 <td class="td-cart">Ở đây có ảnh</td>
             </tr>
             <button class="button-paying">Thanh toán</button>
