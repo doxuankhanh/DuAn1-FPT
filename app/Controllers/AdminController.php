@@ -25,7 +25,7 @@ class AdminController{
         $pages = ceil(count($page) / 6);
         
         if($_SERVER['REQUEST_METHOD'] === "POST") {
-            $books = $this->book->searchAndPaging($_POST['bookName'],$_POST['cateID']);
+            $books = $this->book->searchBook($_POST['bookName'],$_POST['cateID']);
         }else {
             $books = $this->book->loadAll();
         }
