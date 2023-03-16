@@ -19,24 +19,12 @@ class HomeController
     }
     function index()
     {
-        if ($_SERVER['REQUEST_METHOD'] === "POST") {
-            $_POST = filter_input_array(INPUT_POST);
-            $data = [
-                'bookName' => trim($_POST['bookName'] ?? ''),
-            ];
-            if ($data['bookName']) {
-                $bookSearch = $this->book->searchBook($data['bookName']);
-            }
-        } else {
-            $data = [
-                'bookName' => '',
-            ];
-        }
+        
         $this->view(
             "client.layout.Pages.Components.home",
             [
                 'cates' => $this->cate->all(),
-                'bookSearch' => $bookSearch ?? '',
+                
                 'bookNew' => $this->book->limit10FollowStatus(1),
                 'bookSeller' => $this->book->limit10FollowStatus(2),
                 'literatureVN' => $this->book->bookFollowCategories(10),
@@ -323,4 +311,26 @@ class HomeController
         );
     }
     // load comment
+    function loadBookSearch(){
+        if ($_SERVER['REQUEST_METHOD'] === "POST") {
+            $_POST = filter_input_array(INPUT_POST);
+            $data = [
+                'bookName' => trim($_POST['bookName'] ?? ''),
+            ];
+            if ($data['bookName']) {
+                $bookSearch = $this->book->searchBook($data['bookName']);
+            }
+        } else {
+            $data = [
+                'bookName' => '',
+            ];
+        }
+        $this->view("client.layout.Pages.Components.searchBook" ,
+            [
+            // 'cate' => $this->cate->getOne(),
+            'bookSearch' => $bookSearch ?? '',
+            ]
+            );
+
+    }
 }

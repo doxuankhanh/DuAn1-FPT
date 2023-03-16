@@ -1,3 +1,4 @@
+<?php require_once "./app/Views/client/layout/Pages/header.php"; ?>
 <div class="div-main-content">
     <div class="swiper" style="padding: 30px;">
         <!-- Additional required wrapper -->
@@ -18,7 +19,7 @@
             <h3>Kết quả tìm kiếm:</h3>
         </div>
         <ul class="listbook">
-            <?php foreach ($data['bookNew'] as $bookNew) : ?>
+            <?php foreach ($data['bookSearch'] as $bookNew) : ?>
                 <li class="li-book">
                     <a href="<?= URL ?>Home/bookDetail/<?= $bookNew['id'] ?>/<?= $bookNew['cateID'] ?>">
                         <img style="" src="../../../../../../../DuAn1-FPT/Public/upload/<?= $bookNew['image'] ?>" alt="" title="<?= $bookNew['bookName'] ?>">
@@ -46,3 +47,4 @@
         </ul>
     </div>
 </div>
+<?php require_once "./app/Views/client/layout/Pages/footer.php"; ?>
