@@ -134,11 +134,11 @@
                                     <li class="li-infor-book"><?= $literature['dateAdded'] ?></li>
                                 </ul>
                             </div>
-                            <p class="p-price">
+                            <a href="<?= URL ?>Home/bookDetail/<?= $literature['id'] ?>/<?= $literature['cateID']?>" class="p-price">
                                 
-                                <a href="#" class="a-price"><?= number_format($literature['price']) ?></a>
-                                <a href="#" class="a-buyNow">Mua ngay</a>
-                            </p>
+                                <a href="" class="a-price">Mua ngay</a>
+                                <a href="" class="a-buyNow"><?= number_format($literature['price']) ?></a>
+            </a>
                         </div>
                     </ul>
                 </li>
