@@ -42,17 +42,32 @@ header {
     z-index: 100;
     background-color: #333;
     padding: 10px;
+<<<<<<< HEAD
     right: -70px;
+=======
+    right: -120px;
+    width: 150px;
+    transition: all 0.6s;
+>>>>>>> d300864657d47590381928e820fdeacb3da84a92
 }
 .p-setting:hover .ul-setting{
     visibility: visible;
     opacity: 1;
 }
 .li-setting{
+<<<<<<< HEAD
+=======
+    
+>>>>>>> d300864657d47590381928e820fdeacb3da84a92
     padding: 3px;
 }
 .li-setting a{
     color: #c2c2c2;
+<<<<<<< HEAD
+=======
+   
+
+>>>>>>> d300864657d47590381928e820fdeacb3da84a92
 }
 .li-setting a:active{
     color: #033801;
@@ -83,8 +98,9 @@ header {
     position: absolute;
     right: 16em;
     top: 3em;
-
+    
 }
+
 
 .cart {
     width: 55px;
@@ -103,6 +119,10 @@ header {
     top: 5em;
     right: 1em;
     padding-left: 10px;
+<<<<<<< HEAD
+=======
+    outline: none;
+>>>>>>> d300864657d47590381928e820fdeacb3da84a92
 }
 
 .search-box::placeholder {
@@ -301,8 +321,15 @@ header {
     z-index: 10;
 }
 
+<<<<<<< HEAD
 .header-cart h3{
     float: left;
+=======
+.header-cart{
+    float: left;
+    margin-bottom: 20px;
+    background-color: #dcdcdd;
+>>>>>>> d300864657d47590381928e820fdeacb3da84a92
 }
 .div-cart-popup-content {
     position: absolute;
@@ -311,12 +338,19 @@ header {
     transform: translate(-50%, -50%);
     background-color: #fff;
     padding: 20px;
+<<<<<<< HEAD
     width: 400px;
     min-height: 200px;
+=======
+    width: 700px;
+    min-height: 400px;
+    transform-origin: top bottom;
+>>>>>>> d300864657d47590381928e820fdeacb3da84a92
 }
 .div-cart-popup-container.show{
     display: block;
 }
+<<<<<<< HEAD
 .delete-btn{
     width: 100px;
 }
@@ -324,6 +358,26 @@ header {
     position: absolute;
     width: 300px;
     height: 400px;
+=======
+.table-infor-cart{
+    margin: 50px auto;
+    text-align: center;
+
+}
+.closeBtn{
+    float: right;
+    padding: 10px;
+    border-radius: 40px;
+    font-weight: bolder;
+}
+.delete-btn{
+    width: 50px;
+    padding: 10px;
+}
+.div-popup {
+    position: absolute;
+    
+>>>>>>> d300864657d47590381928e820fdeacb3da84a92
     top: 100px;
     left: 20px;
     display: none;
@@ -335,7 +389,11 @@ header {
 
 .div-content-popup {
     width: 500px;
+<<<<<<< HEAD
     height: 800px;
+=======
+    height: 900px;
+>>>>>>> d300864657d47590381928e820fdeacb3da84a92
     background-repeat: no-repeat;
     background-image: url(../images/product/book_hover.png);
 }
@@ -353,6 +411,60 @@ header {
     opacity: 1; */
     display: block;
 }
+<<<<<<< HEAD
+=======
+.div-popup-searching{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    z-index: 20;
+
+}
+.div-content-searching{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    width: 800px;
+    min-height: 500px;
+    height: 80%;
+    transition: all 0.9s;
+    position: relative;
+}
+.div-popup-searching.show{
+    display: block;
+}
+
+.listSearch{
+    padding-top: 10px;
+}
+.ul-listSearch{
+    list-style: none;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 30px;
+    justify-content: space-around;
+}
+.p-closeSearchBox{
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #0f5731;
+    padding: 10px;
+    color: #dcdcdd;
+    cursor:pointer;
+}
+.p-closeSearchBox:hover {
+    background-color: #4CAF50;
+}
+>>>>>>> d300864657d47590381928e820fdeacb3da84a92
 
 /* FOOTER */
 .div-footer {
@@ -506,9 +618,16 @@ header {
 .span-err{
     position: absolute;
     top: 50px;
+<<<<<<< HEAD
     right: 0;
 }
 .submit-btn {
+=======
+    right: -50px;
+    
+}
+.submit-btn.login{
+>>>>>>> d300864657d47590381928e820fdeacb3da84a92
     background-color: #4CAF50;
     /* Green */
     border: none;
@@ -523,10 +642,34 @@ header {
     cursor: pointer;
     font-family: Arial, sans-serif;
     position: absolute;
+<<<<<<< HEAD
     top: -29px;
 }
 
 button:hover {
+=======
+    top: 5px;
+}
+.submit-btn.signin{
+    background-color: #4CAF50;
+    /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 20px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    font-family: Arial, sans-serif;
+    position: absolute;
+    top: -15px;
+}
+
+.submit-btn:hover {
+>>>>>>> d300864657d47590381928e820fdeacb3da84a92
     animation: pulse 1s infinite;
 }
 
@@ -660,6 +803,7 @@ button:hover {
     to{
         margin-left: 30px;
     }
+<<<<<<< HEAD
 }
 
 @keyframes slide {
@@ -842,8 +986,37 @@ a {
 }
 .p-contact-main{
     line-height: 24px;
+=======
+>>>>>>> d300864657d47590381928e820fdeacb3da84a92
 }
-/* Chi tiết sản phẩm */
+
+@keyframes slide {
+    from {
+        font-size: 10px;
+        background-position: 0 0;
+    }
+
+    to {
+        font-size: 16px;
+        background-position: -100% 0;
+    }
+}
+
+@keyframes slider {
+    from {
+        font-size: 10px;
+        background-position: -100% 0;
+        
+    }
+
+    to {
+        font-size: 16px;
+        background-position: 0 0;
+    }
+}
+
+
+/* detail */
 span {
     display: block;
 }
@@ -863,7 +1036,7 @@ a {
 .detail-content {
     width: 1000px;
     margin: 0px auto;
-    background: url('../../../DuAn1-FPT/Public/images/banner/headerbg.png');
+    background: url('../images/product/headerbg.png');
     padding: 70px 70px 70px 0;
 
 }
@@ -890,13 +1063,17 @@ a {
     padding: 30px 0;
 }
 
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
 #input-detail {
     width: 30px;
+ 
 }
 
 .detail-btn {
-    /* background: url('../img/menubg.png'); */
-    background: url('../../../DuAn1-FPT/Public/images/banner/menubg.png');
+    background: url('../images/product/menubg.png');
     color: white;
     padding: 10px 0;
     text-align: center;
@@ -932,24 +1109,39 @@ a {
 
 .quantity {
     margin-top: 5px;
+    position: relative;
 }
 
-.quantity button {
-    padding: 3px 8px;
+.subtracts{
+    background-image: url('../images/product/arrright.png');
+    width: 20px;
+    height: 20px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: absolute;
+    left: -5px;
+    border: none;
 }
-
-.quantity input {
-    padding: 2.75px 0;
+.plus{
+    background-image: url('../images/product/arrright.png');
+    width: 20px;
+    height: 20px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: absolute;
+    right: -5px;
+    transform: rotate(180deg);
+    border: none;
 }
-
 .price-old {
     text-decoration: line-through;
     display: inline;
 }
 
 .shop-pr {
-    background: url('../../../DuAn1-FPT/Public/images/banner/menubg.png');
-    /* background: url('../img/menubg.png'); */
+    background: url('../images/product/menubg.png');
     margin-top: 5px;
     padding: 15px 5px;
     color: white;
@@ -972,8 +1164,7 @@ a {
 }
 
 .detail-title2 {
-    /* background: url('../img/menubg.png'); */
-    background: url('../../../DuAn1-FPT/Public/images/banner/menubg.png');
+    background: url('../images/product/menubg.png');
     padding: 10px;
     color: #fff;
     display: inline-block;
@@ -984,5 +1175,23 @@ a {
     margin-left: 70px;
     margin-top: 20px;
 }
-/* sản phẩm theo danh mục */
 
+  
+  
+    /* Contact */
+.div-bg{
+    background-image: url(../images/product/bg_pattern.jpg);
+    padding: 30px;
+}
+.div-main-contact{
+    width: 60%;
+    margin: 0 auto;
+    background-image: url(../images/product/headerbg.png);
+    padding: 20px;
+}
+.h2-contact{
+    padding-bottom: 10px;
+}
+.p-contact-main{
+    line-height: 24px;
+}
