@@ -1,8 +1,5 @@
 <?php require_once "./app/Views/client/layout/Pages/header.php"; ?>
-<?php
-_dump($data['bookSearch']);
 
-?>
 <div class="div-main-content">
     <div class="swiper" style="padding: 30px;">
         <!-- Additional required wrapper -->
