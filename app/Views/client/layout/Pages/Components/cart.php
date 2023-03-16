@@ -15,7 +15,7 @@
                 <td class="td-cart">Gía</td>
                 <td class="td-cart">Ngày mua</td>
                 <td class="td-cart">Số lượng</td>
-                <td class="td-cart">Tích cực có chừng mực</td>
+                <td class="td-cart">Ảnh</td>
             </tr>
             <tr class="tr-cart">
                 
@@ -26,9 +26,9 @@
                 <td class="td-cart">22/12/2202</td>
                 <td class="td-cart"><input type="number" value="1">
                             <button class="updateBtn">Update</button></td>
-                <td class="td-cart">Nhỉ</td>
+                <td class="td-cart">Ở đây có ảnh</td>
             </tr>
-            
+            <button class="button-paying">Thanh toán</button>
         </table>
     </div>
 </div>
