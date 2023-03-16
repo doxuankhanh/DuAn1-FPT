@@ -33,8 +33,7 @@
                 <div class="p-setting anchor-a " style="display: inline;" href="#"><img class="img-setting" src="../../../../../../DuAn1-FPT/Public/images/product/settings-icon-13.png" alt="">
                 <div class="ul-setting">
                     <p class="li-setting">TênNgườiDùng</p>
-                    <p class="li-setting"><a href="">Sửa Thông Tin</a></p>
-                    <p class="li-setting"><a href="">LogOut</a></p>
+                   
                 </div>
             </div>
             </div>
