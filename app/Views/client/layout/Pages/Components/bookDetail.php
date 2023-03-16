@@ -36,8 +36,8 @@
                                         
                                     </div>
                                     <div>
-                                        <button class="detail-btn" type="submit" name="btn-add-cart" style="padding: 10px;cursor: pointer;">Thêm vào giỏ hàng</button>
-                                        <button class="detail-btn" type="submit" name="btn-buy-cart" style="padding: 10px;cursor: pointer;">Mua ngay</button>
+                                        <button class="detail-btn" type="submit" name="btn-add-cart" >Thêm vào giỏ hàng</button>
+                                        <button class="detail-btn" type="submit" name="btn-buy-cart" >Mua ngay</button>
                                     </div>
                                 </div>
                             </div>
