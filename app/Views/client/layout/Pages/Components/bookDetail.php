@@ -28,12 +28,13 @@
                             <div class="q">
                                 <span>SỐ LƯỢNG:</span>
                                 <div class="flex e">
-                                    <div class="quantity">
-                                        <span id="abatement">-</span>
-                                        <!-- <span class="span-cart">1</span> -->
-                                        <input id="input-detail" type="number" value="1" class="span-cart" name="quantity" />
-                                        <span id="augment">+</span>
-                                    </div>
+                                <div class="quantity">
+                                    
+                                    <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="subtracts"></button>
+                                    <input id="input-detail" type="number" value="1" style="-webkit-appearance: none;">
+                                    <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
+
+                                </div>
                                     <div><?= $_SESSION['msgCartIsset'] ?? '';
                                             unset($_SESSION['msgCartIsset']) ?>
                                     </div>
