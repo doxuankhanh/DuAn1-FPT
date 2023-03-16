@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 <?php require_once "./app/Views/client/layout/Pages/header.php";?>
 <div class="div-main-content">
     <div class="swiper" style="padding: 30px;">
@@ -70,11 +68,11 @@
                                     <li class="li-infor-book"><?= $bookSeller['dateAdded'] ?></li>
                                 </ul>
                             </div>
-                            <p class="p-price">
+                            <a class="p-price" href="<?= URL ?>Home/bookDetail/<?= $bookSeller['id'] ?>/<?= $bookSeller['cateID']?>">
                                 
                                 <a href="#" class="a-price"><?= number_format($bookSeller['price']) ?></a>
                                 <a href="#" class="a-buyNow">Mua ngay</a>
-                            </p>
+            </a>
                         </div>
                     </ul>
                 </li>
@@ -184,4 +182,3 @@
 
 </div>
 <?php require_once "./app/Views/client/layout/Pages/footer.php";?>
->>>>>>> d300864657d47590381928e820fdeacb3da84a92

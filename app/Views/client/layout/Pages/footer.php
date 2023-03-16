@@ -41,21 +41,19 @@
       src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"
     ></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-<<<<<<< HEAD
-<<<<<<< HEAD
+
     <script src="Public/js/slider/script.js"></script>
     <script src="Public/js/detail_product/detail.js"></script>
     <script src="Public/js/popup-cart/script.js"></script>
-=======
+
     <script src="../../../../../../DuAn1-FPT/Public/js/slider/script.js"></script>
->>>>>>> 3bf26dbd7d24fe2758a73e976668d293ac087810
-=======
+
     <script src="../../../../../../DuAn1-FPT/Public/js/slider/script.js"></script>    
     <script src="../../../../../../DuAn1-FPT/Public/js/popup-cart/script.js"></script>
     <script src="../../../../../../DuAn1-FPT/Public/js/searching-popup/script.js"></script>
     <script src="../../../../../../DuAn1-FPT/Public/js/slidios/script.js"></script>
     
->>>>>>> d300864657d47590381928e820fdeacb3da84a92
+
 </body>
 
 </html>
