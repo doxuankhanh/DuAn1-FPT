@@ -30,6 +30,7 @@
     </div>
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     <script src="../../../../../../DuAn1-FPT/Public/js/slider/script.js"></script>
+    <script src="../../../../../../DuAn1-FPT/Public/js/countPrd/script.js"></script>
 </body>
 
 </html>
