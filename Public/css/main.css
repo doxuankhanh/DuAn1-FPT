@@ -757,7 +757,7 @@ a {
     margin: 0px auto;
     background: url('../images/banner/headerbg.png');
     padding: 70px 70px 70px 0px;
-
+    height: fit-content;
 }
 
 .detail-row div:first-child {
