@@ -28,18 +28,12 @@
                             <div class="q">
                                 <span>SỐ LƯỢNG:</span>
                                 <div class="flex e">
-                                <div class="quantity">
-                                    
-                                    <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="subtracts"></button>
-                                    <input id="input-detail" type="number" value="1" style="-webkit-appearance: none;">
-                                    <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
-
-                                </div>
-                                    <div><?= $_SESSION['msgCartIsset'] ?? '';
-                                            unset($_SESSION['msgCartIsset']) ?>
-                                    </div>
-                                    <div><?= $_SESSION['msgEmptyID'] ?? '';
-                                            unset($_SESSION['msgEmptyID']) ?>
+                                    <div class="quantity">
+                                        
+                                        <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="subtracts"></button>
+                                        <input id="input-detail" type="number" value="1" style="-webkit-appearance: none;">
+                                        <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
+                                        
                                     </div>
                                     <div>
                                         <button class="detail-btn" type="submit" name="btn-add-cart">Thêm vào giỏ hàng</button>
@@ -48,6 +42,12 @@
                                 </div>
                             </div>
                         </form>
+                        <div><?= $_SESSION['msgCartIsset'] ?? '';
+                                unset($_SESSION['msgCartIsset']) ?>
+                        </div>
+                        <div><?= $_SESSION['msgEmptyID'] ?? '';
+                                unset($_SESSION['msgEmptyID']) ?>
+                        </div>
                     </div>
                 </div>
             </div>

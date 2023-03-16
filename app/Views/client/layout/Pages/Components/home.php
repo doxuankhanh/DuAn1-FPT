@@ -1,6 +1,6 @@
-<?php require_once "./app/Views/client/layout/Pages/header.php";?>
+<?php require_once "./app/Views/client/layout/Pages/header.php"; ?>
 <?php
-_dump($data['bookSearch']); 
+_dump($data['bookSearch']);
 
 ?>
 <div class="div-main-content">
@@ -25,7 +25,7 @@ _dump($data['bookSearch']);
         <ul class="listbook">
             <?php foreach ($data['bookNew'] as $bookNew) : ?>
                 <li class="li-book">
-                    <a href="<?= URL ?>Home/bookDetail/<?= $bookNew['id'] ?>/<?= $bookNew['cateID']?>">
+                    <a href="<?= URL ?>Home/bookDetail/<?= $bookNew['id'] ?>/<?= $bookNew['cateID'] ?>">
                         <img style="" src="../../../../../../../DuAn1-FPT/Public/upload/<?= $bookNew['image'] ?>" alt="" title="<?= $bookNew['bookName'] ?>">
                     </a>
                     <ul class="div-popup">
@@ -39,7 +39,7 @@ _dump($data['bookSearch']);
                                 </ul>
                             </div>
                             <p class="p-price">
-                               
+
                                 <a href="#" class="a-price"> <?= number_format($bookNew['price']) ?></a>
                                 <a href="#" class="a-buyNow">Mua ngay</a>
                             </p>
@@ -58,8 +58,8 @@ _dump($data['bookSearch']);
         </div>
         <ul class="listbook">
             <?php foreach ($data['bookSeller'] as $bookSeller) : ?>
-                <li class= "li-book">
-                    <a href="<?= URL ?>Home/bookDetail/<?= $bookSeller['id'] ?>/<?= $bookSeller['cateID']?>">
+                <li class="li-book">
+                    <a href="<?= URL ?>Home/bookDetail/<?= $bookSeller['id'] ?>/<?= $bookSeller['cateID'] ?>">
                         <img style="" src="../../../../../../../DuAn1-FPT/Public/upload/<?= $bookSeller['image'] ?>" alt="" title="<?= $bookSeller['bookName'] ?>">
                     </a>
                     <ul class="div-popup">
@@ -73,10 +73,10 @@ _dump($data['bookSearch']);
                                 </ul>
                             </div>
                             <p class="p-price">
-                               
-                               <a href="#" class="a-price"> <?= number_format($bookNew['price']) ?></a>
-                               <a href="#" class="a-buyNow">Mua ngay</a>
-                           </p>
+
+                                <a href="#" class="a-price"> <?= number_format($bookNew['price']) ?></a>
+                                <a href="#" class="a-buyNow">Mua ngay</a>
+                            </p>
                         </div>
                     </ul>
                 </li>
@@ -90,9 +90,9 @@ _dump($data['bookSearch']);
             <h3>VĂN HỌC VIỆT NAM</h3>
         </div>
         <ul class="listbook">
-            <?php foreach($data['literatureVN'] as $literatureVN):?>
-        <li class= "li-book">
-                    <a href="<?= URL ?>Home/bookDetail/<?= $literatureVN['id'] ?>/<?= $literatureVN['cateID']?>">
+            <?php foreach ($data['literatureVN'] as $literatureVN) : ?>
+                <li class="li-book">
+                    <a href="<?= URL ?>Home/bookDetail/<?= $literatureVN['id'] ?>/<?= $literatureVN['cateID'] ?>">
                         <img style="" src="../../../../../../../DuAn1-FPT/Public/upload/<?= $literatureVN['image'] ?>" alt="" title="<?= $literatureVN['bookName'] ?>">
                     </a>
                     <ul class="div-popup">
@@ -106,14 +106,14 @@ _dump($data['bookSearch']);
                                 </ul>
                             </div>
                             <p class="p-price">
-                               
+
                                 <a href="#" class="a-price"> <?= number_format($bookNew['price']) ?></a>
                                 <a href="#" class="a-buyNow">Mua ngay</a>
                             </p>
                         </div>
                     </ul>
                 </li>
-                <?php endforeach?>
+            <?php endforeach ?>
         </ul>
     </div>
     <!-- END VĂN HỌC VIỆT NAM -->
@@ -123,9 +123,9 @@ _dump($data['bookSearch']);
             <h3>VĂN HỌC NƯỚC NGOÀI</h3>
         </div>
         <ul class="listbook">
-            <?php foreach($data['literature'] as $literature):?>
-        <li class= "li-book">
-                    <a href="<?= URL ?>Home/bookDetail/<?= $literature['id'] ?>/<?= $literature['cateID']?>">
+            <?php foreach ($data['literature'] as $literature) : ?>
+                <li class="li-book">
+                    <a href="<?= URL ?>Home/bookDetail/<?= $literature['id'] ?>/<?= $literature['cateID'] ?>">
                         <img style="" src="Public/upload/<?= $literature['image'] ?>" alt="" title="<?= $literature['bookName'] ?>">
                     </a>
                     <ul class="div-popup">
@@ -139,14 +139,14 @@ _dump($data['bookSearch']);
                                 </ul>
                             </div>
                             <p class="p-price">
-                               
+
                                 <a href="#" class="a-price"> <?= number_format($bookNew['price']) ?></a>
                                 <a href="#" class="a-buyNow">Mua ngay</a>
                             </p>
                         </div>
                     </ul>
                 </li>
-                <?php endforeach?>
+            <?php endforeach ?>
         </ul>
     </div>
     <!-- END VĂN HỌC NƯỚC NGOÀI -->
@@ -156,9 +156,9 @@ _dump($data['bookSearch']);
             <h3>THIẾU NHI</h3>
         </div>
         <ul class="listbook">
-            <?php foreach($data['children'] as $children):?>
-        <li class= "li-book">
-                    <a href="<?= URL ?>Home/bookDetail/<?= $children['id'] ?>/<?= $children['cateID']?>">
+            <?php foreach ($data['children'] as $children) : ?>
+                <li class="li-book">
+                    <a href="<?= URL ?>Home/bookDetail/<?= $children['id'] ?>/<?= $children['cateID'] ?>">
                         <img style="" src="Public/upload/<?= $children['image'] ?>" alt="" title="<?= $children['bookName'] ?>">
                     </a>
                     <ul class="div-popup">
@@ -172,17 +172,17 @@ _dump($data['bookSearch']);
                                 </ul>
                             </div>
                             <p class="p-price">
-                               
+
                                 <a href="#" class="a-price"> <?= number_format($bookNew['price']) ?></a>
                                 <a href="#" class="a-buyNow">Mua ngay</a>
                             </p>
                         </div>
                     </ul>
                 </li>
-                <?php endforeach?>
+            <?php endforeach ?>
         </ul>
     </div>
     <!-- END VĂN HỌC NƯỚC NGOÀI -->
 
 </div>
-<?php require_once "./app/Views/client/layout/Pages/footer.php";?>
+<?php require_once "./app/Views/client/layout/Pages/footer.php"; ?>

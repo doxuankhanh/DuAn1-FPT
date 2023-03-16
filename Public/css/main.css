@@ -788,8 +788,8 @@ a {
 
 .detail-btn {
     background: url('../images/banner/menubg.png');
-    color: white;
-    padding: 10px 0;
+    color: rgb(234, 4, 4);
+    padding: 10px 10px;
     text-align: center;
 }
 
@@ -799,7 +799,7 @@ a {
 
 .detail-ul li {
     border-bottom: 2px solid #999;
-    width: 130%;
+    width: 100%;
     padding: 10px 20px;
 }
 

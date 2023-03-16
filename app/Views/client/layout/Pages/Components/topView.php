@@ -35,11 +35,11 @@
                                     <li class="li-infor-book"><?= $viewBook['dateAdded'] ?></li>
                                 </ul>
                             </div>
-                            <p class="p-price">
-                                <?= number_format($viewBook['price']) ?>
-                            </p>
-                            <a href="#" class="a-addCart">Thêm vào giỏ hàng</a>
-                            <a href="#" class="a-buyNow">Mua ngay</a>
+                            <a href="<?= URL ?>Home/bookDetail/<?= $viewBook['id'] ?>/<?= $viewBook['cateID']?>" class="p-price">
+                                
+                                <a href="<?= URL ?>Home/bookDetail/<?= $viewBook['id'] ?>/<?= $viewBook['cateID']?>" class="a-price"><?= number_format($viewBook['price']) ?></a>
+                                <a href="<?= URL ?>Home/bookDetail/<?= $viewBook['id'] ?>/<?= $viewBook['cateID']?>" class="a-buyNow">Mua ngay</a>
+            </a>
                         </div>
                     </ul>
                 </li>
