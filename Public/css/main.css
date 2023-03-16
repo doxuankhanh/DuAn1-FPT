@@ -39,7 +39,8 @@ header {
     background-color: #333;
     padding: 10px;
     right: -70px;
-    width: fit-content;
+    min-width: 100px;
+    /* width: -moz-fit-content; */
 }
 .p-setting:hover .ul-setting{
     visibility: visible;
