@@ -32,8 +32,7 @@
                 <?php endif?>
                 <div class="p-setting anchor-a " style="display: inline;" href="#"><img class="img-setting" src="../../../../../../DuAn1-FPT/Public/images/product/settings-icon-13.png" alt="">
                 <div class="ul-setting">
-                    <p class="li-setting">TênNgườiDùng</p>
-                    <p class="li-setting"><a href="">LogOut</a></p>
+                    <p class="li-setting"><?= $_SESSION['username'] ?? ''?></p>
                 </div>
             </div>
             </div>
