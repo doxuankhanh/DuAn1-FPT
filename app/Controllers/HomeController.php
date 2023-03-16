@@ -164,8 +164,8 @@ class HomeController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_POST = filter_input_array(INPUT_POST);
             $data = [
-                'email' => trim($_POST['email']),
-                'password' => trim($_POST['password']),
+                'email' => trim($_POST['email'] ?? ''),
+                'password' => trim($_POST['password'] ?? ''),
                 'user' => '',
                 'cates' => $this->cate->all(),
 
@@ -220,13 +220,13 @@ class HomeController
             // làm sạch input
             $_POST = filter_input_array(INPUT_POST);
             $data = [
-                'email' => trim($_POST['email']),
-                'username' => trim($_POST['username']),
-                'accountName' => trim($_POST['accountName']),
-                'password' => trim($_POST['password']),
-                'passwordRepeat' => trim($_POST['passwordRepeat']),
-                'address' => trim($_POST['address']),
-                'phoneNumber' => trim($_POST['phoneNumber']),
+                'email' => trim($_POST['email'] ?? ''),
+                'username' => trim($_POST['username'] ?? ''),
+                'accountName' => trim($_POST['accountName'] ?? ''),
+                'password' => trim($_POST['password'] ?? ''),
+                'passwordRepeat' => trim($_POST['passwordRepeat'] ?? ''),
+                'address' => trim($_POST['address'] ?? ''),
+                'phoneNumber' => trim($_POST['phoneNumber'] ?? ''),
                 'cates' => $this->cate->all(),
                 //
                 'email_err' => "",
