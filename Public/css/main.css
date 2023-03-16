@@ -42,32 +42,17 @@ header {
     z-index: 100;
     background-color: #333;
     padding: 10px;
-<<<<<<< HEAD
     right: -70px;
-=======
-    right: -120px;
-    width: 150px;
-    transition: all 0.6s;
->>>>>>> d300864657d47590381928e820fdeacb3da84a92
 }
 .p-setting:hover .ul-setting{
     visibility: visible;
     opacity: 1;
 }
 .li-setting{
-<<<<<<< HEAD
-=======
-    
->>>>>>> d300864657d47590381928e820fdeacb3da84a92
     padding: 3px;
 }
 .li-setting a{
     color: #c2c2c2;
-<<<<<<< HEAD
-=======
-   
-
->>>>>>> d300864657d47590381928e820fdeacb3da84a92
 }
 .li-setting a:active{
     color: #033801;
@@ -119,10 +104,6 @@ header {
     top: 5em;
     right: 1em;
     padding-left: 10px;
-<<<<<<< HEAD
-=======
-    outline: none;
->>>>>>> d300864657d47590381928e820fdeacb3da84a92
 }
 
 .search-box::placeholder {
@@ -321,15 +302,8 @@ header {
     z-index: 10;
 }
 
-<<<<<<< HEAD
 .header-cart h3{
     float: left;
-=======
-.header-cart{
-    float: left;
-    margin-bottom: 20px;
-    background-color: #dcdcdd;
->>>>>>> d300864657d47590381928e820fdeacb3da84a92
 }
 .div-cart-popup-content {
     position: absolute;
@@ -338,19 +312,12 @@ header {
     transform: translate(-50%, -50%);
     background-color: #fff;
     padding: 20px;
-<<<<<<< HEAD
     width: 400px;
     min-height: 200px;
-=======
-    width: 700px;
-    min-height: 400px;
-    transform-origin: top bottom;
->>>>>>> d300864657d47590381928e820fdeacb3da84a92
 }
 .div-cart-popup-container.show{
     display: block;
 }
-<<<<<<< HEAD
 .delete-btn{
     width: 100px;
 }
@@ -358,26 +325,6 @@ header {
     position: absolute;
     width: 300px;
     height: 400px;
-=======
-.table-infor-cart{
-    margin: 50px auto;
-    text-align: center;
-
-}
-.closeBtn{
-    float: right;
-    padding: 10px;
-    border-radius: 40px;
-    font-weight: bolder;
-}
-.delete-btn{
-    width: 50px;
-    padding: 10px;
-}
-.div-popup {
-    position: absolute;
-    
->>>>>>> d300864657d47590381928e820fdeacb3da84a92
     top: 100px;
     left: 20px;
     display: none;
@@ -389,11 +336,7 @@ header {
 
 .div-content-popup {
     width: 500px;
-<<<<<<< HEAD
     height: 800px;
-=======
-    height: 900px;
->>>>>>> d300864657d47590381928e820fdeacb3da84a92
     background-repeat: no-repeat;
     background-image: url(../images/product/book_hover.png);
 }
@@ -564,16 +507,9 @@ header {
 .span-err{
     position: absolute;
     top: 50px;
-<<<<<<< HEAD
     right: 0;
 }
 .submit-btn {
-=======
-    right: -50px;
-    
-}
-.submit-btn.login{
->>>>>>> d300864657d47590381928e820fdeacb3da84a92
     background-color: #4CAF50;
     /* Green */
     border: none;
@@ -588,34 +524,10 @@ header {
     cursor: pointer;
     font-family: Arial, sans-serif;
     position: absolute;
-<<<<<<< HEAD
     top: -29px;
 }
 
 button:hover {
-=======
-    top: 5px;
-}
-.submit-btn.signin{
-    background-color: #4CAF50;
-    /* Green */
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    border-radius: 20px;
-    transition-duration: 0.4s;
-    cursor: pointer;
-    font-family: Arial, sans-serif;
-    position: absolute;
-    top: -15px;
-}
-
-.submit-btn:hover {
->>>>>>> d300864657d47590381928e820fdeacb3da84a92
     animation: pulse 1s infinite;
 }
 
@@ -749,7 +661,6 @@ button:hover {
     to{
         margin-left: 30px;
     }
-<<<<<<< HEAD
 }
 
 @keyframes slide {
@@ -932,8 +843,6 @@ a {
 }
 .p-contact-main{
     line-height: 24px;
-=======
->>>>>>> d300864657d47590381928e820fdeacb3da84a92
 }
 
 @keyframes slide {
