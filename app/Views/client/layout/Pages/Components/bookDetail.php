@@ -42,10 +42,10 @@
                                 </div>
                             </div>
                         </form>
-                        <div><?= $_SESSION['msgCartIsset'] ?? '';
+                        <div style="margin-top: 10px;"><?= $_SESSION['msgCartIsset'] ?? '';
                                 unset($_SESSION['msgCartIsset']) ?>
                         </div>
-                        <div><?= $_SESSION['msgEmptyID'] ?? '';
+                        <div style="margin-top: 10px;"><?= $_SESSION['msgEmptyID'] ?? '';
                                 unset($_SESSION['msgEmptyID']) ?>
                         </div>
                     </div>

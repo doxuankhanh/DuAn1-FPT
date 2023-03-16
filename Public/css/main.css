@@ -645,22 +645,18 @@ header {
 }
 
 .li-book .div-infor-book {
-    
+    margin-bottom: 10px;
 
 }
 
 .li-book .p-price {
-    margin-top: 0px;
+   
     margin-left: 40px;
     background: #033801;
-   
+    display: inline;
     padding: 10px;
     color: #c2c2c2;
-    display: inline-block;
-   
-    
     border-radius: 4px;
-    
 }
 
 .a-price {

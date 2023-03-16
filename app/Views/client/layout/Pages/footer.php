@@ -46,12 +46,7 @@
     <script src="Public/js/detail_product/detail.js"></script>
     <script src="Public/js/popup-cart/script.js"></script>
 
-    <script src="../../../../../../DuAn1-FPT/Public/js/slider/script.js"></script>
 
-    <script src="../../../../../../DuAn1-FPT/Public/js/slider/script.js"></script>    
-    <script src="../../../../../../DuAn1-FPT/Public/js/popup-cart/script.js"></script>
-    <script src="../../../../../../DuAn1-FPT/Public/js/searching-popup/script.js"></script>
-    <script src="../../../../../../DuAn1-FPT/Public/js/slidios/script.js"></script>
     
 
 </body>
