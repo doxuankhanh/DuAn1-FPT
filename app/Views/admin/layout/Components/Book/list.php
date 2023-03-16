@@ -1,3 +1,5 @@
+<?php require_once "./app/Views/admin/layout/Components/header.php";?>
+
 <!doctype html>
 <html lang="en">
 
@@ -23,14 +25,14 @@
         <span class="navbar-toggler-icon"></span>
       </button>
     </nav>
-    <form action="" method="POST">
+    <form action="<?= URL?>Admin/listBook" method="POST">
       <h6 class="mx-2">Tìm Kiếm Sản Phẩm</h6>
       <div class="form-group mx-2 my-2">
         <input type="search" name="bookName" id="" class="form-control" placeholder="Tìm kiếm sản phẩm của bạn...">
       </div>
       <div class="form-group  mx-2">
         <select name="cateID" id="" class="form-control">
-          <option value="0" selected> -- Tất Cả -- </option>
+          <option value="" selected> -- Tất Cả -- </option>
           <?php foreach ($data['cates'] as $cate) : ?>
             <option value="<?= $cate['id'] ?>"><?= $cate['cateName'] ?></option>
           <?php endforeach ?>
@@ -62,13 +64,13 @@
       </thead>
       <tbody>
         <?php if (count($data['books']) > 0) : ?>
-          <?php foreach ($data['books'] as $book) : ?>
+          <?php foreach ($data['books'] as $index => $book) : ?>
             <tr>
-              <th scope="row" class=" p-3 w-20 text-nowrap"><?= $book['id'] ?></th>
+              <th scope="row" class=" p-3 w-20 text-nowrap"><?=$index+1 ?></th>
               <th scope="row" class=" p-3 w-20 "><?= $book['bookName'] ?></th>
               <th scope="row" class=" p-3 w-20 text-nowrap"><?= $book['cateName'] ?? 'Nothing'?></th>
               <th scope="row" class=" p-3 w-20 text-nowrap"><?= $book['statusName'] ?? 'Nothing'?></th>
-              <th><img src="../Public/upload/<?= $book['image'] ?>" alt="." style="height: 120px;"></th>
+              <th><img src="../../../../../../../DuAn1-FPT/Public/upload/<?= $book['image'] ?>" alt="." style="height: 120px;"></th>
               <th scope="row" class=" p-3 w-20 text-nowrap"><?= $book['author'] ?></th>
               <th scope="row" class=" p-3 w-20 text-nowrap"><?= number_format($book['price']) ?></th>
               <th scope="row" class=" p-3 w-20 text-center"><p style="text-overflow: ellipsis; overflow: hidden; -webkit-line-clamp: 2; display: -webkit-box; -webkit-box-orient: vertical; width: 20%;"><?= $book['description'] ?></p></th>
@@ -112,3 +114,4 @@
 </body>
 
 </html>
+<?php require_once "./app/Views/admin/layout/Components/footer.php";?>

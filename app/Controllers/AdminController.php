@@ -9,17 +9,32 @@ class AdminController{
     {
         $this->book = $this->model("BookModel");
         $this->cate = $this->model("CateModel");
+        session_start();
+        if(!isset($_SESSION['userID'])) {
+            _redirectLo(URL."Home");
+        }
     }
     function index() {
-        $this->view("admin.layout.index",);
+        $this->view("admin.layout.Components.home",
+        [
+            'statistical' => $this->book->statistical()
+        ]
+    );
     }
     function listBook() {
         $page = $this->book->loadAll();
         $pages = ceil(count($page) / 6);
-        $this->view("admin.Views.Book.list",
+        
+        if($_SERVER['REQUEST_METHOD'] === "POST") {
+            $books = $this->book->searchBook($_POST['bookName'],$_POST['cateID']);
+        }else {
+            $books = $this->book->loadAll();
+        }
+        $this->view("admin.layout.Components.Book.list",
         [   
-            'books' => $this->book->loadAll(),
+            'books' => $this->book->searchAndPaging(),
             'pages' => $pages,
+           
         ]
     );
     }
@@ -27,13 +42,19 @@ class AdminController{
         $page = $this->cate->all();
         $pages = ceil(count($page) / 6);
         // _dump($pages);
-        $this->view("admin.Views.Cate.list",
+        if($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $cate = $this->cate->searchCate($_POST['cateID']);
+        }else {
+            $cate = $this->cate->all();
+        }
+        $this->view("admin.layout.Components.Cate.list",
         [
-            'cates' => $this->cate->getPage(),
+            'cates' => $cate,
             'pages' => $pages
         ]
     );
     
     }
+    
 }
 ?>

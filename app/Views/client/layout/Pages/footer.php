@@ -29,9 +29,13 @@
         <!-- FOOTER -->
     </div>
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+<<<<<<< HEAD
     <script src="Public/js/slider/script.js"></script>
     <script src="Public/js/detail_product/detail.js"></script>
     <script src="Public/js/popup-cart/script.js"></script>
+=======
+    <script src="../../../../../../DuAn1-FPT/Public/js/slider/script.js"></script>
+>>>>>>> 3bf26dbd7d24fe2758a73e976668d293ac087810
 </body>
 
 </html>
