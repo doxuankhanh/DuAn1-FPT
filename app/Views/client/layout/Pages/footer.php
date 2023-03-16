@@ -28,9 +28,32 @@
         </div>
         <!-- FOOTER -->
     </div>
+    <script
+      type="text/javascript"
+      src="https://code.jquery.com/jquery-1.11.0.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"
+    ></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
+    <script src="Public/js/slider/script.js"></script>
+    <script src="Public/js/detail_product/detail.js"></script>
+    <script src="Public/js/popup-cart/script.js"></script>
+
     <script src="../../../../../../DuAn1-FPT/Public/js/slider/script.js"></script>
-    <script src="../../../../../../DuAn1-FPT/Public/js/countPrd/script.js"></script>
+
+    <script src="../../../../../../DuAn1-FPT/Public/js/slider/script.js"></script>    
+    <script src="../../../../../../DuAn1-FPT/Public/js/popup-cart/script.js"></script>
+    <script src="../../../../../../DuAn1-FPT/Public/js/searching-popup/script.js"></script>
+    <script src="../../../../../../DuAn1-FPT/Public/js/slidios/script.js"></script>
+    
+
 </body>
 
 </html>
