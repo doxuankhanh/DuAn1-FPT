@@ -1,4 +1,5 @@
 <?php require_once "./app/Views/client/layout/Pages/header.php"; ?>
+<form action="" method="post">
 <div class="div-container-cart">
     <div class="div-main-cart">
         <?php if (count($data['carts']) > 0) : ?>
@@ -83,4 +84,5 @@
         <button class="button-paying">Thanh toán</button>
     </div>
 </div>
+</form>
 <?php require_once "./app/Views/client/layout/Pages/footer.php"; ?>

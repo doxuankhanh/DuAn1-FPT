@@ -369,6 +369,7 @@ class HomeController
         // $this->view("client.layout.Pages.Components.cart");
     }
     // update cart 
+    // update delete cart ~~~~~~~~~~~
     function updateCart($id) {
         if($_SERVER['REQUEST_METHOD'] === "POST") {
             if(isset($_POST['btn-updateCart'])) {

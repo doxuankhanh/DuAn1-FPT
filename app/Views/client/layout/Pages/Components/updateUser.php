@@ -42,7 +42,7 @@
             </div>
 
             <div class="div-input-box">
-                <input type="file" name="image" class="input-form-login" autofocus style="width: 100%" value="">
+                <input type="file" name="image" class="input-form-login file" autofocus style="width: 100%;padding-top: 8px;" value="">
                 <span class="span-label">avartar</span>
                 <!-- <span class="span-err" style="color:red;font-weight:bold;font-style:italic"><?= $data['email_err'] ?? '' ?></span> -->
             </div>
