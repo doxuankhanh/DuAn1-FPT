@@ -111,6 +111,30 @@ class HomeController
         );
     }
 
+    //Update User
+    function updateUser($userId){
+        $user = $this->user->getOneUser($userId);
+        if(isset($_POST['btn-update'])) {
+            if($_FILES['image']['size'] === 0) {
+                $img = $user['image'];
+            }else {
+                $img = $_FILES['image']['name'];
+                move_uploaded_file($_FILES['image']['tmp_name'], './Public/upload/'.$_FILES['image']['name']);
+            }
+            $result = $this->user->updateUser($_POST['email'],$_POST['username'],$_POST['accountName'],$_POST['address'],$_POST['phoneNumber'],$img , $userId);
+            if($result) {
+                _redirectLo(URL."Home/");
+                // header("Location:".URL."Admin/listBook");
+            }
+        }
+        $this->view(
+            "client.layout.Pages.Components.updateUser",
+            [
+                'user' => $this->user->getOneUser($userId)
+            ]
+        );
+    }
+
     // load sp theo view
     function loadBookView()
     {
