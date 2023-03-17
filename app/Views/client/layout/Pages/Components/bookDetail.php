@@ -91,6 +91,7 @@
                 <div class="box-comment">
                     <form action="" method="post" id="comment-form">
                         <input type="text" name="note" id="comment" placeholder="Comment here..." class="input-comment">
+                        <span class="span-err" style="color:red;font-weight:bold;font-style:italic"><?= $data['note_err'] ?? ''?></span>
                         <input type="submit" value="POST" class="btn-comment" id="submit-comment" name="btn-comment">
                     </form>
                     <div id="result-comment">

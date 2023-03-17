@@ -53,7 +53,7 @@ class HomeController
                 // bình luận
                 'note' => trim($_POST['note'] ?? ''),
                 'timeAdded' => date("Y/m/d H:i:a"),
-
+                'note_err' => '',
             ];
             if ($data) {
                 //$bookName,$clientID,$bookID,$image,$price,$quantity
@@ -73,16 +73,21 @@ class HomeController
                 }
                 // Bình luận
                 if(isset($_POST['btn-comment'])) {
-
                     if (!isset($_SESSION['userID'])) {
                         // $_SESSION['msgCmtEmpty'] = "Bạn phải đăng nhập để sử dụng chức năng!";
                         _redirectLo(URL."Home/login");
                     } else {
-                        $cmtAdded = $this->cmt->addedCmt($data['note'], $bookDetail['id'], $data['clientID'], $data['timeAdded']);
-                        if ($cmtAdded) {
-                            _redirectLo($_SERVER['HTTP_REFERER']);
-                        } else {
-                            die("STUPID");
+                        if(empty($data['note'])) {
+                            $data['note_err'] = "Không được để trống thông tin bình luận";
+                        }else {
+                            if(empty($data['note_err'])) {
+                                $cmtAdded = $this->cmt->addedCmt($data['note'], $bookDetail['id'], $data['clientID'], $data['timeAdded']);
+                                if ($cmtAdded) {
+                                    _redirectLo($_SERVER['HTTP_REFERER']);
+                                } else {
+                                    die("STUPID");
+                                }
+                            }
                         }
                     }
                 }
@@ -96,6 +101,8 @@ class HomeController
                 'price' => '',
                 'quantity' => '',
                 'note' => '',
+                'note_err' => '',
+                
             ];
         }
 
@@ -116,10 +123,10 @@ class HomeController
         $user = $this->user->getOneUser($userId);
         if(isset($_POST['btn-update'])) {
             if($_FILES['image']['size'] === 0) {
-                $img = $user['image'];
+                $img = $user['avatar'];
             }else {
-                $img = $_FILES['image']['name'];
-                move_uploaded_file($_FILES['image']['tmp_name'], './Public/upload/'.$_FILES['image']['name']);
+                $img = $_FILES['avatar']['name'];
+                move_uploaded_file($_FILES['avatar']['tmp_name'], 'Public/upload/'.basename($img));
             }
             $result = $this->user->updateUser($_POST['email'],$_POST['username'],$_POST['accountName'],$_POST['address'],$_POST['phoneNumber'],$img , $userId);
             if($result) {
