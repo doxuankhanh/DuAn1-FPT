@@ -1,10 +1,14 @@
-const plusCount = document.querySelector('.plus');
-const subtractsCount = document.querySelector('.subtracts');
+const plusCount = document.querySelectorAll('.plus');
+const subtractsCount = document.querySelectorAll('.subtracts');
 
 
-plusCount.addEventListener('click', function(e){
-    e.preventDefault();
-}) 
-subtractsCount.addEventListener('click', function(e){
-    e.preventDefault();
-}) 
+plusCount.forEach(function(ele){
+    ele.addEventListener('click', function(e){
+        e.preventDefault();
+    }) 
+})
+subtractsCount.forEach(function(ele){
+    ele.addEventListener('click', function(e){
+        e.preventDefault();
+    }) 
+});
