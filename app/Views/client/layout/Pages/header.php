@@ -24,17 +24,25 @@
                 <?php if (!isset($_SESSION['userID'])) : ?>
                     <a class="anchor-a" href="<?= URL ?>Home/login">ĐĂNG NHẬP</a>
                     <a class="anchor-a" href="<?= URL ?>Home/register">ĐĂNG KÝ</a>
-                <?php elseif (isset($_SESSION['username']) && $_SESSION['role'] === '0') : ?>
+                <?php elseif (isset($_SESSION['username']) && $_SESSION['role'] == 0) : ?>
                     <a class="anchor-a" href="<?= URL ?>Home/destroy">ĐĂNG XUẤT</a>
                     <a class="anchor-a" href="<?= URL ?>Admin">ADMIN</a>
                     <div class="p-setting anchor-a " style="display: inline;" href="#"><img class="img-setting" src="../../../../../../DuAn1-FPT/Public/images/product/settings-icon-13.png" alt="">
                         <div class="ul-setting">
                             <p class="li-setting"><?= $_SESSION['username'] ?? '' ?></p>
                             <p class="li-setting"><a href="">LogOut</a></p>
-    
+
                         </div>
                     </div>
                 <?php else : ?>
+                    <!-- <a href="#" style="position: relative;" class="anchor-a user">
+                        Xin chào <?= isset($_SESSION['userID']) ? $_SESSION['username'] : '' ?>
+                        <ul class="subUser">
+                            <li><a href="">hi</a></li>
+                            <li><a href="">hello</a></li>
+                        </ul>
+                    </a> -->
+                    <a class="anchor-a" href="<?= URL ?>Home/updateUser/<?= $_SESSION['userID'] ?>">TÀI KHOẢN</a>
                     <a class="anchor-a" href="<?= URL ?>Home/destroy">ĐĂNG XUẤT</a>
                 <?php endif ?>
             </div>
@@ -44,8 +52,8 @@
                 <img src="../../../../../../DuAn1-FPT/Public/images/product/banner.png" alt="" class="img-banner">
             </a>
             <div class="div-searchsite">
-                <a href="<?= URL?>Home/getCartByClientID" class="cart"></a>
-                <form action="<?=URL?>Home/loadBookSearch" method="post">
+                <a href="<?= URL ?>Home/getCartByClientID" class="cart"></a>
+                <form action="<?= URL ?>Home/loadBookSearch" method="post">
                     <input type="text" class="search-box" placeholder="Tìm kiếm sách của bạn..." name="bookName">
                     <input type="image" type="submit" name="search-btn" src="../../../../../../DuAn1-FPT/Public/images/product/searchbg.png" value="Tìm kiếm" class="search-btn">
                 </form>
