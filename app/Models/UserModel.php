@@ -19,5 +19,22 @@ class UserModel extends BaseModel {
             return $data;
         }
     }
+    
+    function getOneUser($id) {
+        if($this->table !== null) {
+            $sql = "SELECT * FROM $this->table WHERE clientID = ?";
+            $this->_query($sql)->execute([$id]);
+            $data = $this->stmt->fetch();
+            return $data;
+            // $data = $this->getOne($id);
+            // return $data;
+        }
+    }
+    function updateUser($email,$username,$accountName,$address,$phoneNumber,$avatar,$userID){
+        if ($this->table !== null) {
+            $sql = "UPDATE $this->table SET email = ?,username = ? ,accountName = ?,address = ?, phoneNumber = ?, avatar = ? WHERE clientID = ?";
+            return $this->_query($sql)->execute([$email, $username, $accountName, $address, $phoneNumber, $avatar, $userID]);
+        }
+    }
 }
 ?>
