@@ -44,8 +44,8 @@
                         </ul>
                     </li>
                 <?php endforeach ?>
-                <div style="text-align: center;margin-bottom: 50px; text-transform: uppercase; font-size: 18px;">Không có sản phẩm mà bạn muốn tìm</div>
-            <?php else : ?>
+                <?php else : ?>
+                    <div style="text-align: center;margin-bottom: 50px; text-transform: uppercase; font-size: 18px;">Không có sản phẩm mà bạn muốn tìm</div>
             <?php endif ?>
         </ul>
     </div>

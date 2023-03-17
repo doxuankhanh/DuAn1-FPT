@@ -29,12 +29,12 @@
                     <a class="anchor-a" href="<?= URL ?>Admin">ADMIN</a>
                 
                 <?php else : ?>
-                    <a href="#" style="position: relative;" class="anchor-a user">
+                    <a href="#" style="position: relative;" class="user">
                         Xin chào <?= isset($_SESSION['userID']) ? $_SESSION['username'] : '' ?>
                         <div class="p-setting" style="display: inline;" href="#"><img class="img-setting" src="../../../../../../DuAn1-FPT/Public/images/product/settings-icon-13.png" alt="">
                         <ul class="ul-setting">
-                            <li><a style="padding: 3px;" href="<?= URL ?>Home/updateUser/<?= $_SESSION['userID'] ?>">Thông tin tài khoản</a></li>
-                            <li><a style="padding: 3px;" href="">Quên mật khẩu</a></li>
+                            <li class="li-setting"><a class="anchor-a" style="" href="<?= URL ?>Home/updateUser/<?= $_SESSION['userID'] ?>">Thông tin tài khoản</a></li>
+                            <li class="li-setting"><a class="anchor-a" style="" href="">Quên mật khẩu</a></li>
                         </ul>
                         </div>
                     </a>
