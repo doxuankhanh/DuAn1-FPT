@@ -66,12 +66,12 @@
         <?php if (count($data['books']) > 0) : ?>
           <?php foreach ($data['books'] as $index => $book) : ?>
             <tr>
-              <th scope="row" class=" p-3 w-20 text-nowrap"><?=$index+1 ?></th>
+              <th scope="row" class=" p-3 w-20 text-nowrap"><?=$book['id'] ?></th>
               <th scope="row" class=" p-3 w-20 "><?= $book['bookName'] ?></th>
               <th scope="row" class=" p-3 w-20 text-nowrap"><?= $book['cateName'] ?? 'Nothing'?></th>
               <th scope="row" class=" p-3 w-20 text-nowrap"><?= $book['statusName'] ?? 'Nothing'?></th>
               <th><img src="../../../../../../../DuAn1-FPT/Public/upload/<?= $book['image'] ?>" alt="." style="height: 120px;"></th>
-              <th scope="row" class=" p-3 w-20 text-nowrap"><?= $book['author'] ?></th>
+              <th scope="row" class=" p-3 w-20 text-nowrap"><?= $book['authorName'] ?></th>
               <th scope="row" class=" p-3 w-20 text-nowrap"><?= number_format($book['price']) ?></th>
               <th scope="row" class=" p-3 w-20 text-center"><p style="text-overflow: ellipsis; overflow: hidden; -webkit-line-clamp: 2; display: -webkit-box; -webkit-box-orient: vertical; width: 20%;"><?= $book['description'] ?></p></th>
               <th><a href="<?= URL?>Book/update/<?= $book['id']?>" class="btn btn-info">Update</a></th>

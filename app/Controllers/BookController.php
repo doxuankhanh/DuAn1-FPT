@@ -6,11 +6,14 @@ class BookController  {
     private $book;
     private $cate;
     private $status;
+    private $author;
+
     function __construct()
     {
         $this->book = $this->model("BookModel");
         $this->cate = $this->model("CateModel");
         $this->status = $this->model("StatusModel");
+        $this->author = $this->model("AuthorModel");
     }
     function index() {
         $this->view("admin.layout.Components.Book.list",
@@ -25,7 +28,7 @@ class BookController  {
     function new() {
         if(isset($_POST['btn-new'])) {
             $img = $_FILES['image']['name'];
-            $result = $this->book->new($_POST['cateID'],$_POST['bookName'],$img,$_POST['author'],date("Y/m/d H:i:a"),$_POST['price'],$_POST['description'],$_POST['statusID']);
+            $result = $this->book->new($_POST['cateID'],$_POST['bookName'],$img,$_POST['authorID'],date("Y/m/d H:i:a"),$_POST['price'],$_POST['description'],$_POST['statusID']);
             move_uploaded_file($_FILES['image']['tmp_name'], "Public/upload/" . basename($img));
             if($result) {
                 _redirectLo(URL."Admin/listBook");
@@ -33,8 +36,11 @@ class BookController  {
             }
         }
         $this->view("admin.layout.Components.Book.add",
-        ['cates' => $this->cate->all(),
-        'status' => $this->status->all()
+        [
+        'cates' => $this->cate->all(),
+        'status' => $this->status->all(),
+        'authors' => $this->author->all(),
+
         ]
     );
     }
@@ -49,7 +55,7 @@ class BookController  {
                 $img = $_FILES['image']['name'];
                 move_uploaded_file($_FILES['image']['tmp_name'], "Public/upload/".basename($img));
             }
-            $result = $this->book->update($_POST['cateID'],$_POST['bookName'],$img,$_POST['author'],date("Y/m/d H:i:a"),$_POST['price'],$_POST['description'],$_POST['statusID'],$id);
+            $result = $this->book->update($_POST['cateID'],$_POST['bookName'],$img,$_POST['authorID'],date("Y/m/d H:i:a"),$_POST['price'],$_POST['description'],$_POST['statusID'],$id);
             if($result) {
                 _redirectLo(URL."Admin/listBook");
                 // header("Location:".URL."Admin/listBook");
@@ -59,7 +65,8 @@ class BookController  {
         [
             'book' => $this->book->getOne($id),
             'cates' => $this->cate->all(),
-            'status' => $this->status->all()
+            'status' => $this->status->all(),
+            'authors' => $this->author->all(),
         ]
     );
     }

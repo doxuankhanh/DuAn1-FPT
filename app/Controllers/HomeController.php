@@ -59,7 +59,7 @@ class HomeController
                 //$bookName,$clientID,$bookID,$image,$price,$quantity
                 if(isset($_POST['btn-add-cart'])) {
                     if (!isset($_SESSION['userID'])) {
-                        $_SESSION['msgEmptyID'] = "Bạn phải đăng nhập để mua sắm";
+                        _redirectLo(URL."Home/login");
                     } else {
                         if ($checkCart['bookID'] === $bookDetail['id']) {
                             $_SESSION['msgCartIsset'] = "Sản phẩm đã tồn tại trong giỏ hàng của bạn!";
@@ -76,6 +76,7 @@ class HomeController
 
                     if (!isset($_SESSION['userID'])) {
                         $_SESSION['msgCmtEmpty'] = "Bạn phải đăng nhập để sử dụng chức năng!";
+                        _redirectRe(URL."Home/login");
                     } else {
                         $cmtAdded = $this->cmt->addedCmt($data['note'], $bookDetail['id'], $data['clientID'], $data['timeAdded']);
                         if ($cmtAdded) {
@@ -327,10 +328,44 @@ class HomeController
         }
         $this->view("client.layout.Pages.Components.searchBook" ,
             [
-            // 'cate' => $this->cate->getOne(),
+            'cates' => $this->cate->all(),
             'bookSearch' => $bookSearch ?? '',
             ]
             );
 
+    }
+
+    // remove giỏ hàng
+    function delCart($id) {
+        $result = $this->cart->removeCart($id);
+        if($result) {
+            $_SESSION['msgDelSuccessCart'] = "Bạn đã xóa thành công sản phẩm , hãy mua sắm thêm nhé!";
+            _redirectLo(URL."Home/getCartByClientID");
+        }
+        // $this->view("client.layout.Pages.Components.cart");
+    }
+    // update cart 
+    function updateCart($id) {
+        if($_SERVER['REQUEST_METHOD'] === "POST") {
+            if(isset($_POST['btn-updateCart'])) {
+                $_POST = filter_input_array(INPUT_POST);
+                $data = [
+                    'quantity' => trim($_POST['quantity'] ?? ''),
+                ];
+                if($data) {
+                    $result = $this->cart->updateCart(cartID:$id,quantity:$data['quantity']);
+                    if($result) {
+                        $_SESSION['msgUpdateCartSuccess'] = "Cập nhật giỏ hàng thành công!";
+                        _redirectLo(URL."Home/getCartByClientID");
+                    }else{
+                        die("STUPID");
+                    }
+                }
+            }else {
+                $data = [
+                    'quantity' => '',
+                ];
+            }
+        }
     }
 }

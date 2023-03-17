@@ -31,7 +31,7 @@
                             <div class="div-infor-book">
                                 <ul class="ul-infor-book">
                                     <li class="li-infor-book"><?= $bookNew['cateName'] ?></li>
-                                    <li class="li-infor-book"><?= $bookNew['author'] ?></li>
+                                    <li class="li-infor-book"><?= $bookNew['authorName'] ?></li>
                                     <li class="li-infor-book"><?= $bookNew['dateAdded'] ?></li>
                                 </ul>
                             </div>
@@ -65,7 +65,7 @@
                             <div class="div-infor-book">
                                 <ul class="ul-infor-book">
                                     <li class="li-infor-book"><?= $bookSeller['cateName'] ?></li>
-                                    <li class="li-infor-book"><?= $bookSeller['author'] ?></li>
+                                    <li class="li-infor-book"><?= $bookSeller['authorName'] ?></li>
                                     <li class="li-infor-book"><?= $bookSeller['dateAdded'] ?></li>
                                 </ul>
                             </div>
@@ -98,7 +98,7 @@
                             <div class="div-infor-book">
                                 <ul class="ul-infor-book">
                                     <li class="li-infor-book"><?= $literatureVN['cateName'] ?></li>
-                                    <li class="li-infor-book"><?= $literatureVN['author'] ?></li>
+                                    <li class="li-infor-book"><?= $literatureVN['authorName'] ?></li>
                                     <li class="li-infor-book"><?= $literatureVN['dateAdded'] ?></li>
                                 </ul>
                             </div>
@@ -131,7 +131,7 @@
                             <div class="div-infor-book">
                                 <ul class="ul-infor-book">
                                     <li class="li-infor-book"><?= $literature['cateName'] ?></li>
-                                    <li class="li-infor-book"><?= $literature['author'] ?></li>
+                                    <li class="li-infor-book"><?= $literature['authorName'] ?></li>
                                     <li class="li-infor-book"><?= $literature['dateAdded'] ?></li>
                                 </ul>
                             </div>
@@ -164,7 +164,7 @@
                             <div class="div-infor-book">
                                 <ul class="ul-infor-book">
                                     <li class="li-infor-book"><?= $children['cateName'] ?></li>
-                                    <li class="li-infor-book"><?= $children['author'] ?></li>
+                                    <li class="li-infor-book"><?= $children['authorName'] ?></li>
                                     <li class="li-infor-book"><?= $children['dateAdded'] ?></li>
                                 </ul>
                             </div>

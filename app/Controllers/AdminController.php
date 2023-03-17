@@ -9,7 +9,7 @@ class AdminController{
     {
         $this->book = $this->model("BookModel");
         $this->cate = $this->model("CateModel");
-        if(!isset($_SESSION['userID'])) {
+        if(!isset($_SESSION['userID']) || $_SESSION['role'] !== '0') {
             _redirectLo(URL."Home");
         }
     }
@@ -25,7 +25,9 @@ class AdminController{
         $pages = ceil(count($page) / 6);
         
         if($_SERVER['REQUEST_METHOD'] === "POST") {
-            $books = $this->book->searchBook($_POST['bookName'],$_POST['cateID']);
+            if(isset($_POST['btn-search'])) {
+                $books = $this->book->searchBook($_POST['bookName'],$_POST['cateID']);
+            }
         }else {
             $books = $this->book->loadAll();
         }

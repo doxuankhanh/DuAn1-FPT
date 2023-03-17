@@ -16,34 +16,37 @@
 
     <div>
         <div class="div-title-banner">
-            <h3>Kết quả tìm kiếm:</h3>
+            <h3>Kết quả tìm kiếm</h3>
         </div>
         <ul class="listbook">
-            <?php foreach ($data['bookSearch'] as $bookNew) : ?>
-                <li class="li-book">
-                    <a href="<?= URL ?>Home/bookDetail/<?= $bookNew['id'] ?>/<?= $bookNew['cateID'] ?>">
-                        <img style="" src="../../../../../../../DuAn1-FPT/Public/upload/<?= $bookNew['image'] ?>" alt="" title="<?= $bookNew['bookName'] ?>">
-                    </a>
-                    <ul class="div-popup">
-                        <div class="div-content-popup">
-                            <p class="p-bookname-popup"><?= $bookNew['bookName'] ?></p>
-                            <div class="div-infor-book">
-                                <ul class="ul-infor-book">
-                                    <li class="li-infor-book"><?= $bookNew['cateName'] ?></li>
-                                    <li class="li-infor-book"><?= $bookNew['author'] ?></li>
-                                    <li class="li-infor-book"><?= $bookNew['dateAdded'] ?></li>
-                                </ul>
+            <?php if (isset($data['bookSearch']) || count($data['bookSearch']) > 0) : ?>
+                <?php foreach ($data['bookSearch'] as $bookSearch) : ?>
+                    <li class="li-book">
+                        <a href="<?= URL ?>Home/bookDetail/<?= $bookSearch['id'] ?>/<?= $bookSearch['cateID'] ?>">
+                            <img style="" src="../../../../../../../DuAn1-FPT/Public/upload/<?= $bookSearch['image'] ?>" alt="" title="<?= $bookSearch['bookName'] ?>">
+                        </a>
+                        <ul class="div-popup">
+                            <div class="div-content-popup">
+                                <p class="p-bookname-popup"><?= $bookSearch['bookName'] ?></p>
+                                <div class="div-infor-book">
+                                    <ul class="ul-infor-book">
+                                        <li class="li-infor-book"><?= $bookSearch['cateName'] ?></li>
+                                        <li class="li-infor-book"><?= $bookSearch['authorName'] ?></li>
+                                        <li class="li-infor-book"><?= $bookSearch['dateAdded'] ?></li>
+                                    </ul>
+                                </div>
+                                <p class="p-price">
+
+                                    <a href="#" class="a-price"> <?= number_format($bookSearch['price']) ?></a>
+                                    <a href="#" class="a-buyNow">Mua ngay</a>
+                                </p>
                             </div>
-                            <p class="p-price">
-
-                                <a href="#" class="a-price"> <?= number_format($bookNew['price']) ?></a>
-                                <a href="#" class="a-buyNow">Mua ngay</a>
-                            </p>
-                        </div>
-                    </ul>
-                </li>
-
-            <?php endforeach ?>
+                        </ul>
+                    </li>
+                <?php endforeach ?>
+                <div style="text-align: center;margin-bottom: 50px; text-transform: uppercase; font-size: 18px;">Không có sản phẩm mà bạn muốn tìm</div>
+            <?php else : ?>
+            <?php endif ?>
         </ul>
     </div>
 </div>

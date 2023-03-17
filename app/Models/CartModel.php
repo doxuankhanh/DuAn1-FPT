@@ -31,5 +31,23 @@ class CartModel extends BaseModel {
             return $data;
         }
     }
+    // remove cart
+    function removeCart($cartID) {
+        if($this->table !== null) {
+            $sql = "DELETE FROM $this->table WHERE cartID = ?";
+            return $this->_query($sql)->execute([$cartID]);
+        }else {
+            return false;
+        }
+    }
+    // update cart
+    function updateCart($quantity,$cartID) {
+        if($this->table !== null) {
+            $sql = "UPDATE $this->table SET quantity = ? WHERE cartID = ?";
+            return $this->_query($sql)->execute([$quantity,$cartID]);
+        }else {
+            return false;
+        }
+    }
 }
 ?>

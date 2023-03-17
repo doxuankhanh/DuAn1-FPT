@@ -31,7 +31,7 @@
                             <div class="div-infor-book">
                                 <ul class="ul-infor-book">
                                     <li class="li-infor-book"><?= $viewBook['cateName'] ?></li>
-                                    <li class="li-infor-book"><?= $viewBook['author'] ?></li>
+                                    <li class="li-infor-book"><?= $viewBook['authorName'] ?></li>
                                     <li class="li-infor-book"><?= $viewBook['dateAdded'] ?></li>
                                 </ul>
                             </div>
