@@ -787,9 +787,10 @@ a {
 }
 
 .detail-btn {
+    width: 100%;
     background: url('../images/banner/menubg.png');
     color: white;
-    padding: 10px 0;
+    padding: 10px 10px;
     text-align: center;
 }
 
