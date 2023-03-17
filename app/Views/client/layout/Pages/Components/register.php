@@ -1,10 +1,10 @@
 <?php require_once "./app/Views/client/layout/Pages/header.php";?>
 <div class="div-login-form">
     <div class="div-formSignIn-site">
-        <center>
-            <div style="color: seagreen; text-transform: uppercase; font-size: 20px;"><?= $data['msgSuccess'] ?? ''?></div>
-        </center>
         <form action="<?= URL?>Home/register" class="form-login" method="post">
+            <center>
+                <div style="color: seagreen; text-transform: uppercase; font-size: 20px;"><?= $data['msgSuccess'] ?? ''?></div>
+            </center>
             <h3 class="h3-login">Đăng Ký</h3>
             <div class="div-input-box">
             <input type="email" name="email" class="input-form-login" value="<?= $data['email'] ?? ''?> " required>

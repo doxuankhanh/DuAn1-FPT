@@ -27,6 +27,7 @@
                 <?php elseif (isset($_SESSION['username']) && $_SESSION['role'] == 0) : ?>
                     <a class="anchor-a" href="<?= URL ?>Home/destroy">ĐĂNG XUẤT</a>
                     <a class="anchor-a" href="<?= URL ?>Admin">ADMIN</a>
+
                     <!-- <div class="p-setting anchor-a " style="display: inline;" href="#"><img class="img-setting" src="../../../../../../DuAn1-FPT/Public/images/product/settings-icon-13.png" alt="">
                         <div class="ul-setting">
                             <p class="li-setting"><?= $_SESSION['username'] ?? '' ?></p>
@@ -35,15 +36,17 @@
                         </div>
                     </div> -->
                 <?php else : ?>
-                    <!-- <a href="#" style="position: relative;" class="anchor-a user">
-                        Xin chào <?= isset($_SESSION['userID']) ? $_SESSION['username'] : '' ?>
-                        <ul class="subUser">
-                            <li><a href="">hi</a></li>
-                            <li><a href="">hello</a></li>
-                        </ul>
-                    </a> -->
-                    <a class="anchor-a" href="<?= URL ?>Home/updateUser/<?= $_SESSION['userID'] ?>">TÀI KHOẢN</a>
-                    <a class="anchor-a" href="<?= URL ?>Home/destroy">ĐĂNG XUẤT</a>
+                    <a href="#" style="position: relative;" class="user">
+                        Xin chào <p style="display: inline-block;text-transform: uppercase;"><?= isset($_SESSION['userID']) ? $_SESSION['username'] : '' ?></p>
+                        <div class="p-setting" style="display: inline;" href="#"><img class="img-setting" src="../../../../../../DuAn1-FPT/Public/images/product/settings-icon-13.png" alt="">
+                            <ul class="ul-setting">
+                                <li class="li-setting"><a class="anchor-a" style="" href="<?= URL ?>Home/updateUser/<?= $_SESSION['userID'] ?>">Thông tin tài khoản</a></li>
+                                <li class="li-setting"><a class="anchor-a" style="" href="">Quên mật khẩu</a></li>
+                                <li class="li-setting"><a class="anchor-a" href="<?= URL ?>Home/destroy">ĐĂNG XUẤT</a></li>
+                            </ul>
+                        </div>
+                    </a>
+                    <!-- <a class="anchor-a" href="<?= URL ?>Home/updateUser/<?= $_SESSION['userID'] ?>">TÀI KHOẢN</a> -->
                 <?php endif ?>
             </div>
         </header>
