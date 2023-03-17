@@ -60,11 +60,11 @@
             </span>
         </div>
 
-        <div>
+        <div class="div-recommend-book">
             <div class="dt">
                 <span class="detail-title2">SÁCH CÙNG DANH MỤC</span>
             </div>
-            <div class="slide flex col-gap-20">
+            <div class="bookRecommend flex col-gap-20">
                 <!-- <div style="width: 20%; flex-wrap: wrap;"> -->
                <?php if (count($data['similarBook']) > 0) : ?>
                     <?php foreach ($data['similarBook'] as $similarBook) : ?>
@@ -79,6 +79,7 @@
                     </center>
                     <div>Không có sản phẩm cùng danh mục</div>
                 <?php endif ?>
+              
                 <!-- </div> -->
             </div>
         </div>

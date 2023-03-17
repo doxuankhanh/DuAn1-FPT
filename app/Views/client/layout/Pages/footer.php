@@ -46,6 +46,7 @@
     <script src="../../../../../../DuAn1-FPT/Public/js/detail_product/detail.js"></script>
     <script src="../../../../../../DuAn1-FPT/Public/js/popup-cart/script.js"></script>
     <script src="../../../../../../DuAn1-FPT/Public/js/countPrd/script.js"></script>
+    <script src="../../../../../../DuAn1-FPT/Public/js/slidios/script.js"></script>
 
 
     
