@@ -31,6 +31,8 @@
                                         <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="subtracts"></button>
                                         <input id="input-detail" type="number" value="1" style="-webkit-appearance: none;" min="1" name="quantity">
                                         <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
+                                      
+
                                     </div>
                                     <div>
                                         <button class="detail-btn" type="submit" name="btn-add-cart">Thêm vào giỏ hàng</button>
@@ -56,11 +58,11 @@
             </span>
         </div>
 
-        <div>
+        <div class="div-recommend-book">
             <div class="dt">
                 <span class="detail-title2">SÁCH CÙNG DANH MỤC</span>
             </div>
-            <div class="slide flex col-gap-20">
+            <div class="bookRecommend flex col-gap-20">
                 <!-- <div style="width: 20%; flex-wrap: wrap;"> -->
                 <?php if (count($data['similarBook']) > 0) : ?>
                     <?php foreach ($data['similarBook'] as $similarBook) : ?>
@@ -74,6 +76,7 @@
                     </center>
                     <div>Không có sản phẩm cùng danh mục</div>
                 <?php endif ?>
+              
                 <!-- </div> -->
             </div>
         </div>
