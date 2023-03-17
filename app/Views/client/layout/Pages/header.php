@@ -35,14 +35,14 @@
                         </div>
                     </div>
                 <?php else : ?>
-                    <!-- <a href="#" style="position: relative;" class="anchor-a user">
+                    <a href="#" style="position: relative;" class="anchor-a user">
                         Xin chào <?= isset($_SESSION['userID']) ? $_SESSION['username'] : '' ?>
                         <ul class="subUser">
-                            <li><a href="">hi</a></li>
-                            <li><a href="">hello</a></li>
+                            <li><a style="padding: 3px;" href="<?= URL ?>Home/updateUser/<?= $_SESSION['userID'] ?>">Thông tin tài khoản</a></li>
+                            <li><a style="padding: 3px;" href="">Quên mật khẩu</a></li>
                         </ul>
-                    </a> -->
-                    <a class="anchor-a" href="<?= URL ?>Home/updateUser/<?= $_SESSION['userID'] ?>">TÀI KHOẢN</a>
+                    </a>
+                    <!-- <a class="anchor-a" href="<?= URL ?>Home/updateUser/<?= $_SESSION['userID'] ?>">TÀI KHOẢN</a> -->
                     <a class="anchor-a" href="<?= URL ?>Home/destroy">ĐĂNG XUẤT</a>
                 <?php endif ?>
             </div>
