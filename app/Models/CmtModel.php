@@ -13,7 +13,7 @@ class CmtModel extends BaseModel {
     }
     function loadCmt($proID) {
         if($this->table !== null) {
-            $sql = "SELECT $this->table.note,$this->table.dateCreated,$this->table.bookID,clients.username FROM $this->table LEFT JOIN clients ON $this->table.clientID = clients.clientID WHERE bookID = ?";
+            $sql = "SELECT $this->table.id,$this->table.note,$this->table.dateCreated,$this->table.bookID,$this->table.clientID,clients.username,clients.avatar FROM $this->table LEFT JOIN clients ON $this->table.clientID = clients.clientID WHERE bookID = ?";
             $this->_query($sql)->execute([$proID]);
             $data = $this->stmt->fetchAll();
             return $data;

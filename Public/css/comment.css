@@ -26,4 +26,27 @@
     border-radius: 2px;
     cursor: pointer;
 }
-
+.list-result-cmt {
+    list-style: none;
+}
+.p-result-cmt {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+}
+.item-result {
+    margin-left: 12px;
+    text-transform: uppercase;
+    font-style: italic;
+    font-size: 16px;
+}
+.item-result-cmt:nth-child(2),
+.item-result-cmt:nth-child(3),
+.item-result-cmt:nth-child(4)
+{
+    margin-left: 70px;
+    margin-top: 30px;
+}
+.box-item-cmt {
+    display: flex;
+}

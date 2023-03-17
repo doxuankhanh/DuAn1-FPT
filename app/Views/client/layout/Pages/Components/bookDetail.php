@@ -31,7 +31,7 @@
                                         <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="subtracts"></button>
                                         <input id="input-detail" type="number" value="1" style="-webkit-appearance: none;" min="1" name="quantity">
                                         <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
-                                      
+
 
                                     </div>
                                     <div>
@@ -41,11 +41,13 @@
                                 </div>
                             </div>
                         </form>
-                        <div style="margin-top: 10px;"><?= $_SESSION['msgCartIsset'] ?? '';
-                                                        unset($_SESSION['msgCartIsset']) ?>
+                        <div style="margin-top: 10px;">
+                            <?= $_SESSION['msgCartIsset'] ?? '';
+                            unset($_SESSION['msgCartIsset']) ?>
                         </div>
-                        <div style="margin-top: 10px;"><?= $_SESSION['msgEmptyID'] ?? '';
-                                                        unset($_SESSION['msgEmptyID']) ?>
+                        <div style="margin-top: 10px;">
+                            <?= $_SESSION['msgEmptyID'] ?? '';
+                            unset($_SESSION['msgEmptyID']) ?>
                         </div>
                     </div>
                 </div>
@@ -76,7 +78,7 @@
                     </center>
                     <div>Không có sản phẩm cùng danh mục</div>
                 <?php endif ?>
-              
+
                 <!-- </div> -->
             </div>
         </div>
@@ -89,11 +91,25 @@
                 <div class="box-comment">
                     <form action="" method="post" id="comment-form">
                         <input type="text" name="note" id="comment" placeholder="Comment here..." class="input-comment">
+                        <span class="span-err" style="color:red;font-weight:bold;font-style:italic"><?= $data['note_err'] ?? ''?></span>
                         <input type="submit" value="POST" class="btn-comment" id="submit-comment" name="btn-comment">
                     </form>
                     <div id="result-comment">
-                        <?= _dump($data['comments'] ?? '') ?>
-
+                        <?php if (count($data['comments']) > 0) : ?>
+                            <?php foreach($data['comments'] as $cmt):?>
+                            <ul class="list-result-cmt">
+                                <div class="box-item-cmt">
+                                    <li class="p-result-cmt"><img src="../../../../../../../DuAn1-FPT/Public/upload/<?= $cmt['avatar']?>" alt="ảnh này" style="width: 100%;"></li>
+                                    <li class="item-result"><?= $cmt['username'] ?? ''?></li>
+                                </div>
+                                <li class="item-result-cmt"><?= $cmt['note'] ?? ''?></li>
+                                <li class="item-result-cmt"><?= $cmt['dateCreated']?></li>
+                                <?php if(isset($_SESSION['userID']) && $_SESSION['userID']=== $cmt['clientID']) {?>
+                                <li class="item-result-cmt"><a href="<?= URL ?>Home/removeCmt/<?= $cmt['id']?>" onclick="return confirm('Are you sure?')">Xóa</a></li>
+                                <?php }?>
+                            </ul>
+                            <?php endforeach?>
+                        <?php endif ?>
                     </div>
                     <div style="font-size: 18px; color:tomato">
                         <?= $_SESSION['msgCmtEmpty'] ?? '';
