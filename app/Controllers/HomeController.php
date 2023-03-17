@@ -75,8 +75,8 @@ class HomeController
                 if(isset($_POST['btn-comment'])) {
 
                     if (!isset($_SESSION['userID'])) {
-                        $_SESSION['msgCmtEmpty'] = "Bạn phải đăng nhập để sử dụng chức năng!";
-                        _redirectRe(URL."Home/login");
+                        // $_SESSION['msgCmtEmpty'] = "Bạn phải đăng nhập để sử dụng chức năng!";
+                        _redirectLo(URL."Home/login");
                     } else {
                         $cmtAdded = $this->cmt->addedCmt($data['note'], $bookDetail['id'], $data['clientID'], $data['timeAdded']);
                         if ($cmtAdded) {
@@ -366,6 +366,13 @@ class HomeController
                     'quantity' => '',
                 ];
             }
+        }
+    }
+    // remove bình luận
+    function removeCmt($id) {
+        $result = $this->cmt->delete($id);
+        if($result) {
+            _redirectLo($_SERVER['HTTP_REFERER']);
         }
     }
 }
