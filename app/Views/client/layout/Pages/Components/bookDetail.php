@@ -33,7 +33,7 @@
                                         <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="subtracts"></button>
                                         <input id="input-detail" type="number" value="1" style="-webkit-appearance: none;" min="1" name="quantity">
                                         <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
-                                        <button type="submit" class="updateBtn">Update</button></td>
+                                      
 
                                     </div>
                                     <div>
