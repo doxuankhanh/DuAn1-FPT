@@ -23,18 +23,25 @@ class CateModel extends BaseModel{
         }
     }
     // Phân trang
-    function getPage() {
+    function getPage($id,$page) {
         if($this->table !== null) {
-            if(isset($_REQUEST['page'])) {
-                $page = $_REQUEST['page'];
-            }else {
-                $page = 1;
-            }
             // $page = 1;
             $end = 6;
             $from = ($page - 1 ) * $end;
+            $sql = "SELECT * FROM $this->table WHERE id LIKE '%$id%'";
             $sql = "SELECT * FROM $this->table LIMIT $from,$end";
             $this->_query($sql)->execute();
+            $data = $this->stmt->fetchAll();
+            return $data;
+        }
+    }
+
+    //Search Cate
+    function searchCate($id) {
+        if($this->table !== null) {
+            $sql = "SELECT * FROM $this->table WHERE id LIKE '%$id%'";
+            $this->stmt = $this->connect->prepare($sql);
+            $this->stmt->execute();
             $data = $this->stmt->fetchAll();
             return $data;
         }

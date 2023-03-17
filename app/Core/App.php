@@ -10,7 +10,6 @@ class App {
     function __construct()
     {
         $url = $this->urlProcess();
-
         // Xử lý Controller 
         if(isset($url[0])) { // Kiểm tra xem $url[0] có tồn tại không
             // Nếu $url[0] tồn tại thì kiểm tra xem file trong folder Controllers với giá trị $url[0] đc truyền

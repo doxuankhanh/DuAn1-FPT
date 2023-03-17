@@ -1,3 +1,4 @@
+<?php require_once "./app/Views/admin/layout/Components/header.php";?>
 <!DOCTYPE html>
 <html>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -16,7 +17,7 @@
             var data = google.visualization.arrayToDataTable([
                 ['cateName', 'sumPro'],
                 <?php
-                foreach ($statistical as $val) {
+                foreach ($data['statistical'] as $val) {
                     echo "['".$val['cateName']."',".$val['sumPro']."],";
                 } ?>
             ]);
@@ -34,3 +35,4 @@
 </body>
 
 </html>
+<?php require_once "./app/Views/admin/layout/Components/footer.php";?>
