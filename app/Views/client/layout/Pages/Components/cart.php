@@ -48,6 +48,7 @@
                 </tbody>
             </table>
             <button class="button-paying">Thanh toán</button>
+            <a href="<?=URL?>HOME/checkOut">ne6</a>
         <?php else : ?>
             <div style="text-align: center;">Không có sản phẩm nào trong giỏ hàng của bạn!</div>
         <?php endif ?>

@@ -436,4 +436,11 @@ class HomeController
         ]
     );
     }
+    function checkOut() {
+        $this->view("client.layout.Pages.Components.checkOut",
+        [
+            'cates' => $this->cate->all(),
+        ]
+    );
+    }
 }
