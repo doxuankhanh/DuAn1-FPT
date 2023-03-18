@@ -53,5 +53,8 @@
                 </table>
                 </div>
             </div>
+            <h2 class="h2-checkout">
+                <button>Tiếp tục mua hàng</button>
+            </h2>
         </div>
     </div>
