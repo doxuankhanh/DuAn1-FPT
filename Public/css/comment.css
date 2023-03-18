@@ -1,52 +1,92 @@
-.box-comment {
-    width: 100%;
-}
-.input-comment {
-    padding: 20px 12px;
-    width: 100%;
-    background-color: #fff;
-    border: none;
-    outline: none;
-    font-size: 16px;
-    font-style: italic;
-    border-radius: 2px;
-}
-.input-comment:focus {
-    animation: linear 0.9s;
-    opacity: 0.8;
-}
-.btn-comment {
-    display: block;
-    margin-left: auto;
-    padding: 10px 16px;
-    margin-top: 5px;
-    border: none;
-    background-color: #265192;
-    color: #fff;
-    border-radius: 2px;
-    cursor: pointer;
-}
-.list-result-cmt {
-    list-style: none;
-}
-.p-result-cmt {
-    width: 60px;
-    height: 60px;
-    object-fit: cover;
-}
-.item-result {
-    margin-left: 12px;
-    text-transform: uppercase;
-    font-style: italic;
-    font-size: 16px;
-}
-.item-result-cmt:nth-child(2),
-.item-result-cmt:nth-child(3),
-.item-result-cmt:nth-child(4)
-{
-    margin-left: 70px;
-    margin-top: 30px;
-}
-.box-item-cmt {
+#comment-form {
+    
     display: flex;
-}
+    flex-direction: column;
+    margin-bottom: 20px;
+    min-width: 900px;
+  }
+  
+  .input-comment {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    height: 50px;
+  }
+  
+  .btn-comment {
+    width: 20%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: auto;
+  }
+  
+  /* Style the comments section */
+  #result-comment {
+    margin-top: 20px;
+  }
+  
+  .list-result-cmt {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-radius: 4px;
+    margin-bottom: 10px;
+  }
+  
+  .box-item-cmt {
+    width: 40%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px;
+    background-color: #97df99;
+    border-radius: 0% 60% 100% 0% / 0% 0% 100% 50%  ;
+  }
+  
+  .p-result-cmt {
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    overflow: hidden;
+  }
+  .p-result-cmt img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+  
+  .item-result {
+    font-weight: bold;
+    margin-left: 10px;
+  }
+  
+  .item-result-cmt {
+    
+    padding: 10px;
+  }
+  
+  .item-result-cmt a {
+    display: block;
+    text-align: center;
+   
+    width: 10%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  a {
+    color: #4CAF50;
+    text-decoration: none;
+    cursor: pointer;
+  }
