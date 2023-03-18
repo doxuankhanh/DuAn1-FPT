@@ -1,10 +1,17 @@
 <?php require_once "./app/Views/client/layout/Pages/header.php"; ?>
-<center>
-    <h1>Quên mật khẩu</h1>
-    <form action="<?= URL ?>Home/forgetPassword" method="post">
-        <input type="text" placeholder="Enter your email" name="email"> <br>
-        <input type="submit" name="btn-forgetPass" value="Gửi">
-        <a href="<?= URL?>Home/login">Login</a>
-    </form>
-</center>
+<div class="div-login-form">
+    <div class="div-form-site">
+        <form action="<?= URL ?>Home/forgetPassword" class="form-login" method="post">
+            <h3 class="h3-login">Quên Mật Khẩu</h3>
+            <div class="div-input-box">
+                <input type="text" class="input-form-login" value="<?= $data['email'] ?? '' ?>" name="email">
+                <span class="span-label">Email</span>
+                <span class="span-err" style="color:red;font-weight:bold;font-style:italic"><?= $_SESSION['email_err'] ?? ''; unset($_SESSION['email_err']) ?></span>
+            </div>
+            <div class="div-input-box">
+                <button class="submit-btn login" type="submit">Tiếp Tục</button>
+            </div>
+        </form>
+    </div>
+</div>
 <?php require_once "./app/Views/client/layout/Pages/footer.php"; ?>

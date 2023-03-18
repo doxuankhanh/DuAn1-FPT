@@ -9,6 +9,7 @@ class HomeController
     private $user;
     private $cart;
     private $cmt;
+    private $mail;
     function __construct()
     {
         $this->cate = $this->model("CateModel");
@@ -16,6 +17,7 @@ class HomeController
         $this->user = $this->model("UserModel");
         $this->cart = $this->model("CartModel");
         $this->cmt = $this->model("CmtModel");
+        $this->mail = new Mailer();
     }
     function index()
     {
@@ -66,7 +68,7 @@ class HomeController
                     } else {
                         if (empty($data['quantity']) || $data['quantity'] <= 0) {
                             $_SESSION['quantity_err'] = "Bạn phải nhập đúng số lượng!";
-                        }else {
+                        } else {
                             if (empty($_SESSION['quantity_err'])) {
                                 $result = $this->cart->store($data['bookName'], $data['clientID'], $data['bookID'], $data['image'], $data['price'], $data['quantity']);
                                 if ($result) {
@@ -144,7 +146,7 @@ class HomeController
         }
         $this->view(
             "client.layout.Pages.Components.updateUser",
-            [   
+            [
                 'cates' => $this->cate->all(),
                 'user' => $this->user->getOneUser($userId)
             ]
@@ -388,21 +390,22 @@ class HomeController
     }
     // update cart 
     // update delete cart ~~~~~~~~~~~
-    function updateCart($id) {
-        if($_SERVER['REQUEST_METHOD'] === "POST") {
-            if(isset($_POST['btn-updateCart'])) {
+    function updateCart($id)
+    {
+        if ($_SERVER['REQUEST_METHOD'] === "POST") {
+            if (isset($_POST['btn-updateCart'])) {
                 $_POST = filter_input_array(INPUT_POST);
                 $data = [
                     'quantity' => trim($_POST['quantity'] ?? ''),
                 ];
                 if ($data) {
-                    if($data['quantity'] <= 0) {
+                    if ($data['quantity'] <= 0) {
                         $result = $this->cart->removeCart($id);
-                        if($result) {
-                            _redirectLo(URL."Home/getCartByClientID");
+                        if ($result) {
+                            _redirectLo(URL . "Home/getCartByClientID");
                         }
-                    }else {
-                        if($data['quantity'] > 0) {
+                    } else {
+                        if ($data['quantity'] > 0) {
                             $result = $this->cart->updateCart(cartID: $id, quantity: $data['quantity']);
                             if ($result) {
                                 $_SESSION['msgUpdateCartSuccess'] = "Cập nhật giỏ hàng thành công!";
@@ -429,11 +432,50 @@ class HomeController
         }
     }
     //Quên mật khẩu
-    function forgetPassword() {
-        $this->view("client.layout.Pages.Components.forgetPassword",
-        [
-            'cates' => $this->cate->all(),
-        ]
-    );
+    function forgetPassword()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $_POST = filter_input_array(INPUT_POST);
+            $code = substr(rand(0, 999999), 0, 6);
+            $data = [
+                'email' => trim($_POST['email'] ?? ''),
+                'title' => "Quên Mật Khẩu",
+                'content' => "Mã xác nhận của bạn là: ".$code,
+            ];
+            //validate email
+            if (empty($data['email'])) {
+                $_SESSION['email_err'] = "Vui lòng điển đầy đủ thông tin";
+            } else {
+                if ($data['email'] !== $this->user->login($data['email'])) {
+                    $_SESSION['email_err'] = "Email not found";
+                }
+            }
+            if (empty($_SESSION['email_err'])) {
+                $this->mail->sendMail(title: $data['title'], content: $data['content'], mailAddress: $data['email']);
+                $_SESSION['email'] = $data['email'];
+                $_SESSION['code'] = $code;
+                // die("OK");
+                _redirectLo(URL . "Home/virifiCation");
+            }
+        }else {
+            $data = [
+                'email' => '',
+            ];
+        }
+        $this->view(
+            "client.layout.Pages.Components.forgetPassword",
+            [
+                'cates' => $this->cate->all(),
+            ]
+        );
+    }
+    function virifiCation()
+    {
+        $this->view(
+            "client.layout.Pages.Components.virification",
+            [
+                'cates' => $this->cate->all(),
+            ]
+        );
     }
 }
