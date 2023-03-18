@@ -1,11 +1,10 @@
 <?php require_once "./app/Views/client/layout/Pages/header.php"; ?>
-<form action="" method="post">
 <div class="div-container-cart">
     <div class="div-main-cart">
         <?php if (count($data['carts']) > 0) : ?>
             <table class="table-cart">
-                <div class="div-header-cart">
-                    <header class="thead-cart">
+              
+                   
                         <div class="đây là msg thông báo khi người dùng đã xóa giỏ hàng">
                             <?= $_SESSION['msgDelSuccessCart'] ?? '';
                             unset($_SESSION['msgDelSuccessCart']) ?>
@@ -14,41 +13,9 @@
                             <?= $_SESSION['msgUpdateCartSuccess'] ?? '';
                             unset($_SESSION['msgUpdateCartSuccess']) ?>
                         </div>
-                    </header>
-                    <div class="card">
-                        <form action="" class="form-cartCheckOut" method="post">
-                            <h3 class="h3-cart">Card Info</h3>
-                            <div class="div-input-infor">
-                                <input type="text" class="input-form-login" value="" name="firstName" required>
-                                <span class="span-label">Họ</span>
-                            </div>
-                            <div class="div-input-infor">
-                                <input type="text" class="input-form-login" value="" name="lastName" required>
-                                <span class="span-label">Tên</span>
-                            </div>
-
-                            <div class="div-input-infor">
-                                <input type="text" class="input-form-login" value="" name="address" required>
-                                <span class="span-label">Địa chỉ</span>
-                            </div>
-                            <div class="div-input-infor">
-                                <input type="text" class="input-form-login" value="" name="phoneNum" required>
-                                <span class="span-label">Số điện thoại</span>
-                            </div>
-                            <div class="div-input-checkout">
-                                <label for="checkFirst">Thanh toán khi nhận</label>
-                                <input type="radio" name="check" id="checkFirst" class="checkFirst" value="Thanh toán khi nhận">
-                                <label for="checkAfter">Thanh toán qua tài khoản</label>
-                                <input type="radio" name="check" id="checkAfter" class="checkAfter" value="Thanh toán qua tài khoản">
-                                
-                            </div>
                         
-
-
-
-                        </form>
-                    </div>
-                </div>
+                       
+               
 
                 <thead class="thead-title">
                     <tr class="tr-title">
@@ -57,6 +24,7 @@
                         <td class="td-cart">Price</td>
                         <td class="td-cart">Quantity</td>
                         <td class="td-cart">Image</td>
+                        <td class="td-cart">TổngTiền</td>
                     </tr>
                 </thead>
                 <tbody>
@@ -74,6 +42,7 @@
                                 </form>
                             </td>
                             <td class="td-cart"><img src="../../../../../../../DuAn1-FPT/Public/upload/<?= $cart['image'] ?? '' ?>" alt=""></td>
+                            <td class="td-cart" style="border-bottom:none;padding-top: 100px;">120000</td>
                         </tr>
                     <?php endforeach ?>
                 </tbody>
@@ -84,5 +53,5 @@
         <button class="button-paying">Thanh toán</button>
     </div>
 </div>
-</form>
+
 <?php require_once "./app/Views/client/layout/Pages/footer.php"; ?>

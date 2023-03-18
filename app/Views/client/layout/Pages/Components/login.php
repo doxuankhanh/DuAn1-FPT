@@ -5,7 +5,7 @@
         <form action="<?= URL?>Home/login" class="form-login" method="post">
             <h3 class="h3-login">Đăng nhập</h3>
             <div class="div-input-box">
-            <input type="text" class="input-form-login" value="<?= $data['email'] ?? ''?>"  name="email" required>
+                <input type="text" class="input-form-login" value="<?= $data['email'] ?? ''?>"  name="email" required>
             <span class="span-label">Email</span>
             <span class="span-err" style="color:red;font-weight:bold;font-style:italic"><?= $data['email_err'] ?? ''?></span>
             </div>
@@ -13,15 +13,15 @@
            <div class="div-input-box">
            <input type="password" class="input-form-login" value="<?= $data['password'] ?? ''?>" name="password" required>
            <span class="span-label">Mật khẩu</span>
-            <span class="span-err" style="color:red;font-weight:bold;font-style:italic"><?= $data['password_err'] ?? ''?></span>
-           </div>
-       
-           <span class="span-err" style="color:red;font-weight:bold;font-style:italic"><?= $data['msgErr'] ?? ''?></span>
-            
-            
-           <div class="div-input-box">
-           <button class="submit-btn login" type="submit">Đăng nhập</button>
-           </div>
+           <span class="span-err" style="color:red;font-weight:bold;font-style:italic"><?= $data['password_err'] ?? ''?></span>
+        </div>
+        
+        
+        
+        <div class="div-input-box">
+               <span class="err-msg" style="color:red;font-weight:bold;font-style:italic"><?= $data['msgErr'] ?? ''?></span>
+               <button class="submit-btn login" type="submit">Đăng nhập</button>
+            </div>
         </form>
     </div>
 </div>
