@@ -1,3 +1,5 @@
+<?php require_once "./app/Views/client/layout/Pages/header.php"; ?>
+
 <div class="div-checkout-container">
         <div class="div-checkout-main">
             <h2 class=" h2-checkout">Đặt hàng thành công!<br>
@@ -54,7 +56,8 @@
                 </div>
             </div>
             <h2 class="h2-checkout">
-                <button>Tiếp tục mua hàng</button>
+                <button>Xác nhận thanh toán </button>
             </h2>
         </div>
     </div>
+    <?php require_once "./app/Views/client/layout/Pages/footer.php"; ?>
