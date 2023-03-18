@@ -29,10 +29,8 @@
                                 <div class="flex e">
                                     <div class="quantity">
                                         <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="subtracts"></button>
-                                        <input id="input-detail" type="number" value="1" style="-webkit-appearance: none;" min="1" name="quantity">
+                                        <input id="input-detail" type="number" value="1" style="-webkit-appearance: none;"  name="quantity">
                                         <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
-
-
                                     </div>
                                     <div>
                                         <button class="detail-btn" type="submit" name="btn-add-cart">Thêm vào giỏ hàng</button>
@@ -46,9 +44,12 @@
                             unset($_SESSION['msgCartIsset']) ?>
                         </div>
                         <div style="margin-top: 10px;">
-                            <?= $_SESSION['msgEmptyID'] ?? '';
-                            unset($_SESSION['msgEmptyID']) ?>
+                            <?= $_SESSION['quantity_err'] ?? '';
+                            unset($_SESSION['quantity_err']) ?>
                         </div>
+                        <!-- <div style="margin-top: 10px;">
+                            <?= $data['quantity_err'] ?? ''?>
+                        </div> -->
                     </div>
                 </div>
             </div>

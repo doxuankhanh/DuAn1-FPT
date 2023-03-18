@@ -1,4 +1,5 @@
 <?php
+// require_once "./app/lib/sendmail.php";
 require_once "./app/Config/config.php";
 require_once "./app/Helpers/functions.php";
 require_once "./app/Core/App.php";

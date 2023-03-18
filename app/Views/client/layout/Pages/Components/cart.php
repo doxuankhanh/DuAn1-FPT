@@ -14,7 +14,7 @@
                             unset($_SESSION['msgUpdateCartSuccess']) ?>
                         </div>
                     </header>
-                    <div class="card">
+                    <!-- <div class="card">
                         <form action="" class="form-cartCheckOut" method="post">
                             <h3 class="h3-cart">Card Info</h3>
                             <div class="div-input-infor">
@@ -39,16 +39,10 @@
                                 <input type="radio" name="check" id="checkFirst" class="checkFirst" value="Thanh toán khi nhận">
                                 <label for="checkAfter">Thanh toán qua tài khoản</label>
                                 <input type="radio" name="check" id="checkAfter" class="checkAfter" value="Thanh toán qua tài khoản">
-                                
                             </div>
-                        
-
-
-
                         </form>
-                    </div>
+                    </div> -->
                 </div>
-
                 <thead class="thead-title">
                     <tr class="tr-title">
                         <td class="td-cart">Remove</td>
@@ -67,7 +61,7 @@
                             <td class="td-cart">
                                 <form action="<?= URL ?>Home/updateCart/<?= $cart['cartID'] ?>" class="form-CountPrd" method="post">
                                     <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="subtracts-cart"></button>
-                                    <input type="number" value="<?= $cart['quantity'] ?>" style="-webkit-appearance: none;" min="1" name="quantity">
+                                    <input type="number" value="<?= $cart['quantity'] ?>" style="-webkit-appearance: none;" name="quantity">
                                     <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus-cart"></button>
                                     <button class="updateBtn" type="submit" name="btn-updateCart" style="cursor: pointer;">Update</button>
                                 </form>
@@ -77,10 +71,10 @@
                     <?php endforeach ?>
                 </tbody>
             </table>
+            <button class="button-paying">Thanh toán</button>
         <?php else : ?>
             <div style="text-align: center;">Không có sản phẩm nào trong giỏ hàng của bạn!</div>
         <?php endif ?>
-        <button class="button-paying">Thanh toán</button>
     </div>
 </div>
 <?php require_once "./app/Views/client/layout/Pages/footer.php"; ?>
