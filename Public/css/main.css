@@ -1,6 +1,7 @@
 @import url("./comment.css");
 @import url("./base.css");
 @import url("./cart.css");
+@import url("./checkout.css");
 .div-container {
     width: 100%;
 
@@ -501,7 +502,6 @@ header {
     position: relative;
 }
 .h3-login{
-    margin-bottom: 35px;
     font-weight: 500;
     font-size: 24px;
    text-align: center;
@@ -541,8 +541,8 @@ header {
     height: 50px;
     margin-bottom: 22px;
 }
- .div-input-box button{
-   
+ .div-input-box:nth-child(3){
+    margin-bottom: 0;
 }
  .span-label{
     transition: all 0.5s ease-in-out;
@@ -559,6 +559,9 @@ header {
     top: 50px;
     right: 0;
 }
+.err-msg{
+    white-space: nowrap;
+}
 .submit-btn {
     background-color: #4CAF50;
     /* Green */
@@ -573,8 +576,7 @@ header {
     transition-duration: 0.4s;
     cursor: pointer;
     font-family: Arial, sans-serif;
-    position: absolute;
-    top: -29px;
+ 
 }
 
 .submit-btn:hover {

@@ -387,10 +387,10 @@ class HomeController
         // $this->view("client.layout.Pages.Components.cart");
     }
     // update cart 
-    function updateCart($id)
-    {
-        if ($_SERVER['REQUEST_METHOD'] === "POST") {
-            if (isset($_POST['btn-updateCart'])) {
+    // update delete cart ~~~~~~~~~~~
+    function updateCart($id) {
+        if($_SERVER['REQUEST_METHOD'] === "POST") {
+            if(isset($_POST['btn-updateCart'])) {
                 $_POST = filter_input_array(INPUT_POST);
                 $data = [
                     'quantity' => trim($_POST['quantity'] ?? ''),
