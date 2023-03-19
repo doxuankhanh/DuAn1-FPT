@@ -7,19 +7,23 @@
                                 Cảm ơn bạn đã mua hàng <3</h2>
             <div class="div-infor-checkout">
                 <h4>Thông tin người mua</h4>
-                <div class="div-infor site">
-                    <div class="div-title">
-                        <p class="p-infor">Họ tên</p>
-                        <p class="p-infor">Email</p>
-                        <p class="p-infor">Số điện thoại</p>
-                        <p class="p-infor">Địa chỉ</p>
-                    </div>
-                    <div class="div-infor-main">
-                        <p class="p-infor">Họ tên</p>
-                        <p class="p-infor">Email</p>
-                        <p class="p-infor">Số điện thoại</p>
-                        <p class="p-infor">Địa chỉ</p>
-                    </div>
+                <table class="table-infor">
+                    <thead class="thead-infor">
+                        <th>Họ tên</th>
+                        <th>Email</th>
+                        <th>Địa chỉ</th>
+                        <th>Số điện thoại</th>
+                    </thead>
+                    <tbody>
+                        <tr class="tr-infor">
+                            <td>Tên</td>
+                            <td>Mail</td>
+                            <td>Địa chỉ</td>
+                            <td>Số Điện thoại</td>
+                        </tr>
+                    </tbody>
+                </table>
+              
                 <h2>Thông tin sản phẩm</h2>
                 <table class="table-checkout">
                     <thead class="thead-checkout">
@@ -54,10 +58,10 @@
                     </tbody>
                 </table>
                 </div>
+                <h2 class="h2-checkout">
+                    <button>Xác nhận thanh toán </button>
+                </h2>
             </div>
-            <h2 class="h2-checkout">
-                <button>Xác nhận thanh toán </button>
-            </h2>
         </div>
     </div>
     <?php require_once "./app/Views/client/layout/Pages/footer.php"; ?>
