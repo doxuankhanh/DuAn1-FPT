@@ -1,0 +1,63 @@
+.div-checkout-container {
+    display: flex;
+    justify-content: center;
+    background-image: url(../images/product/bg_pattern.jpg);
+  }
+  
+  .div-checkout-main {
+    margin: 50px;
+    width: 600px;
+    border: 1px solid #ccc;
+    padding: 20px;
+    background-image: url(../images/product/headerbg.png);
+  }
+  
+  h2-checkout {
+    text-align: center;
+  }
+  
+  .div-infor-checkout {
+    margin-top: 30px;
+  }
+  
+  .div-title {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+  }
+  
+  .div-infor-main {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+  }
+  
+  .table-checkout {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .thead-checkout th {
+    text-align: left;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+  }
+  
+  td {
+    padding:5px 0;
+  }
+  .h2-checkout button{
+    padding: 5px;
+    background: #14e1ae;
+    outline: none;
+    border: none;
+    color: azure;
+    cursor: pointer;
+    
+  }
+  .h2-checkout button:active{
+    box-shadow: 0px 0px 36px 8px #42944e;
+-webkit-box-shadow: 0px 2px 36px 8px  #42944e;
+-moz-box-shadow: 0px 2px 36px 8px  #42944e;
+  }

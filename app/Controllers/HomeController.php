@@ -9,6 +9,7 @@ class HomeController
     private $user;
     private $cart;
     private $cmt;
+    private $mail;
     function __construct()
     {
         $this->cate = $this->model("CateModel");
@@ -16,15 +17,16 @@ class HomeController
         $this->user = $this->model("UserModel");
         $this->cart = $this->model("CartModel");
         $this->cmt = $this->model("CmtModel");
+        $this->mail = new Mailer();
     }
     function index()
     {
-        
+
         $this->view(
             "client.layout.Pages.Components.home",
             [
                 'cates' => $this->cate->all(),
-                
+
                 'bookNew' => $this->book->limit10FollowStatus(1),
                 'bookSeller' => $this->book->limit10FollowStatus(2),
                 'literatureVN' => $this->book->bookFollowCategories(10),
@@ -53,36 +55,46 @@ class HomeController
                 // bình luận
                 'note' => trim($_POST['note'] ?? ''),
                 'timeAdded' => date("Y/m/d H:i:a"),
-
+                'note_err' => '',
+                'quantity_err' => '',
             ];
-            if ($data) {
-                //$bookName,$clientID,$bookID,$image,$price,$quantity
-                if(isset($_POST['btn-add-cart'])) {
-                    if (!isset($_SESSION['userID'])) {
-                        _redirectLo(URL."Home/login");
+            //$bookName,$clientID,$bookID,$image,$price,$quantity
+            if (isset($_POST['btn-add-cart'])) {
+                if (!isset($_SESSION['userID'])) {
+                    _redirectLo(URL . "Home/login");
+                } else {
+                    if ($checkCart['bookID'] === $bookDetail['id']) {
+                        $_SESSION['msgCartIsset'] = "Sản phẩm đã tồn tại trong giỏ hàng của bạn!";
                     } else {
-                        if ($checkCart['bookID'] === $bookDetail['id']) {
-                            $_SESSION['msgCartIsset'] = "Sản phẩm đã tồn tại trong giỏ hàng của bạn!";
+                        if (empty($data['quantity']) || $data['quantity'] <= 0) {
+                            $_SESSION['quantity_err'] = "Bạn phải nhập đúng số lượng!";
                         } else {
-                            $result = $this->cart->store($data['bookName'], $data['clientID'], $data['bookID'], $data['image'], $data['price'], $data['quantity']);
-                            if ($result) {
-                                _redirectLo(URL . "Home/getCartByClientID");
+                            if (empty($_SESSION['quantity_err'])) {
+                                $result = $this->cart->store($data['bookName'], $data['clientID'], $data['bookID'], $data['image'], $data['price'], $data['quantity']);
+                                if ($result) {
+                                    _redirectLo(URL . "Home/getCartByClientID");
+                                }
                             }
                         }
                     }
                 }
-                // Bình luận
-                if(isset($_POST['btn-comment'])) {
-
-                    if (!isset($_SESSION['userID'])) {
-                        $_SESSION['msgCmtEmpty'] = "Bạn phải đăng nhập để sử dụng chức năng!";
-                        _redirectRe(URL."Home/login");
+            }
+            // Bình luận
+            if (isset($_POST['btn-comment'])) {
+                if (!isset($_SESSION['userID'])) {
+                    // $_SESSION['msgCmtEmpty'] = "Bạn phải đăng nhập để sử dụng chức năng!";
+                    _redirectLo(URL . "Home/login");
+                } else {
+                    if (empty($data['note'])) {
+                        $data['note_err'] = "Không được để trống thông tin bình luận";
                     } else {
-                        $cmtAdded = $this->cmt->addedCmt($data['note'], $bookDetail['id'], $data['clientID'], $data['timeAdded']);
-                        if ($cmtAdded) {
-                            _redirectLo($_SERVER['HTTP_REFERER']);
-                        } else {
-                            die("STUPID");
+                        if (empty($data['note_err'])) {
+                            $cmtAdded = $this->cmt->addedCmt($data['note'], $bookDetail['id'], $data['clientID'], $data['timeAdded']);
+                            if ($cmtAdded) {
+                                _redirectLo($_SERVER['HTTP_REFERER']);
+                            } else {
+                                die("STUPID");
+                            }
                         }
                     }
                 }
@@ -96,12 +108,16 @@ class HomeController
                 'price' => '',
                 'quantity' => '',
                 'note' => '',
+                'note_err' => '',
+                'quantity_err' => '',
+
             ];
         }
 
         $this->view(
             "client.layout.Pages.Components.bookDetail",
             [
+                $data,
                 'cates' => $cates,
                 'similarBook' => $this->book->similarBook(id: $id, cateID: $cateID),
                 'view' => $this->book->updateView($id),
@@ -112,24 +128,26 @@ class HomeController
     }
 
     //Update User
-    function updateUser($userId){
+    function updateUser($userId)
+    {
         $user = $this->user->getOneUser($userId);
-        if(isset($_POST['btn-update'])) {
-            if($_FILES['image']['size'] === 0) {
-                $img = $user['image'];
-            }else {
-                $img = $_FILES['image']['name'];
-                move_uploaded_file($_FILES['image']['tmp_name'], './Public/upload/'.$_FILES['image']['name']);
+        if (isset($_POST['btn-update'])) {
+            if ($_FILES['image']['size'] === 0) {
+                $img = $user['avatar'];
+            } else {
+                $img = $_FILES['avatar']['name'];
+                move_uploaded_file($_FILES['avatar']['tmp_name'], 'Public/upload/' . basename($img));
             }
-            $result = $this->user->updateUser($_POST['email'],$_POST['username'],$_POST['accountName'],$_POST['address'],$_POST['phoneNumber'],$img , $userId);
-            if($result) {
-                _redirectLo(URL."Home/");
+            $result = $this->user->updateUser($_POST['email'], $_POST['username'], $_POST['accountName'], $_POST['address'], $_POST['phoneNumber'], $img, $userId);
+            if ($result) {
+                _redirectLo(URL . "Home/");
                 // header("Location:".URL."Admin/listBook");
             }
         }
         $this->view(
             "client.layout.Pages.Components.updateUser",
             [
+                'cates' => $this->cate->all(),
                 'user' => $this->user->getOneUser($userId)
             ]
         );
@@ -325,7 +343,7 @@ class HomeController
     }
     //lấy sản phẩm theo clientID
     function getCartByClientID()
-    {   
+    {
 
         $this->view(
             "client.layout.Pages.Components.cart",
@@ -336,7 +354,8 @@ class HomeController
         );
     }
     // load comment
-    function loadBookSearch(){
+    function loadBookSearch()
+    {
         if ($_SERVER['REQUEST_METHOD'] === "POST") {
             $_POST = filter_input_array(INPUT_POST);
             $data = [
@@ -350,46 +369,120 @@ class HomeController
                 'bookName' => '',
             ];
         }
-        $this->view("client.layout.Pages.Components.searchBook" ,
+        $this->view(
+            "client.layout.Pages.Components.searchBook",
             [
-            'cates' => $this->cate->all(),
-            'bookSearch' => $bookSearch ?? '',
+                'cates' => $this->cate->all(),
+                'bookSearch' => $bookSearch ?? '',
             ]
-            );
-
+        );
     }
 
     // remove giỏ hàng
-    function delCart($id) {
+    function delCart($id)
+    {
         $result = $this->cart->removeCart($id);
-        if($result) {
+        if ($result) {
             $_SESSION['msgDelSuccessCart'] = "Bạn đã xóa thành công sản phẩm , hãy mua sắm thêm nhé!";
-            _redirectLo(URL."Home/getCartByClientID");
+            _redirectLo(URL . "Home/getCartByClientID");
         }
         // $this->view("client.layout.Pages.Components.cart");
     }
     // update cart 
-    function updateCart($id) {
-        if($_SERVER['REQUEST_METHOD'] === "POST") {
-            if(isset($_POST['btn-updateCart'])) {
+    // update delete cart ~~~~~~~~~~~
+    function updateCart($id)
+    {
+        if ($_SERVER['REQUEST_METHOD'] === "POST") {
+            if (isset($_POST['btn-updateCart'])) {
                 $_POST = filter_input_array(INPUT_POST);
                 $data = [
                     'quantity' => trim($_POST['quantity'] ?? ''),
                 ];
-                if($data) {
-                    $result = $this->cart->updateCart(cartID:$id,quantity:$data['quantity']);
-                    if($result) {
-                        $_SESSION['msgUpdateCartSuccess'] = "Cập nhật giỏ hàng thành công!";
-                        _redirectLo(URL."Home/getCartByClientID");
-                    }else{
-                        die("STUPID");
+                if ($data) {
+                    if ($data['quantity'] <= 0) {
+                        $result = $this->cart->removeCart($id);
+                        if ($result) {
+                            _redirectLo(URL . "Home/getCartByClientID");
+                        }
+                    } else {
+                        if ($data['quantity'] > 0) {
+                            $result = $this->cart->updateCart(cartID: $id, quantity: $data['quantity']);
+                            if ($result) {
+                                $_SESSION['msgUpdateCartSuccess'] = "Cập nhật giỏ hàng thành công!";
+                                _redirectLo(URL . "Home/getCartByClientID");
+                            } else {
+                                die("STUPID");
+                            }
+                        }
                     }
                 }
-            }else {
+            } else {
                 $data = [
                     'quantity' => '',
                 ];
             }
         }
+    }
+    // remove bình luận
+    function removeCmt($id)
+    {
+        $result = $this->cmt->delete($id);
+        if ($result) {
+            _redirectLo($_SERVER['HTTP_REFERER']);
+        }
+    }
+    //Quên mật khẩu
+    function forgetPassword()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $_POST = filter_input_array(INPUT_POST);
+            $code = substr(rand(0, 999999), 0, 6);
+            $data = [
+                'email' => trim($_POST['email'] ?? ''),
+                'title' => "Quên Mật Khẩu",
+                'content' => "Mã xác nhận của bạn là: ".$code,
+            ];
+            //validate email
+            if (empty($data['email'])) {
+                $_SESSION['email_err'] = "Vui lòng điển đầy đủ thông tin";
+            } else {
+                if ($data['email'] !== $this->user->login($data['email'])) {
+                    $_SESSION['email_err'] = "Email not found";
+                }
+            }
+            if (empty($_SESSION['email_err'])) {
+                $this->mail->sendMail(title: $data['title'], content: $data['content'], mailAddress: $data['email']);
+                $_SESSION['email'] = $data['email'];
+                $_SESSION['code'] = $code;
+                // die("OK");
+                _redirectLo(URL . "Home/virifiCation");
+            }
+        }else {
+            $data = [
+                'email' => '',
+            ];
+        }
+        $this->view(
+            "client.layout.Pages.Components.forgetPassword",
+            [
+                'cates' => $this->cate->all(),
+            ]
+        );
+    }
+    function virifiCation()
+    {
+        $this->view(
+            "client.layout.Pages.Components.virification",
+            [
+                'cates' => $this->cate->all(),
+            ]
+        );
+    }
+    function checkOut() {
+        $this->view("client.layout.Pages.Components.checkOut",
+        [
+            'cates' => $this->cate->all(),
+        ]
+    );
     }
 }
