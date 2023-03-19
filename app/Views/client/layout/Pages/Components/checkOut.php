@@ -39,26 +39,26 @@
                                 $total += $subtotal;
                             ?>
                                 <tr>
-                                    <td><?= $key + 1 ?></td>
-                                    <td><?= $value['bookName'] ?? '' ?></td>
-                                    <td><?= number_format($value['price'] ?? '') ?></td>
-                                    <td><?= $value['quantity'] ?? '' ?></td>
-                                    <td><?= number_format($subtotal) ?></td>
+                                    <td class="td-checkOut"><?= $key + 1 ?></td>
+                                    <td class="td-checkOut"><?= $value['bookName'] ?? '' ?></td>
+                                    <td class="td-checkOut"><?= number_format($value['price'] ?? '') ?></td>
+                                    <td class="td-checkOut"><?= $value['quantity'] ?? '' ?></td>
+                                    <td class="td-checkOut"><?= number_format($subtotal) ?></td>
                                 </tr>
                             <?php endforeach ?>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td>Phí vận chuyển</td>
-                                <td>Free</td>
+                            <tr style="border-top: 1px solid #ccc;">
+                                <td class="td-checkOut"></td>
+                                <td class="td-checkOut"></td>
+                                <td class="td-checkOut"></td>
+                                <td class="td-checkOut">Phí vận chuyển</td>
+                                <td class="td-checkOut">Free</td>
                             </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td><strong>Tổng cộng</strong></td>
-                                <td><?= number_format($total) ?></td>
+                            <tr >
+                                <td class="td-checkOut"></td>
+                                <td class="td-checkOut"></td>
+                                <td class="td-checkOut"></td>
+                                <td class="td-checkOut"><strong>Tổng cộng</strong></td>
+                                <td class="td-checkOut"><?= number_format($total) ?></td>
                             </tr>
                         </tbody>
                     </table>
