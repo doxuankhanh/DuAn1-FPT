@@ -71,4 +71,9 @@
 -webkit-box-shadow: 0px 2px 36px 8px  #42944e;
 -moz-box-shadow: 0px 2px 36px 8px  #42944e;
   }
-  
+  .inputDis{
+  background:none;
+  border: none;
+  text-align: center;
+  font-weight: 500;
+ }
