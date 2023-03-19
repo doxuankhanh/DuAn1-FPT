@@ -42,13 +42,12 @@
                                 </form>
                             </td>
                             <td class="td-cart"><img src="../../../../../../../DuAn1-FPT/Public/upload/<?= $cart['image'] ?? '' ?>" alt=""></td>
-                            <td class="td-cart" style="border-bottom:none;padding-top: 100px;">120000</td>
+                            <td class="td-cart" style="border-bottom:none;padding-top: 100px;"><?= number_format($cart['quantity'] * $cart['price'])?></td>
                         </tr>
                     <?php endforeach ?>
                 </tbody>
             </table>
-            <button class="button-paying">Thanh toán</button>
-            <a href="<?=URL?>HOME/checkOut">ne6</a>
+            <button class="button-paying"><a href="<?=URL?>HOME/checkOut" style="text-decoration: none;">Tiến hành thanh toán</a></button>
         <?php else : ?>
             <div style="text-align: center;">Không có sản phẩm nào trong giỏ hàng của bạn!</div>
         <?php endif ?>
