@@ -2,6 +2,7 @@
 @import url("./base.css");
 @import url("./cart.css");
 @import url("./checkout.css");
+@import url("./updateUser.css");
 .div-container {
     width: 100%;
 
@@ -479,8 +480,8 @@ header {
     position: relative;
     margin: auto auto !important;
     background-image: url(../images/product/headerbg.png);
-    width: 55%;
-    min-height: 400px;
+    width: 100%;
+    min-height: 600px;
     border-radius: 85% 15% 89% 11% / 10% 85% 15% 90%;
 
 }
