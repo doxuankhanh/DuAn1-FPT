@@ -59,6 +59,9 @@
                         </tbody>
                     </table>
                 </div>
+                <h2 class="h2-checkout">
+                    <button>Xác nhận thanh toán </button>
+                </h2>
             </div>
             <h2 class="h2-checkout">
                 <button type="submit">Xác nhận thanh toán </button>
