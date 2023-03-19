@@ -10,6 +10,7 @@ class HomeController
     private $cart;
     private $cmt;
     private $mail;
+    private $order;
     function __construct()
     {
         $this->cate = $this->model("CateModel");
@@ -18,6 +19,7 @@ class HomeController
         $this->cart = $this->model("CartModel");
         $this->cmt = $this->model("CmtModel");
         $this->mail = new Mailer();
+        $this->order = $this->model("OrderModel");
     }
     function index()
     {
@@ -186,6 +188,8 @@ class HomeController
         $_SESSION['accountName'] = $user['accountName'];
         $_SESSION['avatarUser'] = $user['avatar'];
         $_SESSION['email'] = $user['email'];
+        $_SESSION['address'] = $user['address'];
+        $_SESSION['phone'] = $user['phoneNumber'];
         $_SESSION['role'] = $user['role'];
         _redirectRe(URL . "Home");
     }
@@ -538,10 +542,17 @@ class HomeController
     }
     function checkOut()
     {
+        if($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $result = $this->order->store(clientID:$_SESSION['userID'],dateBuy:date("Y/m/d H:i:a"),clientName:$_SESSION['username'],address:$_SESSION['address'],phone:$_SESSION['phone']);
+            if($result) {
+                $_SESSION['msgOrderSuccess'] = "Cảm ơn bạn đã mua sắm!";
+            }
+        }
         $this->view(
             "client.layout.Pages.Components.checkOut",
             [
                 'cates' => $this->cate->all(),
+                'carts' => $this->cart->getCartByClientID($_SESSION['userID'] ?? ''),
             ]
         );
     }
