@@ -23,11 +23,14 @@ class UserModel extends BaseModel {
     function getOneUser($id) {
         if($this->table !== null) {
             $sql = "SELECT * FROM $this->table WHERE clientID = ?";
+
+            // $this->stmt = $this->connect->prepare($sql);
+            // $this->stmt->execute([$id]);
+            // $data = $this->stmt->fetch();
+            // return $data;
             $this->_query($sql)->execute([$id]);
             $data = $this->stmt->fetch();
             return $data;
-            // $data = $this->getOne($id);
-            // return $data;
         }
     }
     // update user
@@ -45,4 +48,3 @@ class UserModel extends BaseModel {
         }
     }
 }
-?>

@@ -133,36 +133,33 @@ class HomeController
     function updateUser($userId)
     {
         $user = $this->user->getOneUser($userId);
+
         if (isset($_POST['btn-update'])) {
-            if ($_FILES['image']['size'] === 0) {
-                $img = $user['avatar'];
-            } else {
-                $img = $_FILES['avatar']['name'];
-                move_uploaded_file($_FILES['avatar']['tmp_name'], 'Public/upload/' . basename($img));
+            $img = $user['avatar'];
+
+            if ($_FILES['avatar']['size'] !== 0) {
+                $imgF = pathinfo($_FILES['avatar']['name'], PATHINFO_EXTENSION);
+                if ($imgF == 'png' || $imgF == 'jpg') {
+                    $img = $_FILES['avatar']['name'];
+                    move_uploaded_file($_FILES['avatar']['tmp_name'], 'Public/upload/' . basename($img));
+                } else {
+                    $_SESSION['success'] = 'Sai định dạng ảnh';
+                    _redirectLo($_SERVER['HTTP_REFERER']);
+                }
             }
+
             $result = $this->user->updateUser($_POST['email'], $_POST['username'], $_POST['accountName'], $_POST['address'], $_POST['phoneNumber'], $img, $userId);
+
             if ($result) {
-                _redirectLo(URL . "Home/");
-                // header("Location:".URL."Admin/listBook");
+                $_SESSION['success'] = 'Đã cập nhật';
+                _redirectLo($_SERVER['HTTP_REFERER']);
             }
         }
+
         $this->view(
             "client.layout.Pages.Components.updateUser",
             [
-                'cates' => $this->cate->all(),
-                'user' => $this->user->getOneUser($userId)
-            ]
-        );
-    }
-
-    // load sp theo view
-    function loadBookView()
-    {
-        $this->view(
-            "client.layout.Pages.Components.topView",
-            [
-                'cates' => $this->cate->all(),
-                'viewBook' => $this->book->bookView()
+                'user' => $user,
             ]
         );
     }
@@ -507,44 +504,46 @@ class HomeController
         );
     }
     // đổi mật khẩu
-    function resetPassword() {
-        if($_SERVER['REQUEST_METHOD'] === 'POST') {
+    function resetPassword()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_POST = filter_input_array(INPUT_POST);
             $data = [
                 'passwordNew' => trim($_POST['passwordNew'] ?? ''),
                 'passwordRepeat' => trim($_POST['passwordRepeat'] ?? ''),
             ];
-            if(empty($data['passwordNew'])) {
+            if (empty($data['passwordNew'])) {
                 $_SESSION['password_err'] = "Vui lòng điền đầy đủ thông tin";
             }
-            if(empty($data['passwordRepeat'])) {
+            if (empty($data['passwordRepeat'])) {
                 $_SESSION['password_err'] = "Vui lòng điền đầy đủ thông tin";
-            }else {
-                if($data['passwordNew'] !== $data['passwordRepeat']) {
+            } else {
+                if ($data['passwordNew'] !== $data['passwordRepeat']) {
                     $_SESSION['password_err'] = "Mật khẩu không khớp ,vui lòng thử lại!";
                 }
             }
-            if(empty($_SESSION['password_err'])) {
+            if (empty($_SESSION['password_err'])) {
                 $data['password'] = password_hash($data['passwordNew'], PASSWORD_DEFAULT);
-                $result = $this->user->getPassByEmail(password:$data['password'],email:$_SESSION['emailPass']);
-                if($result) {
+                $result = $this->user->getPassByEmail(password: $data['password'], email: $_SESSION['emailPass']);
+                if ($result) {
                     die("OK");
-                }else {
+                } else {
                     die("STUPID");
                 }
             }
         }
-        $this->view("client.layout.Pages.Components.resetPassword",
-        [
-            'cates' => $this->cate->all(),
-        ]
-    );
+        $this->view(
+            "client.layout.Pages.Components.resetPassword",
+            [
+                'cates' => $this->cate->all(),
+            ]
+        );
     }
     function checkOut()
     {
-        if($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $result = $this->order->store(clientID:$_SESSION['userID'],dateBuy:date("Y/m/d H:i:a"),clientName:$_SESSION['username'],address:$_SESSION['address'],phone:$_SESSION['phone']);
-            if($result) {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $result = $this->order->store(clientID: $_SESSION['userID'], dateBuy: date("Y/m/d H:i:a"), clientName: $_SESSION['username'], address: $_SESSION['address'], phone: $_SESSION['phone']);
+            if ($result) {
                 $_SESSION['msgOrderSuccess'] = "Cảm ơn bạn đã mua sắm!";
             }
         }
