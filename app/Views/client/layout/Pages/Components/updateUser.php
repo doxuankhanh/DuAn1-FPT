@@ -9,7 +9,8 @@
        <div class="div-avt">
         <div class="div-input-box ">
             <div class="div-img">
-                <img class="img-avt" src="../../../../../../../DuAn1-FPT/Public/upload/avatarUser.png" alt="">
+                <!-- <img class="img-avt" src="../../../../../../../DuAn1-FPT/Public/upload/avatarUser.png" alt=""> -->
+                <img class="img-avt" src="../../../../../../../DuAn1-FPT/Public/upload/<?= $data['user']['avatar'] ?? '' ?>" alt="">
             </div>
             
                 <input type="file" name="avatar" class="custom-file-input"  style="width: 100%" value="">
@@ -51,7 +52,9 @@
                 <span class="span-label">Phone Number</span>
                 <span class="span-err" style="color:red;font-weight:bold;font-style:italic"><?= $data['phoneNumber'] ?? '' ?></span>
             </div>
-
+            <div>
+                <p><?= $_SESSION['success'] ?? ''; unset($_SESSION['success'])?></p>
+            </div>
 
             <div class="div-input-box">
                 <button class="submit-btn login" name="btn-update" type="submit">Update</button>
