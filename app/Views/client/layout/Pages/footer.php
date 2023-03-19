@@ -48,9 +48,6 @@
     <script src="../../../../../../DuAn1-FPT/Public/js/countPrd/script.js"></script>
     <script src="../../../../../../DuAn1-FPT/Public/js/slidios/script.js"></script>
 
-
-    
-
 </body>
 
 </html>
