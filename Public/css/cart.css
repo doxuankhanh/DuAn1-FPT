@@ -54,7 +54,7 @@
     transform: rotate(180deg);
   }
   .updateBtn{
-  
+    
   }
   .tr-title{
     background-color: #f2f2f2;
@@ -94,7 +94,7 @@
    
   }
   .td-cart .updateBtn{
-    width: 90px;
+    width: 100%;
     margin: 5px auto;
     background-color: #0f5731;
     color: #ddd;
@@ -103,7 +103,7 @@
     outline: none;
     border-color: #0f5731;
     position: absolute;
-    left: -10px;
+    left: 0px;
     top: 30px;
   }
   .td-cart .deleteBtn{
