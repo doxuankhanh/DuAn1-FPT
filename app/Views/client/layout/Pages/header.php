@@ -40,9 +40,9 @@
                         Xin chào <p style="display: inline-block;text-transform: uppercase;"><?= isset($_SESSION['userID']) ? $_SESSION['username'] : '' ?></p>
                         <div class="p-setting" style="display: inline;" href="#"><img class="img-setting" src="../../../../../../DuAn1-FPT/Public/images/product/settings-icon-13.png" alt="">
                             <ul class="ul-setting">
-                                <li class="li-setting"><a class="anchor-a" style="" href="<?= URL ?>Home/updateUser/<?= $_SESSION['userID'] ?>">Thông tin tài khoản</a></li>
-                                <li class="li-setting"><a class="anchor-a" style="" href="<?= URL?>Home/forgetPassword">Quên mật khẩu</a></li>
-                                <li class="li-setting"><a class="anchor-a" href="<?= URL ?>Home/destroy">ĐĂNG XUẤT</a></li>
+                                <li class="li-setting"><a class="anchor-a" style="border-right: none;" href="<?= URL ?>Home/updateUser/<?= $_SESSION['userID'] ?>">Thông tin tài khoản</a></li>
+                                <li class="li-setting"><a class="anchor-a" style="border-right: none;" href="<?= URL?>Home/forgetPassword">Quên mật khẩu</a></li>
+                                <li class="li-setting"><a class="anchor-a" style="border-right: none;" href="<?= URL ?>Home/destroy">ĐĂNG XUẤT</a></li>
                             </ul>
                         </div>
                     </a>
