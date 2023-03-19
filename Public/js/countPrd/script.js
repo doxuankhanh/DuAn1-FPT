@@ -9,6 +9,7 @@ plusCount.forEach(function(ele){
         e.preventDefault();
     }) 
 })
+/* Preventing the default action of the button. */
 subtractsCount.forEach(function(ele){
     ele.addEventListener('click', function(e){
         e.preventDefault();

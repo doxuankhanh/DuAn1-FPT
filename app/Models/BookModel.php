@@ -68,8 +68,8 @@ class BookModel extends BaseModel
     {
         if ($this->table !== null) {
             
-            if(isset($_GET['page'])) {
-                $page = $_GET['page'];
+            if(isset($_SERVER['REQUEST_URL'])) {
+                $page = $_SERVER['REQUEST_URL'];
             }else {
                 $page = 1;
             }
