@@ -4,7 +4,7 @@
         <?php if (count($data['carts']) > 0) : ?>
             <table class="table-cart">
               
-                   
+                   <h2>Giỏ hàng của bạn: </h2>
                         <div class="đây là msg thông báo khi người dùng đã xóa giỏ hàng">
                             <?= $_SESSION['msgDelSuccessCart'] ?? '';
                             unset($_SESSION['msgDelSuccessCart']) ?>
