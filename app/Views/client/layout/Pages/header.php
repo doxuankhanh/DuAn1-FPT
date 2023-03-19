@@ -55,7 +55,6 @@
                 <img src="../../../../../../DuAn1-FPT/Public/images/product/banner.png" alt="" class="img-banner">
             </a>
             <div class="div-searchsite">
-
                 <a href="<?= URL ?>Home/getCartByClientID" class="cart"></a>
                 <form action="<?= URL ?>Home/loadBookSearch" method="post">
                     <input type="text" class="search-box" placeholder="Tìm kiếm sách của bạn..." name="bookName">

@@ -33,10 +33,18 @@ class UserModel extends BaseModel {
             return $data;
         }
     }
+    // update user
     function updateUser($email,$username,$accountName,$address,$phoneNumber,$avatar,$userID){
         if ($this->table !== null) {
             $sql = "UPDATE $this->table SET email = ?,username = ? ,accountName = ?,address = ?, phoneNumber = ?, avatar = ? WHERE clientID = ?";
             return $this->_query($sql)->execute([$email, $username, $accountName, $address, $phoneNumber, $avatar, $userID]);
+        }
+    }
+    // quên mật khẩu
+    function getPassByEmail($password,$email) {
+        if($this->table !== null) {
+            $sql = "UPDATE $this->table SET password = ? WHERE email = ?";
+            return $this->_query($sql)->execute([$password,$email]);
         }
     }
 }
