@@ -1,4 +1,5 @@
 <?php require_once "./app/Views/client/layout/Pages/header.php"; ?>
+<!-- <?= _dump($_SESSION['carts'])?> -->
 <div class="div-container-cart">
     <div class="div-main-cart">
         <?php if (count($data['carts']) > 0) : ?>
@@ -13,10 +14,6 @@
                             <?= $_SESSION['msgUpdateCartSuccess'] ?? '';
                             unset($_SESSION['msgUpdateCartSuccess']) ?>
                         </div>
-                        
-                       
-               
-
                 <thead class="thead-title">
                     <tr class="tr-title">
                         <td class="td-cart">Remove</td>

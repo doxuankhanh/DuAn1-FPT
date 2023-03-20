@@ -34,7 +34,6 @@ class HomeController
                 'literatureVN' => $this->book->bookFollowCategories(10),
                 'literature' => $this->book->bookFollowCategories(11),
                 'children' => $this->book->bookFollowCategories(12),
-
             ]
         );
     }
@@ -350,11 +349,12 @@ class HomeController
     function getCartByClientID()
     {
 
+        $_SESSION['carts'] = $this->cart->getCartByClientID($_SESSION['userID'] ?? '');
         $this->view(
             "client.layout.Pages.Components.cart",
             [
                 'cates' => $this->cate->all(),
-                'carts' => $this->cart->getCartByClientID($_SESSION['userID'] ?? ''),
+                'carts' => $_SESSION['carts'],
             ]
         );
     }
@@ -546,9 +546,12 @@ class HomeController
     function checkOut()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $result = $this->order->store(clientID: $_SESSION['userID'], dateBuy: date("Y/m/d H:i:a"), clientName: $_SESSION['username'], address: $_SESSION['address'], phone: $_SESSION['phone']);
+            $result = $this->order->store(clientID: $_SESSION['userID'], dateBuy: date("Y/m/d H:i:a"), clientName: $_SESSION['username'], address: $_SESSION['address'], phone: $_SESSION['phone'],carts:$_SESSION['carts']);
             if ($result) {
                 $_SESSION['msgOrderSuccess'] = "Cảm ơn bạn đã mua sắm!";
+                die("OK");
+            }else {
+                die("STUPID");
             }
         }
         $this->view(
