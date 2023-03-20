@@ -2,7 +2,7 @@
 <div class="div-login-form">
     <div class="div-form-site">
         <form action="<?= URL ?>Home/resetPassword" class="form-login" method="post">
-            <h3 class="h3-login">Thay đổi mật khẩu</h3>
+            <h3 class="h3-login ml-forGetmail">Thay đổi mật khẩu</h3>
             <div class="div-input-box">
                 <input type="password" class="input-form-login" value="" name="passwordNew" required>
                 <span class="span-label">Mật khẩu mới</span>

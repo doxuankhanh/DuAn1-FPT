@@ -18,7 +18,7 @@
             <div class="div-introduct">
                 <a class="anchor-a" href="#">GIỚI THIỆU</a>
                 <a class="anchor-a" href="#">LỊCH SỬ GIAO DỊCH</a>
-                <a class="anchor-a" href="#">kIỂM TRA ĐƠN HÀNG</a>
+                <a class="anchor-a" href="#">KIỂM TRA ĐƠN HÀNG</a>
             </div>
             <div class="div-login-site">
                 <?php if (!isset($_SESSION['userID'])) : ?>
@@ -40,9 +40,9 @@
                         Xin chào <p style="display: inline-block;text-transform: uppercase;"><?= isset($_SESSION['userID']) ? $_SESSION['username'] : '' ?></p>
                         <div class="p-setting" style="display: inline;" href="#"><img class="img-setting" src="../../../../../../DuAn1-FPT/Public/images/product/settings-icon-13.png" alt="">
                             <ul class="ul-setting">
-                                <li class="li-setting"><a class="anchor-a" style="" href="<?= URL ?>Home/updateUser/<?= $_SESSION['userID'] ?>">Thông tin tài khoản</a></li>
-                                <li class="li-setting"><a class="anchor-a" style="" href="<?= URL?>Home/forgetPassword">Quên mật khẩu</a></li>
-                                <li class="li-setting"><a class="anchor-a" href="<?= URL ?>Home/destroy">ĐĂNG XUẤT</a></li>
+                                <li class="li-setting"><a class="anchor-a" style="border-right: none;" href="<?= URL ?>Home/updateUser/<?= $_SESSION['userID'] ?>">Thông tin tài khoản</a></li>
+                                <li class="li-setting"><a class="anchor-a" style="border-right: none;" href="<?= URL?>Home/forgetPassword">Quên mật khẩu</a></li>
+                                <li class="li-setting"><a class="anchor-a" style="border-right: none;" href="<?= URL ?>Home/destroy">ĐĂNG XUẤT</a></li>
                             </ul>
                         </div>
                     </a>
@@ -55,8 +55,7 @@
                 <img src="../../../../../../DuAn1-FPT/Public/images/product/banner.png" alt="" class="img-banner">
             </a>
             <div class="div-searchsite">
-                <a href="<?= URL ?>Home/getCartByClientID" class="cart"><div class="div-buble-cart"></div></a>
-                
+                <a href="<?= URL ?>Home/getCartByClientID" class="cart"></a>
                 <form action="<?= URL ?>Home/loadBookSearch" method="post">
                     <input type="text" class="search-box" placeholder="Tìm kiếm sách của bạn..." name="bookName">
                     <input type="image" type="submit" name="search-btn" src="../../../../../../DuAn1-FPT/Public/images/product/searchbg.png" value="Tìm kiếm" class="search-btn">
@@ -68,6 +67,7 @@
                 <li class="li-nav"><a href="#">DANH MỤC SÁCH</a>
                     <ul class="ul-child-list">
                         <?php foreach ($data['cates'] as $cate) : ?>
+
                             <li class="li-child-list"><a href="<?= URL ?>Home/bookFollowCategories/<?= $cate['id'] ?? '' ?>"><?= $cate['cateName'] ?? '' ?></a>
                                 <!-- <ul class="ul-child-last-list">
                                 <li class="li-child-last-list">Tác phẩm 1</li>

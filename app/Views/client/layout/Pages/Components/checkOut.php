@@ -7,6 +7,7 @@
             <div class="div-infor-checkout">
                 <h4 style="">Thông tin người mua</h4>
                 <div class="div-infor site">
+<<<<<<< HEAD
                     <div class="div-title">
                         <p class="p-infor">Họ tên</p>
                         <p class="p-infor">Email</p>
@@ -19,6 +20,24 @@
                         <p class="p-infor"><input type="text" name="phoneNumber" id="" value="<?= $_SESSION['phone'] ?? '' ?>" disabled></p>
                         <p class="p-infor"><input type="text" name="address" id="" value="<?= $_SESSION['address'] ?? '' ?>" disabled></p>
                     </div>
+=======
+                    <table class="table-infor">
+                        <thead class="thead-infor">
+                            <th>Họ tên </th>
+                            <th>Email</th>
+                            <th>Số điện thoại</th>
+                            <th>Địa chỉ</th>
+                        </thead>
+                        <tbody>
+                            <tr class="tr-infor">
+                                <td><input type="text" class="inputDis" name="username" id="" value="<?= $_SESSION['username'] ?? '' ?>" disabled></td>
+                                <td><input type="text" class="inputDis" name="email" id="" value="<?= $_SESSION['email'] ?? '' ?>" disabled></td>
+                                <td><input type="text" class="inputDis" name="phoneNumber" id="" value="<?= $_SESSION['phone'] ?? '' ?>" disabled></td>
+                                <td><input type="text" class="inputDis" name="address" id="" value="<?= $_SESSION['address'] ?? '' ?>" disabled></td>
+                            </tr>
+                        </tbody>
+                    </table>
+>>>>>>> 98c86b609ad6af8440ac849aea145ba41c230f90
                     <h2>Thông tin sản phẩm</h2>
                     <table class="table-checkout">
                         <thead class="thead-checkout">
@@ -35,6 +54,7 @@
                                 $total += $subtotal;
                             ?>
                                 <tr>
+<<<<<<< HEAD
                                     <td><?= $key + 1 ?></td>
                                     <td><?= $value['bookName'] ?? '' ?></td>
                                     <td><?= number_format($value['price'] ?? '') ?></td>
@@ -55,6 +75,28 @@
                                 <td></td>
                                 <td><strong>Tổng cộng</strong></td>
                                 <td><?= number_format($total) ?></td>
+=======
+                                    <td class="td-checkOut"><?= $key + 1 ?></td>
+                                    <td class="td-checkOut"><?= $value['bookName'] ?? '' ?></td>
+                                    <td class="td-checkOut"><?= number_format($value['price'] ?? '') ?></td>
+                                    <td class="td-checkOut"><?= $value['quantity'] ?? '' ?></td>
+                                    <td class="td-checkOut"><?= number_format($subtotal) ?></td>
+                                </tr>
+                            <?php endforeach ?>
+                            <tr style="border-top: 1px solid #ccc;">
+                                <td class="td-checkOut"></td>
+                                <td class="td-checkOut"></td>
+                                <td class="td-checkOut"></td>
+                                <td class="td-checkOut">Phí vận chuyển</td>
+                                <td class="td-checkOut">Free</td>
+                            </tr>
+                            <tr >
+                                <td class="td-checkOut"></td>
+                                <td class="td-checkOut"></td>
+                                <td class="td-checkOut"></td>
+                                <td class="td-checkOut"><strong>Tổng cộng</strong></td>
+                                <td class="td-checkOut"><?= number_format($total) ?></td>
+>>>>>>> 98c86b609ad6af8440ac849aea145ba41c230f90
                             </tr>
                         </tbody>
                     </table>

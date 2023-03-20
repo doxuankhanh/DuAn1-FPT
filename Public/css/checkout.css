@@ -51,11 +51,16 @@
   .thead-checkout th {
     text-align: left;
     border-bottom: 1px solid #ccc;
-    padding-bottom: 10px;
+    padding: 10px;
+    min-width: 300px;
+    text-align: center;
   }
   
-  td {
-    padding:5px 0;
+  .td-checkOut {
+    overflow: hidden;
+    padding: 10px;
+    min-width: 300px;
+    text-align: center;;
   }
   .h2-checkout button{
     padding: 10px;
@@ -71,4 +76,9 @@
 -webkit-box-shadow: 0px 2px 36px 8px  #42944e;
 -moz-box-shadow: 0px 2px 36px 8px  #42944e;
   }
-  
+  .inputDis{
+  background:none;
+  border: none;
+  text-align: center;
+  font-weight: 500;
+ }

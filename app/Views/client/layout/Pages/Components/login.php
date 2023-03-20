@@ -3,7 +3,7 @@
 <div class="div-login-form">
     <div class="div-form-site">
         <form action="<?= URL ?>Home/login" class="form-login" method="post">
-            <h3 class="h3-login">Đăng nhập</h3>
+            <h3 class="h3-login ml-forGetmail">Đăng nhập</h3>
             <div class="div-input-box">
                 <input type="text" class="input-form-login" value="<?= $data['email'] ?? '' ?>" name="email" required>
                 <span class="span-label">Email</span>
