@@ -55,7 +55,8 @@
                 <img src="../../../../../../DuAn1-FPT/Public/images/product/banner.png" alt="" class="img-banner">
             </a>
             <div class="div-searchsite">
-                <a href="<?= URL ?>Home/getCartByClientID" class="cart"></a>
+                <a href="<?= URL ?>Home/getCartByClientID" class="cart">
+            <div class="div-buble-cart"></div></a>
                 <form action="<?= URL ?>Home/loadBookSearch" method="post">
                     <input type="text" class="search-box" placeholder="Tìm kiếm sách của bạn..." name="bookName">
                     <input type="image" type="submit" name="search-btn" src="../../../../../../DuAn1-FPT/Public/images/product/searchbg.png" value="Tìm kiếm" class="search-btn">
