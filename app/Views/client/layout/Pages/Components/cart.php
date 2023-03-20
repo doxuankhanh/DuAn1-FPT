@@ -1,4 +1,5 @@
 <?php require_once "./app/Views/client/layout/Pages/header.php"; ?>
+
 <div class="div-container-cart">
     <div class="div-main-cart">
         <?php if (count($data['carts']) > 0) : ?>
@@ -19,18 +20,18 @@
 
                 <thead class="thead-title">
                     <tr class="tr-title">
-                        <td class="td-cart">Remove</td>
-                        <td class="td-cart">Product</td>
-                        <td class="td-cart">Price</td>
-                        <td class="td-cart">Quantity</td>
-                        <td class="td-cart">Image</td>
-                        <td class="td-cart">TổngTiền</td>
+                        <td class="td-cart"></td>
+                        <td class="td-cart">Tiêu đề</td>
+                        <td class="td-cart">Giá</td>
+                        <td class="td-cart">Số lượng</td>
+                        <td class="td-cart">Ảnh</td>
+                        <td class="td-cart">Tổng Tiền</td>
                     </tr>
                 </thead>
                 <tbody>
                     <?php foreach ($data['carts'] as $cart) : ?>
                         <tr class="tr-cart">
-                            <td class="td-cart"><a href="<?= URL ?>Home/delCart/<?= $cart['cartID'] ?>" onclick="return confirm('Bạn có muốn xóa không?')"><button class="deleteBtn" style="cursor: pointer;">Xóa</button></a></td>
+                            <td class="td-cart"><a href="<?= URL ?>Home/delCart/<?= $cart['cartID'] ?>" onclick="return confirm('Bạn có muốn xóa không?')"><button class="deleteBtn" style="cursor: pointer;font-weight: 900;">X</button></a></td>
                             <td class="td-cart"><?= $cart['bookName'] ?? '' ?></td>
                             <td class="td-cart"><?= number_format($cart['price'] ?? '') ?></td>
                             <td class="td-cart">
