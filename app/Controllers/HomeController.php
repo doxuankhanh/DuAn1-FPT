@@ -141,13 +141,11 @@ class HomeController
     function updateUser($userId)
     {
         $user = $this->user->getOneUser($userId);
-
         if (isset($_POST['btn-update'])) {
             $img = $user['avatar'];
-
             if ($_FILES['avatar']['size'] !== 0) {
                 $imgF = pathinfo($_FILES['avatar']['name'], PATHINFO_EXTENSION);
-                if ($imgF == 'png' || $imgF == 'jpg') {
+                if ($imgF === 'png' || $imgF === 'jpg') {
                     $img = $_FILES['avatar']['name'];
                     move_uploaded_file($_FILES['avatar']['tmp_name'], 'Public/upload/' . basename($img));
                 } else {
@@ -166,8 +164,10 @@ class HomeController
 
         $this->view(
             "client.layout.Pages.Components.updateUser",
-            [
+            [   
+                'cates' => $this->cate->all(),
                 'user' => $user,
+                'countCarts' => count($this->cart->getCartByClientID($_SESSION['userID'] ?? ''))
             ]
         );
     }
@@ -356,11 +356,12 @@ class HomeController
     function getCartByClientID()
     {
 
+        $_SESSION['carts'] = $this->cart->getCartByClientID($_SESSION['userID'] ?? '');
         $this->view(
             "client.layout.Pages.Components.cart",
             [
                 'cates' => $this->cate->all(),
-                'carts' => $this->cart->getCartByClientID($_SESSION['userID'] ?? ''),
+                'carts' => $_SESSION['carts'],
                 'countCarts' => count($this->cart->getCartByClientID($_SESSION['userID'] ?? ''))
             ]
         );
@@ -561,9 +562,14 @@ class HomeController
     function checkOut()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $result = $this->order->store(clientID: $_SESSION['userID'], dateBuy: date("Y/m/d H:i:a"), clientName: $_SESSION['username'], address: $_SESSION['address'], phone: $_SESSION['phone']);
-            if ($result) {
-                $_SESSION['msgOrderSuccess'] = "Cảm ơn bạn đã mua sắm!";
+            if(isset($_POST['submit-checkout'])) {
+                $result = $this->order->store(clientID: $_SESSION['userID'], dateBuy: date("Y/m/d H:i:a"), clientName: $_SESSION['username'], address: $_SESSION['address'], phone: $_SESSION['phone'],carts:$_SESSION['carts']);
+                // _dump($result);die;
+                if ($result) {
+                    $_SESSION['msgOrderSuccess'] = "Cảm ơn bạn đã mua sắm!";
+                }else {
+                    return false;
+                }
             }
         }
         $this->view(

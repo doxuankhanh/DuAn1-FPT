@@ -1,23 +1,17 @@
 <?php require_once "./app/Views/client/layout/Pages/header.php"; ?>
-
 <div class="div-container-cart">
     <div class="div-main-cart">
         <?php if (count($data['carts']) > 0) : ?>
             <table class="table-cart">
-              
-                   <h2>Giỏ hàng của bạn: </h2>
-                        <div class="đây là msg thông báo khi người dùng đã xóa giỏ hàng">
-                            <?= $_SESSION['msgDelSuccessCart'] ?? '';
-                            unset($_SESSION['msgDelSuccessCart']) ?>
-                        </div>
-                        <div class="đây là msg thông báo khi người dùng update giỏ hàng thành công">
-                            <?= $_SESSION['msgUpdateCartSuccess'] ?? '';
-                            unset($_SESSION['msgUpdateCartSuccess']) ?>
-                        </div>
-                        
-                       
-               
-
+                <h2>Giỏ hàng của bạn: </h2>
+                <div class="đây là msg thông báo khi người dùng đã xóa giỏ hàng">
+                    <?= $_SESSION['msgDelSuccessCart'] ?? '';
+                    unset($_SESSION['msgDelSuccessCart']) ?>
+                </div>
+                <div class="đây là msg thông báo khi người dùng update giỏ hàng thành công">
+                    <?= $_SESSION['msgUpdateCartSuccess'] ?? '';
+                    unset($_SESSION['msgUpdateCartSuccess']) ?>
+                </div>
                 <thead class="thead-title">
                     <tr class="tr-title">
                         <td class="td-cart"></td>
@@ -43,12 +37,12 @@
                                 </form>
                             </td>
                             <td class="td-cart"><img src="../../../../../../../DuAn1-FPT/Public/upload/<?= $cart['image'] ?? '' ?>" alt=""></td>
-                            <td class="td-cart" style="border-bottom:none;padding-top: 100px;"><?= number_format($cart['quantity'] * $cart['price'])?></td>
+                            <td class="td-cart" style="border-bottom:none;padding-top: 100px;"><?= number_format($cart['quantity'] * $cart['price']) ?></td>
                         </tr>
                     <?php endforeach ?>
                 </tbody>
             </table>
-            <button class="button-paying"><a href="<?=URL?>HOME/checkOut" style="text-decoration: none;">Tiến hành thanh toán</a></button>
+            <button class="button-paying"><a href="<?= URL ?>HOME/checkOut" style="text-decoration: none;">Tiến hành thanh toán</a></button>
         <?php else : ?>
             <div style="text-align: center;">Không có sản phẩm nào trong giỏ hàng của bạn!</div>
         <?php endif ?>

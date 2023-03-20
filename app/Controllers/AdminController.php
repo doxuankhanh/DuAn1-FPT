@@ -5,6 +5,8 @@ class AdminController{
     use Controller;
     protected $book;
     protected $cate;
+    protected $client;
+    protected $feedback;
     function __construct()
     {
         $this->book = $this->model("BookModel");
@@ -56,6 +58,28 @@ class AdminController{
         ]
     );
     
+    }
+
+    function listClient(){
+        $page = $this->client->all();
+        $pages = ceil(count($page) / 6);
+        $this->view("admin.layout.Components.Client.list",
+        [
+            'clients' =>$this->client->all(),
+            'pages' => $pages
+        ]
+    );
+    }
+    
+    function listFeedBack(){
+        $page = $this->feedback->loadAll();
+        $pages = ceil(count($page) / 6);
+        $this->view("admin.layout.Components.Feedback.list",
+        [
+            'feedbacks' =>$this->feedback->loadAll(),
+            'pages' => $pages
+        ]
+    );
     }
     
 }
