@@ -90,12 +90,17 @@ header {
 .div-buble-cart{
     width: 30px;
     height: 30px;
-    background: rgb(2,0,36);
-    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(166,166,189,1) 51%, rgba(0,212,255,1) 100%);
     position: absolute;
-    right: -30px;
-    border-radius: 55% 45% 32% 68% / 0% 50% 50% 100% ;
-    bottom: 0;
+    background-color: #539165;
+    right: -15px;
+    border-radius: 50%;
+    top: 0;
+}
+.div-buble-cart p {
+    color: #F8F5E4;
+    font-weight: bold;
+    text-align: center;
+    line-height: 30px;
 }
 .cart {
     width: 55px;

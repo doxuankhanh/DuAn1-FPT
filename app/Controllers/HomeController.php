@@ -34,6 +34,9 @@ class HomeController
                 'literatureVN' => $this->book->bookFollowCategories(10),
                 'literature' => $this->book->bookFollowCategories(11),
                 'children' => $this->book->bookFollowCategories(12),
+                //count sản phẩm trong giỏ hàng
+                'countCarts' => count($this->cart->getCartByClientID($_SESSION['userID'] ?? ''))
+
             ]
         );
     }
@@ -128,6 +131,8 @@ class HomeController
                 'view' => $this->book->updateView($id),
                 'book' => $bookDetail,
                 'comments' => $this->cmt->loadCmt($id),
+                'countCarts' => count($this->cart->getCartByClientID($_SESSION['userID'] ?? ''))
+
             ]
         );
     }
@@ -163,6 +168,7 @@ class HomeController
             "client.layout.Pages.Components.updateUser",
             [
                 'user' => $user,
+                'countCarts' => count($this->cart->getCartByClientID($_SESSION['userID'] ?? ''))
             ]
         );
     }
@@ -174,7 +180,9 @@ class HomeController
             [
                 'cates' => $this->cate->all(),
                 'cate' => $this->cate->getOne($cateID),
-                'book' => $this->book->bookFollowCategories($cateID)
+                'book' => $this->book->bookFollowCategories($cateID),
+                'countCarts' => count($this->cart->getCartByClientID($_SESSION['userID'] ?? ''))
+
             ]
         );
     }
@@ -354,7 +362,8 @@ class HomeController
             "client.layout.Pages.Components.cart",
             [
                 'cates' => $this->cate->all(),
-                'carts' => $_SESSION['carts'],
+                'carts' => $this->cart->getCartByClientID($_SESSION['userID'] ?? ''),
+                'countCarts' => count($this->cart->getCartByClientID($_SESSION['userID'] ?? ''))
             ]
         );
     }
@@ -379,6 +388,8 @@ class HomeController
             [
                 'cates' => $this->cate->all(),
                 'bookSearch' => $bookSearch ?? '',
+                'countCarts' => count($this->cart->getCartByClientID($_SESSION['userID'] ?? ''))
+
             ]
         );
     }
@@ -471,6 +482,8 @@ class HomeController
             "client.layout.Pages.Components.forgetPassword",
             [
                 'cates' => $this->cate->all(),
+                'countCarts' => count($this->cart->getCartByClientID($_SESSION['userID'] ?? ''))
+
             ]
         );
     }
@@ -504,6 +517,8 @@ class HomeController
             "client.layout.Pages.Components.virification",
             [
                 'cates' => $this->cate->all(),
+                'countCarts' => count($this->cart->getCartByClientID($_SESSION['userID'] ?? ''))
+
             ]
         );
     }
@@ -540,6 +555,8 @@ class HomeController
             "client.layout.Pages.Components.resetPassword",
             [
                 'cates' => $this->cate->all(),
+                'countCarts' => count($this->cart->getCartByClientID($_SESSION['userID'] ?? ''))
+
             ]
         );
     }
@@ -561,5 +578,16 @@ class HomeController
                 'carts' => $this->cart->getCartByClientID($_SESSION['userID'] ?? ''),
             ]
         );
+    }
+    function countCartHeader() {
+        $this->view(
+            "client.layout.Pages.Components.header",
+            [
+                'cates' => $this->cate->all(),
+                'carts' => $this->cart->getCartByClientID($_SESSION['userID'] ?? ''),
+                'countCarts' => count($this->cart->getCartByClientID($_SESSION['userID'] ?? ''))
+            ]
+        );
+
     }
 }
