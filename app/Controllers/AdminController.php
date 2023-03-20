@@ -11,9 +11,11 @@ class AdminController{
     {
         $this->book = $this->model("BookModel");
         $this->cate = $this->model("CateModel");
-        if(!isset($_SESSION['userID']) || $_SESSION['role'] !== 0) {
-            _redirectLo(URL."Home");
-        }
+        $this->client = $this->model("UserModel");
+        $this->feedback = $this->model("CmtModel");
+        // if(!isset($_SESSION['userID']) || $_SESSION['role'] !== '0') {
+        //     _redirectLo(URL."Home");
+        // }
     }
     function index() {
         $this->view("admin.layout.Components.home",
