@@ -40,6 +40,10 @@ class HomeController
             ]
         );
     }
+    // liên hệ
+    function _contact() {
+        $this->view("client.layout.Pages.Components.contact");
+    }
     // chi tiết sản phẩm
     function bookDetail($id, $cateID)
     {

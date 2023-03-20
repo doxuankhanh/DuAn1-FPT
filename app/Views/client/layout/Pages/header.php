@@ -81,6 +81,6 @@
                 </li>
                 <li class="li-nav"><a href="<?= URL ?>Home/loadBookView">SÁCH CÓ LƯỢT XEM NHIỀU NHẤT</a></li>
                 <li class="li-nav"><a href="#">CHƯƠNG TRÌNH KHUYẾN MÃI</a></li>
-                <li class="li-nav"><a href="#">LIÊN HỆ</a></li>
+                <li class="li-nav"><a href="<?= URL?>Home/_contact">LIÊN HỆ</a></li>
             </ul>
         </div>
