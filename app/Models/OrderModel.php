@@ -20,6 +20,7 @@ class OrderModel extends BaseModel {
             }
             // die($sqlOrderDetail);
             // return $this->connect->commit();
+            return true;
         }
     }
 }
