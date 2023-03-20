@@ -28,11 +28,20 @@ class BaseModel {
         return false;
     }
 
+   
 
     // Methods delete
     function delete($id) {
         if($this->table !== null) {
             $sql = "DELETE FROM $this->table WHERE id = ?";
+            return $this->_query($sql)->execute([$id]);
+        }
+        return false;
+    }
+
+    function deleteClient($id) {
+        if($this->table !== null) {
+            $sql = "DELETE FROM $this->table WHERE clientID = ?";
             return $this->_query($sql)->execute([$id]);
         }
         return false;

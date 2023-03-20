@@ -56,8 +56,8 @@
             </div>
 
             <div class="form-group">
-                <label for="">Số Điện Thoại</label>
-                <input type="text" class="form-control" name="phoneNumber" value="<?= $data['client']['phoneNumber'] ?? '' ?>">
+                <label for="phoneNumber">Số Điện Thoại</label>
+                <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" value="<?= $data['client']['phoneNumber'] ?? '' ?>">
             </div>
 
             <div class="form-group">
