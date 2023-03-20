@@ -7,20 +7,6 @@
             <div class="div-infor-checkout">
                 <h4 style="">Thông tin người mua</h4>
                 <div class="div-infor site">
-<<<<<<< HEAD
-                    <div class="div-title">
-                        <p class="p-infor">Họ tên</p>
-                        <p class="p-infor">Email</p>
-                        <p class="p-infor">Số điện thoại</p>
-                        <p class="p-infor">Địa chỉ</p>
-                    </div>
-                    <div class="div-infor-main">
-                        <p class="p-infor"><input type="text" name="username" id="" value="<?= $_SESSION['username'] ?? '' ?>" disabled></p>
-                        <p class="p-infor"><input type="text" name="email" id="" value="<?= $_SESSION['email'] ?? '' ?>" disabled></p>
-                        <p class="p-infor"><input type="text" name="phoneNumber" id="" value="<?= $_SESSION['phone'] ?? '' ?>" disabled></p>
-                        <p class="p-infor"><input type="text" name="address" id="" value="<?= $_SESSION['address'] ?? '' ?>" disabled></p>
-                    </div>
-=======
                     <table class="table-infor">
                         <thead class="thead-infor">
                             <th>Họ tên </th>
@@ -37,7 +23,6 @@
                             </tr>
                         </tbody>
                     </table>
->>>>>>> 98c86b609ad6af8440ac849aea145ba41c230f90
                     <h2>Thông tin sản phẩm</h2>
                     <table class="table-checkout">
                         <thead class="thead-checkout">
@@ -54,28 +39,6 @@
                                 $total += $subtotal;
                             ?>
                                 <tr>
-<<<<<<< HEAD
-                                    <td><?= $key + 1 ?></td>
-                                    <td><?= $value['bookName'] ?? '' ?></td>
-                                    <td><?= number_format($value['price'] ?? '') ?></td>
-                                    <td><?= $value['quantity'] ?? '' ?></td>
-                                    <td><?= number_format($subtotal) ?></td>
-                                </tr>
-                            <?php endforeach ?>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td>Phí vận chuyển</td>
-                                <td>Free</td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td><strong>Tổng cộng</strong></td>
-                                <td><?= number_format($total) ?></td>
-=======
                                     <td class="td-checkOut"><?= $key + 1 ?></td>
                                     <td class="td-checkOut"><?= $value['bookName'] ?? '' ?></td>
                                     <td class="td-checkOut"><?= number_format($value['price'] ?? '') ?></td>
@@ -96,7 +59,6 @@
                                 <td class="td-checkOut"></td>
                                 <td class="td-checkOut"><strong>Tổng cộng</strong></td>
                                 <td class="td-checkOut"><?= number_format($total) ?></td>
->>>>>>> 98c86b609ad6af8440ac849aea145ba41c230f90
                             </tr>
                         </tbody>
                     </table>
