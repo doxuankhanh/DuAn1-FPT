@@ -141,6 +141,23 @@
 .h3-cart{
   margin: 10px 35px;
 }
+.cart-empty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cart-empty img{
+  width: 300px;
+}
+.content_cart-empty h4 {
+  text-transform: uppercase;
+  font-style: italic;
+  font-weight: 600;
+}
+.content_cart-empty span {
+  margin: 10px 0;
+  color: #999;
+}
 
 
 

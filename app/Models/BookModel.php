@@ -123,7 +123,7 @@ class BookModel extends BaseModel
     function bookView()
     {
         if ($this->table !== null) {
-            $sql = $this->_selectQuery() . " WHERE $this->table.view > 10";
+            $sql = $this->_selectQuery() . " WHERE $this->table.view > 50";
             $this->_query($sql)->execute();
             $data = $this->stmt->fetchAll();
             return $data;

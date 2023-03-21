@@ -591,4 +591,24 @@ class HomeController
         );
 
     }
+    
+    // kiểm tra đơn hàng đã đạt
+    function checkOrder() {
+        $this->view("client.layout.Pages.Components.checkOrder",
+        [
+            'cates' => $this->cate->all(),
+            'countCarts' => count($this->cart->getCartByClientID($_SESSION['userID'] ?? '')),
+            'clientOrder' => $this->order->loadOrderClient($_SESSION['userID'] ?? ''),
+        ]
+    );
+    }
+    //load bookView 
+    function loadBookView() {
+        $this->view("client.layout.Pages.Components.topView",
+        [
+            'cates' => $this->cate->all(),
+            'viewBook' => $this->book->bookView(),
+        ]
+    );
+    }
 }
