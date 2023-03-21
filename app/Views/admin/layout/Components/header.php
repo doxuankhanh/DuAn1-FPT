@@ -64,6 +64,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="<?= URL?>Admin/listCate">Danh Mục</a>
                         <a class="collapse-item" href="<?= URL?>Admin/listBook">Sản Phẩm</a>
+                        <a class="collapse-item" href="<?= URL?>Admin/listAuthor">Tác Giả</a>
                         <a class="collapse-item" href="<?= URL?>Admin/listClient">Khách Hàng</a>
                         <a class="collapse-item" href="<?= URL?>Admin/listFeedBack">Bình Luận</a>
                         <a class="collapse-item" href="<?= URL?>">Thống Kê</a>
