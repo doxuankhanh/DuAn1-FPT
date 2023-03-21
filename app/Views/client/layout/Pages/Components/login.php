@@ -21,6 +21,7 @@
             <div class="div-input-box">
                 <span class="err-msg" style="color:red;font-weight:bold;font-style:italic"><?= $data['msgErr'] ?? '' ?></span>
                 <button class="submit-btn login" type="submit">Đăng nhập</button>
+                <a href="<?= URL?>Home/forgetPassword" class="submit-btn login">Quên Mật Khẩu</a>
             </div>
         </form>
     </div>

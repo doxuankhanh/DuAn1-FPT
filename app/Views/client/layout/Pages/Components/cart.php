@@ -44,7 +44,14 @@
             </table>
             <button class="button-paying"><a href="<?= URL ?>HOME/checkOut" style="text-decoration: none;">Tiến hành thanh toán</a></button>
         <?php else : ?>
-            <div style="text-align: center;">Không có sản phẩm nào trong giỏ hàng của bạn!</div>
+            <div class="cart-empty">
+                <img src="../../../../../../../DuAn1-FPT/Public/images/product/cart_empty.png" alt="">
+            </div>
+            <div style="text-align: center;" class="content_cart-empty">
+                <h4>Giỏ hàng đang cảm thấy trống trải</h4>
+                <span>Ai đó ơi, mua sắm để nhận khuyến mãi ngay nào!</span>
+                <a href="<?= URL?>Home" class="submit-btn">Mua sắm ngay</a>
+            </div>
         <?php endif ?>
     </div>
 </div>

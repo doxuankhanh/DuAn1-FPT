@@ -20,7 +20,7 @@
             <div class="div-introduct">
                 <a class="anchor-a" href="#">GIỚI THIỆU</a>
                 <a class="anchor-a" href="#">LỊCH SỬ GIAO DỊCH</a>
-                <a class="anchor-a" href="#">KIỂM TRA ĐƠN HÀNG</a>
+                <a class="anchor-a" href="<?= URL?>Home/checkOrder">KIỂM TRA ĐƠN HÀNG</a>
             </div>
             <div class="div-login-site">
                 <?php if (!isset($_SESSION['userID'])) : ?>

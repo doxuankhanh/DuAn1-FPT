@@ -6,7 +6,7 @@
                 <?= $_SESSION['msgOrderSuccess'] ?? '';
                 unset($_SESSION['msgOrderSuccess']) ?>
             </h2>
-        <?php else : ?>
+        <?php unset($_SESSION['carts']);else : ?>
             <form action="<?= URL ?>Home/checkOut" method="post">
                 <div class="div-infor-checkout">
                     <h4 style="">Thông tin người mua</h4>

@@ -54,7 +54,7 @@
                 <label for="">Tác Giả</label>
                 <select class="form-control" id="" name="authorID">
                     <?php foreach ($data['authors'] as $author) : ?>
-                    <option value="<?= $author['id'] ?>"><?= $author['authorName'] ?></option>
+                    <option value="<?= $author['authorID'] ?>"><?= $author['authorName'] ?></option>
                     <?php endforeach ?>
                 </select>
             </div>
@@ -66,10 +66,6 @@
             <div class="form-group">
                 <label for="">Image</label>
                 <input type="file" class="form-control" id="" placeholder="" name="image">
-            </div>
-            <div class="form-group">
-                <label for="">Tác Giả</label>
-                <input type="text" class="form-control" id="" placeholder="" name="authorID">
             </div>
             <div class="form-group">
                 <label for="">Giá</label>
