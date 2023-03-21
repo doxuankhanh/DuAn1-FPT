@@ -33,7 +33,6 @@
                     <th scope="col" class=" p-3 w-20 text-nowrap">Tên Khách Hàng</th>
                     <th scope="col" class=" p-3 w-20 text-nowrap">Account</th>
                     <th scope="col" class=" p-3 w-20 text-nowrap">Email</th>
-                    <th scope="col" class=" p-3 w-20  text-nowrap">Mật Khẩu</th>
                     <th scope="col" class=" p-3 w-20 text-nowrap">Địa Chỉ</th>
                     <th scope="col" class=" p-3 w-20 text-nowrap">Số Điện Thoại</th>
                     <th scope="col" class=" p-3 w-20 text-nowrap">Ảnh</th>
@@ -50,10 +49,9 @@
                         <th scope="row" class=" p-3 w-20" ><?= $client['username']?></th>
                         <th scope="row" class=" p-3 w-20 text-nowrap"><?= $client['accountName']?></th>
                         <th scope="row" class=" p-3 w-20 text-nowrap"><?= $client['email']?></th>
-                        <th scope="row" class=" p-3 w-20 text-nowrap"><?= $client['password']?></th>
                         <th scope="row" class=" p-3 w-20"><?= $client['address']?></th>
                         <th scope="row" class=" p-3 w-20 text-nowrap"><?= $client['phoneNumber']?></th>
-                        <th><img src="../Public/upload/<?= $client['avatar'] ?>" alt="." style="height: 120px;"></th>
+                        <th><img src="../../../../../../../DuAn1-FPT/Public/upload/<?= $client['avatar'] ?>" alt="." style="height: 120px;"></th>
                         <th scope="row" class=" p-3 w-20 text-center"><?= $client['role']?></th>
                         <th><a href="<?= URL?>User/update/<?= $client['clientID']?>" class="btn btn-info">Update</a></th>
                         <th><a href="<?= URL?>User/delete/<?= $client['clientID']?>" class="btn btn-danger" onclick="return confirm('Bạn có muốn xóa không?')">Delete</a></th>

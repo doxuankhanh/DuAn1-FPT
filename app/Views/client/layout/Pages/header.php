@@ -10,9 +10,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/js/all.min.js">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 
 <body>
+<button onclick="topFunction()" id="myBtn" title="Go to top"><img src="../../../../../../DuAn1-FPT/Public/images/product/black-up-arrow-png-22.png" alt=""></button>
     <div class="div-container">
         <header>
             <div class="div-introduct">
