@@ -159,7 +159,7 @@ class BookModel extends BaseModel
             $sql = $this->_selectQuery() . " WHERE authors.authorName = ?";
             $this->_query($sql)->execute([$authorID]);
            $data = $this->stmt->fetchAll();
-           _dump($data);
+        //    _dump($data);
           
         }
     

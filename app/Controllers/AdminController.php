@@ -19,7 +19,7 @@ class AdminController{
         // if(!isset($_SESSION['userID']) || $_SESSION['role'] !== '0') {
         //     _redirectLo(URL."Home");
         // }
-        if(!isset($_SESSION['userID']) || $_SESSION['role'] !== '0') {
+        if(!isset($_SESSION['userID']) || $_SESSION['role'] !== 0) {
             _redirectLo(URL."Home");
         }
     }
