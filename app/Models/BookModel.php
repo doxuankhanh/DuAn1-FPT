@@ -153,6 +153,17 @@ class BookModel extends BaseModel
             return $data;
         }
     }
+    //sách cùng tác giả
+    function selectAuthor($authorID){
+        if ($this->table !== null) {
+            $sql = $this->_selectQuery() . " WHERE authors.authorName = ?";
+            $this->_query($sql)->execute([$authorID]);
+           $data = $this->stmt->fetchAll();
+           _dump($data);
+          
+        }
+    
+    }
     // câu lệnh truy vấn thường xuyên đc dùng
     private function _selectQuery()
     {

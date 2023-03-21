@@ -7,13 +7,18 @@ class AdminController{
     protected $cate;
     protected $client;
     protected $feedback;
-    protected $order;
+    protected $author;
     function __construct()
     {
         $this->book = $this->model("BookModel");
         $this->cate = $this->model("CateModel");
         $this->client = $this->model("UserModel");
         $this->feedback = $this->model("CmtModel");
+        $this->author = $this->model("AuthorModel");
+        
+        // if(!isset($_SESSION['userID']) || $_SESSION['role'] !== '0') {
+        //     _redirectLo(URL."Home");
+        // }
         if(!isset($_SESSION['userID']) || $_SESSION['role'] !== '0') {
             _redirectLo(URL."Home");
         }
@@ -81,6 +86,14 @@ class AdminController{
         [
             'feedbacks' =>$this->feedback->loadAll(),
             'pages' => $pages
+        ]
+    );
+    }
+    function listAuthor(){
+        $this->view("admin.layout.Components.Author.list",
+        [
+            'authors'=>$this->author->all(),
+            
         ]
     );
     }

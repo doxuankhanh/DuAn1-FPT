@@ -35,14 +35,13 @@ class HomeController
                 'literature' => $this->book->bookFollowCategories(11),
                 'children' => $this->book->bookFollowCategories(12),
                 //count sản phẩm trong giỏ hàng
-                'countCarts' => count($this->cart->getCartByClientID($_SESSION['userID'] ?? ''))
-
+                'countCarts' => count($this->cart->getCartByClientID($_SESSION['userID'] ?? '')),
             ]
         );
     }
     // liên hệ
     function _contact() {
-        $this->view("client.layout.Pages.Components.contact");
+        $this->view("client.layout.Pages.Components.contact",['cates' => $this->cate->all(),]);
     }
     // chi tiết sản phẩm
     function bookDetail($id, $cateID)
@@ -131,7 +130,8 @@ class HomeController
                 'view' => $this->book->updateView($id),
                 'book' => $bookDetail,
                 'comments' => $this->cmt->loadCmt($id),
-                'countCarts' => count($this->cart->getCartByClientID($_SESSION['userID'] ?? ''))
+                'countCarts' => count($this->cart->getCartByClientID($_SESSION['userID'] ?? '')),
+                'authorCheck' => $this->book->selectAuthor($id)
 
             ]
         );

@@ -25,7 +25,7 @@
                 <tbody>
                     <?php foreach ($data['carts'] as $cart) : ?>
                         <tr class="tr-cart">
-                            <td class="td-cart"><a href="<?= URL ?>Home/delCart/<?= $cart['cartID'] ?>" onclick="return confirm('Bạn có muốn xóa không?')"><button class="deleteBtn" style="cursor: pointer;font-weight: 900;">X</button></a></td>
+                            <td class="td-cart"><a href="<?= URL ?>Home/delCart/<?= $cart['cartID'] ?>"><button class="deleteBtn" style="cursor: pointer;font-weight: 900;">X</button></a></td>
                             <td class="td-cart"><?= $cart['bookName'] ?? '' ?></td>
                             <td class="td-cart"><?= number_format($cart['price'] ?? '') ?></td>
                             <td class="td-cart">
@@ -33,7 +33,7 @@
                                     <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="subtracts-cart"></button>
                                     <input type="number" value="<?= $cart['quantity'] ?>" style="-webkit-appearance: none;" name="quantity">
                                     <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus-cart"></button>
-                                    <button class="updateBtn" type="submit" name="btn-updateCart" style="cursor: pointer;">Update</button>
+                                    <button class="updateBtn" id="updateCart" type="submit" name="btn-updateCart" style="cursor: pointer;">Update</button>
                                 </form>
                             </td>
                             <td class="td-cart"><img src="../../../../../../../DuAn1-FPT/Public/upload/<?= $cart['image'] ?? '' ?>" alt=""></td>

@@ -1,5 +1,5 @@
 const deleteBtn = document.querySelector('#myLink');
-
+const updateBtn = document.querySelector('#updateCart');
 deleteBtn.addEventListener('click', function(e){
   e.preventDefault()
     swal({
