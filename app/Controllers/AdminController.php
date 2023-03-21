@@ -7,15 +7,16 @@ class AdminController{
     protected $cate;
     protected $client;
     protected $feedback;
+    protected $order;
     function __construct()
     {
         $this->book = $this->model("BookModel");
         $this->cate = $this->model("CateModel");
         $this->client = $this->model("UserModel");
         $this->feedback = $this->model("CmtModel");
-        // if(!isset($_SESSION['userID']) || $_SESSION['role'] !== '0') {
-        //     _redirectLo(URL."Home");
-        // }
+        if(!isset($_SESSION['userID']) || $_SESSION['role'] !== '0') {
+            _redirectLo(URL."Home");
+        }
     }
     function index() {
         $this->view("admin.layout.Components.home",
@@ -83,6 +84,17 @@ class AdminController{
         ]
     );
     }
+
+    // function listOrder(){
+    //     $page = $this->order->loadAll();
+    //     $pages = ceil(count($page) / 6);
+    //     $this->view("admin.layout.Components.Order.list",
+    //     [
+    //         'orders' =>$this->order->loadAll(),
+    //         'pages' => $pages
+    //     ]
+    //     );
+    // }
     
 }
 ?>
