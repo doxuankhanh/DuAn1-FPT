@@ -9,7 +9,7 @@ class OrderModel extends BaseModel {
     //Load all
     function loadOrderClient($clientID) {
         if($this->table !== null && $this->sub_table !== null) {
-            $sql = "SELECT $this->sub_table.id,$this->sub_table.quantity,$this->sub_table.price AS priceOrder,($this->sub_table.price * $this->sub_table.quantity) AS sumPriceOrder,books.bookName,$this->table.dateBuy,$this->table.clientID FROM $this->sub_table LEFT JOIN $this->table ON $this->sub_table.orderID = $this->table.id LEFT JOIN books ON $this->sub_table.bookID = books.id WHERE clientID = ? ORDER BY id DESC ";
+            $sql = "SELECT $this->sub_table.id,$this->sub_table.quantity,$this->sub_table.price AS priceOrder,($this->sub_table.price * $this->sub_table.quantity) AS sumPriceOrder,books.bookName,books.image,$this->table.dateBuy,$this->table.clientID FROM $this->sub_table LEFT JOIN $this->table ON $this->sub_table.orderID = $this->table.id LEFT JOIN books ON $this->sub_table.bookID = books.id WHERE clientID = ? ORDER BY id DESC ";
             $this->_query($sql)->execute([$clientID]);
             $data = $this->stmt->fetchAll();
             return $data;
