@@ -1,8 +1,7 @@
-const second = document.querySelector('#para')  
-const startBtn = document.querySelector('#btnStart');
- const linkYtb = document.querySelector('#linkYtb').getAttribute("href");
- console.log(linkYtb);
- var timeLeft = 5;
+const second = document.querySelector('#redirect')  
+ const linkHome = document.querySelector('#linkHome').getAttribute("href");
+ 
+ var timeLeft = 3;
 second.innerHTML = "Chuyển trang trong " + timeLeft + " seconds";
 
    window.setInterval(function timeCount() {
@@ -11,6 +10,6 @@ second.innerHTML = "Chuyển trang trong " + timeLeft + " seconds";
 
      if (timeLeft == 0) {
          clearInterval(timeCount);
-         window.location= linkYtb;
+         window.location= linkHome;
      }
  }, 1000)
