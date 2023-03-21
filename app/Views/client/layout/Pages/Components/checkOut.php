@@ -1,7 +1,7 @@
 <?php require_once "./app/Views/client/layout/Pages/header.php"; ?>
 <div class="div-checkout-container">
     <div class="div-checkout-main">
-        <a id="linkHome" href="<?=URL?>Home"></a>
+        <a id="linkHome" hidden href="<?=URL?>Home"></a>
         <?php if (isset($_SESSION['msgOrderSuccess'])) : ?>
             <h2 class=" h2-checkout">
                 <?= $_SESSION['msgOrderSuccess'] ?? '';

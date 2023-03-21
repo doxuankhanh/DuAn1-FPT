@@ -41,7 +41,7 @@ class HomeController
     }
     // liên hệ
     function _contact() {
-        $this->view("client.layout.Pages.Components.contact");
+        $this->view("client.layout.Pages.Components.contact",['cates' => $this->cate->all(),]);
     }
     // chi tiết sản phẩm
     function bookDetail($id, $cateID)
