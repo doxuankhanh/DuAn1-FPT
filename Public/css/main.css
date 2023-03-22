@@ -28,7 +28,7 @@ header {
     position: relative;
 }
 .img-setting{
-    
+
     width:15px;
 }
 .user{
@@ -85,7 +85,7 @@ header {
     position: absolute;
     right: 16em;
     top: 3em;
-    
+
 }
 
 .div-buble-cart{
@@ -126,7 +126,7 @@ header {
     font-style: italic;
     font-size: 12px;
     border: none;
-   
+
 }
 
 .search-box::placeholder::selection {
@@ -286,23 +286,23 @@ header {
 
 .listbook {
     margin: 40px auto 0;
-    width: 1000px;
+    width: 960px;
     padding: 0 50px;
     background: url(../images/product/book_bg.png) scroll repeat-y 0 0 rgba(0, 0, 0, 0);
     list-style: none;
     display: table;
-    row-gap: 200px;
 }
 
 .listbook>li {
     margin-bottom: 73px;
-    margin-left: 16px;
+    margin-right: 16px;
     /* max-width: 20%; */
     display: inline-block;
 
 }
 
 .li-book {
+   
     position: relative;
 
 }
@@ -545,7 +545,7 @@ header {
     border-color: #ececec;
     border-radius: 0px;
     outline: none;
-    
+
 }
 .input-form-login:focus ~ .span-label,
 .input-form-login:valid ~ .span-label{
@@ -596,7 +596,7 @@ header {
     transition-duration: 0.4s;
     cursor: pointer;
     font-family: Arial, sans-serif;
- 
+
 }
 
 .submit-btn:hover {
@@ -644,19 +644,19 @@ header {
     font-weight: bold;
     margin: 0 30px;
     padding-top: 17px;
-   
+
     font-size: 16px;
     color: #dcdcdd;
-    
+
     -webkit-line-clamp: 2;
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    
+
 }
 
 .li-book .ul-infor-book {
   margin-top: 10px;
-  margin-left: 50px;  
+  margin-left: 50px;
 
 }
 
@@ -665,13 +665,13 @@ header {
   list-style-type: "\1F4D6";
 }
 .div-main-content-popup{
-    
-    
-  
+
+
+
 }
 
 .li-book .div-infor-book {
-    
+
 
 }
 
@@ -679,14 +679,14 @@ header {
     margin-top: 0px;
     margin-left: 40px;
     background: #033801;
-   
+
     padding: 10px;
     color: #c2c2c2;
     display: inline-block;
-   
-    
+
+
     border-radius: 4px;
-    
+
 }
 
 .a-price {
@@ -702,17 +702,17 @@ header {
 
 .a-buyNow {
 
- 
+
     text-align: center;
-  
+
     padding: 3px;
-  
+
     border-radius: 4px;
     background: #033801;
     color: #fff;
     text-decoration: none;
     font-size: 10px;
-    
+
 }
 
  .p-price:hover .a-buyNow{
@@ -720,7 +720,7 @@ header {
     background-size: 200% 100%;
     animation: slide 0.3s linear forwards;
     animation: slider 0.3s linear forwards;
-   
+
 }
 
 .p-price:hover{
@@ -751,7 +751,7 @@ header {
     from {
         font-size: 10px;
         background-position: -100% 0;
-        
+
     }
 
     to {
@@ -934,7 +934,7 @@ a {
     from {
         font-size: 10px;
         background-position: -100% 0;
-        
+
     }
 
     to {
@@ -997,7 +997,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 #input-detail {
     width: 30px;
- 
+
 }
 
 .detail-btn {
@@ -1109,7 +1109,7 @@ input[type=number]::-webkit-outer-spin-button {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   }
-  
+
     /* Contact */
 .div-bg{
     background-image: url(../images/product/bg_pattern.jpg);
@@ -1150,7 +1150,7 @@ input[type=number]::-webkit-outer-spin-button {
 .subUser a:hover{
    background-color: #ccc;
    color: #000;
-   
+
 }
 .div-login-site:hover .subUser{
     display: block;
