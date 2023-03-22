@@ -85,16 +85,7 @@ class AdminController{
     );
     }
 
-    // function listOrder(){
-    //     $page = $this->order->loadAll();
-    //     $pages = ceil(count($page) / 6);
-    //     $this->view("admin.layout.Components.Order.list",
-    //     [
-    //         'orders' =>$this->order->loadAll(),
-    //         'pages' => $pages
-    //     ]
-    //     );
-    // }
+
     
 }
 ?>
