@@ -66,8 +66,9 @@
                         <a class="collapse-item" href="<?= URL?>Admin/listBook">Sản Phẩm</a>
                         <a class="collapse-item" href="<?= URL?>Admin/listAuthor">Tác Giả</a>
                         <a class="collapse-item" href="<?= URL?>Admin/listClient">Khách Hàng</a>
+                        <a class="collapse-item" href="<?= URL?>Admin/listOrder">Quản Lý Đơn Hàng</a>
                         <a class="collapse-item" href="<?= URL?>Admin/listFeedBack">Bình Luận</a>
-                        <a class="collapse-item" href="<?= URL?>">Thống Kê</a>
+                        <a class="collapse-item" href="#">Thống Kê</a>
                         <div class="collapse-divider"></div>
                     </div>
                 </div>
