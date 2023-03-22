@@ -72,7 +72,12 @@ header {
     background-image: url(../images/product/headerbg.png);
     justify-content: space-around;
 }
-
+.p-title-banner{
+    position: absolute;
+    bottom: 8px;
+    left: 420px;
+    font-size: 40px;
+}
 .img-banner {
     width: 150px;
     position: absolute;
