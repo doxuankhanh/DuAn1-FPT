@@ -6,16 +6,46 @@ class OrderModel extends BaseModel {
     protected $sub_table = "orderdetail";
     
     
-    //Load all
-    function loadOrderClient($clientID) {
-        if($this->table !== null && $this->sub_table !== null) {
-            $sql = "SELECT $this->sub_table.id,$this->sub_table.quantity,$this->sub_table.price AS priceOrder,($this->sub_table.price * $this->sub_table.quantity) AS sumPriceOrder,books.bookName,books.image,$this->table.dateBuy,$this->table.clientID FROM $this->sub_table LEFT JOIN $this->table ON $this->sub_table.orderID = $this->table.id LEFT JOIN books ON $this->sub_table.bookID = books.id WHERE clientID = ? ORDER BY id DESC ";
+    // lấy thông tin trong bảng orders
+    function loadOrder($clientID) {
+        if($this->table !== null) {
+            $sql = $this->_sqlOrder() . " WHERE $this->table.clientID = ? ORDER BY $this->table.id DESC ";
             $this->_query($sql)->execute([$clientID]);
             $data = $this->stmt->fetchAll();
             return $data;
         }
     }
-    
+    // chi tiết đơn hàng admin
+
+    function detailOrder($orderID) {
+        if($this->table !== null && $this->sub_table !== null) {
+            $sql = $this->_sqlOrder() . " WHERE $this->table.id = ?";
+            $this->_query($sql)->execute([$orderID]);
+            $data = $this->stmt->fetch();
+            return $data;
+        }
+    }
+
+
+    //cập nhật trạng thái đơn hàng
+    function updateStatus($status,$orderID) {
+        if($this->table !== null) {
+            $sql = "UPDATE $this->table SET $this->table.statusID = ? WHERE $this->table.id = ?";
+            $this->_query($sql)->execute([$status,$orderID]);
+            return true;
+        }
+    }
+    //Load order details phía client
+    function loadOrderClient($clientID) {
+        if($this->table !== null && $this->sub_table !== null) {
+            $sql = $this->_sqlOrder(). " WHERE $this->table.clientID = ? ORDER BY $this->table.id DESC ";
+            $this->_query($sql)->execute([$clientID]);
+            $data = $this->stmt->fetchAll();
+            return $data;
+        }
+    }
+
+    // 
     function store($clientID,$dateBuy,$clientName,$address,$phone,$carts) {
         if($this->table !== null && $this->sub_table !== null) {
             $sql = "INSERT INTO $this->table(clientID,dateBuy,clientName,address,phoneNumber) VALUES(?,?,?,?,?)";
@@ -32,6 +62,12 @@ class OrderModel extends BaseModel {
             // return $this->connect->commit();
             return true;
         }
+    }
+
+    // _
+    function _sqlOrder() {
+        $sql = "SELECT $this->sub_table.id AS orderDetailID,$this->table.id AS orderID,$this->sub_table.quantity,$this->sub_table.price AS priceOrder,($this->sub_table.price * $this->sub_table.quantity) AS sumPriceOrder,books.bookName,books.image,$this->table.dateBuy,$this->table.clientID,$this->table.clientName,$this->table.statusID,statusOrders.statusOrderName,clients.phoneNumber,clients.address FROM $this->sub_table LEFT JOIN $this->table ON $this->sub_table.orderID = $this->table.id LEFT JOIN books ON $this->sub_table.bookID = books.id LEFT JOIN statusOrders ON $this->table.statusID = statusOrders.id LEFT JOIN clients ON clients.clientID = $this->table.clientID";
+        return $sql; 
     }
 }
 ?>

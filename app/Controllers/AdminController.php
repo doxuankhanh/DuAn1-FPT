@@ -8,6 +8,7 @@ class AdminController{
     protected $client;
     protected $feedback;
     protected $author;
+    protected $order;
     function __construct()
     {
         $this->book = $this->model("BookModel");
@@ -15,10 +16,8 @@ class AdminController{
         $this->client = $this->model("UserModel");
         $this->feedback = $this->model("CmtModel");
         $this->author = $this->model("AuthorModel");
+        $this->order = $this->model("OrderModel");
         
-        // if(!isset($_SESSION['userID']) || $_SESSION['role'] !== '0') {
-        //     _redirectLo(URL."Home");
-        // }
         if(!isset($_SESSION['userID']) || $_SESSION['role'] !== '0') {
             _redirectLo(URL."Home");
         }
@@ -93,21 +92,18 @@ class AdminController{
         $this->view("admin.layout.Components.Author.list",
         [
             'authors'=>$this->author->all(),
-            
         ]
     );
     }
 
-    // function listOrder(){
-    //     $page = $this->order->loadAll();
-    //     $pages = ceil(count($page) / 6);
-    //     $this->view("admin.layout.Components.Order.list",
-    //     [
-    //         'orders' =>$this->order->loadAll(),
-    //         'pages' => $pages
-    //     ]
-    //     );
-    // }
+    function listOrder(){
+        
+        $this->view("admin.layout.Components.Orders.list",
+        [
+            'orders' =>$this->order->loadOrder($_SESSION['userID']),
+        ]
+        );
+    }
     
 }
 ?>

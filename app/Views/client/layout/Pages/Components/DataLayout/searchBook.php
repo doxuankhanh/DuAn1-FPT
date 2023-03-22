@@ -45,7 +45,10 @@
                     </li>
                 <?php endforeach ?>
             <?php else : ?>
-                <div style="text-align: center;margin-bottom: 50px; text-transform: uppercase; font-size: 18px;">Không có sản phẩm mà bạn muốn tìm</div>
+                <!-- <div style="text-align: center;margin-bottom: 50px; text-transform: uppercase; font-size: 18px;">Không có sản phẩm mà bạn muốn tìm</div> -->
+                <div class="search-not-found">
+                    <img src="../../../../../../../../DuAn1-FPT/Public/images/banner/search-not-found.png" alt="">
+                </div>
             <?php endif ?>
         </ul>
     </div>
