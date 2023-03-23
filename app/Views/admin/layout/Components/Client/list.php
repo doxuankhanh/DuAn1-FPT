@@ -51,7 +51,7 @@
                         <th scope="row" class=" p-3 w-20 text-nowrap"><?= $client['email']?></th>
                         <th scope="row" class=" p-3 w-20"><?= $client['address']?></th>
                         <th scope="row" class=" p-3 w-20 text-nowrap"><?= $client['phoneNumber']?></th>
-                        <th><img src="../../../../../../../DuAn1-FPT/Public/upload/<?= $client['avatar'] ?>" alt="." style="height: 120px;"></th>
+                        <th><img src="../../../../../../../DuAn1-FPT/Public/upload/<?= $client['avatar'] ?>" alt="." style="height: 100px;"></th>
                         <th scope="row" class=" p-3 w-20 text-center"><?= $client['role']?></th>
                         <th><a href="<?= URL?>User/update/<?= $client['clientID']?>" class="btn btn-info">Update</a></th>
                         <th><a href="<?= URL?>User/delete/<?= $client['clientID']?>" class="btn btn-danger" onclick="return confirm('Bạn có muốn xóa không?')">Delete</a></th>
