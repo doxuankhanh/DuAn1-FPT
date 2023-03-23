@@ -14,9 +14,9 @@ class AdminController{
         $this->cate = $this->model("CateModel");
         $this->client = $this->model("UserModel");
         $this->feedback = $this->model("CmtModel");
-        if(!isset($_SESSION['userID']) || $_SESSION['role'] !== '0') {
-            _redirectLo(URL."Home");
-        }
+        // if(!isset($_SESSION['userID']) || $_SESSION['role'] !== '0') {
+        //     _redirectLo(URL."Home");
+        // }
     }
     function index() {
         $this->view("admin.layout.Components.home",

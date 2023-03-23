@@ -2,7 +2,7 @@
 
 class CmtModel extends BaseModel {
 
-    protected $table = "feeback";
+    protected $table = "feedback";
 
     function addedCmt($note,$bookID,$clientID,$dateCreated) {
 
