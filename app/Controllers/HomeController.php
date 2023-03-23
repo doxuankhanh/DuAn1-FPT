@@ -144,7 +144,7 @@ class HomeController
                     move_uploaded_file($_FILES['avatar']['tmp_name'], 'Public/upload/' . basename($img));
                 } else {
                     $_SESSION['success'] = 'Sai định dạng ảnh';
-                    _redirectLo($_SERVER['HTTP_REFERER']);
+                    // _redirectLo($_SERVER['HTTP_REFERER']);
                 }
             }
 
