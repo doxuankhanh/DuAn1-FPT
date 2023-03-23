@@ -33,8 +33,8 @@
                                         <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
                                     </div>
                                     <div>
-                                        <button class="detail-btn" type="submit" name="btn-add-cart">Thêm vào giỏ hàng</button>
-                                        <button class="detail-btn" type="submit" name="btn-buy-cart">Mua ngay</button>
+                                        <button class="detail-btn" type="submit" name="btn-add-cart" style="cursor: pointer;">Thêm vào giỏ hàng</button>
+                                        <!-- <button class="detail-btn" type="submit" name="btn-buy-cart">Mua ngay</button> -->
                                     </div>
                                 </div>
                             </div>

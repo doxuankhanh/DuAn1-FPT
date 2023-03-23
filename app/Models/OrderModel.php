@@ -7,10 +7,10 @@ class OrderModel extends BaseModel {
     
     
     // lấy thông tin trong bảng orders
-    function loadOrder($clientID) {
+    function loadAllStatusOrder() {
         if($this->table !== null) {
-            $sql = $this->_sqlOrder() . " WHERE $this->table.clientID = ? ORDER BY $this->table.id DESC ";
-            $this->_query($sql)->execute([$clientID]);
+            $sql = $this->_sqlOrder() . " ORDER BY $this->table.id DESC ";
+            $this->_query($sql)->execute();
             $data = $this->stmt->fetchAll();
             return $data;
         }

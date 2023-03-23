@@ -100,7 +100,7 @@ class AdminController{
         
         $this->view("admin.layout.Components.Orders.list",
         [
-            'orders' =>$this->order->loadOrder($_SESSION['userID']),
+            'orders' =>$this->order->loadAllStatusOrder(),
         ]
         );
     }
