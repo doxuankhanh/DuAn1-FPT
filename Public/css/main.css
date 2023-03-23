@@ -490,8 +490,8 @@ header {
     position: relative;
     margin: auto auto !important;
     background-image: url(../images/product/headerbg.png);
-    width: 100%;
-    min-height: 600px;
+    max-width: 1000px;
+    min-height: 300px;
     border-radius: 85% 15% 89% 11% / 10% 85% 15% 90%;
 
 }

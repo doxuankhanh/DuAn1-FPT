@@ -3,22 +3,26 @@
 <div class="div-checkout-container">
     <div class="div-checkout-main">
         <h2 class=" h2-checkout">Đặt hàng thành công!<br>Cảm ơn bạn đã mua hàng</h2>
-        <form action="<?= URL?>Home/checkOut" method="post">
+        <form action="<?= URL ?>Home/checkOut" method="post">
             <div class="div-infor-checkout">
                 <h4 style="">Thông tin người mua</h4>
                 <div class="div-infor site">
-                    <div class="div-title">
-                        <p class="p-infor">Họ tên</p>
-                        <p class="p-infor">Email</p>
-                        <p class="p-infor">Số điện thoại</p>
-                        <p class="p-infor">Địa chỉ</p>
-                    </div>
-                    <div class="div-infor-main">
-                        <p class="p-infor"><input type="text" name="username" id="" value="<?= $_SESSION['username'] ?? ''?>" disabled></p>
-                        <p class="p-infor"><input type="text" name="email" id="" value="<?= $_SESSION['email'] ?? ''?>" disabled></p>
-                        <p class="p-infor"><input type="text" name="phoneNumber" id="" value="<?= $_SESSION['phone'] ?? ''?>" disabled></p>
-                        <p class="p-infor"><input type="text" name="address" id="" value="<?= $_SESSION['address'] ?? ''?>" disabled></p>
-                    </div>
+                    <table class="table-infor">
+                        <thead class="thead-infor">
+                            <th>Họ tên </th>
+                            <th>Email</th>
+                            <th>Số điện thoại</th>
+                            <th>Địa chỉ</th>
+                        </thead>
+                        <tbody>
+                            <tr class="tr-infor">
+                                <td><input type="text" class="inputDis" name="username" id="" value="<?= $_SESSION['username'] ?? '' ?>" disabled></td>
+                                <td><input type="text" class="inputDis" name="email" id="" value="<?= $_SESSION['email'] ?? '' ?>" disabled></td>
+                                <td><input type="text" class="inputDis" name="phoneNumber" id="" value="<?= $_SESSION['phone'] ?? '' ?>" disabled></td>
+                                <td><input type="text" class="inputDis" name="address" id="" value="<?= $_SESSION['address'] ?? '' ?>" disabled></td>
+                            </tr>
+                        </tbody>
+                    </table>
                     <h2>Thông tin sản phẩm</h2>
                     <table class="table-checkout">
                         <thead class="thead-checkout">
@@ -30,18 +34,18 @@
                         </thead>
                         <tbody>
                             <?php $total = 0;
-                            foreach($data['carts'] as $key => $value): 
-                            $subtotal = ($value['quantity'] * $value['price']);
-                            $total += $subtotal;
+                            foreach ($data['carts'] as $key => $value) :
+                                $subtotal = ($value['quantity'] * $value['price']);
+                                $total += $subtotal;
                             ?>
-                            <tr>
-                                <td><?= $key+1?></td>
-                                <td><?= $value['bookName'] ?? ''?></td>
-                                <td><?= number_format($value['price'] ?? '')?></td>
-                                <td><?= $value['quantity'] ?? ''?></td>
-                                <td><?= number_format($subtotal)?></td>
-                            </tr>
-                            <?php endforeach?>
+                                <tr>
+                                    <td><?= $key + 1 ?></td>
+                                    <td><?= $value['bookName'] ?? '' ?></td>
+                                    <td><?= number_format($value['price'] ?? '') ?></td>
+                                    <td><?= $value['quantity'] ?? '' ?></td>
+                                    <td><?= number_format($subtotal) ?></td>
+                                </tr>
+                            <?php endforeach ?>
                             <tr>
                                 <td></td>
                                 <td></td>
@@ -54,7 +58,7 @@
                                 <td></td>
                                 <td></td>
                                 <td><strong>Tổng cộng</strong></td>
-                                <td><?= number_format($total)?></td>
+                                <td><?= number_format($total) ?></td>
                             </tr>
                         </tbody>
                     </table>
