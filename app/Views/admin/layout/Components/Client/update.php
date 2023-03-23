@@ -45,10 +45,10 @@
                 <input type="text" class="form-control" name="email" value="<?= $data['client']['email'] ?? '' ?>">
             </div>
 
-            <div class="form-group">
+            <!-- <div class="form-group">
                 <label for="">Mật Khẩu</label>
                 <input type="text" class="form-control" name="password" value="<?= $data['client']['password'] ?? '' ?>">
-            </div>
+            </div> -->
 
             <div class="form-group">
                 <label for="">Địa Chỉ</label>
@@ -67,13 +67,13 @@
 
             </div>
 
-            <div class="form-group">
+            <!-- <div class="form-group">
                 <label for="">Vai Trò</label>
                 <select name="role" id="" class="form-control" value="<?= $data['client']['role'] ?? '' ?>">
                     <option value="0">Admin</option>
                     <option value="1">Khách Hàng</option>
                 </select>
-            </div>
+            </div> -->
 
             <div class="form-group mx-auto my-2">
                 <input type="submit" name="btn-update" value="Cập Nhật" class="btn btn-primary">
