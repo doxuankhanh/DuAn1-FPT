@@ -9,7 +9,7 @@
             </div>
             <div class="swiper-slide" style="background-image: url(../../../../../../../DuAn1-FPT/Public/images/product/slide2.jpg);background-size: contain;background-position: center;">
             </div>
-            <div class="swiper-slide" style="background-image: url(../../../../../../../DuAn1-FPT/Public/images/product/slide2.jpg);background-size: contain;background-position: center;">
+            <div class="swiper-slide" style="background-image: url(../../../../../../../DuAn1-FPT/Public/images/product/slide3.jpg);background-size: contain;background-position: center;">
             </div>
         </div>
         <!-- If we need pagination -->
