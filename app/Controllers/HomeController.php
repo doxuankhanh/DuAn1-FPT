@@ -567,6 +567,10 @@ class HomeController
                 $result = $this->order->store(clientID: $_SESSION['userID'], dateBuy: date("Y/m/d H:i:a"), clientName: $_SESSION['username'], address: $_SESSION['address'], phone: $_SESSION['phone'], carts: $_SESSION['carts']);
                 // _dump($result);die;
                 if ($result) {
+                    $code = substr(rand(0,999999),0,3);
+                    $title = "Đặt hàng thành công website nhasach.com";
+                    $content = "Mã đơn hàng của bạn là: $code đang trong quá trình xử lý vui lòng chờ!";
+                    $this->mail->sendMail($title,$content,$_SESSION['email']);
                     $_SESSION['msgOrderSuccess'] = "Cảm ơn bạn đã mua sắm!";
                 } else {
                     return false;
@@ -578,6 +582,7 @@ class HomeController
             [
                 'cates' => $this->cate->all(),
                 'carts' => $this->cart->getCartByClientID($_SESSION['userID'] ?? ''),
+                'countCarts' => count($this->cart->getCartByClientID($_SESSION['userID'] ?? ''))
             ]
         );
     }

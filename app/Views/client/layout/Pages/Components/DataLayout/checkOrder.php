@@ -40,7 +40,7 @@
                             </tr>
                         <?php endforeach ?>
                     <?php else : ?>
-                        <div class="div-container-cart">
+                        
                             <div class="div-main-cart">
                                 <div class="cart-empty">
                                     <img src="../../../../../../../DuAn1-FPT/Public/images/product/cart_empty.png" alt="">
@@ -51,7 +51,7 @@
                                     <a href="<?= URL ?>Home" class="submit-btn">Mua sắm ngay</a>
                                 </div>
                             </div>
-                        </div>
+                        
                     <?php endif ?>
                 </tbody>
             </table>

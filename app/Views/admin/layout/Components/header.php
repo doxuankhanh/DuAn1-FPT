@@ -14,10 +14,12 @@
     <!-- Custom fonts for this template-->
     <link href="../../../../../../DuAn1-FPT/Public/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link rel="shortcut icon" href="Public/images/banner/icon.png" type="image/x-icon">
 
     <!-- Custom styles for this template-->
     <!-- <link href="Public/styles/css/sb-admin-2.min.css" rel="stylesheet"> -->
     <link href="../../../../../../DuAn1-FPT/Public/styles/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="../../../../../../DuAn1-FPT/Public/styles/css/admin.css" rel="stylesheet">
 
 </head>
 

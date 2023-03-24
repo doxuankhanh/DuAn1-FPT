@@ -18,14 +18,17 @@ class AdminController{
         $this->author = $this->model("AuthorModel");
         $this->order = $this->model("OrderModel");
         
-        if(!isset($_SESSION['userID']) || $_SESSION['role'] !== 0) {
+        if(!isset($_SESSION['userID']) || $_SESSION['role'] != 0) {
             _redirectLo(URL."Home");
         }
     }
     function index() {
         $this->view("admin.layout.Components.home",
         [
-            'statistical' => $this->book->statistical()
+            'statistical' => $this->book->statistical(),
+            'books' => $this->book->loadAll(),
+            'cates' => $this->cate->all(),
+            'orders' =>$this->order->loadAllStatusOrder(),
         ]
     );
     }
