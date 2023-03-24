@@ -199,7 +199,7 @@ class HomeController
         $_SESSION['address'] = $user['address'];
         $_SESSION['phone'] = $user['phoneNumber'];
         $_SESSION['role'] = $user['role'];
-        _redirectRe(URL . "Home");
+        
     }
     //Login
     function login()
@@ -235,6 +235,11 @@ class HomeController
                     $data['msgErr'] = "Thông tin tài khoản hoặc mật khẩu không chính xác";
                 } else {
                     $this->createUserSession($user);
+                    if($user['role'] == 1) {
+                        _redirectRe(URL);
+                    }else {
+                        _redirectLo(URL."Admin/home");
+                    }
                 }
             }
         } else {
