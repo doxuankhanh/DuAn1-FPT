@@ -16,12 +16,12 @@
                         
                     </div>
                 </div>
-                <div class="div-input-site p-3 col">
+                <div class="div-input-site col">
                     
                     <div class="div-input-box p-3">
                         <label for="">Email</label>
-                        <input type="text" name="email" class="form-control"value="<?= $data['admin']['email'] ?? '' ?>" required>
-                        
+                        <input type="text" name="email" class="form-control" class="input-form-login"  value="<?= $data['admin']['email'] ?? '' ?>" required>
+                    </div>
 
                     <div class="div-input-box p-3">
                         <label for="">Username</label>
@@ -46,6 +46,7 @@
                         <input type="text" name="phoneNumber" class="form-control" value="<?= $data['admin']['phoneNumber'] ?? '' ?>" required>
                         
                     </div>
+                    
                     <div>
                         <p><?= $_SESSION['success'] ?? ''; unset($_SESSION['success'])?></p>
                     </div>
