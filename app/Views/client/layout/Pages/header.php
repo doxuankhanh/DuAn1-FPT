@@ -5,20 +5,26 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>#N6</title>
+    <link rel="shortcut icon" href="Public/images/banner/icon.png" type="image/x-icon">
     <link rel="stylesheet" href="../../../../../../DuAn1-FPT/Public/css/main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/js/all.min.js">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
 </head>
 
 <body>
+    <button onclick="topFunction()" id="myBtn" title="Go to top"><img src="../../../../../../DuAn1-FPT/Public/images/product/black-up-arrow-png-22.png" alt=""></button>
     <div class="div-container">
         <header>
             <div class="div-introduct">
                 <a class="anchor-a" href="#">GIỚI THIỆU</a>
                 <a class="anchor-a" href="#">LỊCH SỬ GIAO DỊCH</a>
-                <a class="anchor-a" href="#">KIỂM TRA ĐƠN HÀNG</a>
+                <a class="anchor-a" href="<?= URL ?>Home/checkOrder">KIỂM TRA ĐƠN HÀNG</a>
             </div>
             <div class="div-login-site">
                 <?php if (!isset($_SESSION['userID'])) : ?>
@@ -40,9 +46,9 @@
                         Xin chào <p style="display: inline-block;text-transform: uppercase;"><?= isset($_SESSION['userID']) ? $_SESSION['username'] : '' ?></p>
                         <div class="p-setting" style="display: inline;" href="#"><img class="img-setting" src="../../../../../../DuAn1-FPT/Public/images/product/settings-icon-13.png" alt="">
                             <ul class="ul-setting">
-                                <li class="li-setting"><a class="anchor-a" style="" href="<?= URL ?>Home/updateUser/<?= $_SESSION['userID'] ?>">Thông tin tài khoản</a></li>
-                                <li class="li-setting"><a class="anchor-a" style="" href="<?= URL?>Home/forgetPassword">Quên mật khẩu</a></li>
-                                <li class="li-setting"><a class="anchor-a" href="<?= URL ?>Home/destroy">ĐĂNG XUẤT</a></li>
+                                <li class="li-setting"><a class="anchor-a" style="border-right: none;" href="<?= URL ?>Home/updateUser/<?= $_SESSION['userID'] ?>">Thông tin tài khoản</a></li>
+                                <li class="li-setting"><a class="anchor-a" style="border-right: none;" href="<?= URL ?>Home/forgetPassword">Quên mật khẩu</a></li>
+                                <li class="li-setting"><a class="anchor-a" style="border-right: none;" href="<?= URL ?>Home/destroy">ĐĂNG XUẤT</a></li>
                             </ul>
                         </div>
                     </a>
@@ -52,12 +58,17 @@
         </header>
         <div class="div-banner">
             <a href="<?= URL ?>Home">
+                <p class="p-title-banner" style="font-family: 'Dancing Script', serif;">Bởi vì sách là cả thế giới</p>
                 <img src="../../../../../../DuAn1-FPT/Public/images/product/banner.png" alt="" class="img-banner">
             </a>
             <div class="div-searchsite">
-                <a href="<?= URL ?>Home/getCartByClientID" class="cart"></a>
+                <a href="<?= URL ?>Home/getCartByClientID" class="cart">
+                    <div class="div-buble-cart">
+                        <p><?= $data['countCarts'] ?? 0 ?></p>
+                    </div>
+                </a>
                 <form action="<?= URL ?>Home/loadBookSearch" method="post">
-                    <input type="text" class="search-box" placeholder="Tìm kiếm sách của bạn..." name="bookName">
+                    <input type="text" class="search-box" placeholder="Tìm kiếm sách của bạn..." name="bookName" required>
                     <input type="image" type="submit" name="search-btn" src="../../../../../../DuAn1-FPT/Public/images/product/searchbg.png" value="Tìm kiếm" class="search-btn">
                 </form>
             </div>
@@ -80,6 +91,6 @@
                 </li>
                 <li class="li-nav"><a href="<?= URL ?>Home/loadBookView">SÁCH CÓ LƯỢT XEM NHIỀU NHẤT</a></li>
                 <li class="li-nav"><a href="#">CHƯƠNG TRÌNH KHUYẾN MÃI</a></li>
-                <li class="li-nav"><a href="#">LIÊN HỆ</a></li>
+                <li class="li-nav"><a href="<?= URL ?>Home/_contact">LIÊN HỆ</a></li>
             </ul>
         </div>

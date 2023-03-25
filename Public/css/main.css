@@ -3,6 +3,8 @@
 @import url("./cart.css");
 @import url("./checkout.css");
 @import url("./updateUser.css");
+@import url("./scroll.css");
+@import url("./searchHeader.css");
 .div-container {
     width: 100%;
 
@@ -27,21 +29,21 @@ header {
     position: relative;
 }
 .img-setting{
-    
+
     width:15px;
 }
 .user{
     color: #015e00;
 }
 .ul-setting{
-    width: 200px;
+    max-width: 200px;
     display: block;
     visibility: hidden;
     opacity: 0;
     position: absolute;
     z-index: 100;
     background-color: #333;
-   right: -166px;
+   left: 0;
 }
 .p-setting:hover .ul-setting{
     visibility: visible;
@@ -70,7 +72,12 @@ header {
     background-image: url(../images/product/headerbg.png);
     justify-content: space-around;
 }
-
+.p-title-banner{
+    position: absolute;
+    bottom: 8px;
+    left: 420px;
+    font-size: 40px;
+}
 .img-banner {
     width: 150px;
     position: absolute;
@@ -84,19 +91,23 @@ header {
     position: absolute;
     right: 16em;
     top: 3em;
-    
+
 }
 
 .div-buble-cart{
-    
     width: 30px;
     height: 30px;
-    background: rgb(2,0,36);
-    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(166,166,189,1) 51%, rgba(0,212,255,1) 100%);
     position: absolute;
-    right: -30px;
-    border-radius: 55% 45% 32% 68% / 0% 50% 50% 100% ;
-    bottom: 0;
+    background-color: #539165;
+    right: -15px;
+    border-radius: 50%;
+    top: 0;
+}
+.div-buble-cart p {
+    color: #F8F5E4;
+    font-weight: bold;
+    text-align: center;
+    line-height: 30px;
 }
 .cart {
     width: 55px;
@@ -121,7 +132,7 @@ header {
     font-style: italic;
     font-size: 12px;
     border: none;
-   
+
 }
 
 .search-box::placeholder::selection {
@@ -281,23 +292,23 @@ header {
 
 .listbook {
     margin: 40px auto 0;
-    width: 1000px;
+    width: 960px;
     padding: 0 50px;
     background: url(../images/product/book_bg.png) scroll repeat-y 0 0 rgba(0, 0, 0, 0);
     list-style: none;
     display: table;
-    row-gap: 200px;
 }
 
 .listbook>li {
     margin-bottom: 73px;
-    margin-left: 16px;
+    margin-right: 16px;
     /* max-width: 20%; */
     display: inline-block;
 
 }
 
 .li-book {
+   
     position: relative;
 
 }
@@ -517,6 +528,10 @@ header {
     font-size: 24px;
    text-align: center;
 }
+.ml-forGetmail{
+    margin-left: 80px;
+    text-align: start;
+}
 
 .input-form-login {
     position: absolute;
@@ -536,7 +551,7 @@ header {
     border-color: #ececec;
     border-radius: 0px;
     outline: none;
-    
+
 }
 .input-form-login:focus ~ .span-label,
 .input-form-login:valid ~ .span-label{
@@ -587,7 +602,7 @@ header {
     transition-duration: 0.4s;
     cursor: pointer;
     font-family: Arial, sans-serif;
- 
+
 }
 
 .submit-btn:hover {
@@ -635,19 +650,19 @@ header {
     font-weight: bold;
     margin: 0 30px;
     padding-top: 17px;
-   
+
     font-size: 16px;
     color: #dcdcdd;
-    
+
     -webkit-line-clamp: 2;
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    
+
 }
 
 .li-book .ul-infor-book {
   margin-top: 10px;
-  margin-left: 50px;  
+  margin-left: 50px;
 
 }
 
@@ -656,13 +671,13 @@ header {
   list-style-type: "\1F4D6";
 }
 .div-main-content-popup{
-    
-    
-  
+
+
+
 }
 
 .li-book .div-infor-book {
-    
+
 
 }
 
@@ -670,14 +685,14 @@ header {
     margin-top: 0px;
     margin-left: 40px;
     background: #033801;
-   
+
     padding: 10px;
     color: #c2c2c2;
     display: inline-block;
-   
-    
+
+
     border-radius: 4px;
-    
+
 }
 
 .a-price {
@@ -693,17 +708,17 @@ header {
 
 .a-buyNow {
 
- 
+
     text-align: center;
-  
+
     padding: 3px;
-  
+
     border-radius: 4px;
     background: #033801;
     color: #fff;
     text-decoration: none;
     font-size: 10px;
-    
+
 }
 
  .p-price:hover .a-buyNow{
@@ -711,7 +726,7 @@ header {
     background-size: 200% 100%;
     animation: slide 0.3s linear forwards;
     animation: slider 0.3s linear forwards;
-   
+
 }
 
 .p-price:hover{
@@ -742,7 +757,7 @@ header {
     from {
         font-size: 10px;
         background-position: -100% 0;
-        
+
     }
 
     to {
@@ -925,7 +940,7 @@ a {
     from {
         font-size: 10px;
         background-position: -100% 0;
-        
+
     }
 
     to {
@@ -988,7 +1003,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 #input-detail {
     width: 30px;
- 
+
 }
 
 .detail-btn {
@@ -1100,7 +1115,7 @@ input[type=number]::-webkit-outer-spin-button {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   }
-  
+
     /* Contact */
 .div-bg{
     background-image: url(../images/product/bg_pattern.jpg);
@@ -1141,7 +1156,7 @@ input[type=number]::-webkit-outer-spin-button {
 .subUser a:hover{
    background-color: #ccc;
    color: #000;
-   
+
 }
 .div-login-site:hover .subUser{
     display: block;

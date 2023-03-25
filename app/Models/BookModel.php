@@ -68,8 +68,8 @@ class BookModel extends BaseModel
     {
         if ($this->table !== null) {
             
-            if(isset($_SERVER['REQUEST_URL'])) {
-                $page = $_SERVER['REQUEST_URL'];
+            if(isset($_GET['page'])) {
+                $page = $_GET['page'];
             }else {
                 $page = 1;
             }
@@ -123,7 +123,7 @@ class BookModel extends BaseModel
     function bookView()
     {
         if ($this->table !== null) {
-            $sql = $this->_selectQuery() . " WHERE $this->table.view > 10";
+            $sql = $this->_selectQuery() . " WHERE $this->table.view > 50";
             $this->_query($sql)->execute();
             $data = $this->stmt->fetchAll();
             return $data;
@@ -152,6 +152,17 @@ class BookModel extends BaseModel
             $data = $this->stmt->fetchAll();
             return $data;
         }
+    }
+    //sách cùng tác giả
+    function selectAuthor($authorID){
+        if ($this->table !== null) {
+            $sql = $this->_selectQuery() . " WHERE authors.authorName = ?";
+            $this->_query($sql)->execute([$authorID]);
+           $data = $this->stmt->fetchAll();
+        //    _dump($data);
+          
+        }
+    
     }
     // câu lệnh truy vấn thường xuyên đc dùng
     private function _selectQuery()

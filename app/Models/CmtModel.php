@@ -2,7 +2,7 @@
 
 class CmtModel extends BaseModel {
 
-    protected $table = "feeback";
+    protected $table = "feedback";
 
     function addedCmt($note,$bookID,$clientID,$dateCreated) {
 
@@ -19,5 +19,15 @@ class CmtModel extends BaseModel {
             return $data;
         }
     }
+
+
+    function loadAll() {
+        if($this->table !== null) {
+            $sql = "SELECT $this->table.id,$this->table.note,$this->table.dateCreated,books.bookName,clients.username FROM $this->table LEFT JOIN books ON $this->table.bookID = books.id JOIN clients ON $this->table.clientID = clients.clientID"; 
+            $this->_query($sql)->execute();
+            $data = $this->stmt->fetchAll();
+            return $data;
+        }
+        } 
 }
 ?>

@@ -25,7 +25,7 @@ class HomeController
     {
 
         $this->view(
-            "client.layout.Pages.Components.home",
+            "client.layout.Pages.Components.DataLayout.home",
             [
                 'cates' => $this->cate->all(),
 
@@ -34,9 +34,15 @@ class HomeController
                 'literatureVN' => $this->book->bookFollowCategories(10),
                 'literature' => $this->book->bookFollowCategories(11),
                 'children' => $this->book->bookFollowCategories(12),
-
+                //count sản phẩm trong giỏ hàng
+                'countCarts' => count($this->cart->getCartByClientID($_SESSION['userID'] ?? '')),
             ]
         );
+    }
+    // liên hệ
+    function _contact()
+    {
+        $this->view("client.layout.Pages.Components.DataLayout.contact", ['cates' => $this->cate->all(),]);
     }
     // chi tiết sản phẩm
     function bookDetail($id, $cateID)
@@ -117,7 +123,7 @@ class HomeController
         }
 
         $this->view(
-            "client.layout.Pages.Components.bookDetail",
+            "client.layout.Pages.Components.DataLayout.bookDetail",
             [
                 $data,
                 'cates' => $cates,
@@ -125,6 +131,9 @@ class HomeController
                 'view' => $this->book->updateView($id),
                 'book' => $bookDetail,
                 'comments' => $this->cmt->loadCmt($id),
+                'countCarts' => count($this->cart->getCartByClientID($_SESSION['userID'] ?? '')),
+                'authorCheck' => $this->book->selectAuthor($id)
+
             ]
         );
     }
@@ -145,10 +154,6 @@ class HomeController
             'error' => '',
         ];
 
-        if (isset($_POST['btn-update'])) {
-
-            $imgF = pathinfo($data['avatar']['name'], PATHINFO_EXTENSION);
-            $img = $user['avatar'];
 
             if (!empty($data['avatar']['name'])) {
                 if (in_array($imgF, ['png', 'jpg'])) {
@@ -168,10 +173,12 @@ class HomeController
         }
 
         $this->view(
-            "client.layout.Pages.Components.updateUser",
+            "client.layout.Pages.Components.DataLayout.updateUser",
             [
                 $data,
+                'cates' => $this->cate->all(),
                 'user' => $user,
+                'countCarts' => count($this->cart->getCartByClientID($_SESSION['userID'] ?? ''))
             ]
         );
     }
@@ -179,11 +186,13 @@ class HomeController
     function bookFollowCategories($cateID)
     {
         $this->view(
-            "client.layout.Pages.Components.followCate",
+            "client.layout.Pages.Components.DataLayout.followCate",
             [
                 'cates' => $this->cate->all(),
                 'cate' => $this->cate->getOne($cateID),
-                'book' => $this->book->bookFollowCategories($cateID)
+                'book' => $this->book->bookFollowCategories($cateID),
+                'countCarts' => count($this->cart->getCartByClientID($_SESSION['userID'] ?? ''))
+
             ]
         );
     }
@@ -200,7 +209,7 @@ class HomeController
         $_SESSION['address'] = $user['address'];
         $_SESSION['phone'] = $user['phoneNumber'];
         $_SESSION['role'] = $user['role'];
-        _redirectRe(URL . "Home");
+        
     }
     //Login
     function login()
@@ -236,6 +245,11 @@ class HomeController
                     $data['msgErr'] = "Thông tin tài khoản hoặc mật khẩu không chính xác";
                 } else {
                     $this->createUserSession($user);
+                    if($user['role'] == 1) {
+                        _redirectRe(URL);
+                    }else {
+                        _redirectLo(URL."Admin/home");
+                    }
                 }
             }
         } else {
@@ -248,7 +262,7 @@ class HomeController
                 'password_err' => "",
             ];
         }
-        $this->view("client.layout.Pages.Components.login", $data);
+        $this->view("client.layout.Pages.Components.Account.login", $data);
     }
 
     //đăng xuất
@@ -327,7 +341,7 @@ class HomeController
                     return false;
                 }
             } else { // load lỗi
-                $this->view("client.layout.Pages.Components.register", $data);
+                $this->view("client.layout.Pages.Components.Account.register", $data);
             }
         } else {
             // data chứa các giá trị rỗng nếu k tồn tại thì khi in lỗi bên form sẽ k hiện undefine 
@@ -352,17 +366,19 @@ class HomeController
                 'msgSuccess' => "",
             ];
         }
-        $this->view("client.layout.Pages.Components.register", $data);
+        $this->view("client.layout.Pages.Components.Account.register", $data);
     }
     //lấy sản phẩm theo clientID
     function getCartByClientID()
     {
 
+        $_SESSION['carts'] = $this->cart->getCartByClientID($_SESSION['userID'] ?? '');
         $this->view(
-            "client.layout.Pages.Components.cart",
+            "client.layout.Pages.Components.DataLayout.cart",
             [
                 'cates' => $this->cate->all(),
-                'carts' => $this->cart->getCartByClientID($_SESSION['userID'] ?? ''),
+                'carts' => $_SESSION['carts'],
+                'countCarts' => count($this->cart->getCartByClientID($_SESSION['userID'] ?? ''))
             ]
         );
     }
@@ -374,7 +390,7 @@ class HomeController
             $data = [
                 'bookName' => trim($_POST['bookName'] ?? ''),
             ];
-            if ($data['bookName']) {
+            if ($data) {
                 $bookSearch = $this->book->searchBook($data['bookName']);
             }
         } else {
@@ -383,10 +399,12 @@ class HomeController
             ];
         }
         $this->view(
-            "client.layout.Pages.Components.searchBook",
+            "client.layout.Pages.Components.DataLayout.searchBook",
             [
                 'cates' => $this->cate->all(),
                 'bookSearch' => $bookSearch ?? '',
+                'countCarts' => count($this->cart->getCartByClientID($_SESSION['userID'] ?? ''))
+
             ]
         );
     }
@@ -476,9 +494,11 @@ class HomeController
             ];
         }
         $this->view(
-            "client.layout.Pages.Components.forgetPassword",
+            "client.layout.Pages.Components.Account.forgetPassword",
             [
                 'cates' => $this->cate->all(),
+                'countCarts' => count($this->cart->getCartByClientID($_SESSION['userID'] ?? ''))
+
             ]
         );
     }
@@ -509,9 +529,11 @@ class HomeController
             ];
         }
         $this->view(
-            "client.layout.Pages.Components.virification",
+            "client.layout.Pages.Components.Account.virification",
             [
                 'cates' => $this->cate->all(),
+                'countCarts' => count($this->cart->getCartByClientID($_SESSION['userID'] ?? ''))
+
             ]
         );
     }
@@ -545,26 +567,74 @@ class HomeController
             }
         }
         $this->view(
-            "client.layout.Pages.Components.resetPassword",
+            "client.layout.Pages.Components.Account.resetPassword",
             [
                 'cates' => $this->cate->all(),
+                'countCarts' => count($this->cart->getCartByClientID($_SESSION['userID'] ?? ''))
+
             ]
         );
     }
     function checkOut()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $result = $this->order->store(clientID: $_SESSION['userID'], dateBuy: date("Y/m/d H:i:a"), clientName: $_SESSION['username'], address: $_SESSION['address'], phone: $_SESSION['phone']);
-            if ($result) {
-                $_SESSION['msgOrderSuccess'] = "Cảm ơn bạn đã mua sắm!";
+            if (isset($_POST['submit-checkout'])) {
+                $result = $this->order->store(clientID: $_SESSION['userID'], dateBuy: date("Y/m/d H:i:a"), clientName: $_SESSION['username'], address: $_SESSION['address'], phone: $_SESSION['phone'], carts: $_SESSION['carts']);
+                // _dump($result);die;
+                if ($result) {
+                    $code = substr(rand(0,999999),0,3);
+                    $title = "Đặt hàng thành công website nhasach.com";
+                    $content = "Mã đơn hàng của bạn là: $code đang trong quá trình xử lý vui lòng chờ!";
+                    $this->mail->sendMail($title,$content,$_SESSION['email']);
+                    $_SESSION['msgOrderSuccess'] = "Cảm ơn bạn đã mua sắm!";
+                } else {
+                    return false;
+                }
             }
         }
         $this->view(
-            "client.layout.Pages.Components.checkOut",
+            "client.layout.Pages.Components.DataLayout.checkOut",
             [
                 'cates' => $this->cate->all(),
                 'carts' => $this->cart->getCartByClientID($_SESSION['userID'] ?? ''),
+                'countCarts' => count($this->cart->getCartByClientID($_SESSION['userID'] ?? ''))
+            ]
+        );
+    }
+    function countCartHeader()
+    {
+        $this->view(
+            "client.layout.Pages.Components.header",
+            [
+                'cates' => $this->cate->all(),
+                'carts' => $this->cart->getCartByClientID($_SESSION['userID'] ?? ''),
+                'countCarts' => count($this->cart->getCartByClientID($_SESSION['userID'] ?? ''))
+            ]
+        );
+    }
+
+    // kiểm tra đơn hàng đã đạt
+    function checkOrder()
+    {
+        $this->view(
+            "client.layout.Pages.Components.DataLayout.checkOrder",
+            [
+                'cates' => $this->cate->all(),
+                'countCarts' => count($this->cart->getCartByClientID($_SESSION['userID'] ?? '')),
+                'clientOrder' => $this->order->loadOrderClient($_SESSION['userID'] ?? ''),
+            ]
+        );
+    }
+    //load bookView 
+    function loadBookView()
+    {
+        $this->view(
+            "client.layout.Pages.Components.DataLayout.topView",
+            [
+                'cates' => $this->cate->all(),
+                'viewBook' => $this->book->bookView(),
             ]
         );
     }
 }
+?>
