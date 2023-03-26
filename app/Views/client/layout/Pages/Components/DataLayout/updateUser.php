@@ -13,26 +13,30 @@
                             <img class="img-avt" src="../../../../../../../DuAn1-FPT/Public/upload/<?= $data['user']['avatar'] ?>" alt="">
                         </div>
 
-                        <input type="file" name="avatar"  onchange="file(this)" class="custom-file-input" style="width: 100%" value="">
+                        <input type="file" name="avatar" onchange="file(this)" class="custom-file-input" style="width: 100%" value="">
+
+                        <div style="margin-top: 10px; padding-left: 35px;">
+                            <p style="color: red;"><?= $data['error'] ?? '' ?></p>
+                        </div>
                     </div>
                 </div>
                 <div class="div-input-site p-3">
                     <div class="div-input-box">
                         <input type="text" name="email" class="input-form-login" value="<?= $data['user']['email'] ?? '' ?>" required>
                         <span class="span-label">Email</span>
-                        <span class="span-err" style="color:red;font-weight:bold;font-style:italic"><?= $data['email_err'] ?? '' ?></span>
+                        <!-- <span class="span-err" style="color:red;font-weight:bold;font-style:italic"><?= $data['email_err'] ?? '' ?></span> -->
                     </div>
 
                     <div class="div-input-box p-3">
                         <input type="text" name="username" class="input-form-login" value="<?= $data['user']['username'] ?? '' ?>" required>
                         <span class="span-label">UserName</span>
-                        <span class="span-err" style="color:red;font-weight:bold;font-style:italic"><?= $data['username'] ?? '' ?></span>
+                        <!-- <span class="span-err" style="color:red;font-weight:bold;font-style:italic"><?= $data['username'] ?? '' ?></span> -->
                     </div>
 
                     <div class="div-input-box p-3">
                         <input type="text" name="accountName" class="input-form-login" value="<?= $data['user']['accountName'] ?? '' ?>" required>
                         <span class="span-label">AccountName</span>
-                        <span class="span-err" style="color:red;font-weight:bold;font-style:italic"><?= $data['accountName'] ?? '' ?></span>
+                        <!-- <span class="span-err" style="color:red;font-weight:bold;font-style:italic"><?= $data['accountName'] ?? '' ?></span> -->
                     </div>
 
                     <!-- <div class="div-input-box">
@@ -44,38 +48,22 @@
                     <div class="div-input-box p-3">
                         <input type="text" name="address" class="input-form-login" value="<?= $data['user']['address'] ?? '' ?>" required>
                         <span class="span-label">Address</span>
-                        <span class="span-err" style="color:red;font-weight:bold;font-style:italic"><?= $data['address'] ?? '' ?></span>
+                        <!-- <span class="span-err" style="color:red;font-weight:bold;font-style:italic"><?= $data['address'] ?? '' ?></span> -->
                     </div>
 
                     <div class="div-input-box p-3">
                         <input type="text" name="phoneNumber" class="input-form-login" value="<?= $data['user']['phoneNumber'] ?? '' ?>" required>
                         <span class="span-label">Phone Number</span>
-                        <span class="span-err" style="color:red;font-weight:bold;font-style:italic"><?= $data['phoneNumber'] ?? '' ?></span>
-                    </div>
-                    <div>
-                        <p><?= $data['error'] ?? '' ?></p>
+                        <!-- <span class="span-err" style="color:red;font-weight:bold;font-style:italic"><?= $data['phoneNumber'] ?? '' ?></span> -->
                     </div>
 
+
                     <div class="div-input-box">
-                        <button class="submit-btn login" name="btn-update" type="submit">Update</button>
+                        <button class="submit-btn update" name="btn-update" type="submit">Update</button>
                     </div>
                 </div>
             </div>
         </form>
     </div>
-
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-    <script>
-        function file(ip){
-            if(ip.files && ip.files[0]){
-                var reader = new FileReader();
-                reader.onload = function(e){
-                    $('#avatar').attr('src', ("../../../../../../../DuAn1-FPT/Public/upload/" + (e.target.result)));
-                }
-                render.readAsDataURL(ip.files[0])
-            }
-        }
-    </script> -->
-    
 </div>
 <?php require_once "./app/Views/client/layout/Pages/footer.php"; ?>

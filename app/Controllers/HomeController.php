@@ -154,6 +154,10 @@ class HomeController
             'error' => '',
         ];
 
+        if (isset($_POST['btn-update'])) {
+
+            $imgF = pathinfo($data['avatar']['name'], PATHINFO_EXTENSION);
+            $img = $user['avatar'];
 
             if (!empty($data['avatar']['name'])) {
                 if (in_array($imgF, ['png', 'jpg'])) {
@@ -167,17 +171,19 @@ class HomeController
             if(empty($data['error'])){
                 $this->user->updateUser($data['email'], $data['username'], $data['accountName'], $data['address'], $data['phoneNumber'], $img, $userId);
                 $data['success'] = "Đã cập nhật";
-
-                _redirectLo($_SERVER['HTTP_REFERER']);
+                _redirectLo(URL."home/");
+                // _redirectLo($_SERVER['HTTP_REFERER']);
             }
         }
-
-        $this->view(
+        
+        $this->view( 
             "client.layout.Pages.Components.DataLayout.updateUser",
             [
-                $data,
-                'cates' => $this->cate->all(),
+                // $data,
+                'success' => $data['success'],
+                'error' => $data['error'],
                 'user' => $user,
+                'cates' => $this->cate->all(),
                 'countCarts' => count($this->cart->getCartByClientID($_SESSION['userID'] ?? ''))
             ]
         );
