@@ -75,6 +75,7 @@
     width: 100%;
     margin: auto;
     background-image: url(../images/product/bg_pattern.jpg);
+    padding: 20px;
   }
   
   .div-main-cart {
@@ -160,7 +161,7 @@
 }
 .div-checkContainer{
   width: 100%;
-  height: 500px;
+  min-height: 500px;
   background-image: url(../images/product/bg_pattern.jpg);
   padding-top: 30px;
 }
