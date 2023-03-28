@@ -29,6 +29,15 @@ class AuthorController{
     }
     $this->view("admin.layout.Components.Author.update", ['author' => $this->author->find($id)]);
 }
+   function deleteAuthor($id){
+   
+        $result = $this->author->delete($id);
+        if($result){
+            _redirectLo(URL. "Admin/listAuthor");
+        }
+        return false;
+    
+}
 }
 
 

@@ -59,7 +59,7 @@
             <td scope="row"><?= $author['authorID'] ?></td>
             <td scope="row"><?= $author['authorName'] ?></td>
             <td><a href="<?= URL?>Author/updateAuthor/<?= $author['authorID']?>" class="btn btn-info">Update</a></td>
-            <td><a href="<?= URL?>Author/delete/<?= $author['authorID']?>" onclick="return confirm('Bạn có muốn xóa không?');" class="btn btn-danger">Delete</a></td>
+            <td><a href="<?= URL?>Author/deleteAuthor/<?= $author['authorID']?>" onclick="return confirm('Bạn có muốn xóa không?');" class="btn btn-danger">Delete</a></td>
           </tr>
         <?php endforeach ?>
         <?php else:?>
