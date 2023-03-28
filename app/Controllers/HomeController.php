@@ -142,32 +142,48 @@ class HomeController
     function updateUser($userId)
     {
         $user = $this->user->getOneUser($userId);
+
+        $data = [
+            'email' => isset($_POST['email']) ? trim($_POST['email']) : '',
+            'username' => isset($_POST['username']) ? trim($_POST['username']) : '',
+            'accountName' => isset($_POST['accountName']) ? trim($_POST['accountName']) : '',
+            'address' => isset($_POST['address']) ? trim($_POST['address']) : '',
+            'phoneNumber' => isset($_POST['phoneNumber']) ? trim($_POST['phoneNumber']) : '',
+            'avatar' => isset($_FILES['avatar']) ? $_FILES['avatar'] : '',
+            'success' => '',
+            'error' => '',
+        ];
+
         if (isset($_POST['btn-update'])) {
+
+            $imgF = pathinfo($data['avatar']['name'], PATHINFO_EXTENSION);
             $img = $user['avatar'];
-            if ($_FILES['avatar']['size'] !== 0) {
-                $imgF = pathinfo($_FILES['avatar']['name'], PATHINFO_EXTENSION);
-                if ($imgF === 'png' || $imgF === 'jpg') {
+
+            if (!empty($data['avatar']['name'])) {
+                if (in_array($imgF, ['png', 'jpg'])) {
                     $img = $_FILES['avatar']['name'];
                     move_uploaded_file($_FILES['avatar']['tmp_name'], 'Public/upload/' . basename($img));
                 } else {
-                    $_SESSION['success'] = 'Sai định dạng ảnh';
-                    _redirectLo($_SERVER['HTTP_REFERER']);
+                    $data['error'] = 'Sai định dạng ảnh';
                 }
             }
 
-            $result = $this->user->updateUser($_POST['email'], $_POST['username'], $_POST['accountName'], $_POST['address'], $_POST['phoneNumber'], $img, $userId);
-
-            if ($result) {
-                $_SESSION['success'] = 'Đã cập nhật';
-                _redirectLo($_SERVER['HTTP_REFERER']);
+            if(empty($data['error'])){
+                $this->user->updateUser($data['email'], $data['username'], $data['accountName'], $data['address'], $data['phoneNumber'], $img, $userId);
+                $data['success'] = "Đã cập nhật";
+                _redirectLo(URL."home/");
+                // _redirectLo($_SERVER['HTTP_REFERER']);
             }
         }
-
-        $this->view(
+        
+        $this->view( 
             "client.layout.Pages.Components.DataLayout.updateUser",
             [
-                'cates' => $this->cate->all(),
+                // $data,
+                'success' => $data['success'],
+                'error' => $data['error'],
                 'user' => $user,
+                'cates' => $this->cate->all(),
                 'countCarts' => count($this->cart->getCartByClientID($_SESSION['userID'] ?? ''))
             ]
         );
