@@ -92,7 +92,7 @@
                             <?php endif?>
                 <?php endforeach?>
             </select>
-            <button type="submit" class="btn btn-info mx-2 my-2" name="updateStatus">Cập Nhật</button>
+            <a href="<?= URL?>Admin/listOrder/page/<?= $i?>"><button type="submit" class="btn btn-info mx-2 my-2" name="updateStatus">Cập Nhật</button></a>
             </form>
         </div>
     </main>
