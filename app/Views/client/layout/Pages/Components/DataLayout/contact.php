@@ -19,7 +19,7 @@
         </div>
         <div class="div-feedbackUs" style="">
             <form action="<?= URL ?>Home/login" class=""  method="post">
-                <h3 class="h3-login" style="margin-bottom: 20px;">Góp ý thêm về chúng tôi</h3>
+                <h3 class="h3-login" style="padding-bottom:20px;">Góp ý thêm về chúng tôi</h3>
               
                 <div class="div-input-box">
                     <input type="text" class="input-form-login" style="width: 200%;left: -70px;height: 100px;" value="<?= $data['password'] ?? '' ?>" name="password" required>
