@@ -40,9 +40,9 @@
                             </thead>
                             <tbody class="table-group-divider">
                                 <tr class="table-primary" >
-                                    <td scope="row"><?= $data['order']['clientName'] ?? ''?></td>
-                                    <td><?= $data['order']['phoneNumber'] ?? ''?></td>
-                                    <td><?= $data['order']['address'] ?? ''?></td>
+                                    <td scope="row"><?= $data['userOrder']['clientName'] ?? ''?></td>
+                                    <td><?= $data['userOrder']['phoneNumber'] ?? ''?></td>
+                                    <td><?= $data['userOrder']['address'] ?? ''?></td>
                                 </tr>
                             </tbody>
                     </table>
@@ -67,25 +67,27 @@
                             </tr>
                             </thead>
                             <tbody class="table-group-divider">
+                                <?php foreach($data['order'] as $orderDetail):?>
                                 <tr class="table-primary" >
-                                    <td scope="row"><?= "#P".$data['order']['orderDetailID'] ?? ''?></td>
-                                    <td><?= $data['order']['bookName'] ?? ''?></td>
-                                    <td><?= number_format($data['order']['priceOrder']) ?? ''?></td>
-                                    <td><?= $data['order']['quantity'] ?? ''?></td>
-                                    <td><?= number_format($data['order']['sumPriceOrder']) ?? ''?></td>
-                                    <td><?= $data['order']['dateBuy'] ?? ''?></td>
+                                    <td scope="row"><?= "#P".$orderDetail['orderDetailID'] ?? ''?></td>
+                                    <td><?= $orderDetail['bookName'] ?? ''?></td>
+                                    <td><?= number_format($orderDetail['priceOrder']) ?? ''?></td>
+                                    <td><?= $orderDetail['quantity'] ?? ''?></td>
+                                    <td><?= number_format($orderDetail['sumPriceOrder']) ?? ''?></td>
+                                    <td><?= $orderDetail['dateBuy'] ?? ''?></td>
                                 </tr>
+                                <?php endforeach?>
                             </tbody>
                     </table>
                 </div>
             </div>
         </div>
         <div class="mb-3">
-            <form action="<?= URL?>Order/updateStatusOrder/<?= $data['order']['orderID']?>" method="post">
+            <form action="<?= URL?>Order/updateStatusOrder/<?= $orderDetail['orderID']?>" method="post">
             <label for="" class="form-label">Trạng Thái Đơn Hàng</label>
             <select class="form-select form-select-lg" name="statusID" id="">
                 <?php foreach($data['statusOrders'] as $statusOrder):?>
-                    <?php if($statusOrder['id'] === $data['order']['statusID']):?>
+                    <?php if($statusOrder['id'] === $orderDetail['statusID']):?>
                         <option value="<?= $statusOrder['id']?>" selected><?= $statusOrder['statusOrderName'] ?? ''?></option>
                         <?php else:?>
                             <option value="<?= $statusOrder['id']?>"><?= $statusOrder['statusOrderName'] ?? ''?></option>

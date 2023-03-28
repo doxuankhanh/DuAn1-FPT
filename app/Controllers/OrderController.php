@@ -16,10 +16,16 @@ class OrderController
     function detailOrder($orderID)
     {
         $order = $this->order->detailOrder($orderID);
+        // _dump($order);?\
+        $oneOrder = $this->order->oneOrder($orderID);
+        // _dump($oneOrder);
+        $userOrder = $this->order->getInfoUser($oneOrder['clientID']);
+        // _dump($userOrder);
         $this->view(
             "admin.layout.Components.Orders.detailOrder",
             [
                 'order' => $order,
+                'userOrder' => $userOrder,
                 'statusOrders' => $this->statusOrder->all(),
             ]
         );
@@ -38,13 +44,13 @@ class OrderController
                 if ($result) {
                     // _dump($emailOrder);die;
                     $title = "Đơn hàng mua sắm của bạn trên website nhasach.com đã được duyệt với mã đơn hàng là: " . $orderID;
-                    $content = "Trạng thái đơn hàng của bạn là: " . $emailOrder['statusOrderName'];
+                    $content = "Trạng thái đơn hàng của bạn là: " . $emailOrder['statusOrderName'].
+                    "<br>Vui lòng truy cập vào đường link sau để xem chính xác trạng thái đơn hàng của bạn.
+                    <br><strong>Xin trân thành cảm ơn</strong>
+                    <br> Xác nhận đơn hàng ".URL."Home/checkOrder";
                     $this->mail->sendMail($title, $content, $emailOrder['email']);
                     _redirectLo($_SERVER['HTTP_REFERER']);
-                    // if(!$sendMail) {
-                    //     return false;
-                    // }else {
-                    // }
+                    
                 } else {
                     return false;
                 }

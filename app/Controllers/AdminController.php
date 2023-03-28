@@ -15,6 +15,7 @@ class AdminController
         $this->book = $this->model("BookModel");
         $this->cate = $this->model("CateModel");
         $this->client = $this->model("UserModel");
+        
         $this->feedback = $this->model("CmtModel");
         $this->author = $this->model("AuthorModel");
         $this->order = $this->model("OrderModel");
@@ -48,10 +49,10 @@ class AdminController
                 if (!$user || !password_verify($data['password'], $user['password'])) {
                     $data['msgErr'] = "Thông tin tài khoản hoặc mật khẩu không chính xác";
                 } else {
-                    $_SESSION['user'] = $user;
-                    if($_SESSION['user']['role'] != 0) {
-                        _redirectLo(URL."Admin");
-                    }
+                    // $_SESSION['user'] = $user;
+                    // if($_SESSION['role'] != 0) {
+                    //     _redirectLo(URL."Admin");
+                    // }
                     _redirectLo(URL . "Admin/home");
                 }
             }
@@ -75,7 +76,7 @@ class AdminController
                 'statistical' => $this->book->statistical(),
                 'books' => $this->book->loadAll(),
                 'cates' => $this->cate->all(),
-                'orders' => $this->order->loadAllStatusOrder(),
+                'orders' => $this->order->loadAllOrder(),
             ]
         );
     }
@@ -161,7 +162,7 @@ class AdminController
         $this->view(
             "admin.layout.Components.Orders.list",
             [
-                'orders' => $this->order->loadAllStatusOrder(),
+                'orders' => $this->order->loadAllOrder(),
             ]
         );
     }

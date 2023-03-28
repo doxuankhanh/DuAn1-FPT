@@ -235,7 +235,7 @@ class HomeController
                     $data['msgErr'] = "Thông tin tài khoản hoặc mật khẩu không chính xác";
                 } else {
                     $this->createUserSession($user);
-                    if($user['role'] == 1) {
+                    if($_SESSION['role'] == 1) {
                         _redirectRe(URL);
                     }else {
                         _redirectLo(URL."Admin/home");
@@ -570,14 +570,13 @@ class HomeController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if (isset($_POST['submit-checkout'])) {
                 $result = $this->order->store(clientID: $_SESSION['userID'], dateBuy: date("Y/m/d H:i:a"), clientName: $_SESSION['username'], address: $_SESSION['address'], phone: $_SESSION['phone'], carts: $_SESSION['carts']);
-                // _dump($result);die;
                 if ($result) {
-                    $code = substr(rand(0,999999),0,3);
+                    $code = substr(rand(0,999999),0,4);
                     $title = "Đặt hàng thành công website nhasach.com";
-                    $content = "Mã đơn hàng của bạn là: $code đang trong quá trình xử lý vui lòng chờ!";
+                    $content = "Mã đơn hàng của bạn là: " ."<span style='color:green'>$code</span>"." đang trong quá trình xử lý vui lòng chờ!";
                     $this->mail->sendMail($title,$content,$_SESSION['email']);
-                    $_SESSION['msgOrderSuccess'] = "Cảm ơn bạn đã mua sắm!";
-                } else {
+                    $_SESSION['msgOrderSuccess'] = "Cảm ơn bạn đã mua sắm! Thông tin đơn hàng chúng tôi sẽ thông báo về Email của bạn.";
+                }else {
                     return false;
                 }
             }
