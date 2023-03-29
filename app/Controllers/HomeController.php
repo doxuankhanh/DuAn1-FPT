@@ -619,15 +619,7 @@ class HomeController
         );
     }
 
-    // lịch sử giao dịch
-     function history(){
-        $this->view("client.layout.Pages.Components.DataLayout.history",
-            [
-                'countCarts' => count($this->cart->getCartByClientID($_SESSION['userID'] ?? '')),
-                'history' => $this->order->loadOrderClient($_SESSION['userID'] ?? ''),
-            ]
-        );
-     }
+    
 
 }
 ?>
