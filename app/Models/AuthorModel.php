@@ -23,5 +23,11 @@ class AuthorModel extends BaseModel {
             return $data;
         }
    }
+   function delete($id){
+        if($this->table !== null) {
+            $sql = "DELETE FROM $this->table WHERE authorID = ?";
+            return $this->_query($sql)->execute([$id]);
+        }
+   }
 }
 ?>
