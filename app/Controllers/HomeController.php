@@ -11,6 +11,7 @@ class HomeController
     private $cmt;
     private $mail;
     private $order;
+    private $author;
     function __construct()
     {
         $this->cate = $this->model("CateModel");
@@ -20,6 +21,7 @@ class HomeController
         $this->cmt = $this->model("CmtModel");
         $this->mail = new Mailer();
         $this->order = $this->model("OrderModel");
+        $this->author = $this->model("AuthorModel");
     }
     function index()
     {
@@ -203,6 +205,7 @@ class HomeController
             ]
         );
     }
+   
     // tạo session khi login thành công
     function createUserSession($user)
     {
@@ -606,8 +609,8 @@ class HomeController
             "client.layout.Pages.Components.DataLayout.checkOut",
             [
                 'cates' => $this->cate->all(),
-                // 'carts' => $this->cart->getCartByClientID($_SESSION['userID'] ?? ''),
-                'carts' => $_SESSION['carts'],
+                'carts' => $this->cart->getCartByClientID($_SESSION['userID'] ?? ''),
+                // 'carts' => $_SESSION['carts'],
                 // 'countCarts' => count($_SESSION['carts']),
                 'countCarts' => count($this->cart->getCartByClientID($_SESSION['userID'] ?? '')),
             ]
@@ -647,6 +650,15 @@ class HomeController
             [
                 'cates' => $this->cate->all(),
                 'viewBook' => $this->book->bookView(),
+            ]
+        );
+    }
+    function loadAuthor()
+    {
+        $this->view(
+            "client.layout.Pages.Components.DataLayout.authorView",
+            [
+                'authors' => $this->author->all(),
             ]
         );
     }

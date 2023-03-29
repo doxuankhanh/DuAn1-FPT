@@ -23,7 +23,7 @@
               
                 <div class="div-input-box">
                     <input type="text" class="input-form-login" style="width: 200%;left: -70px;height: 100px;" value="<?= $data['password'] ?? '' ?>" name="password" required>
-                    <span class="span-label" style="left: -40px;">Đóng góp ý kiến của bạn tại đây:</span>
+                    <span class="span-label" style="left: -40px;border-bottom: none;">Đóng góp ý kiến của bạn tại đây:</span>
                     <span class="span-err" style="color:red;font-weight:bold;font-style:italic"><?= $data['password_err'] ?? '' ?></span>
                 </div>
                 <div class="div-input-box" style="display: flex;justify-content: flex-end;width: 150%;">
