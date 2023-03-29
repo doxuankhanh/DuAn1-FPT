@@ -26,7 +26,7 @@ class UserController
                 $img = $_FILES['avatar']['name'];
                 move_uploaded_file($_FILES['avatar']['tmp_name'], "Public/upload/" . basename($img));
             }
-            $result = $this->client->updateUser($_POST['email'], $_POST['username'], $_POST['accountName'], $_POST['address'], $_POST['phoneNumber'],$img, $ClientID);
+            $result = $this->client->updateUser($_POST['email'], $_POST['username'], $_POST['accountName'], $_POST['address'], $_POST['phoneNumber'],$img,  $_POST['role'], $ClientID);
     
             if ($result) {
                 header("location:" . URL . "Admin/listClient");
