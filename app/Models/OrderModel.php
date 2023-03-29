@@ -46,10 +46,10 @@ class OrderModel extends BaseModel {
     }
 
     // 
-    function store($clientID,$dateBuy,$clientName,$address,$phone,$carts) {
+    function store($clientID,$dateBuy,$clientName,$address,$phone,$carts,$statuspayment) {
         if($this->table !== null && $this->sub_table !== null) {
-            $sql = "INSERT INTO $this->table(clientID,dateBuy,clientName,address,phoneNumber) VALUES(?,?,?,?,?)";
-            $this->_query($sql)->execute([$clientID,$dateBuy,$clientName,$address,$phone]);
+            $sql = "INSERT INTO $this->table(clientID,dateBuy,clientName,address,phoneNumber,statuspayment) VALUES(?,?,?,?,?,?)";
+            $this->_query($sql)->execute([$clientID,$dateBuy,$clientName,$address,$phone,$statuspayment]);
             $orderID = $this->connect->lastInsertId();
             // _dump($sql);_dump($orderID);
             // _dump($clientID);die;
