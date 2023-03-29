@@ -170,26 +170,27 @@ class AdminController
         );
     }
 
-    function profile($userID){
+    function profile($userID)
+    {
         $client = $this->client->getOneUser($userID);
-        if(isset($_POST['btn-update'])){
+        if (isset($_POST['btn-update'])) {
             $img = $client['btn-update'];
-            if($_FILES['avatar']['size'] !== 0){
+            if ($_FILES['avatar']['size'] !== 0) {
                 $image = pathinfo($_FILES['avatar']['name'], PATHINFO_EXTENSION);
-                if($image === 'png' || $image === 'jpg'){
+                if ($image === 'png' || $image === 'jpg') {
                     $img = $_FILES['avatar']['name'];
-                    move_uploaded_file($_FILES['avatar']['tpm_name'], "Public/upload" .basename($img));
-                }else{
+                    move_uploaded_file($_FILES['avatar']['tpm_name'], "Public/upload" . basename($img));
+                } else {
                     $_SESSION['success'] = 'Sai định dạng ảnh';
                     _redirectLo($_SERVER['HTTP_REFERER']);
                 }
-            }else{
+            } else {
                 $img = $client['avatar'];
             }
 
             $result = $this->client->updateUser($_POST['email'], $_POST['username'], $_POST['accountName'], $_POST['address'], $_POST['phoneNumber'], $img, $userID);
 
-            if($result){
+            if ($result) {
                 $_SESSION['success'] = 'Đã cập nhật';
                 _redirectLo($_SERVER['HTTP_REFERER']);
             }
@@ -202,55 +203,9 @@ class AdminController
             ]
         );
     }
-    function listAuthor(){
-        $this->view("admin.layout.Components.Author.list",
-        [
-            'authors'=>$this->author->all(),
-        ]
-    );
-    }
+  
 
-    function listOrder(){
-        
-        $this->view("admin.layout.Components.Orders.list",
-        [
-            'orders' =>$this->order->loadAllStatusOrder(),
-        ]
-        );
-    }
+   
 
-    function profile($userID){
-        $client = $this->client->getOneUser($userID);
-        if(isset($_POST['btn-update'])){
-            $img = $client['btn-update'];
-            if($_FILES['avatar']['size'] !== 0){
-                $image = pathinfo($_FILES['avatar']['name'], PATHINFO_EXTENSION);
-                if($image === 'png' || $image === 'jpg'){
-                    $img = $_FILES['avatar']['name'];
-                    move_uploaded_file($_FILES['avatar']['tpm_name'], "Public/upload" .basename($img));
-                }else{
-                    $_SESSION['success'] = 'Sai định dạng ảnh';
-                    _redirectLo($_SERVER['HTTP_REFERER']);
-                }
-            }else{
-                $img = $client['avatar'];
-            }
-
-            $result = $this->client->updateUser($_POST['email'], $_POST['username'], $_POST['accountName'], $_POST['address'], $_POST['phoneNumber'], $img, $userID);
-
-            if($result){
-                $_SESSION['success'] = 'Đã cập nhật';
-                _redirectLo($_SERVER['HTTP_REFERER']);
-            }
-        }
-
-        $this->view(
-            "admin.layout.Components.Client.profileAdmin",
-            [
-                'admin' => $client,
-            ]
-        );
-    }
-
-    
+   
 }
