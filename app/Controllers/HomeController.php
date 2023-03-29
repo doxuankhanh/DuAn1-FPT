@@ -131,8 +131,9 @@ class HomeController
                 'view' => $this->book->updateView($id),
                 'book' => $bookDetail,
                 'comments' => $this->cmt->loadCmt($id),
+                'authorCheck' => $this->book->selectAuthor($id),
+                // 'countCarts' => count($_SESSION['carts']),
                 'countCarts' => count($this->cart->getCartByClientID($_SESSION['userID'] ?? '')),
-                'authorCheck' => $this->book->selectAuthor($id)
 
             ]
         );
@@ -184,7 +185,7 @@ class HomeController
                 'error' => $data['error'],
                 'user' => $user,
                 'cates' => $this->cate->all(),
-                'countCarts' => count($this->cart->getCartByClientID($_SESSION['userID'] ?? ''))
+                'countCarts' => count($_SESSION['carts'] ?? ''),
             ]
         );
     }
@@ -197,8 +198,8 @@ class HomeController
                 'cates' => $this->cate->all(),
                 'cate' => $this->cate->getOne($cateID),
                 'book' => $this->book->bookFollowCategories($cateID),
-                'countCarts' => count($this->cart->getCartByClientID($_SESSION['userID'] ?? ''))
-
+                // 'countCarts' => count($_SESSION['carts']),
+                'countCarts' => count($this->cart->getCartByClientID($_SESSION['userID'] ?? '')),
             ]
         );
     }
@@ -384,7 +385,8 @@ class HomeController
             [
                 'cates' => $this->cate->all(),
                 'carts' => $_SESSION['carts'],
-                'countCarts' => count($this->cart->getCartByClientID($_SESSION['userID'] ?? ''))
+                // 'countCarts' => count($_SESSION['carts']),    
+                'countCarts' => count($this->cart->getCartByClientID($_SESSION['userID'] ?? '')),        
             ]
         );
     }
@@ -409,7 +411,8 @@ class HomeController
             [
                 'cates' => $this->cate->all(),
                 'bookSearch' => $bookSearch ?? '',
-                'countCarts' => count($this->cart->getCartByClientID($_SESSION['userID'] ?? ''))
+                // 'countCarts' => count($_SESSION['carts']),
+                'countCarts' => count($this->cart->getCartByClientID($_SESSION['userID'] ?? '')),
 
             ]
         );
@@ -592,6 +595,8 @@ class HomeController
                     $content = "Mã đơn hàng của bạn là: " ."<span style='color:green'>$code</span>"." đang trong quá trình xử lý vui lòng chờ!";
                     $this->mail->sendMail($title,$content,$_SESSION['email']);
                     $_SESSION['msgOrderSuccess'] = "Cảm ơn bạn đã mua sắm! Thông tin đơn hàng chúng tôi sẽ thông báo về Email của bạn.";
+                    unset($_SESSION['carts']);// ++++
+                    // _redirectLo(URL);
                 }else {
                     return false;
                 }
@@ -601,8 +606,10 @@ class HomeController
             "client.layout.Pages.Components.DataLayout.checkOut",
             [
                 'cates' => $this->cate->all(),
-                'carts' => $this->cart->getCartByClientID($_SESSION['userID'] ?? ''),
-                'countCarts' => count($this->cart->getCartByClientID($_SESSION['userID'] ?? ''))
+                // 'carts' => $this->cart->getCartByClientID($_SESSION['userID'] ?? ''),
+                'carts' => $_SESSION['carts'],
+                // 'countCarts' => count($_SESSION['carts']),
+                'countCarts' => count($this->cart->getCartByClientID($_SESSION['userID'] ?? '')),
             ]
         );
     }
@@ -613,7 +620,8 @@ class HomeController
             [
                 'cates' => $this->cate->all(),
                 'carts' => $this->cart->getCartByClientID($_SESSION['userID'] ?? ''),
-                'countCarts' => count($this->cart->getCartByClientID($_SESSION['userID'] ?? ''))
+                // 'countCarts' => count($_SESSION['carts']),
+                'countCarts' => count($this->cart->getCartByClientID($_SESSION['userID'] ?? '')),
             ]
         );
     }
@@ -625,8 +633,9 @@ class HomeController
             "client.layout.Pages.Components.DataLayout.checkOrder",
             [
                 'cates' => $this->cate->all(),
-                'countCarts' => count($this->cart->getCartByClientID($_SESSION['userID'] ?? '')),
                 'clientOrder' => $this->order->loadOrderClient($_SESSION['userID'] ?? ''),
+                // 'countCarts' => count($_SESSION['carts']),  
+                'countCarts' => count($this->cart->getCartByClientID($_SESSION['userID'] ?? '')),
             ]
         );
     }

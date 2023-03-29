@@ -33,7 +33,7 @@
                     <a class="anchor-a" href="<?= URL ?>Home/register">ĐĂNG KÝ</a>
                 <?php elseif (isset($_SESSION['username']) && $_SESSION['role'] == 0) : ?>
                     <a class="anchor-a" href="<?= URL ?>Home/destroy">ĐĂNG XUẤT</a>
-                    <a class="anchor-a" href="<?= URL ?>Admin">ADMIN</a>
+                    <a class="anchor-a" href="<?= URL ?>Admin/Home">ADMIN</a>
 
                     <!-- <div class="p-setting anchor-a " style="display: inline;" href="#"><img class="img-setting" src="../../../../../../DuAn1-FPT/Public/images/product/settings-icon-13.png" alt="">
                         <div class="ul-setting">
@@ -65,7 +65,8 @@
             <div class="div-searchsite">
                 <a href="<?= URL ?>Home/getCartByClientID" class="cart">
                     <div class="div-buble-cart">
-                        <p><?= $data['countCarts'] ?? 0 ?></p>
+                        <p><?= $data['countCarts'] ?? 0?></p>
+                        <!-- <p>0</p> -->
                     </div>
                 </a>
                 <form action="<?= URL ?>Home/loadBookSearch" method="post">

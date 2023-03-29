@@ -15,7 +15,7 @@ class AdminController
         $this->book = $this->model("BookModel");
         $this->cate = $this->model("CateModel");
         $this->client = $this->model("UserModel");
-        
+
         $this->feedback = $this->model("CmtModel");
         $this->author = $this->model("AuthorModel");
         $this->order = $this->model("OrderModel");
@@ -38,7 +38,7 @@ class AdminController
             // validate email
             if (empty($data['email'])) {
                 $data['email_err'] = "Please enter your email";
-            } 
+            }
             //validate password
             if (empty($data['password'])) {
                 $data['password_err'] = "Please enter your password";
@@ -49,6 +49,9 @@ class AdminController
                 if (!$user || !password_verify($data['password'], $user['password'])) {
                     $data['msgErr'] = "Thông tin tài khoản hoặc mật khẩu không chính xác";
                 } else {
+                    if ($_SESSION['role'] != 0) {
+                        $data['msgErr'] = "Bạn không có quyền truy cập vào trong quản trị";
+                    }
                     // $_SESSION['user'] = $user;
                     // if($_SESSION['role'] != 0) {
                     //     _redirectLo(URL."Admin");
@@ -65,7 +68,7 @@ class AdminController
                 'password_err' => "",
             ];
         }
-        $this->view("admin.layout.Components.Account.login",$data);
+        $this->view("admin.layout.Components.Account.login", $data);
     }
     //login
     function home()

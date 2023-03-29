@@ -8,7 +8,7 @@
                 unset($_SESSION['msgOrderSuccess']) ?> 
                 <span id="redirect"></span>
             </h2>
-        <?php unset($_SESSION['carts']);else : ?>
+        <?php else : ?>
             <form action="<?= URL ?>Home/checkOut" method="post">
                 <div class="div-infor-checkout">
                     <h4 style="">Thông tin người mua</h4>
