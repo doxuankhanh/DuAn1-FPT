@@ -610,12 +610,31 @@ class HomeController
     // kiểm tra đơn hàng đã đạt
     function checkOrder()
     {
+      
         $this->view(
             "client.layout.Pages.Components.DataLayout.checkOrder",
             [
                 'cates' => $this->cate->all(),
                 'countCarts' => count($this->cart->getCartByClientID($_SESSION['userID'] ?? '')),
                 'clientOrder' => $this->order->loadOrderClient($_SESSION['userID'] ?? ''),
+            ]
+        );
+    }
+    // Đơn hàng đã thanh toán
+    function checkTransaction()   
+    {
+        // $statuspayment = $this->order->paymentComplete();
+        // var_dump($statuspayment);
+        // die();
+        $this->view(
+            "client.layout.Pages.Components.DataLayout.checkTransaction",
+            [
+                'cates' => $this->cate->all(),
+                'countCarts' => count($this->cart->getCartByClientID($_SESSION['userID'] ?? '')),
+                // 'clientOrder' => $this->order->loadOrderClient($_SESSION['userID'] ?? ''),
+                'clientOrder' => $this->order->paymentComplete(),
+
+
             ]
         );
     }

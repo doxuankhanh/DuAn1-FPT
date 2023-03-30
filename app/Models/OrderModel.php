@@ -75,6 +75,17 @@ class OrderModel extends BaseModel {
         }
     }
 
+    function paymentComplete() {
+        if($this->table !== null) {
+            $sql =$this->_sqlOrder(). " where statuspayment like 'thanh toan online' ";
+            // var_dump($sql);
+            // die();
+            $this->_query($sql)->execute();
+            $data = $this->stmt->fetchall();
+            return $data;
+        }
+    }
+
     // _
     function _sqlOrder() {
         $sql = "SELECT $this->sub_table.id AS orderDetailID,$this->table.id AS orderID,$this->sub_table.quantity,$this->sub_table.price AS priceOrder,($this->sub_table.price * $this->sub_table.quantity) AS sumPriceOrder,books.bookName,books.image,$this->table.dateBuy,$this->table.clientID,$this->table.clientName,$this->table.statusID,statusOrders.statusOrderName,clients.phoneNumber,clients.address,clients.email FROM $this->sub_table LEFT JOIN $this->table ON $this->sub_table.orderID = $this->table.id LEFT JOIN books ON $this->sub_table.bookID = books.id LEFT JOIN statusOrders ON $this->table.statusID = statusOrders.id LEFT JOIN clients ON clients.clientID = $this->table.clientID";
