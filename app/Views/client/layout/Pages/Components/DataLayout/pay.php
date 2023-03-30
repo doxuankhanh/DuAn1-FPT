@@ -1,4 +1,5 @@
 <?php require_once "./app/Views/client/layout/Pages/header.php"; ?>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 <style>
 body {
   font-family: Arial;
@@ -41,9 +42,10 @@ body {
 
 .container {
   background-color: #f2f2f2;
-  padding: 5px 512.5px;
+  padding: 5px 20px 15px 20px;
   border: 1px solid lightgrey;
   border-radius: 3px;
+  margin: 0 auto;
 }
 
 input[type=text] {
@@ -93,7 +95,6 @@ span.price {
   float: right;
   color: grey;
 }
-
 /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (also change the direction - make the "cart" column go on top) */
 @media (max-width: 800px) {
   .row {
@@ -103,73 +104,70 @@ span.price {
     margin-bottom: 20px;
   }
 }
+#payment-online input[type="number"] {
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
 </style>
+<script>
+    $(document).ready(function(){
+        let screen = $(document).width();
+        let form = $("#payment-online").width();
+        let wMargin = (screen - form)/2;
+        $("#payment-online").css({"margin": "0 " + wMargin + "px"});
+    });
+</script>
+<?php $total = 0;
+    foreach ($data['carts'] as $key => $value) {
+        $subtotal = ($value['quantity'] * $value['price']);
+        $total += $subtotal;
+    }
+?>
 <div class="row">   
   <div class="col-100">
-    <div class="container">
-    <h2 style="padding:17px 0px;">Thanh toán online</h2>
-      <form action="/action_page.php">
-      
+    <div class="container" id="payment-online">
+      <form action="<?= URL ?>Home/paymentOnline" method="post">
         <div class="row">
           <div class="col-50">
-            <h3>Billing Address</h3>
-            <label for="fname"><i class="fa fa-user"></i> Full Name</label>
-            <input type="text" id="fname" name="firstname" placeholder="John M. Doe">
-            <label for="email"><i class="fa fa-envelope"></i> Email</label>
-            <input type="text" id="email" name="email" placeholder="john@example.com">
-            <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
-            <input type="text" id="adr" name="address" placeholder="542 W. 15th Street">
-            <label for="city"><i class="fa fa-institution"></i> City</label>
-            <input type="text" id="city" name="city" placeholder="New York">
-
-            <div class="row">
-              <div class="col-50">
-                <label for="state">State</label>
-                <input type="text" id="state" name="state" placeholder="NY">
-              </div>
-              <div class="col-50">
-                <label for="zip">Zip</label>
-                <input type="text" id="zip" name="zip" placeholder="10001">
-              </div>
-            </div>
-          </div>
-
-          <div class="col-50">
-            <h3>Payment</h3>
-            <label for="fname">Accepted Cards</label>
+            <h3>Thanh toán online</h3>
+            <?php if(isset($data['errorMessage'])): ?>
+                <label style="color: red;"><?= $data['errorMessage'] ?></label>
+            <?php endif; ?>
+            <label>Số tiền cần thanh toán</label>
+            <label><?= number_format($total) ?> VNĐ</label>
+            <label for="fname">Loại thẻ chấp nhận thanh toán</label>
             <div class="icon-container">
-              <i class="fa fa-cc-visa" style="color:navy;"></i>
-              <i class="fa fa-cc-amex" style="color:blue;"></i>
-              <i class="fa fa-cc-mastercard" style="color:red;"></i>
-              <i class="fa fa-cc-discover" style="color:orange;"></i>
+              <i class="fa-brands fa-cc-visa" style="color:navy;"></i>
+              <i class="fa-brands fa-cc-amex" style="color:blue;"></i>
+              <i class="fa-brands fa-cc-mastercard" style="color:red;"></i>
+              <i class="fa-brands fa-cc-discover" style="color:orange;"></i>
             </div>
-            <label for="cname">Name on Card</label>
-            <input type="text" id="cname" name="cardname" placeholder="John More Doe">
-            <label for="ccnum">Credit card number</label>
-            <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444">
-            <label for="expmonth">Exp Month</label>
-            <input type="text" id="expmonth" name="expmonth" placeholder="September">
-            <input type="hidden" value="<?php ?>" name="orderId"/>
+            <label for="cname">Họ tên chủ thẻ(*)</label>
+            <input type="text" id="cname" name="cardname" value="<?php echo isset($_POST['cardname']) ?  $_POST['cardname'] : ''?>" placeholder="Nguyen Van A">
+            <label for="ccnum">Số thẻ(*)</label>
+            <input type="text" id="ccnum" name="cardnumber" value="<?php echo isset($_POST['cardnumber']) ?  $_POST['cardnumber'] : '' ?>" placeholder="1111222233334444">
+            <label for="expmonth">Tháng hêt hạn của thẻ(*)</label>
+            <input type="number" id="expmonth" name="expmonth" value="<?php echo isset($_POST['expmonth']) ?  $_POST['expmonth'] : ''?>" placeholder="5" maxlength="2">
             <div class="row">
               <div class="col-50">
-                <label for="expyear">Exp Year</label>
-                <input type="text" id="expyear" name="expyear" placeholder="2018">
+                <label for="expyear">Năm hết hạn của thẻ(*)</label>
+                <input type="number" id="expyear" name="expyear" value="<?php echo isset($_POST['expyear']) ?  $_POST['expyear'] : ''?>" placeholder="2018" maxlength="4">
               </div>
               <div class="col-50">
-                <label for="cvv">CVV</label>
-                <input type="text" id="cvv" name="cvv" placeholder="352">
+                <label for="cvv">CVV(*)</label>
+                <input type="text" id="cvv" name="cvv" value="<?php echo isset($_POST['cvv']) ?  $_POST['cvv'] : ''?>" placeholder="352" maxlength="3">
               </div>
             </div>
           </div>
           
         </div>
-        <label>
-          <input type="checkbox" checked="checked" name="sameadr"> Shipping address same as billing
-        </label>
-        <input type="submit" value="Continue to checkout" class="btn">
+        <input type="submit" value="Thanh toán" class="btn" name="payment">
       </form>
     </div>
   </div>
 </div>
-
+                        </table>
 <?php require_once "./app/Views/client/layout/Pages/footer.php"; ?>

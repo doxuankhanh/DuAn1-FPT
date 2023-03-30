@@ -8,12 +8,14 @@ class CartModel extends BaseModel {
     //lấy sản phẩm theo clientID
     function getCartByClientID($clientID) {
         if($this->table !== null) {
-            $sql = "SELECT * FROM $this->table WHERE clientID = ?";
+            $sql = "SELECT * FROM $this->table WHERE clientID = ? and status=1";
             $this->_query($sql)->execute([$clientID]);
             $data = $this->stmt->fetchAll();
             return $data;
         }
     }
+    //
+     
     // thêm sản phảm vào giỏ hàng
     function store($bookName,$clientID,$bookID,$image,$price,$quantity){
         if($this->table !== null) {
