@@ -569,8 +569,8 @@ class HomeController
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if (isset($_POST['submit-checkout'])) {
-                // var_dump($_POST['statuspayment']);
-                // die();
+                $pay = isset($_POST['statuspayment']) ? $_POST['statuspayment']:'';
+                if(isset($_POST['submit-checkout'])&&($pay=='Thanh toán khi nhận')){
                 $result = $this->order->store(clientID: $_SESSION['userID'], dateBuy: date("Y/m/d H:i:a"), clientName: $_SESSION['username'], address: $_SESSION['address'], phone: $_SESSION['phone'], carts: $_SESSION['carts'], statuspayment:$_POST['statuspayment']);
                 // _dump($result);die;
                 if ($result) {
@@ -583,6 +583,9 @@ class HomeController
                 } else {
                     return false;
                 }
+            }
+            }else{
+                $this->view('lient.layout.Pages.Components.DataLayout.pay');
             }
         }
         $this->view(
