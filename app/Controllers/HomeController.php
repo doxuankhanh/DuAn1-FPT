@@ -658,7 +658,27 @@ class HomeController
         $this->view(
             "client.layout.Pages.Components.DataLayout.authorView",
             [
-                'authors' => $this->author->all(),
+                'cates' => $this->cate->all(),
+                'authors' => $this->author->_countBook(),
+                // 'authorCheck' => $this->book->selectAuthor(),
+                'author' => $this->book->selectAuthor(1),
+                // 'countAuthor' => $this->author->_countBook(),
+
+
+            ]
+        );
+    }
+    function getBookByAuthor($id){
+        $this->view(
+            "client.layout.Pages.Components.DataLayout.getBookByAuthor",
+            [
+                'cates' => $this->cate->all(),
+                'author' => $this->book->selectAuthor($id),
+                'authors' => $this->author->_countBook(),
+                // 'book' => $this->book->selectAuthor
+                //lấy toàn bộ sản phẩm của 1 tác giả trong getBookByAuthor
+                'books' => $this->book->selectAuthorAll($id),
+                // 'countAuthor' =>$this->author->_countBook(),
             ]
         );
     }
