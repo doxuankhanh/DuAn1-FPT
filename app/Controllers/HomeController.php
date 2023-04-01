@@ -616,6 +616,8 @@ class HomeController
             ]
         );
     }
+
+
     function countCartHeader()
     {
         $this->view(
@@ -684,3 +686,5 @@ class HomeController
     }
 }
 ?>
+
+
