@@ -71,8 +71,9 @@
                             </div>
                             <p class="p-price">
 
-                                <a href="#" class="a-price"> <?= number_format($bookNew['price']) ?></a>
-                                <a href="#" class="a-buyNow">Mua ngay</a>
+                                <a href="#" class="a-price"> <?= number_format($bookSeller['price']) ?></a>
+                                <a href="<?= URL ?>Home/bookDetail/<?= $bookSeller['id'] ?>/<?= $bookSeller['cateID'] ?>" class="a-buyNow">Mua ngay</a>
+                                <!-- <a href="#" class="a-buyNow">Mua ngay</a> -->
                             </p>
                         </div>
                     </ul>
@@ -104,8 +105,8 @@
                             </div>
                             <p class="p-price">
 
-                                <a href="#" class="a-price"> <?= number_format($bookNew['price']) ?></a>
-                                <a href="#" class="a-buyNow">Mua ngay</a>
+                                <a href="#" class="a-price"> <?= number_format($literatureVN['price']) ?></a>
+                                <a href="<?= URL ?>Home/bookDetail/<?= $literatureVN['id'] ?>/<?= $literatureVN['cateID'] ?>" class="a-buyNow">Mua ngay</a>
                             </p>
                         </div>
                     </ul>
@@ -137,8 +138,8 @@
                             </div>
                             <p class="p-price">
 
-                                <a href="#" class="a-price"> <?= number_format($bookNew['price']) ?></a>
-                                <a href="#" class="a-buyNow">Mua ngay</a>
+                                <a href="#" class="a-price"> <?= number_format($literature['price']) ?></a>
+                                <a href="<?= URL ?>Home/bookDetail/<?= $literature['id'] ?>/<?= $literature['cateID'] ?>" class="a-buyNow">Mua ngay</a>
                             </p>
                         </div>
                     </ul>
@@ -170,8 +171,8 @@
                             </div>
                             <p class="p-price">
 
-                                <a href="#" class="a-price"> <?= number_format($bookNew['price']) ?></a>
-                                <a href="#" class="a-buyNow">Mua ngay</a>
+                                <a href="#" class="a-price"> <?= number_format($children['price']) ?></a>
+                                <a href="<?= URL ?>Home/bookDetail/<?= $children['id'] ?>/<?= $children['cateID'] ?>" class="a-buyNow">Mua ngay</a>
                             </p>
                         </div>
                     </ul>

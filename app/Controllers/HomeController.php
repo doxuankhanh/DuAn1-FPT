@@ -187,7 +187,8 @@ class HomeController
                 'error' => $data['error'],
                 'user' => $user,
                 'cates' => $this->cate->all(),
-                'countCarts' => count($_SESSION['carts'] ?? ''),
+                'countCarts' => count($this->cart->getCartByClientID($_SESSION['userID'] ?? '')),
+                // 'countCarts' => count($_SESSION['carts'] ?? ''),
             ]
         );
     }
@@ -431,6 +432,15 @@ class HomeController
         }
         // $this->view("client.layout.Pages.Components.cart");
     }
+    // đơn hàng đã đặt , và đang trong trạng thái chờ xử lý hoặc đang xử lý
+    function destroyOrder($id)
+    {
+        $result = $this->order->delete($id);
+        if ($result) {
+           _redirectLo($_SERVER['HTTP_REFERER']);
+        }
+    }
+    
     // update cart 
     // update delete cart ~~~~~~~~~~~
     function updateCart($id)
@@ -636,6 +646,18 @@ class HomeController
     {
         $this->view(
             "client.layout.Pages.Components.DataLayout.checkOrder",
+            [
+                'cates' => $this->cate->all(),
+                'clientOrder' => $this->order->loadOrderClient($_SESSION['userID'] ?? ''),
+                // 'countCarts' => count($_SESSION['carts']),  
+                'countCarts' => count($this->cart->getCartByClientID($_SESSION['userID'] ?? '')),
+            ]
+        );
+    }
+    function orderSuccess()
+    {
+        $this->view(
+            "client.layout.Pages.Components.DataLayout.orderSuccess",
             [
                 'cates' => $this->cate->all(),
                 'clientOrder' => $this->order->loadOrderClient($_SESSION['userID'] ?? ''),

@@ -83,7 +83,13 @@ class OrderModel extends BaseModel {
             return $data;
         }
     }
-
+    function delete($id) {
+        if($this->table !== null) {
+            $sql = "DELETE FROM $this->sub_table WHERE id = ?";
+            return $this->_query($sql)->execute([$id]);
+        }
+        return false;
+    }
     // _
     function _sqlOrder() {
         $sql = "SELECT $this->sub_table.id AS orderDetailID,$this->table.id AS orderID,$this->sub_table.quantity,$this->sub_table.price AS priceOrder,($this->sub_table.price * $this->sub_table.quantity) AS sumPriceOrder,books.bookName,books.image,$this->table.dateBuy,$this->table.clientID,$this->table.clientName,$this->table.statusID,statusOrders.statusOrderName,clients.phoneNumber,clients.address,clients.email 
