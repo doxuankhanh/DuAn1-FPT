@@ -172,8 +172,8 @@ class HomeController
             if(empty($data['error'])){
                 $this->user->updateUser($data['email'], $data['username'], $data['accountName'], $data['address'], $data['phoneNumber'], $img, $userId);
                 $data['success'] = "Đã cập nhật";
-                _redirectLo(URL."home/");
-                // _redirectLo($_SERVER['HTTP_REFERER']);
+                // _redirectLo(URL."home/");
+                _redirectLo($_SERVER['HTTP_REFERER']);
             }
         }
         
@@ -606,8 +606,7 @@ class HomeController
             "client.layout.Pages.Components.DataLayout.checkOut",
             [
                 'cates' => $this->cate->all(),
-                // 'carts' => $this->cart->getCartByClientID($_SESSION['userID'] ?? ''),
-                'carts' => $_SESSION['carts'],
+                'carts' => $this->cart->getCartByClientID($_SESSION['userID'] ?? ''),
                 // 'countCarts' => count($_SESSION['carts']),
                 'countCarts' => count($this->cart->getCartByClientID($_SESSION['userID'] ?? '')),
             ]

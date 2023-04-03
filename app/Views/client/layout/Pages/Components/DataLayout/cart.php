@@ -1,5 +1,7 @@
 <?php require_once "./app/Views/client/layout/Pages/header.php"; ?>
+
 <div class="div-container-cart">
+    <img src="" alt="">
     <div class="div-main-cart">
         <?php if (count($data['carts']) > 0) : ?>
             <table class="table-cart">
