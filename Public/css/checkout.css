@@ -5,10 +5,10 @@
   }
   
   .div-checkout-main {
+    padding: 10px;
     margin: 50px;
-    min-width: 700px;
+    width: 100%;
     border: 1px solid #ccc;
-    padding: 20px;
     background-image: url(../images/product/headerbg.png);
   }
   .p-infor{

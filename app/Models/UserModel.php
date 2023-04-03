@@ -34,10 +34,10 @@ class UserModel extends BaseModel {
         }
     }
     // update user
-    function updateUser($email,$username,$accountName,$address,$phoneNumber,$avatar,$userID){
+    function updateUser($email,$username,$accountName,$address,$phoneNumber,$avatar,$role,$userID){
         if ($this->table !== null) {
-            $sql = "UPDATE $this->table SET email = ?,username = ? ,accountName = ?,address = ?, phoneNumber = ?, avatar = ? WHERE clientID = ?";
-            return $this->_query($sql)->execute([$email, $username, $accountName, $address, $phoneNumber, $avatar, $userID]);
+            $sql = "UPDATE $this->table SET email = ?,username = ? ,accountName = ?,address = ?, phoneNumber = ?, avatar = ?, role = ? WHERE clientID = ?";
+            return $this->_query($sql)->execute([$email, $username, $accountName, $address, $phoneNumber, $avatar,$role, $userID]);
         }
     }
     // quên mật khẩu

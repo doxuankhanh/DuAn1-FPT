@@ -11,6 +11,7 @@ class HomeController
     private $cmt;
     private $mail;
     private $order;
+    private $author;
     function __construct()
     {
         $this->cate = $this->model("CateModel");
@@ -20,6 +21,7 @@ class HomeController
         $this->cmt = $this->model("CmtModel");
         $this->mail = new Mailer();
         $this->order = $this->model("OrderModel");
+        $this->author = $this->model("AuthorModel");
     }
     function index()
     {
@@ -131,8 +133,9 @@ class HomeController
                 'view' => $this->book->updateView($id),
                 'book' => $bookDetail,
                 'comments' => $this->cmt->loadCmt($id),
+                'authorCheck' => $this->book->selectAuthor($id),
+                // 'countCarts' => count($_SESSION['carts']),
                 'countCarts' => count($this->cart->getCartByClientID($_SESSION['userID'] ?? '')),
-                'authorCheck' => $this->book->selectAuthor($id)
 
             ]
         );
@@ -184,7 +187,7 @@ class HomeController
                 'error' => $data['error'],
                 'user' => $user,
                 'cates' => $this->cate->all(),
-                'countCarts' => count($this->cart->getCartByClientID($_SESSION['userID'] ?? ''))
+                'countCarts' => count($_SESSION['carts'] ?? ''),
             ]
         );
     }
@@ -197,11 +200,12 @@ class HomeController
                 'cates' => $this->cate->all(),
                 'cate' => $this->cate->getOne($cateID),
                 'book' => $this->book->bookFollowCategories($cateID),
-                'countCarts' => count($this->cart->getCartByClientID($_SESSION['userID'] ?? ''))
-
+                // 'countCarts' => count($_SESSION['carts']),
+                'countCarts' => count($this->cart->getCartByClientID($_SESSION['userID'] ?? '')),
             ]
         );
     }
+   
     // tạo session khi login thành công
     function createUserSession($user)
     {
@@ -251,7 +255,7 @@ class HomeController
                     $data['msgErr'] = "Thông tin tài khoản hoặc mật khẩu không chính xác";
                 } else {
                     $this->createUserSession($user);
-                    if($user['role'] == 1) {
+                    if($_SESSION['role'] == 1) {
                         _redirectRe(URL);
                     }else {
                         _redirectLo(URL."Admin/home");
@@ -384,7 +388,8 @@ class HomeController
             [
                 'cates' => $this->cate->all(),
                 'carts' => $_SESSION['carts'],
-                'countCarts' => count($this->cart->getCartByClientID($_SESSION['userID'] ?? ''))
+                // 'countCarts' => count($_SESSION['carts']),    
+                'countCarts' => count($this->cart->getCartByClientID($_SESSION['userID'] ?? '')),        
             ]
         );
     }
@@ -409,7 +414,8 @@ class HomeController
             [
                 'cates' => $this->cate->all(),
                 'bookSearch' => $bookSearch ?? '',
-                'countCarts' => count($this->cart->getCartByClientID($_SESSION['userID'] ?? ''))
+                // 'countCarts' => count($_SESSION['carts']),
+                'countCarts' => count($this->cart->getCartByClientID($_SESSION['userID'] ?? '')),
 
             ]
         );
@@ -586,14 +592,15 @@ class HomeController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if (isset($_POST['submit-checkout'])) {
                 $result = $this->order->store(clientID: $_SESSION['userID'], dateBuy: date("Y/m/d H:i:a"), clientName: $_SESSION['username'], address: $_SESSION['address'], phone: $_SESSION['phone'], carts: $_SESSION['carts']);
-                // _dump($result);die;
                 if ($result) {
-                    $code = substr(rand(0,999999),0,3);
+                    $code = substr(rand(0,999999),0,4);
                     $title = "Đặt hàng thành công website nhasach.com";
-                    $content = "Mã đơn hàng của bạn là: $code đang trong quá trình xử lý vui lòng chờ!";
+                    $content = "Mã đơn hàng của bạn là: " ."<span style='color:green'>$code</span>"." đang trong quá trình xử lý vui lòng chờ!";
                     $this->mail->sendMail($title,$content,$_SESSION['email']);
-                    $_SESSION['msgOrderSuccess'] = "Cảm ơn bạn đã mua sắm!";
-                } else {
+                    $_SESSION['msgOrderSuccess'] = "Cảm ơn bạn đã mua sắm! Thông tin đơn hàng chúng tôi sẽ thông báo về Email của bạn.";
+                    unset($_SESSION['carts']);// ++++
+                    // _redirectLo(URL);
+                }else {
                     return false;
                 }
             }
@@ -603,10 +610,14 @@ class HomeController
             [
                 'cates' => $this->cate->all(),
                 'carts' => $this->cart->getCartByClientID($_SESSION['userID'] ?? ''),
-                'countCarts' => count($this->cart->getCartByClientID($_SESSION['userID'] ?? ''))
+                // 'carts' => $_SESSION['carts'],
+                // 'countCarts' => count($_SESSION['carts']),
+                'countCarts' => count($this->cart->getCartByClientID($_SESSION['userID'] ?? '')),
             ]
         );
     }
+
+
     function countCartHeader()
     {
         $this->view(
@@ -614,7 +625,8 @@ class HomeController
             [
                 'cates' => $this->cate->all(),
                 'carts' => $this->cart->getCartByClientID($_SESSION['userID'] ?? ''),
-                'countCarts' => count($this->cart->getCartByClientID($_SESSION['userID'] ?? ''))
+                // 'countCarts' => count($_SESSION['carts']),
+                'countCarts' => count($this->cart->getCartByClientID($_SESSION['userID'] ?? '')),
             ]
         );
     }
@@ -626,8 +638,9 @@ class HomeController
             "client.layout.Pages.Components.DataLayout.checkOrder",
             [
                 'cates' => $this->cate->all(),
-                'countCarts' => count($this->cart->getCartByClientID($_SESSION['userID'] ?? '')),
                 'clientOrder' => $this->order->loadOrderClient($_SESSION['userID'] ?? ''),
+                // 'countCarts' => count($_SESSION['carts']),  
+                'countCarts' => count($this->cart->getCartByClientID($_SESSION['userID'] ?? '')),
             ]
         );
     }
@@ -642,5 +655,36 @@ class HomeController
             ]
         );
     }
+    function loadAuthor()
+    {
+        $this->view(
+            "client.layout.Pages.Components.DataLayout.authorView",
+            [
+                'cates' => $this->cate->all(),
+                'authors' => $this->author->_countBook(),
+                // 'authorCheck' => $this->book->selectAuthor(),
+                'author' => $this->book->selectAuthor(1),
+                // 'countAuthor' => $this->author->_countBook(),
+
+
+            ]
+        );
+    }
+    function getBookByAuthor($id){
+        $this->view(
+            "client.layout.Pages.Components.DataLayout.getBookByAuthor",
+            [
+                'cates' => $this->cate->all(),
+                'author' => $this->book->selectAuthor($id),
+                'authors' => $this->author->_countBook(),
+                // 'book' => $this->book->selectAuthor
+                //lấy toàn bộ sản phẩm của 1 tác giả trong getBookByAuthor
+                'books' => $this->book->selectAuthorAll($id),
+                // 'countAuthor' =>$this->author->_countBook(),
+            ]
+        );
+    }
 }
 ?>
+
+

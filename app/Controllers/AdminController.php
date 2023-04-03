@@ -15,6 +15,7 @@ class AdminController
         $this->book = $this->model("BookModel");
         $this->cate = $this->model("CateModel");
         $this->client = $this->model("UserModel");
+
         $this->feedback = $this->model("CmtModel");
         $this->author = $this->model("AuthorModel");
         $this->order = $this->model("OrderModel");
@@ -37,7 +38,7 @@ class AdminController
             // validate email
             if (empty($data['email'])) {
                 $data['email_err'] = "Please enter your email";
-            } 
+            }
             //validate password
             if (empty($data['password'])) {
                 $data['password_err'] = "Please enter your password";
@@ -48,10 +49,13 @@ class AdminController
                 if (!$user || !password_verify($data['password'], $user['password'])) {
                     $data['msgErr'] = "Thông tin tài khoản hoặc mật khẩu không chính xác";
                 } else {
-                    $_SESSION['user'] = $user;
-                    if($_SESSION['user']['role'] != 0) {
-                        _redirectLo(URL."Admin");
+                    if ($_SESSION['role'] != 0) {
+                        $data['msgErr'] = "Bạn không có quyền truy cập vào trong quản trị";
                     }
+                    // $_SESSION['user'] = $user;
+                    // if($_SESSION['role'] != 0) {
+                    //     _redirectLo(URL."Admin");
+                    // }
                     _redirectLo(URL . "Admin/home");
                 }
             }
@@ -64,7 +68,7 @@ class AdminController
                 'password_err' => "",
             ];
         }
-        $this->view("admin.layout.Components.Account.login",$data);
+        $this->view("admin.layout.Components.Account.login", $data);
     }
     //login
     function home()
@@ -75,7 +79,7 @@ class AdminController
                 'statistical' => $this->book->statistical(),
                 'books' => $this->book->loadAll(),
                 'cates' => $this->cate->all(),
-                'orders' => $this->order->loadAllStatusOrder(),
+                'orders' => $this->order->loadAllOrder(),
             ]
         );
     }
@@ -161,8 +165,47 @@ class AdminController
         $this->view(
             "admin.layout.Components.Orders.list",
             [
-                'orders' => $this->order->loadAllStatusOrder(),
+                'orders' => $this->order->loadAllOrder(),
             ]
         );
     }
+
+    function profile($userID)
+    {
+        $client = $this->client->getOneUser($userID);
+        if (isset($_POST['btn-update'])) {
+            $img = $client['btn-update'];
+            if ($_FILES['avatar']['size'] !== 0) {
+                $image = pathinfo($_FILES['avatar']['name'], PATHINFO_EXTENSION);
+                if ($image === 'png' || $image === 'jpg') {
+                    $img = $_FILES['avatar']['name'];
+                    move_uploaded_file($_FILES['avatar']['tpm_name'], "Public/upload" . basename($img));
+                } else {
+                    $_SESSION['success'] = 'Sai định dạng ảnh';
+                    _redirectLo($_SERVER['HTTP_REFERER']);
+                }
+            } else {
+                $img = $client['avatar'];
+            }
+
+            $result = $this->client->updateUser($_POST['email'], $_POST['username'], $_POST['accountName'], $_POST['address'], $_POST['phoneNumber'], $img, $userID);
+
+            if ($result) {
+                $_SESSION['success'] = 'Đã cập nhật';
+                _redirectLo($_SERVER['HTTP_REFERER']);
+            }
+        }
+
+        $this->view(
+            "admin.layout.Components.Client.profileAdmin",
+            [
+                'admin' => $client,
+            ]
+        );
+    }
+  
+
+   
+
+   
 }

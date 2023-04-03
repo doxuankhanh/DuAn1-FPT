@@ -32,8 +32,8 @@
         <tr>
           <th scope="col">MÃ ĐƠN HÀNG</th>
           <th scope="col">TÊN KHÁCH HÀNG</th>
-          <th scope="col">SỐ LƯỢNG</th>
-          <th scope="col">GIÁ</th>
+          <!-- <th scope="col">SỐ LƯỢNG</th>
+          <th scope="col">GIÁ</th> -->
           <th scope="col">NGÀY ĐẶT HÀNG</th>
           <th scope="col">TRẠNG THÁI</th>
           <th scope="col" colspan="" style="text-align: center;">Action</th>
@@ -43,14 +43,14 @@
         <?php if(count($data['orders']) > 0):?>
         <?php foreach ($data['orders'] as $order) : ?>
           <tr>
-            <td scope="row"><?= $order['orderID'] ?></td>
+            <td scope="row"><?= $order['id'] ?></td>
             <td scope="row"><?= $order['clientName'] ?></td>
-            <td scope="row"><?= $order['quantity'] ?></td>
-            <td scope="row"><?= number_format($order['priceOrder']) ?></td>
+            <!-- <td scope="row"><?= $order['quantity'] ?></td>
+            <td scope="row"><?= number_format($order['priceOrder']) ?></td> -->
             <td scope="row"><?= $order['dateBuy'] ?></td>
             <td scope="row"><?= $order['statusOrderName'] ?></td>
             <td>
-                <a href="<?= URL?>Order/detailOrder/<?= $order['orderID']?>" class="btn btn-info">Chi Tiết</a>
+                <a href="<?= URL?>Order/detailOrder/<?= $order['id']?>" class="btn btn-info">Chi Tiết</a>
             </td>
           </tr>
         <?php endforeach ?>

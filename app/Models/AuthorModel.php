@@ -15,6 +15,7 @@ class AuthorModel extends BaseModel {
         return $this->_query($sql)->execute([$authorName,$id]);
     }
    }
+ 
    function find($id){
         if($this->table !== null) {
             $sql = "SELECT * FROM $this->table WHERE authorID = ?";
@@ -22,6 +23,21 @@ class AuthorModel extends BaseModel {
             $data = $this->stmt->fetch();
             return $data;
         }
+   }
+   function delete($id){
+        if($this->table !== null) {
+            $sql = "DELETE FROM $this->table WHERE authorID = ?";
+            return $this->_query($sql)->execute([$id]);
+        }
+   }
+   function _countBook(){
+        if($this->table !== null) {
+           $sql = "SELECT $this->table.authorID,$this->table.authorName, COUNT(books.id) AS numBook FROM $this->table LEFT JOIN books ON $this->table.authorID = books.authorID WHERE books.authorID = authors.authorID GROUP BY $this->table.authorName";
+           $this->_query($sql)->execute();
+           $data = $this->stmt->fetchAll();
+           return $data;
+        }
+        
    }
 }
 ?>

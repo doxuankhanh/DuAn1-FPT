@@ -40,21 +40,21 @@
                             </tr>
                         <?php endforeach ?>
                     <?php else : ?>
-                        
-                            <div class="div-main-cart">
-                                <div class="cart-empty">
-                                    <img src="../../../../../../../DuAn1-FPT/Public/images/product/cart_empty.png" alt="">
-                                </div>
-                                <div style="text-align: center;" class="content_cart-empty">
-                                    <h4>Giỏ hàng đang cảm thấy trống trải</h4>
-                                    <span>Ai đó ơi, mua sắm để nhận khuyến mãi ngay nào!</span>
-                                    <a href="<?= URL ?>Home" class="submit-btn">Mua sắm ngay</a>
-                                </div>
+                        <div class="div-main-cart">
+                            <div class="cart-empty">
+                                <img src="../../../../../../../DuAn1-FPT/Public/images/product/cart_empty.png" alt="">
                             </div>
-                        
+                            <div style="text-align: center;" class="content_cart-empty">
+                                <h4>Giỏ hàng đang cảm thấy trống trải</h4>
+                                <span>Ai đó ơi, mua sắm để nhận khuyến mãi ngay nào!</span>
+                                <a href="<?= URL ?>Home" class="submit-btn">Mua sắm ngay</a>
+                            </div>
+                        </div>
+
                     <?php endif ?>
                 </tbody>
             </table>
+            <button><a href="">Đơn hàng đã giao</a></button>
         </div>
     </div>
 <?php endif ?>
