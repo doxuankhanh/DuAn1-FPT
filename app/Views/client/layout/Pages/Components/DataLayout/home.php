@@ -37,8 +37,8 @@
                             </div>
                             <p class="p-price">
 
-                                <a href="#" class="a-price"> <?= number_format($bookNew['price']) ?></a>
-                                <a href="#" class="a-buyNow">Mua ngay</a>
+                                <a href="<?= URL ?>Home/bookDetail/<?= $bookNew['id'] ?>/<?= $bookNew['cateID'] ?>" class="a-price"> <?= number_format($bookNew['price']) ?></a>
+                                <a href="<?= URL ?>Home/bookDetail/<?= $bookNew['id'] ?>/<?= $bookNew['cateID'] ?>" class="a-buyNow">Mua ngay</a>
                             </p>
                         </div>
                     </ul>

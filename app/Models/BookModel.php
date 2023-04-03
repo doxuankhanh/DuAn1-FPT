@@ -156,9 +156,10 @@ class BookModel extends BaseModel
     //sách cùng tác giả
     function selectAuthor($authorID){
         if ($this->table !== null) {
-            $sql = $this->_selectQuery() . " WHERE authors.authorName = ?";
+            $sql = $this->_selectQuery() . " WHERE $this->table.authorID = ?";
             $this->_query($sql)->execute([$authorID]);
-           $data = $this->stmt->fetchAll();
+           $data = $this->stmt->fetch();
+           return $data;
         //    _dump($data);
           
         }
@@ -174,6 +175,30 @@ class BookModel extends BaseModel
             $data = $this->stmt->fetchAll();
             return $data;
         }
+    function selectAuthorAll($authorID){
+        if ($this->table !== null) {
+            $sql = $this->_selectQuery() . " WHERE $this->table.authorID = ?";
+            $this->_query($sql)->execute([$authorID]);
+           $data = $this->stmt->fetchAll();
+           return $data;
+        //    _dump($data);
+          
+        }
+    
+    
+    }
+    function _countBookByAuthor($authorID){
+        if ($this->table !== null) {
+            // $sql = $this->_selectQuery() . " WHERE $this->table.authorID = ?";
+            $sql = "SELECT COUNT(id) AS numBook FROM $this->table WHERE $this->table.authorID = ?";
+            $this->_query($sql)->execute([$authorID]);
+           $data = $this->stmt->fetchAll();
+           return $data;
+        //    _dump($data);
+          
+        }
+    
+    
     }
     // câu lệnh truy vấn thường xuyên đc dùng
     private function _selectQuery()

@@ -69,10 +69,10 @@
                 <label for="">Tác Giả</label>
                 <select class="form-control" id="" name="authorID">
                     <?php foreach ($data['authors'] as $author) : ?>
-                        <?php if ($author['id'] === $data['book']['authorID']) : ?>
-                            <option value="<?= $author['id'] ?>" selected><?= $author['authorName'] ?></option>
+                        <?php if ($author['authorID'] === $data['book']['authorID']) : ?>
+                            <option value="<?= $author['authorID'] ?>" selected><?= $author['authorName'] ?></option>
                         <?php else : ?>
-                            <option value="<?= $author['id'] ?>"><?= $author['authorName'] ?></option>
+                            <option value="<?= $author['authorID'] ?>"><?= $author['authorName'] ?></option>
                         <?php endif ?>
                     <?php endforeach ?>
                 </select>

@@ -178,4 +178,42 @@ class AdminController
         ]
     );
     }
+    function profile($userID)
+    {
+        $client = $this->client->getOneUser($userID);
+        if (isset($_POST['btn-update'])) {
+            $img = $client['btn-update'];
+            if ($_FILES['avatar']['size'] !== 0) {
+                $image = pathinfo($_FILES['avatar']['name'], PATHINFO_EXTENSION);
+                if ($image === 'png' || $image === 'jpg') {
+                    $img = $_FILES['avatar']['name'];
+                    move_uploaded_file($_FILES['avatar']['tpm_name'], "Public/upload" . basename($img));
+                } else {
+                    $_SESSION['success'] = 'Sai định dạng ảnh';
+                    _redirectLo($_SERVER['HTTP_REFERER']);
+                }
+            } else {
+                $img = $client['avatar'];
+            }
+
+            $result = $this->client->updateUser($_POST['email'], $_POST['username'], $_POST['accountName'], $_POST['address'], $_POST['phoneNumber'], $img, $userID);
+
+            if ($result) {
+                $_SESSION['success'] = 'Đã cập nhật';
+                _redirectLo($_SERVER['HTTP_REFERER']);
+            }
+        }
+
+        $this->view(
+            "admin.layout.Components.Client.profileAdmin",
+            [
+                'admin' => $client,
+            ]
+        );
+    }
+  
+
+   
+
+   
 }

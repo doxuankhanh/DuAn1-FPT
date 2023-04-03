@@ -11,6 +11,7 @@ class HomeController
     private $cmt;
     private $mail;
     private $order;
+    private $author;
     function __construct()
     {
         $this->cate = $this->model("CateModel");
@@ -20,6 +21,7 @@ class HomeController
         $this->cmt = $this->model("CmtModel");
         $this->mail = new Mailer();
         $this->order = $this->model("OrderModel");
+        $this->author = $this->model("AuthorModel");
     }
     function index()
     {
@@ -203,6 +205,7 @@ class HomeController
             ]
         );
     }
+   
     // tạo session khi login thành công
     function createUserSession($user)
     {
@@ -607,11 +610,14 @@ class HomeController
             [
                 'cates' => $this->cate->all(),
                 'carts' => $this->cart->getCartByClientID($_SESSION['userID'] ?? ''),
+                // 'carts' => $_SESSION['carts'],
                 // 'countCarts' => count($_SESSION['carts']),
                 'countCarts' => count($this->cart->getCartByClientID($_SESSION['userID'] ?? '')),
             ]
         );
     }
+
+
     function countCartHeader()
     {
         $this->view(
@@ -649,5 +655,36 @@ class HomeController
             ]
         );
     }
+    function loadAuthor()
+    {
+        $this->view(
+            "client.layout.Pages.Components.DataLayout.authorView",
+            [
+                'cates' => $this->cate->all(),
+                'authors' => $this->author->_countBook(),
+                // 'authorCheck' => $this->book->selectAuthor(),
+                'author' => $this->book->selectAuthor(1),
+                // 'countAuthor' => $this->author->_countBook(),
+
+
+            ]
+        );
+    }
+    function getBookByAuthor($id){
+        $this->view(
+            "client.layout.Pages.Components.DataLayout.getBookByAuthor",
+            [
+                'cates' => $this->cate->all(),
+                'author' => $this->book->selectAuthor($id),
+                'authors' => $this->author->_countBook(),
+                // 'book' => $this->book->selectAuthor
+                //lấy toàn bộ sản phẩm của 1 tác giả trong getBookByAuthor
+                'books' => $this->book->selectAuthorAll($id),
+                // 'countAuthor' =>$this->author->_countBook(),
+            ]
+        );
+    }
 }
 ?>
+
+

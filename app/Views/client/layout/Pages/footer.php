@@ -41,7 +41,13 @@
 <script src="../../../../../../DuAn1-FPT/Public/js/sweetAlert/script.js"></script>
 <script src="../../../../../../DuAn1-FPT/Public/js/scrollTop/script.js"></script>
 <script src="../../../../../../DuAn1-FPT/Public/js/countToRedirect/script.js"></script>
+
+<script src="../../../../../../DuAn1-FPT/Public/js/updateUser/script.js"></script>
+
+
 <script src="../../../../../../DuAn1-FPT/Public/js/loadAVT/script.js"></script>
+<script src="../../../../../../DuAn1-FPT/Public/js/select/script.js"></script>
+
 </body>
 
 </html>

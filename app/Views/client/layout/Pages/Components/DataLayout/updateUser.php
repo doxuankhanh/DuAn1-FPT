@@ -9,11 +9,12 @@
                 <div class="div-avt">
                     <div class="div-input-box p-3">
                         <div class="div-img">
-                            <!-- <img src="" id="avatar" alt=""> -->
                             <img class="img-avt" src="../../../../../../../DuAn1-FPT/Public/upload/<?= $data['user']['avatar'] ?>" alt="">
                         </div>
 
+
                         <input type="file" id="file-img" name="avatar" class="custom-file-input" style="width: 100%" value="">
+
 
                         <div style="margin-top: 10px; padding-left: 35px;">
                             <p style="color: red;"><?= $data['error'] ?? '' ?></p>
