@@ -80,6 +80,7 @@ class AdminController
                 'books' => $this->book->loadAll(),
                 'cates' => $this->cate->all(),
                 'orders' => $this->order->loadAllOrder(),
+                'statisticalView' => $this->book->statisticalView(),
             ]
         );
     }
@@ -170,6 +171,13 @@ class AdminController
         );
     }
 
+    function statisticalView() {
+        $this->view("admin.layout.Components.statisticalView.statisticalView",
+        [
+            'statisticalView' => $this->book->statisticalView(),
+        ]
+    );
+    }
     function profile($userID)
     {
         $client = $this->client->getOneUser($userID);

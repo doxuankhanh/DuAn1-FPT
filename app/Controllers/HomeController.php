@@ -174,8 +174,8 @@ class HomeController
             if(empty($data['error'])){
                 $this->user->updateUser($data['email'], $data['username'], $data['accountName'], $data['address'], $data['phoneNumber'], $img, $userId);
                 $data['success'] = "Đã cập nhật";
-                _redirectLo(URL."home/");
-                // _redirectLo($_SERVER['HTTP_REFERER']);
+                // _redirectLo(URL."home/");
+                _redirectLo($_SERVER['HTTP_REFERER']);
             }
         }
         

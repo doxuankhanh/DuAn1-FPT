@@ -70,7 +70,7 @@
                         <a class="collapse-item" href="<?= URL?>Admin/listClient">Khách Hàng</a>
                         <a class="collapse-item" href="<?= URL?>Admin/listOrder">Quản Lý Đơn Hàng</a>
                         <a class="collapse-item" href="<?= URL?>Admin/listFeedBack">Bình Luận</a>
-                        <a class="collapse-item" href="#">Thống Kê</a>
+                        <a class="collapse-item" href="<?= URL?>Admin/statisticalView">Thống Kê Sản Phẩm Theo Lượt Xem</a>
                         <div class="collapse-divider"></div>
                     </div>
                 </div>

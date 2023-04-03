@@ -165,6 +165,16 @@ class BookModel extends BaseModel
         }
     
     }
+    function statisticalView() {
+        if($this->table !== null) {
+            $sql = "SELECT bookName,view
+            FROM $this->table 
+            WHERE view > 100 
+            GROUP BY bookName,view";
+            $this->_query($sql)->execute();
+            $data = $this->stmt->fetchAll();
+            return $data;
+        }
     function selectAuthorAll($authorID){
         if ($this->table !== null) {
             $sql = $this->_selectQuery() . " WHERE $this->table.authorID = ?";
@@ -193,7 +203,11 @@ class BookModel extends BaseModel
     // câu lệnh truy vấn thường xuyên đc dùng
     private function _selectQuery()
     {
-        $sql = "SELECT $this->table.id,$this->table.bookName,$this->table.image,$this->table.authorID,$this->table.dateAdded,$this->table.price,$this->table.description,$this->table.cateID,$this->table.view,$this->table.statusID,categories.cateName,authors.authorName,status.statusName FROM $this->table LEFT JOIN categories ON $this->table.cateID = categories.id LEFT JOIN status ON $this->table.statusID = status.id LEFT JOIN authors ON $this->table.authorID = authors.authorID";
+        $sql = "SELECT $this->table.id,$this->table.bookName,$this->table.image,$this->table.authorID,$this->table.dateAdded,$this->table.price,$this->table.description,$this->table.cateID,$this->table.view,$this->table.statusID,categories.cateName,authors.authorName,status.statusName 
+        FROM $this->table 
+        LEFT JOIN categories ON $this->table.cateID = categories.id 
+        LEFT JOIN status ON $this->table.statusID = status.id 
+        LEFT JOIN authors ON $this->table.authorID = authors.authorID";
         return $sql;
     }
 }
