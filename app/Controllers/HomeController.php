@@ -685,7 +685,7 @@ class HomeController
                 'cates' => $this->cate->all(),
                 'authors' => $this->author->_countBook(),
                 // 'authorCheck' => $this->book->selectAuthor(),
-                'author' => $this->book->selectAuthor(1),
+                'author' => $this->book->selectAuthor(4),
                 // 'countAuthor' => $this->author->_countBook(),
 
 
