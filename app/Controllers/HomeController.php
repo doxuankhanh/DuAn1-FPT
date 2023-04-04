@@ -565,10 +565,17 @@ class HomeController
             ]
         );
     }
+    function paymentOnline(){
+        $this->view(
+            "client.layout.Pages.Components.DataLayout.pay",[]
+        );
+    }
     function checkOut()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if (isset($_POST['submit-checkout'])) {
+                
+                //gprint_r($_POST);die();
                 $pay = isset($_POST['statuspayment']) ? $_POST['statuspayment']:'';
                 if(isset($_POST['submit-checkout'])&&($pay=='Thanh toán khi nhận')){
                 $result = $this->order->store(clientID: $_SESSION['userID'], dateBuy: date("Y/m/d H:i:a"), clientName: $_SESSION['username'], address: $_SESSION['address'], phone: $_SESSION['phone'], carts: $_SESSION['carts'], statuspayment:$_POST['statuspayment']);
@@ -580,12 +587,15 @@ class HomeController
                     $this->mail->sendMail($title,$content,$_SESSION['email']);
                     $_SESSION['msgOrderSuccess'] = "Cảm ơn bạn đã mua sắm!";
                     // die();
+                    // print_r($result);die();
+
                 } else {
                     return false;
                 }
-            }
-            }else{
-                $this->view('lient.layout.Pages.Components.DataLayout.pay');
+                }
+                // else{
+                //     header("location:'.URL.'HOME/paymentOnline");
+                // }   
             }
         }
         $this->view(

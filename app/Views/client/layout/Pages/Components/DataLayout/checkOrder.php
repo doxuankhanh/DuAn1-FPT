@@ -25,6 +25,7 @@
                     <th class="th-checkCart">Số lượng</th>
                     <th class="th-checkCart">Tổng tiền</th>
                     <th class="th-checkCart">Trạng Thái Đơn Hàng</th>
+                    <th class="th-checkCart">Hủy Đơn Hàng</th>
                 </thead>
                 <tbody>
                     <?php if (count($data['clientOrder']) > 0) : ?>
@@ -37,6 +38,7 @@
                                 <td class="td-checkCart"><?= $clientOrder['quantity'] ?? '' ?></td>
                                 <td class="td-checkCart"><?= number_format($clientOrder['sumPriceOrder']) ?? '' ?></td>
                                 <td class="td-checkCart"><?= $clientOrder['statusOrderName'] ?></td>
+                                <th><a href="<?= URL?>checkOrder/delete/<?= $oder['id']?>" class="btn btn-danger" onclick="return confirm('Bạn có muốn xóa không?')">Delete</a></th>
                             </tr>
                         <?php endforeach ?>
                     <?php else : ?>
