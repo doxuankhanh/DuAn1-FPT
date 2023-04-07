@@ -1,3 +1,6 @@
+<?php
+_dump($data['detailOrderSuccess']);
+?>
 <?php require_once "./app/Views/client/layout/Pages/header.php"; ?>
 <?php if (!isset($_SESSION['userID'])) : ?>
     <div class="div-container-cart">
@@ -15,25 +18,23 @@
 <?php else : ?>
     <div class="div-checkContainer">
         <div class="div-mainCheck">
-            <h1 class="h3-checkCart">ĐƠN HÀNG ĐÃ ĐƯỢC GIAO THÀNH CÔNG</h1>
+            <h1 class="h3-checkCart">CHI TIẾT ĐƠN HÀNG ĐÃ ĐƯỢC GIAO THÀNH CÔNG</h1>
             <table class="table-checkCart">
                 <thead class="thead-checkCart">
                     <th class="th-checkCart">Mã Đơn Hàng</th>
                     <th class="th-checkCart">Ngày Mua</th>
                     <th class="th-checkCart">Tiêu Đề</th>
                     <th class="th-checkCart">Giá</th>
-                    <th class="th-checkCart">Trạng Thái Đơn Hàng</th>
                 </thead>
                 <tbody>
-                    <?php if (count($data['clientOrder']) > 0) : ?>
-                        <?php foreach ($data['clientOrder'] as $clientOrder) : ?>
-                            <?php if($clientOrder['statusID'] == 5) :?>
+                    <?php if (count($data['detailOrderSuccess']) > 0) : ?>
+                        <?php foreach ($data['detailOrderSuccess'] as $detailOrderSuccess) : ?>
+                            <?php if($detailOrderSuccess['statusID'] == 5) :?>
                             <tr class="tr-checkCart">
-                                <td class="td-checkCart"><a href="<?= URL?>Home/detailOrderSuccess/<?= $clientOrder['orderDetailID']?>"><?= "#P" . $clientOrder['orderDetailID'] ?? '' ?></a></td>
-                                <td class="td-checkCart"><?= $clientOrder['dateBuy'] ?? '' ?></td>
-                                <td class="td-checkCart"><?= $clientOrder['bookName'] ?? '' ?></td>
-                                <td class="td-checkCart"><?= number_format($clientOrder['priceOrder']) ?? '' ?></td>
-                                <td class="td-checkCart"><?= $clientOrder['statusOrderName'] ?></td>
+                                <td class="td-checkCart"><?= "#P" . $detailOrderSuccess['orderDetailID'] ?? '' ?></td>
+                                <td class="td-checkCart"><?= $detailOrderSuccess['dateBuy'] ?? '' ?></td>
+                                <td class="td-checkCart"><?= $detailOrderSuccess['bookName'] ?? '' ?></td>
+                                <td class="td-checkCart"><?= number_format($detailOrderSuccess['priceOrder']) ?? '' ?></td>
                             </tr>
                             <?php endif?>
                         <?php endforeach ?>

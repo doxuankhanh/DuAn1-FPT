@@ -57,6 +57,7 @@
           <th scope="col" class=" p-3 w-20 text-nowrap">Trạng Thái</th>
           <th scope="col" class=" p-3 w-20 text-nowrap">Ảnh</th>
           <th scope="col" class=" p-3 w-20 text-nowrap">Tác Giả</th>
+          <th scope="col" class=" p-3 w-20 text-nowrap">Số Lượng</th>
           <th scope="col" class=" p-3 w-20 text-nowrap">Giá</th>
           <th scope="col" class=" p-3 w-20 text-nowrap">Mô Tả</th>
           <th scope="col" class=" p-3 w-20 text-nowrap" colspan="2" style="text-align: center;">Action</th>
@@ -72,6 +73,7 @@
               <th scope="row" class=" p-3 w-20 text-nowrap"><?= $book['statusName'] ?? 'Nothing'?></th>
               <th><img src="../../../../../../../DuAn1-FPT/Public/upload/<?= $book['image'] ?>" alt="." style="height: 120px;"></th>
               <th scope="row" class=" p-3 w-20 text-nowrap"><?= $book['authorName'] ?></th>
+              <th scope="row" class=" p-3 w-20 text-nowrap"><?= $book['quantity'] ?></th>
               <th scope="row" class=" p-3 w-20 text-nowrap"><?= number_format($book['price']) ?></th>
               <th scope="row" class=" p-3 w-20 text-center"><p style="text-overflow: ellipsis; overflow: hidden; -webkit-line-clamp: 2; display: -webkit-box; -webkit-box-orient: vertical; width: 20%;"><?= $book['description'] ?></p></th>
               <th><a href="<?= URL?>Book/update/<?= $book['id']?>" class="btn btn-info">Update</a></th>

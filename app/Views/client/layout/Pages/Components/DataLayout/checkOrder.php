@@ -24,7 +24,6 @@
                         <th class="th-checkCart">Ngày Mua</th>
                         <th class="th-checkCart">Tiêu Đề</th>
                         <th class="th-checkCart">Giá</th>
-                        <th class="th-checkCart">Số lượng</th>
                         <th class="th-checkCart">Tổng tiền</th>
                         <th class="th-checkCart" colspan="2">Trạng Thái Đơn Hàng</th>
                     </thead>
@@ -39,7 +38,6 @@
                                         <td class="td-checkCart"><?= $clientOrder['dateBuy'] ?? '' ?></td>
                                         <td class="td-checkCart"><?= $clientOrder['bookName'] ?? '' ?></td>
                                         <td class="td-checkCart"><?= number_format($clientOrder['priceOrder']) ?? '' ?></td>
-                                        <td class="td-checkCart"><?= $clientOrder['quantity'] ?? '' ?></td>
                                         <td class="td-checkCart"><?= number_format($clientOrder['sumPriceOrder']) ?? '' ?></td>
                                         <td class="td-checkCart"><?= $clientOrder['statusOrderName'] ?></td>
                                         <td><a href="<?= URL ?>Home/destroyOrder/<?= $clientOrder['orderDetailID'] ?>" onclick="return confirm('Are you sure?');">HỦY</a></td>
@@ -51,7 +49,6 @@
                                         <td class="td-checkCart"><?= $clientOrder['dateBuy'] ?? '' ?></td>
                                         <td class="td-checkCart"><?= $clientOrder['bookName'] ?? '' ?></td>
                                         <td class="td-checkCart"><?= number_format($clientOrder['priceOrder']) ?? '' ?></td>
-                                        <td class="td-checkCart"><?= $clientOrder['quantity'] ?? '' ?></td>
                                         <td class="td-checkCart"><?= number_format($clientOrder['sumPriceOrder']) ?? '' ?></td>
                                         <td class="td-checkCart"><?= $clientOrder['statusOrderName'] ?></td>
                                     </tr>

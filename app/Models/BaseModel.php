@@ -39,13 +39,13 @@ class BaseModel {
         return false;
     }
 
-    function deleteClient($id) {
-        if($this->table !== null) {
-            $sql = "DELETE FROM $this->table WHERE clientID = ?";
-            return $this->_query($sql)->execute([$id]);
-        }
-        return false;
-    }
+    // function deleteClient($id) {
+    //     if($this->table !== null) {
+    //         $sql = "DELETE FROM $this->table WHERE clientID = ?";
+    //         return $this->_query($sql)->execute([$id]);
+    //     }
+    //     return false;
+    // }
 
     // Methods nạp câu truy vấn
     protected function _query($sql) {

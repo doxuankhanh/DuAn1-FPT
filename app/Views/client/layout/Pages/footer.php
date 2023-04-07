@@ -2,16 +2,16 @@
     <div class="footer-top">
         <div class="footer-row">
             <ul>
-                <li><a href="">Giới thiệu</a></li>
-                <li><a href="">Chính sách bảo mật</a></li>
-                <li><a href="">Chính sách vận chuyển</a></li>
-                <li><a href="">Hình thức thanh toán</a></li>
+                <li><a href="#">Giới thiệu</a></li>
+                <li><a href="#">Chính sách bảo mật</a></li>
+                <li><a href="#">Chính sách vận chuyển</a></li>
+                <li><a href="#">Hình thức thanh toán</a></li>
             </ul>
             <ul>
-                <li><a href="">Quy định đổi, trả và hủy đơn hàng</a></li>
-                <li><a href="">Hướng dẫn đặt hàng</a></li>
-                <li><a href="">Liên hệ</a></li>
-                <li><a href="">Thông báo</a></li>
+                <li><a href="#">Quy định đổi, trả và hủy đơn hàng</a></li>
+                <li><a href="#">Hướng dẫn đặt hàng</a></li>
+                <li><a href="#">Liên hệ</a></li>
+                <li><a href="#">Thông báo</a></li>
             </ul>
         </div>
         <div>

@@ -178,6 +178,13 @@ class AdminController
         ]
     );
     }
+    function statisticalSeller() {
+        $this->view("admin.layout.Components.statisticalSeller.statisticalSeller1",
+        [
+            'statisticalSeller' => $this->book->statisticalSeller(),
+        ]
+    );
+    }
     function profile($userID)
     {
         $client = $this->client->getOneUser($userID);

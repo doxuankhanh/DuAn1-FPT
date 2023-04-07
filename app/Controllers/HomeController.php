@@ -37,7 +37,9 @@ class HomeController
                 'literature' => $this->book->bookFollowCategories(11),
                 'children' => $this->book->bookFollowCategories(12),
                 //count sản phẩm trong giỏ hàng
-                'countCarts' => count($this->cart->getCartByClientID($_SESSION['userID'] ?? '')),
+                // 'countCarts' => count($this->cart->getCartByClientID($_SESSION['userID'] ?? '')),
+                'countCarts' => count($_SESSION['carts'] ?? []),
+                //$_SESSION['carts'] ?? []
             ]
         );
     }
@@ -61,6 +63,7 @@ class HomeController
                 'bookID' => $bookDetail['id'] ?? '',
                 'image' => $bookDetail['image'] ?? '',
                 'price' => $bookDetail['price'] ?? '',
+                'quantityBook' => $bookDetail['quantity'] ?? '',
                 'quantity' => trim($_POST['quantity'] ?? ''),
                 // bình luận
                 'note' => trim($_POST['note'] ?? ''),
@@ -79,10 +82,18 @@ class HomeController
                         if (empty($data['quantity']) || $data['quantity'] <= 0) {
                             $_SESSION['quantity_err'] = "Bạn phải nhập đúng số lượng!";
                         } else {
-                            if (empty($_SESSION['quantity_err'])) {
-                                $result = $this->cart->store($data['bookName'], $data['clientID'], $data['bookID'], $data['image'], $data['price'], $data['quantity']);
-                                if ($result) {
-                                    _redirectLo(URL . "Home/getCartByClientID");
+                            if ($data['quantityBook'] <= 0) {
+                                $_SESSION['quantity_err'] = "Sản phẩm đã hết , bạn vui lòng quay lại vào thời điểm khác!";
+                            } else {
+                                if ($data['quantity'] > $data['quantityBook']) {
+                                    $_SESSION['quantity_err'] = "Not enough quantity available!";
+                                } else {
+                                    if (empty($_SESSION['quantity_err'])) {
+                                        $result = $this->cart->store($data['bookName'], $data['clientID'], $data['bookID'], $data['image'], $data['price'], $data['quantity']);
+                                        if ($result) {
+                                            _redirectLo(URL . "Home/getCartByClientID");
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -135,7 +146,8 @@ class HomeController
                 'comments' => $this->cmt->loadCmt($id),
                 'authorCheck' => $this->book->selectAuthor($id),
                 // 'countCarts' => count($_SESSION['carts']),
-                'countCarts' => count($this->cart->getCartByClientID($_SESSION['userID'] ?? '')),
+                // 'countCarts' => count($this->cart->getCartByClientID($_SESSION['userID'] ?? '')),
+                'countCarts' => count($_SESSION['carts'] ?? []),
 
             ]
         );
@@ -171,15 +183,15 @@ class HomeController
                 }
             }
 
-            if(empty($data['error'])){
+            if (empty($data['error'])) {
                 $this->user->updateUser($data['email'], $data['username'], $data['accountName'], $data['address'], $data['phoneNumber'], $img, $userId);
                 $data['success'] = "Đã cập nhật";
                 // _redirectLo(URL."home/");
                 _redirectLo($_SERVER['HTTP_REFERER']);
             }
         }
-        
-        $this->view( 
+
+        $this->view(
             "client.layout.Pages.Components.DataLayout.updateUser",
             [
                 // $data,
@@ -187,8 +199,8 @@ class HomeController
                 'error' => $data['error'],
                 'user' => $user,
                 'cates' => $this->cate->all(),
-                'countCarts' => count($this->cart->getCartByClientID($_SESSION['userID'] ?? '')),
-                // 'countCarts' => count($_SESSION['carts'] ?? ''),
+                // 'countCarts' => count($this->cart->getCartByClientID($_SESSION['userID'] ?? '')),
+                'countCarts' => count($_SESSION['carts'] ?? []),
             ]
         );
     }
@@ -201,12 +213,12 @@ class HomeController
                 'cates' => $this->cate->all(),
                 'cate' => $this->cate->getOne($cateID),
                 'book' => $this->book->bookFollowCategories($cateID),
-                // 'countCarts' => count($_SESSION['carts']),
-                'countCarts' => count($this->cart->getCartByClientID($_SESSION['userID'] ?? '')),
+                'countCarts' => count($_SESSION['carts'] ?? []),
+                // 'countCarts' => count($this->cart->getCartByClientID($_SESSION['userID'] ?? '')),
             ]
         );
     }
-   
+
     // tạo session khi login thành công
     function createUserSession($user)
     {
@@ -220,7 +232,6 @@ class HomeController
         $_SESSION['address'] = $user['address'];
         $_SESSION['phone'] = $user['phoneNumber'];
         $_SESSION['role'] = $user['role'];
-        
     }
     //Login
     function login()
@@ -256,10 +267,10 @@ class HomeController
                     $data['msgErr'] = "Thông tin tài khoản hoặc mật khẩu không chính xác";
                 } else {
                     $this->createUserSession($user);
-                    if($_SESSION['role'] == 1) {
+                    if ($_SESSION['role'] == 1) {
                         _redirectRe(URL);
-                    }else {
-                        _redirectLo(URL."Admin/home");
+                    } else {
+                        _redirectLo(URL . "Admin/home");
                     }
                 }
             }
@@ -388,9 +399,10 @@ class HomeController
             "client.layout.Pages.Components.DataLayout.cart",
             [
                 'cates' => $this->cate->all(),
-                'carts' => $_SESSION['carts'],
-                // 'countCarts' => count($_SESSION['carts']),    
-                'countCarts' => count($this->cart->getCartByClientID($_SESSION['userID'] ?? '')),        
+                // 'carts' => $_SESSION['carts'],
+                // $_SESSION['carts'],
+                'countCarts' => count($_SESSION['carts'] ?? []),
+                // 'countCarts' => count($this->cart->getCartByClientID($_SESSION['userID'] ?? '')),
             ]
         );
     }
@@ -415,8 +427,8 @@ class HomeController
             [
                 'cates' => $this->cate->all(),
                 'bookSearch' => $bookSearch ?? '',
-                // 'countCarts' => count($_SESSION['carts']),
-                'countCarts' => count($this->cart->getCartByClientID($_SESSION['userID'] ?? '')),
+                'countCarts' => count($_SESSION['carts'] ?? []),
+                // 'countCarts' => count($this->cart->getCartByClientID($_SESSION['userID'] ?? '')),
 
             ]
         );
@@ -437,10 +449,10 @@ class HomeController
     {
         $result = $this->order->delete($id);
         if ($result) {
-           _redirectLo($_SERVER['HTTP_REFERER']);
+            _redirectLo($_SERVER['HTTP_REFERER']);
         }
     }
-    
+
     // update cart 
     // update delete cart ~~~~~~~~~~~
     function updateCart($id)
@@ -603,14 +615,14 @@ class HomeController
             if (isset($_POST['submit-checkout'])) {
                 $result = $this->order->store(clientID: $_SESSION['userID'], dateBuy: date("Y/m/d H:i:a"), clientName: $_SESSION['username'], address: $_SESSION['address'], phone: $_SESSION['phone'], carts: $_SESSION['carts']);
                 if ($result) {
-                    $code = substr(rand(0,999999),0,4);
+                    $code = substr(rand(0, 999999), 0, 4);
                     $title = "Đặt hàng thành công website nhasach.com";
-                    $content = "Mã đơn hàng của bạn là: " ."<span style='color:green'>$code</span>"." đang trong quá trình xử lý vui lòng chờ!";
-                    $this->mail->sendMail($title,$content,$_SESSION['email']);
+                    $content = "Mã đơn hàng của bạn là: " . "<span style='color:green'>$code</span>" . " đang trong quá trình xử lý vui lòng chờ!";
+                    $this->mail->sendMail($title, $content, $_SESSION['email']);
                     $_SESSION['msgOrderSuccess'] = "Cảm ơn bạn đã mua sắm! Thông tin đơn hàng chúng tôi sẽ thông báo về Email của bạn.";
-                    unset($_SESSION['carts']);// ++++
+                    unset($_SESSION['carts']); // ++++
                     // _redirectLo(URL);
-                }else {
+                } else {
                     return false;
                 }
             }
@@ -621,8 +633,8 @@ class HomeController
                 'cates' => $this->cate->all(),
                 'carts' => $this->cart->getCartByClientID($_SESSION['userID'] ?? ''),
                 // 'carts' => $_SESSION['carts'],
-                // 'countCarts' => count($_SESSION['carts']),
-                'countCarts' => count($this->cart->getCartByClientID($_SESSION['userID'] ?? '')),
+                'countCarts' => count($_SESSION['carts'] ?? []),
+                // 'countCarts' => count($this->cart->getCartByClientID($_SESSION['userID'] ?? '')),
             ]
         );
     }
@@ -634,9 +646,9 @@ class HomeController
             "client.layout.Pages.Components.header",
             [
                 'cates' => $this->cate->all(),
-                'carts' => $this->cart->getCartByClientID($_SESSION['userID'] ?? ''),
-                // 'countCarts' => count($_SESSION['carts']),
-                'countCarts' => count($this->cart->getCartByClientID($_SESSION['userID'] ?? '')),
+                // 'carts' => $this->cart->getCartByClientID($_SESSION['userID'] ?? ''),
+                'countCarts' => count($_SESSION['carts'] ?? []),
+                // 'countCarts' => count($this->cart->getCartByClientID($_SESSION['userID'] ?? '')),
             ]
         );
     }
@@ -649,8 +661,8 @@ class HomeController
             [
                 'cates' => $this->cate->all(),
                 'clientOrder' => $this->order->loadOrderClient($_SESSION['userID'] ?? ''),
-                // 'countCarts' => count($_SESSION['carts']),  
-                'countCarts' => count($this->cart->getCartByClientID($_SESSION['userID'] ?? '')),
+                'countCarts' => count($_SESSION['carts'] ?? []),  
+                // 'countCarts' => count($this->cart->getCartByClientID($_SESSION['userID'] ?? '')),
             ]
         );
     }
@@ -661,8 +673,21 @@ class HomeController
             [
                 'cates' => $this->cate->all(),
                 'clientOrder' => $this->order->loadOrderClient($_SESSION['userID'] ?? ''),
-                // 'countCarts' => count($_SESSION['carts']),  
-                'countCarts' => count($this->cart->getCartByClientID($_SESSION['userID'] ?? '')),
+                'countCarts' => count($_SESSION['carts'] ?? []),  
+                // 'countCarts' => count($this->cart->getCartByClientID($_SESSION['userID'] ?? '')),
+            ]
+        );
+    }
+    function detailOrderSuccess($id)
+    {
+        $this->view(
+            "client.layout.Pages.Components.DataLayout.detailOrderSuccess",
+            [
+                'cates' => $this->cate->all(),
+                // 'clientOrder' => $this->order->loadOrderClient($_SESSION['userID'] ?? ''),
+                'countCarts' => count($_SESSION['carts'] ?? []),  
+                'detailOrderSuccess' => $this->order->detailOrderSuccess($id),
+                // 'countCarts' => count($this->cart->getCartByClientID($_SESSION['userID'] ?? '')),
             ]
         );
     }
@@ -692,7 +717,8 @@ class HomeController
             ]
         );
     }
-    function getBookByAuthor($id){
+    function getBookByAuthor($id)
+    {
         $this->view(
             "client.layout.Pages.Components.DataLayout.getBookByAuthor",
             [
@@ -707,6 +733,3 @@ class HomeController
         );
     }
 }
-?>
-
-

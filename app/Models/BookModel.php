@@ -46,20 +46,20 @@ class BookModel extends BaseModel
         }
     }
     // Methods tạo mới
-    function new($cateID, $bookName, $image, $authorID, $dateAdded, $price, $description, $status)
+    function new($cateID, $bookName, $image, $authorID, $dateAdded,$quantity, $price, $description, $status)
     {
         if ($this->table !== null) {
-            $sql = "INSERT INTO $this->table (cateID,bookName,image,authorID,dateAdded,price,description,statusID) VALUES(?,?,?,?,?,?,?,?)";
-            return $this->_query($sql)->execute([$cateID, $bookName, $image, $authorID, $dateAdded, $price, $description, $status]);
+            $sql = "INSERT INTO $this->table (cateID,bookName,image,authorID,dateAdded,quantity,price,description,statusID) VALUES(?,?,?,?,?,?,?,?,?)";
+            return $this->_query($sql)->execute([$cateID, $bookName, $image, $authorID, $dateAdded,$quantity,$price, $description, $status]);
         }
         return false;
     }
     // Methods update
-    function update($cateID, $bookName, $image, $authorID, $dateAdded, $price, $description, $statusID, $id)
+    function update($cateID, $bookName, $image, $authorID,$dateAdded,$quantity, $price, $description, $statusID, $id)
     {
         if ($this->table !== null) {
-            $sql = "UPDATE $this->table SET cateID = ?,bookName = ? ,image = ?,authorID = ? ,dateAdded = ?, price = ?, description = ? , statusID = ? WHERE id = ?";
-            return $this->_query($sql)->execute([$cateID, $bookName, $image, $authorID, $dateAdded, $price, $description, $statusID, $id]);
+            $sql = "UPDATE $this->table SET cateID = ?,bookName = ? ,image = ?,authorID = ? ,dateAdded = ?,quantity = ?,price = ?, description = ? , statusID = ? WHERE id = ?";
+            return $this->_query($sql)->execute([$cateID, $bookName, $image, $authorID, $dateAdded,$quantity,$price, $description, $statusID, $id]);
         }
     }
 
@@ -68,8 +68,9 @@ class BookModel extends BaseModel
     {
         if ($this->table !== null) {
             
-            if(isset($_GET['page'])) {
-                $page = $_GET['page'];
+            if(isset($_GET['url'])) {
+                $url = implode("/",$_GET['url']);
+                $page = $url[3];
             }else {
                 $page = 1;
             }
@@ -160,10 +161,7 @@ class BookModel extends BaseModel
             $this->_query($sql)->execute([$authorID]);
            $data = $this->stmt->fetch();
            return $data;
-        //    _dump($data);
-          
         }
-    
     }
     function statisticalView() {
         if($this->table !== null) {
@@ -171,6 +169,18 @@ class BookModel extends BaseModel
             FROM $this->table 
             WHERE view > 100 
             GROUP BY bookName,view";
+            $this->_query($sql)->execute();
+            $data = $this->stmt->fetchAll();
+            return $data;
+        }
+    }
+    function statisticalSeller() {
+        if($this->table !== null) {
+            $sql = "SELECT $this->table.bookName,orderDetail.quantity,orderDetail.price,SUM(orderDetail.quantity * orderDetail.price) AS totalPrice, COUNT(*) AS totalOrder
+            FROM $this->table 
+            LEFT JOIN orderDetail ON $this->table.id = orderDetail.bookID
+            LEFT JOIN orders ON orderDetail.orderID = orders.id
+            GROUP BY $this->table.bookName ORDER BY totalPrice DESC LIMIT 8";
             $this->_query($sql)->execute();
             $data = $this->stmt->fetchAll();
             return $data;
@@ -195,7 +205,6 @@ class BookModel extends BaseModel
             $this->_query($sql)->execute([$authorID]);
            $data = $this->stmt->fetchAll();
            return $data;
-        //    _dump($data);
           
         }
     
@@ -204,7 +213,10 @@ class BookModel extends BaseModel
     private function _selectQuery()
     {   
         if($this->table !== null) {
-            $sql = "SELECT $this->table.id,$this->table.bookName,$this->table.image,$this->table.authorID,$this->table.dateAdded,$this->table.price,$this->table.description,$this->table.cateID,$this->table.view,$this->table.statusID,categories.cateName,authors.authorName,status.statusName 
+            $sql = "SELECT $this->table.id,$this->table.bookName,$this->table.image,$this->table.authorID
+            ,$this->table.dateAdded,$this->table.quantity,$this->table.price
+            ,$this->table.description,$this->table.cateID,$this->table.view
+            ,$this->table.statusID,categories.cateName,authors.authorName,status.statusName 
             FROM $this->table 
             LEFT JOIN categories ON $this->table.cateID = categories.id 
             LEFT JOIN status ON $this->table.statusID = status.id 

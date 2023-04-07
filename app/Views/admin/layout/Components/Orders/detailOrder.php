@@ -1,6 +1,7 @@
 <?php require_once "./app/Views/admin/layout/Components/header.php"; ?>
 <!doctype html>
 <html lang="en">
+
 <head>
     <title>Cập Nhật Khách Hàng</title>
     <!-- Required meta tags -->
@@ -37,14 +38,14 @@
                                 <th>PHONE NUMBER</th>
                                 <th>ADDRESS</th>
                             </tr>
-                            </thead>
-                            <tbody class="table-group-divider">
-                                <tr class="table-primary" >
-                                    <td scope="row"><?= $data['userOrder']['clientName'] ?? ''?></td>
-                                    <td><?= $data['userOrder']['phoneNumber'] ?? ''?></td>
-                                    <td><?= $data['userOrder']['address'] ?? ''?></td>
-                                </tr>
-                            </tbody>
+                        </thead>
+                        <tbody class="table-group-divider">
+                            <tr class="table-primary">
+                                <td scope="row"><?= $data['userOrder']['clientName'] ?? '' ?></td>
+                                <td><?= $data['userOrder']['phoneNumber'] ?? '' ?></td>
+                                <td><?= $data['userOrder']['address'] ?? '' ?></td>
+                            </tr>
+                        </tbody>
                     </table>
                 </div>
             </div>
@@ -65,36 +66,40 @@
                                 <th>TOTAL</th>
                                 <th>DATE BUY</th>
                             </tr>
-                            </thead>
-                            <tbody class="table-group-divider">
-                                <?php foreach($data['order'] as $orderDetail):?>
-                                <tr class="table-primary" >
-                                    <td scope="row"><?= "#P".$orderDetail['orderDetailID'] ?? ''?></td>
-                                    <td><?= $orderDetail['bookName'] ?? ''?></td>
-                                    <td><?= number_format($orderDetail['priceOrder']) ?? ''?></td>
-                                    <td><?= $orderDetail['quantity'] ?? ''?></td>
-                                    <td><?= number_format($orderDetail['sumPriceOrder']) ?? ''?></td>
-                                    <td><?= $orderDetail['dateBuy'] ?? ''?></td>
-                                </tr>
-                                <?php endforeach?>
-                            </tbody>
+                        </thead>
+                        <tbody class="table-group-divider">
+                            <?php if (count($data['order']) > 0) : ?>
+                                <?php foreach ($data['order'] as $orderDetail) : ?>
+                                    <tr class="table-primary">
+                                        <td scope="row"><?= "#P" . $orderDetail['orderDetailID'] ?? '' ?></td>
+                                        <td><?= $orderDetail['bookName'] ?? '' ?></td>
+                                        <td><?= number_format($orderDetail['priceOrder']) ?? '' ?></td>
+                                        <td><?= $orderDetail['quantity'] ?? '' ?></td>
+                                        <td><?= number_format($orderDetail['sumPriceOrder']) ?? '' ?></td>
+                                        <td><?= $orderDetail['dateBuy'] ?? '' ?></td>
+                                    </tr>
+                                <?php endforeach ?>
+                            <?php else : ?>
+                                <div>Không tồn tại đơn hàng</div>
+                            <?php endif ?>
+                        </tbody>
                     </table>
                 </div>
             </div>
         </div>
         <div class="mb-3">
-            <form action="<?= URL?>Order/updateStatusOrder/<?= $orderDetail['orderID']?>" method="post">
-            <label for="" class="form-label">Trạng Thái Đơn Hàng</label>
-            <select class="form-select form-select-lg" name="statusID" id="">
-                <?php foreach($data['statusOrders'] as $statusOrder):?>
-                    <?php if($statusOrder['id'] === $orderDetail['statusID']):?>
-                        <option value="<?= $statusOrder['id']?>" selected><?= $statusOrder['statusOrderName'] ?? ''?></option>
-                        <?php else:?>
-                            <option value="<?= $statusOrder['id']?>"><?= $statusOrder['statusOrderName'] ?? ''?></option>
-                            <?php endif?>
-                <?php endforeach?>
-            </select>
-            <button type="submit" class="btn btn-info mx-2 my-2" name="updateStatus">Cập Nhật</button>
+            <form action="<?= URL ?>Order/updateStatusOrder/<?= $orderDetail['orderID'] ?>" method="post">
+                <label for="" class="form-label">Trạng Thái Đơn Hàng</label>
+                <select class="form-select form-select-lg" name="statusID" id="">
+                    <?php foreach ($data['statusOrders'] as $statusOrder) : ?>
+                        <?php if ($statusOrder['id'] === $orderDetail['statusID']) : ?>
+                            <option value="<?= $statusOrder['id'] ?>" selected><?= $statusOrder['statusOrderName'] ?? '' ?></option>
+                        <?php else : ?>
+                            <option value="<?= $statusOrder['id'] ?>"><?= $statusOrder['statusOrderName'] ?? '' ?></option>
+                        <?php endif ?>
+                    <?php endforeach ?>
+                </select>
+                <button type="submit" class="btn btn-info mx-2 my-2" name="updateStatus">Cập Nhật</button>
             </form>
         </div>
     </main>

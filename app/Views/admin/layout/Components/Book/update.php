@@ -78,6 +78,10 @@
                 </select>
             </div>
             <div class="form-group">
+                <label for="">Số Lượng</label>
+                <input type="text" class="form-control" id="" placeholder="" name="quantity" value="<?= $data['book']['quantity'] ?? '' ?>">
+            </div>
+            <div class="form-group">
                 <label for="">Giá</label>
                 <input type="text" class="form-control" id="" placeholder="" name="price" value="<?= $data['book']['price'] ?? '' ?>">
             </div>

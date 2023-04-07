@@ -12,6 +12,9 @@
                 <div class="flex detail-info">
                     <ul class="detail-ul">
                         <li>Mã sản phẩm: <a href="#"> <?= $data['book']['id'] ?></a></li>
+                        <li>Số Lượng:
+                            <a href="#"> <?= $data['book']['quantity'] > 0 ? $data['book']['quantity'] : "Hết Hàng"?></a>
+                        </li>
                         <li>Tác giả: <a href="#"><?= $data['book']['authorName'] ?></a></li>
                         <li>Lượt xem: <?= $data['book']['view'] ?></li>
                         <!-- <li>Dịch giả: <a href="#">Hoàng Đức Long</a></li>
@@ -39,11 +42,11 @@
                                 </div>
                             </div>
                         </form>
-                        <div style="margin-top: 10px;">
+                        <div style="margin-top: 10px; color:tomato">
                             <?= $_SESSION['msgCartIsset'] ?? '';
                             unset($_SESSION['msgCartIsset']) ?>
                         </div>
-                        <div style="margin-top: 10px;">
+                        <div style="margin-top: 10px; color:tomato">
                             <?= $_SESSION['quantity_err'] ?? '';
                             unset($_SESSION['quantity_err']) ?>
                         </div>

@@ -3,7 +3,7 @@
 <div class="div-container-cart">
     <img src="" alt="">
     <div class="div-main-cart">
-        <?php if (count($data['carts']) > 0) : ?>
+        <?php if (count($_SESSION['carts']) > 0) : ?>
             <table class="table-cart">
                 <h2>Giỏ hàng của bạn: </h2>
                 <div class="đây là msg thông báo khi người dùng đã xóa giỏ hàng">
@@ -25,7 +25,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($data['carts'] as $cart) : ?>
+                    <?php foreach ($_SESSION['carts'] as $cart) : ?>
                         <tr class="tr-cart">
                             <td class="td-cart"><a href="<?= URL ?>Home/delCart/<?= $cart['cartID'] ?>" onclick="return confirm('Are you sure?')"><button class="deleteBtn" style="cursor: pointer;font-weight: 900;">X</button></a></td>
                             <td class="td-cart"><?= $cart['bookName'] ?? '' ?></td>

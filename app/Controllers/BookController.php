@@ -28,7 +28,7 @@ class BookController  {
     function new() {
         if(isset($_POST['btn-new'])) {
             $img = $_FILES['image']['name'];
-            $result = $this->book->new($_POST['cateID'],$_POST['bookName'],$img,$_POST['authorID'],date("Y/m/d H:i:a"),$_POST['price'],$_POST['description'],$_POST['statusID']);
+            $result = $this->book->new($_POST['cateID'],$_POST['bookName'],$img,$_POST['authorID'],date("Y/m/d H:i:a"),$_POST['quantity'],$_POST['price'],$_POST['description'],$_POST['statusID']);
             move_uploaded_file($_FILES['image']['tmp_name'], "Public/upload/" . basename($img));
             if($result) {
                 _redirectLo(URL."Admin/listBook");
@@ -55,7 +55,7 @@ class BookController  {
                 $img = $_FILES['image']['name'];
                 move_uploaded_file($_FILES['image']['tmp_name'], "Public/upload/".basename($img));
             }
-            $result = $this->book->update($_POST['cateID'],$_POST['bookName'],$img,$_POST['authorID'],date("Y/m/d H:i:a"),$_POST['price'],$_POST['description'],$_POST['statusID'],$id);
+            $result = $this->book->update($_POST['cateID'],$_POST['bookName'],$img,$_POST['authorID'],date("Y/m/d H:i:a"),$_POST['quantity'],$_POST['price'],$_POST['description'],$_POST['statusID'],$id);
             if($result) {
                 _redirectLo(URL."Admin/listBook");
                 // header("Location:".URL."Admin/listBook");
