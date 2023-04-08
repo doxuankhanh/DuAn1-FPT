@@ -180,12 +180,17 @@ class HomeController
                     move_uploaded_file($_FILES['avatar']['tmp_name'], 'Public/upload/' . basename($img));
                 } else {
                     $data['error'] = 'Sai định dạng ảnh';
+                    $_SESSION['timeout'] = time();
                 }
             }
 
             if (empty($data['error'])) {
                 $this->user->updateUser($data['email'], $data['username'], $data['accountName'], $data['address'], $data['phoneNumber'], $img, $userId);
-                $data['success'] = "Đã cập nhật";
+                // $data['success'] = "Đã cập nhật";
+
+                $_SESSION['success'] = "Đã cập nhật";
+                $_SESSION['timeout'] = time() + 0.1;
+
                 // _redirectLo(URL."home/");
                 _redirectLo($_SERVER['HTTP_REFERER']);
             }
@@ -661,7 +666,7 @@ class HomeController
             [
                 'cates' => $this->cate->all(),
                 'clientOrder' => $this->order->loadOrderClient($_SESSION['userID'] ?? ''),
-                'countCarts' => count($_SESSION['carts'] ?? []),  
+                'countCarts' => count($_SESSION['carts'] ?? []),
                 // 'countCarts' => count($this->cart->getCartByClientID($_SESSION['userID'] ?? '')),
             ]
         );
@@ -673,7 +678,7 @@ class HomeController
             [
                 'cates' => $this->cate->all(),
                 'clientOrder' => $this->order->loadOrderClient($_SESSION['userID'] ?? ''),
-                'countCarts' => count($_SESSION['carts'] ?? []),  
+                'countCarts' => count($_SESSION['carts'] ?? []),
                 // 'countCarts' => count($this->cart->getCartByClientID($_SESSION['userID'] ?? '')),
             ]
         );
@@ -685,7 +690,7 @@ class HomeController
             [
                 'cates' => $this->cate->all(),
                 // 'clientOrder' => $this->order->loadOrderClient($_SESSION['userID'] ?? ''),
-                'countCarts' => count($_SESSION['carts'] ?? []),  
+                'countCarts' => count($_SESSION['carts'] ?? []),
                 'detailOrderSuccess' => $this->order->detailOrderSuccess($id),
                 // 'countCarts' => count($this->cart->getCartByClientID($_SESSION['userID'] ?? '')),
             ]
