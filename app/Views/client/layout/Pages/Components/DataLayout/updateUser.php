@@ -30,13 +30,13 @@
 
                     <div class="div-input-box p-3">
                         <input type="text" name="username" class="input-form-login" value="<?= $data['user']['username'] ?? '' ?>" required>
-                        <span class="span-label">UserName</span>
+                        <span class="span-label">Họ và tên</span>
                         <!-- <span class="span-err" style="color:red;font-weight:bold;font-style:italic"><?= $data['username'] ?? '' ?></span> -->
                     </div>
 
                     <div class="div-input-box p-3">
                         <input type="text" name="accountName" class="input-form-login" value="<?= $data['user']['accountName'] ?? '' ?>" required>
-                        <span class="span-label">AccountName</span>
+                        <span class="span-label">Tên tài khoản</span>
                         <!-- <span class="span-err" style="color:red;font-weight:bold;font-style:italic"><?= $data['accountName'] ?? '' ?></span> -->
                     </div>
 
@@ -48,13 +48,13 @@
 
                     <div class="div-input-box p-3">
                         <input type="text" name="address" class="input-form-login" value="<?= $data['user']['address'] ?? '' ?>" required>
-                        <span class="span-label">Address</span>
+                        <span class="span-label">Địa chỉ</span>
                         <!-- <span class="span-err" style="color:red;font-weight:bold;font-style:italic"><?= $data['address'] ?? '' ?></span> -->
                     </div>
 
                     <div class="div-input-box p-3">
                         <input type="text" name="phoneNumber" class="input-form-login" value="<?= $data['user']['phoneNumber'] ?? '' ?>" required>
-                        <span class="span-label">Phone Number</span>
+                        <span class="span-label">Số điện thoại</span>
                         <!-- <span class="span-err" style="color:red;font-weight:bold;font-style:italic"><?= $data['phoneNumber'] ?? '' ?></span> -->
                     </div>
 

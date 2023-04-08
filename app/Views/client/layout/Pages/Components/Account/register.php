@@ -13,12 +13,12 @@
             </div>
             <div class="div-input-box">
             <input type="text" name="username" class="input-form-login" value="<?= $data['username'] ?? ''?>" required>
-                <span class="span-label">FullName :</span>
+                <span class="span-label">Họ và tên :</span>
                 <span class="span-err" style="color:red;font-weight:bold;font-style:i"><?= $data['username_err'] ?? ''?></span>
             </div>
             <div class="div-input-box">
             <input type="text" name="accountName" class="input-form-login" value="<?= $data['accountName'] ?? ''?>" required>
-                <span class="span-label">Account :</span>
+                <span class="span-label">Tên tài khoản :</span>
                 <span class="span-err" style="color:red;font-weight:bold;font-style:i"><?= $data['accountName_err'] ?? ''?></span>
             </div>
             <div class="div-input-box">
