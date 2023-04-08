@@ -18,6 +18,15 @@
 
                         <div style="margin-top: 10px; padding-left: 35px;">
                             <p style="color: red;"><?= $data['error'] ?? '' ?></p>
+                            <p style="color: #28a745;"><?= $_SESSION['success'] ?? '' ?></p>
+                            <?php
+                            if (isset($_SESSION['timeout']) && $_SESSION['timeout'] < time()) {
+                                unset($_SESSION['success']);
+                                unset($_SESSION['timeout']);
+                                header('Location: ' . $_SERVER['PHP_SELF']);
+                                // exit();
+                            }
+                            ?>
                         </div>
                     </div>
                 </div>
