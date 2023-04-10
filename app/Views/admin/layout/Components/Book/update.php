@@ -43,6 +43,7 @@
                         <?php endif ?>
                     <?php endforeach ?>
                 </select>
+                <span class="span-err" style="color:red;font-weight:bold;font-style:i"><?= $data['err']['cateID_err'] ?? '' ?></span>
             </div>
             <div class="form-group">
                 <label for="">Trạng Thái</label>
@@ -55,10 +56,12 @@
                         <?php endif ?>
                     <?php endforeach ?>
                 </select>
+                <span class="span-err" style="color:red;font-weight:bold;font-style:i"><?= $data['err']['statusID_err'] ?? '' ?></span>
             </div>
             <div class="form-group">
                 <label for="">Tên Sản Phẩm</label>
                 <input type="text" class="form-control" id="" placeholder="" name="bookName" value="<?= $data['book']['bookName'] ?? '' ?>">
+                <span class="span-err" style="color:red;font-weight:bold;font-style:i"><?= $data['err']['bookName_err'] ?? '' ?></span>
             </div>
             <div class="form-group">
                 <label for="">Image</label>
@@ -76,18 +79,22 @@
                         <?php endif ?>
                     <?php endforeach ?>
                 </select>
+                <span class="span-err" style="color:red;font-weight:bold;font-style:i"><?= $data['err']['authorID_err'] ?? '' ?></span>
             </div>
             <div class="form-group">
                 <label for="">Số Lượng</label>
                 <input type="text" class="form-control" id="" placeholder="" name="quantity" value="<?= $data['book']['quantity'] ?? '' ?>">
+                <span class="span-err" style="color:red;font-weight:bold;font-style:i"><?= $data['err']['quantity_err'] ?? '' ?></span>
             </div>
             <div class="form-group">
                 <label for="">Giá</label>
                 <input type="text" class="form-control" id="" placeholder="" name="price" value="<?= $data['book']['price'] ?? '' ?>">
+                <span class="span-err" style="color:red;font-weight:bold;font-style:i"><?= $data['err']['price_err'] ?? '' ?></span>
             </div>
             <div class="form-group">
                 <label for="">Mô tả</label>
                 <input type="text" class="form-control" id="" placeholder="" name="description" value="<?= $data['book']['description'] ?? '' ?>">
+                <span class="span-err" style="color:red;font-weight:bold;font-style:i"><?= $data['err']['description_err'] ?? '' ?></span>
             </div>
             <div class="form-group mx-auto my-2">
                 <input type="submit" name="btn-update" value="Cập Nhật" class="btn btn-primary">

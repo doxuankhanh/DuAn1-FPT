@@ -32,10 +32,11 @@
             <div class="form-group">
                 <label for="">Tên Tác Giả</label>
                 <input type="text" class="form-control" id="" placeholder="" name="authorName">
+                <span class="span-err" style="color:red;font-weight:bold;font-style:i"><?= $data['err']['authorName_err'] ?? '' ?></span>
             </div>
             <div class="form-group mx-auto my-2">
                 <input type="submit" name="btn-new" value="Thêm Mới" class="btn btn-primary">
-                <a href="<?= URL?>Cate" class="btn btn-primary">Danh Sách</a>
+                <a href="<?= URL?>Admin/listAuthor" class="btn btn-primary">Danh Sách</a>
             </div>
         </form>
     </main>

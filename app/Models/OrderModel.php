@@ -12,7 +12,7 @@ class OrderModel extends BaseModel {
             // $sql = $this->_sqlOrder() . " ORDER BY $this->table.id DESC";
             $sql = "SELECT $this->table.id, $this->table.clientName,$this->table.dateBuy,statusOrders.statusOrderName 
             FROM $this->table 
-            LEFT JOIN statusOrders ON $this->table.statusID = statusOrders.id";
+            LEFT JOIN statusOrders ON $this->table.statusID = statusOrders.id ORDER BY $this->table.id DESC";
             $this->_query($sql)->execute();
             $data = $this->stmt->fetchAll();
             return $data;

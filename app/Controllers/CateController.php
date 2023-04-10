@@ -15,26 +15,60 @@ class CateController {
     // Phương thức tạo mới
     function new() {
         if(isset($_POST['btn-new'])) {
-            $result = $this->cate->new($_POST['cateName']);
-            if($result) {
-                _redirectLo(URL."Admin/listCate");
-                // header("Location:".URL."Admin/listCate");
+            $_POST = filter_input_array(INPUT_POST);
+            $data = [
+                'cateName' => trim($_POST['cateName'] ?? ''),
+                // err
+                'cateName_err' => "",
+            ];
+            if(empty($data['cateName'])) {
+                $data['cateName_err'] = "Bạn chưa nhập tên danh mục";
             }
-            return false;
+            if(empty($data['cateName_err'])) {
+                $result = $this->cate->new($data['cateName']);
+                if($result) {
+                    _redirectLo(URL."Admin/listCate");
+                }
+            }else{
+                $this->view("admin.layout.Components.Cate.add",['err' => $data]);
+            }
+        }else {
+            $data = [
+                'cateName' => "",
+                // err
+                'cateName_err' => "",
+            ];
         }
-        $this->view("admin.layout.Components.Cate.add");
+        $this->view("admin.layout.Components.Cate.add",['err' => $data]);
     }
     // Phương thức update
     function update($id) {
         if(isset($_POST['btn-update'])) {
-            $result = $this->cate->update($_POST['cateName'],$id);
-            if($result) {
-                // header("Location:".URL."Admin/listCate");
-                _redirectLo(URL."Admin/listCate");
+            $_POST = filter_input_array(INPUT_POST);
+            $data = [
+                'cateName' => trim($_POST['cateName'] ?? ''),
+                // err
+                'cateName_err' => "",
+            ];
+            if(empty($data['cateName'])) {
+                $data['cateName_err'] = "Bạn chưa nhập tên danh mục";
             }
-            return false;
+            if(empty($data['cateName_err'])) {
+                $result = $this->cate->update($data['cateName'],$id);
+                if($result) {
+                    _redirectLo(URL."Admin/listCate");
+                }
+            }else {
+                $this->view("admin.layout.Components.Cate.update",['cate' => $this->cate->getOne($id),'err' => $data]);
+            }
+        }else {
+            $data = [
+                'cateName' => "",
+                // err
+                'cateName_err' => "",
+            ];
         }
-        $this->view("admin.layout.Components.Cate.update",['cate' => $this->cate->getOne($id)]);
+        $this->view("admin.layout.Components.Cate.update",['cate' => $this->cate->getOne($id),'err' => $data]);
     }
     // Phương thức delete
     function delete($id) {

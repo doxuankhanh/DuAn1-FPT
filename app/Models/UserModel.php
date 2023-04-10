@@ -47,4 +47,11 @@ class UserModel extends BaseModel {
             return $this->_query($sql)->execute([$password,$email]);
         }
     }
+    // update user phía admin
+    function updateUserSideAdmin($username,$accountName,$email,$address,$phoneNumber,$avatar,$role,$userID) {
+        if($this->table !== null) {
+            $sql = "UPDATE $this->table SET username = ?,accountName = ?,email = ?,address = ?,phoneNumber = ?,avatar = ?,role = ? WHERE clientID = ?";
+            return $this->_query($sql)->execute([$username,$accountName,$email,$address,$phoneNumber,$avatar,$role,$userID]);
+        }
+    }
 }

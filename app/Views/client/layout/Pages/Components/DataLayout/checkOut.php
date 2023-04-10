@@ -40,7 +40,7 @@
                             </thead>
                             <tbody>
                                 <?php $total = 0;
-                                foreach ($data['carts'] as $key => $value) :
+                                foreach ($_SESSION['carts'] as $key => $value) :
                                     $subtotal = ($value['quantity'] * $value['price']);
                                     $total += $subtotal;
                                 ?>

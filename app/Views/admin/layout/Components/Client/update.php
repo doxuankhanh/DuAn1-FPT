@@ -22,66 +22,54 @@
             </button>
         </nav>
     </header>
-
     <main class="m-2">
         <form method="POST" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="">ID</label>
                 <input type="text" class="form-control" disabled value="<?= $data['client']['clientID'] ?? '' ?>">
             </div>
-
             <div class="form-group">
                 <label for="">Tên Khách Hàng</label>
                 <input type="text" class="form-control" name="username" value="<?= $data['client']['username'] ?? '' ?>">
+                <span class="span-err" style="color:red;font-weight:bold;font-style:i"><?= $data['err']['username_err'] ?? '' ?></span>
             </div>
-
             <div class="form-group">
                 <label for="">Account</label>
                 <input type="text" class="form-control" name="accountName" value="<?= $data['client']['accountName'] ?? '' ?>">
+                <span class="span-err" style="color:red;font-weight:bold;font-style:i"><?= $data['err']['accountName_err'] ?? '' ?></span>
             </div>
-
             <div class="form-group">
                 <label for="">Email</label>
                 <input type="text" class="form-control" name="email" value="<?= $data['client']['email'] ?? '' ?>">
+                <span class="span-err" style="color:red;font-weight:bold;font-style:i"><?= $data['err']['email_err'] ?? '' ?></span>
             </div>
-
-            <!-- <div class="form-group">
-                <label for="">Mật Khẩu</label>
-                <input type="text" class="form-control" name="password" value="<?= $data['client']['password'] ?? '' ?>">
-            </div> -->
-
             <div class="form-group">
                 <label for="">Địa Chỉ</label>
                 <input type="text" class="form-control" name="address" value="<?= $data['client']['address'] ?? '' ?>">
+                <span class="span-err" style="color:red;font-weight:bold;font-style:i"><?= $data['err']['address_err'] ?? '' ?></span>
             </div>
-
             <div class="form-group">
                 <label for="phoneNumber">Số Điện Thoại</label>
                 <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" value="<?= $data['client']['phoneNumber'] ?? '' ?>">
+                <span class="span-err" style="color:red;font-weight:bold;font-style:i"><?= $data['err']['phoneNumber_err'] ?? '' ?></span>
             </div>
 
             <div class="form-group">
                 <label for="">Ảnh</label>
                 <input type="file" class="form-control" id="" placeholder="" name="avatar">
                 <div style="margin: 20px 0;"><img src="../../Public/upload/<?= $data['client']['avatar'] ?>" alt="" style="width: 120px;"></div>
-
             </div>
-
-            <!-- <div class="form-group">
+            <div class="form-group">
                 <label for="">Vai Trò</label>
-                <select name="role" id="" class="form-control" value="<?= $data['client']['role'] ?? '' ?>">
-                    <option value="0">Admin</option>
-                    <option value="1">Khách Hàng</option>
-                </select>
-            </div> -->
-
+                <input type="text" name="role" value="<?= $data['client']['role']?>" class="form-control">
+                <span class="span-err" style="color:red;font-weight:bold;font-style:i"><?= $data['err']['role_err'] ?? '' ?></span>
+            </div>
             <div class="form-group mx-auto my-2">
                 <input type="submit" name="btn-update" value="Cập Nhật" class="btn btn-primary">
                 <a href="<?= URL ?>Admin/listClient" class="btn btn-primary">Danh Sách</a>
             </div>
         </form>
     </main>
-
     <footer>
     </footer>
 </body>

@@ -631,7 +631,7 @@ class HomeController
             "client.layout.Pages.Components.DataLayout.checkOut",
             [
                 'cates' => $this->cate->all(),
-                'carts' => $this->cart->getCartByClientID($_SESSION['userID'] ?? ''),
+                // 'carts' => $this->cart->getCartByClientID($_SESSION['userID'] ?? ''),
                 // 'carts' => $_SESSION['carts'],
                 'countCarts' => count($_SESSION['carts'] ?? []),
                 // 'countCarts' => count($this->cart->getCartByClientID($_SESSION['userID'] ?? '')),
@@ -661,7 +661,7 @@ class HomeController
             [
                 'cates' => $this->cate->all(),
                 'clientOrder' => $this->order->loadOrderClient($_SESSION['userID'] ?? ''),
-                'countCarts' => count($_SESSION['carts'] ?? []),  
+                'countCarts' => count($_SESSION['carts'] ?? []),
                 // 'countCarts' => count($this->cart->getCartByClientID($_SESSION['userID'] ?? '')),
             ]
         );
@@ -673,7 +673,7 @@ class HomeController
             [
                 'cates' => $this->cate->all(),
                 'clientOrder' => $this->order->loadOrderClient($_SESSION['userID'] ?? ''),
-                'countCarts' => count($_SESSION['carts'] ?? []),  
+                'countCarts' => count($_SESSION['carts'] ?? []),
                 // 'countCarts' => count($this->cart->getCartByClientID($_SESSION['userID'] ?? '')),
             ]
         );
@@ -685,7 +685,7 @@ class HomeController
             [
                 'cates' => $this->cate->all(),
                 // 'clientOrder' => $this->order->loadOrderClient($_SESSION['userID'] ?? ''),
-                'countCarts' => count($_SESSION['carts'] ?? []),  
+                'countCarts' => count($_SESSION['carts'] ?? []),
                 'detailOrderSuccess' => $this->order->detailOrderSuccess($id),
                 // 'countCarts' => count($this->cart->getCartByClientID($_SESSION['userID'] ?? '')),
             ]
@@ -732,4 +732,5 @@ class HomeController
             ]
         );
     }
+    
 }
