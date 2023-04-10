@@ -52,7 +52,7 @@
                     <?php endif ?>
                 </tbody>
             </table>
-            <button><a href="<?= URL?>">QUAY LẠI ĐỂ MUA SẮM</a></button>
+            <button style="padding: 9px;border-radius: 30px;border: none;background-color: #046307;"><a style="color: #ffffff" href="<?= URL?>">QUAY LẠI ĐỂ MUA SẮM</a></button>
         </div>
     </div>
 <?php endif ?>

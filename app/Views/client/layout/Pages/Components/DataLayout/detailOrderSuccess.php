@@ -53,7 +53,7 @@ _dump($data['detailOrderSuccess']);
                     <?php endif ?>
                 </tbody>
             </table>
-            <button><a href="<?= URL?>">QUAY LẠI ĐỂ MUA SẮM</a></button>
+            <button style="padding: 5px;border-radius: 30px;border: none;color: #ffffff;background-color: #046307;"><a href="<?= URL?>">QUAY LẠI ĐỂ MUA SẮM</a></button>
         </div>
     </div>
 <?php endif ?>
