@@ -65,10 +65,10 @@ class OrderModel extends BaseModel {
     }
 
     // 
-    function store($clientID,$dateBuy,$clientName,$address,$phone,$carts) {
+    function store($clientID,$dateBuy,$clientName,$address,$phone,$carts,$statuspayment) {
         if($this->table !== null && $this->sub_table !== null) {
-            $sql = "INSERT INTO $this->table(clientID,dateBuy,clientName,address,phoneNumber) VALUES(?,?,?,?,?)";
-            $this->_query($sql)->execute([$clientID,$dateBuy,$clientName,$address,$phone]);
+            $sql = "INSERT INTO $this->table(clientID,dateBuy,clientName,address,phoneNumber,statuspayment) VALUES(?,?,?,?,?,?)";
+            $this->_query($sql)->execute([$clientID,$dateBuy,$clientName,$address,$phone,$statuspayment]);
             $orderID = $this->connect->lastInsertId();
             // _dump($sql);_dump($orderID);
             // _dump($clientID);die;
@@ -112,6 +112,16 @@ class OrderModel extends BaseModel {
         LEFT JOIN statusOrders ON $this->table.statusID = statusOrders.id 
         LEFT JOIN clients ON clients.clientID = $this->table.clientID";
         return $sql; 
+    }
+    function paymentComplete() {
+        if($this->table !== null) {
+            $sql =$this->_sqlOrder(). " where statuspayment like 'thanh toan online' ";
+            // var_dump($sql);
+            // die();
+            $this->_query($sql)->execute();
+            $data = $this->stmt->fetchall();
+            return $data;
+        }
     }
 }
 ?>

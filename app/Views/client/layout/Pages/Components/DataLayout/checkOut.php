@@ -70,8 +70,14 @@
                         </table>
                     </div>
                 </div>
+                <div>
+                    <select name="statuspayment">
+                        <option value="Thanh toán online">Thanh toán Online</option>
+                        <option value="Thanh toán khi nhận">Thanh toán khi nhận</option>
+                    </select>
+                </div>
                 <h2 class="h2-checkout">
-                    <button type="submit" name="submit-checkout">Xác nhận thanh toán </button>
+                    <button type="submit" name="submit-checkout">Xác nhận</button>
                 </h2>
             </form>
         <?php endif ?>

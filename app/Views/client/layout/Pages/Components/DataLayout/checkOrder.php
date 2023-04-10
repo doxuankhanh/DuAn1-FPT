@@ -23,6 +23,7 @@
                         <th class="th-checkCart">Mã Đơn Hàng</th>
                         <th class="th-checkCart">Ngày Mua</th>
                         <th class="th-checkCart">Tiêu Đề</th>
+                        <th class="th-checkCart">Ảnh</th>
                         <th class="th-checkCart">Giá</th>
                         <th class="th-checkCart">Tổng tiền</th>
                         <th class="th-checkCart" colspan="2">Trạng Thái Đơn Hàng</th>
@@ -37,6 +38,7 @@
                                         <td class="td-checkCart"><?= "#P" . $clientOrder['orderDetailID'] ?? '' ?></td>
                                         <td class="td-checkCart"><?= $clientOrder['dateBuy'] ?? '' ?></td>
                                         <td class="td-checkCart"><?= $clientOrder['bookName'] ?? '' ?></td>
+                                        <td class="td-checkCart"><img src="../../../../../../../DuAn1-FPT/Public/upload/<?= $clientOrder['image'] ?? '' ?>" alt=""></td>
                                         <td class="td-checkCart"><?= number_format($clientOrder['priceOrder']) ?? '' ?></td>
                                         <td class="td-checkCart"><?= number_format($clientOrder['sumPriceOrder']) ?? '' ?></td>
                                         <td class="td-checkCart"><?= $clientOrder['statusOrderName'] ?></td>
@@ -48,6 +50,7 @@
                                         <td class="td-checkCart"><?= "#P" . $clientOrder['orderDetailID'] ?? '' ?></td>
                                         <td class="td-checkCart"><?= $clientOrder['dateBuy'] ?? '' ?></td>
                                         <td class="td-checkCart"><?= $clientOrder['bookName'] ?? '' ?></td>
+                                        <td class="td-checkCart"><img src="../../../../../../../DuAn1-FPT/Public/upload/<?= $clientOrder['image'] ?? '' ?>" alt=""></td>
                                         <td class="td-checkCart"><?= number_format($clientOrder['priceOrder']) ?? '' ?></td>
                                         <td class="td-checkCart"><?= number_format($clientOrder['sumPriceOrder']) ?? '' ?></td>
                                         <td class="td-checkCart"><?= $clientOrder['statusOrderName'] ?></td>
@@ -69,6 +72,9 @@
                         </div>
                     <?php endif ?>
                     </tbody>
+                    <button class="" style="margin-right:50px; margin-left:20px;"><a href="<?= URL ?>Home/orderWaitting" class="submit-btn login">Đơn hàng chưa xử lý</a></button>
+                    <button class="" style="margin-right:50px;"><a href="<?= URL ?>Home/orderProcessed" class="submit-btn login">Đơn hàng đã xử lý</a></button>
+                    <button class="" style="margin-right:50px;"><a href="<?= URL ?>Home/orderDelivering" class="submit-btn login">Đơn hàng đang giao</a></button>
                     <button class=""><a href="<?= URL ?>Home/orderSuccess" class="submit-btn login">Đơn hàng đã giao</a></button>
                 </table>
             </div>

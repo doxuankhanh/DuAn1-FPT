@@ -15,7 +15,7 @@
 <?php else : ?>
     <div class="div-checkContainer">
         <div class="div-mainCheck">
-            <h1 class="h3-checkCart">ĐƠN HÀNG ĐÃ ĐƯỢC GIAO THÀNH CÔNG</h1>
+            <h1 class="h3-checkCart">ĐƠN HÀNG ĐANG CHỜ XỬ LÝ</h1>
             <table class="table-checkCart">
                 <thead class="thead-checkCart">
                     <th class="th-checkCart">Mã Đơn Hàng</th>
@@ -23,19 +23,24 @@
                     <th class="th-checkCart">Tiêu Đề</th>
                     <th class="th-checkCart">Ảnh</th>
                     <th class="th-checkCart">Giá</th>
+                    <th class="th-checkCart">Số lượng</th>
+                    <th class="th-checkCart">Tổng tiền</th>
                     <th class="th-checkCart">Trạng Thái Đơn Hàng</th>
                 </thead>
                 <tbody>
                     <?php if (count($data['clientOrder']) > 0) : ?>
                         <?php foreach ($data['clientOrder'] as $clientOrder) : ?>
-                            <?php if($clientOrder['statusID'] == 5) :?>
+                            <?php if($clientOrder['statusID'] == 2 || $clientOrder['statusID']==1) :?>
                             <tr class="tr-checkCart">
-                                <td class="td-checkCart"><a href="<?= URL?>Home/detailOrderSuccess/<?= $clientOrder['orderDetailID']?>"><?= "#P" . $clientOrder['orderDetailID'] ?? '' ?></a></td>
+                                <td class="td-checkCart"><?= "#P" . $clientOrder['orderDetailID'] ?? '' ?></td>
                                 <td class="td-checkCart"><?= $clientOrder['dateBuy'] ?? '' ?></td>
                                 <td class="td-checkCart"><?= $clientOrder['bookName'] ?? '' ?></td>
                                 <td class="td-checkCart"><img src="../../../../../../../DuAn1-FPT/Public/upload/<?= $clientOrder['image'] ?? '' ?>" alt=""></td>
                                 <td class="td-checkCart"><?= number_format($clientOrder['priceOrder']) ?? '' ?></td>
+                                <td class="td-checkCart"><?= $clientOrder['quantity'] ?? '' ?></td>
+                                <td class="td-checkCart"><?= number_format($clientOrder['sumPriceOrder']) ?? '' ?></td>
                                 <td class="td-checkCart"><?= $clientOrder['statusOrderName'] ?></td>
+                                <td><a href="<?= URL ?>Home/destroyOrder/<?= $clientOrder['orderDetailID'] ?>" onclick="return confirm('Are you sure?');">HỦY</a></td>
                             </tr>
                             <?php endif?>
                         <?php endforeach ?>
@@ -54,7 +59,7 @@
                     <?php endif ?>
                 </tbody>
             </table>
-            <button style="padding: 9px;border-radius: 30px;border: none;background-color: #046307;"><a style="color: #ffffff" href="<?= URL?>">QUAY LẠI ĐỂ MUA SẮM</a></button>
+            <button><a href="<?= URL?>">QUAY LẠI ĐỂ MUA SẮM</a></button>
         </div>
     </div>
 <?php endif ?>

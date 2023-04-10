@@ -618,32 +618,166 @@ class HomeController
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if (isset($_POST['submit-checkout'])) {
-                $result = $this->order->store(clientID: $_SESSION['userID'], dateBuy: date("Y/m/d H:i:a"), clientName: $_SESSION['username'], address: $_SESSION['address'], phone: $_SESSION['phone'], carts: $_SESSION['carts']);
+                $pay = isset($_POST['statuspayment']) ? $_POST['statuspayment']:'';
+                if(isset($_POST['submit-checkout'])&&($pay=='Thanh toán khi nhận')){
+                $result = $this->order->store(clientID: $_SESSION['userID'], dateBuy: date("Y/m/d H:i:a"), clientName: $_SESSION['username'], address: $_SESSION['address'], phone: $_SESSION['phone'], carts: $_SESSION['carts'],statuspayment:$_POST['statuspayment']);
+                // _dump($result);die;
                 if ($result) {
-                    $code = substr(rand(0, 999999), 0, 4);
+                    $code = substr(rand(0,999999),0,4);
                     $title = "Đặt hàng thành công website nhasach.com";
-                    $content = "Mã đơn hàng của bạn là: " . "<span style='color:green'>$code</span>" . " đang trong quá trình xử lý vui lòng chờ!";
-                    $this->mail->sendMail($title, $content, $_SESSION['email']);
-                    $_SESSION['msgOrderSuccess'] = "Cảm ơn bạn đã mua sắm! Thông tin đơn hàng chúng tôi sẽ thông báo về Email của bạn.";
-                    unset($_SESSION['carts']); // ++++
-                    // _redirectLo(URL);
+                    $content = "Mã đơn hàng của bạn là: " ."<span style='color:green'>$code</span>"." đang trong quá trình xử lý vui lòng chờ!";
+                    $this->mail->sendMail($title,$content,$_SESSION['email']);
+                    $_SESSION['msgOrderSuccess'] = "Cảm ơn bạn đã mua sắm!";
                 } else {
                     return false;
                 }
+            } else {
+                _redirectLo(URL . "home/paymentOnline");
             }
         }
+    }   
+    // foreach ($_SESSION['carts'] as $key => $item) {
+    //     $this->cart->removeCart($item['cartID']);
+    // }
+    // unset($_SESSION['carts']);
         $this->view(
             "client.layout.Pages.Components.DataLayout.checkOut",
             [
                 'cates' => $this->cate->all(),
                 'carts' => $this->cart->getCartByClientID($_SESSION['userID'] ?? ''),
-                // 'carts' => $_SESSION['carts'],
-                'countCarts' => count($_SESSION['carts'] ?? []),
-                // 'countCarts' => count($this->cart->getCartByClientID($_SESSION['userID'] ?? '')),
+                'countCarts' => count($this->cart->getCartByClientID($_SESSION['userID'] ?? ''))
             ]
         );
     }
+    function validate_cc($ccNum, $type = 'all', $regex = null) {
 
+        $ccNum = str_replace(array('-', ' '), '', $ccNum);
+        if (mb_strlen($ccNum) < 13) {
+            return false;
+        }
+    
+        if ($regex !== null) {
+            if (is_string($regex) && preg_match($regex, $ccNum)) {
+                return true;
+            }
+            return false;
+        }
+    
+        $cards = array(
+            'all' => array(
+                'amex'		=> '/^3[4|7]\\d{13}$/',
+                'bankcard'	=> '/^56(10\\d\\d|022[1-5])\\d{10}$/',
+                'diners'	=> '/^(?:3(0[0-5]|[68]\\d)\\d{11})|(?:5[1-5]\\d{14})$/',
+                'disc'		=> '/^(?:6011|650\\d)\\d{12}$/',
+                'electron'	=> '/^(?:417500|4917\\d{2}|4913\\d{2})\\d{10}$/',
+                'enroute'	=> '/^2(?:014|149)\\d{11}$/',
+                'jcb'		=> '/^(3\\d{4}|2100|1800)\\d{11}$/',
+                'maestro'	=> '/^(?:5020|6\\d{3})\\d{12}$/',
+                'mc'		=> '/^5[1-5]\\d{14}$/',
+                'solo'		=> '/^(6334[5-9][0-9]|6767[0-9]{2})\\d{10}(\\d{2,3})?$/',
+                'switch'	=>
+                '/^(?:49(03(0[2-9]|3[5-9])|11(0[1-2]|7[4-9]|8[1-2])|36[0-9]{2})\\d{10}(\\d{2,3})?)|(?:564182\\d{10}(\\d{2,3})?)|(6(3(33[0-4][0-9])|759[0-9]{2})\\d{10}(\\d{2,3})?)$/',
+                'visa'		=> '/^4\\d{12}(\\d{3})?$/',
+                'voyager'	=> '/^8699[0-9]{11}$/'
+            ),
+            'fast' =>
+            '/^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|6011[0-9]{12}|3(?:0[0-5]|[68][0-9])[0-9]{11}|3[47][0-9]{13})$/'
+        );
+    
+        if (is_array($type)) {
+            foreach ($type as $value) {
+                $regex = $cards['all'][strtolower($value)];
+    
+                if (is_string($regex) && preg_match($regex, $ccNum)) {
+                    return true;
+                }
+            }
+        } elseif ($type === 'all') {
+            foreach ($cards['all'] as $value) {
+                $regex = $value;
+    
+                if (is_string($regex) && preg_match($regex, $ccNum)) {
+                    return true;
+                }
+            }
+        } else {
+            $regex = $cards['fast'];
+    
+            if (is_string($regex) && preg_match($regex, $ccNum)) {
+                return true;
+            }
+        }
+        return false;
+    }
+    function paymentOnline(){
+        if (isset($_SESSION['carts']) && count($_SESSION['carts']) > 0){
+            if (isset($_POST['payment'])) {
+                try{
+                    $now = new DateTime();
+                    if (strlen($_POST['cardname']) == 0){
+                        throw new Exception("Vui lòng nhập họ và tên chủ thẻ");
+                    }
+                    if (strlen($_POST['cardnumber']) == 0) {
+                        throw new Exception("Vui lòng nhập số thẻ");
+                    }
+                    if (!$this->validate_cc($_POST['cardnumber'])){
+                        throw new Exception("Số thẻ không chính xác, vui lòng kiểm tra lại số thẻ");
+                    }
+                    if (strlen($_POST['expmonth']) == 0) {
+                        throw new Exception("Vui lòng nhập tháng hết hạn của thẻ");
+                    }
+                    if (!is_numeric($_POST['expmonth'])) {
+                        throw new Exception("tháng hết hạn của thẻ phải là số nguyên");
+                    }
+                    if ($_POST['expmonth'] < 1 ||  $_POST['expmonth'] > 12 ) {
+                        throw new Exception("tháng hết hạn của thẻ phải nằm trong khoảng từ 1 đến 12");
+                    }
+                    if (strlen($_POST['expyear']) == 0) {
+                        throw new Exception("Vui lòng nhập năm hết hạn của thẻ");
+                    }
+                    if (!is_numeric($_POST['expyear'])) {
+                        throw new Exception("Năm hết hạn của thẻ phải là số nguyên");
+                    }
+                    if (($_POST['expyear']) < $now->format("Y")) {
+                        throw new Exception("Thẻ đã hết hạn sử dụng");
+                    }
+                    if (($_POST['expyear']) == $now->format("Y") && $_POST['expmonth'] < $now->format("m")) {
+                        throw new Exception("Thẻ đã hết hạn sử dụng");
+                    }
+                    if (strlen($_POST['cvv']) == 0) {
+                        throw new Exception("Vui lòng nhập mã cvv");
+                    }
+                    if (strlen($_POST['cvv']) != 3) {
+                        throw new Exception("mã cvv không đúng định dạng");
+                    }
+                    $this->order->store(clientID: $_SESSION['userID'], dateBuy: date("Y/m/d H:i:a"), clientName: $_SESSION['username'], address: $_SESSION['address'], phone: $_SESSION['phone'], carts: $_SESSION['carts'],statuspayment:"Thanh toán online");
+                    foreach ($_SESSION['carts'] as $key => $item) {
+                        $this->cart->removeCart($item['cartID']);
+                    }
+                    unset($_SESSION['carts']);
+                    $this->view("client.layout.Pages.Components.DataLayout.paySuccess",[]);
+                } catch(Exception $ex){
+                    $this->view(
+                        "client.layout.Pages.Components.DataLayout.pay",[
+                            'carts' => $this->cart->getCartByClientID($_SESSION['userID'] ?? ''),
+                            'countCarts' => count($this->cart->getCartByClientID($_SESSION['userID'] ?? '')),
+                            'errorMessage' => $ex->getMessage()
+                        ]
+                    );
+                }
+            }
+            else{
+                $this->view(
+                    "client.layout.Pages.Components.DataLayout.pay",[
+                        'carts' => $this->cart->getCartByClientID($_SESSION['userID'] ?? ''),
+                        'countCarts' => count($this->cart->getCartByClientID($_SESSION['userID'] ?? ''))
+                    ]
+                );
+            }
+        } else {
+            _redirectLo(URL . "home/index");
+        }
+    }
 
     function countCartHeader()
     {
@@ -734,6 +868,60 @@ class HomeController
                 //lấy toàn bộ sản phẩm của 1 tác giả trong getBookByAuthor
                 'books' => $this->book->selectAuthorAll($id),
                 // 'countAuthor' =>$this->author->_countBook(),
+            ]
+        );
+    }
+    // Đơn hàng đã thanh toán
+    function checkTransaction()   
+    {
+        // $statuspayment = $this->order->paymentComplete();
+        // var_dump($statuspayment);
+        // die();
+        $this->view(
+            "client.layout.Pages.Components.DataLayout.checkTransaction",
+            [
+                'cates' => $this->cate->all(),
+                'countCarts' => count($this->cart->getCartByClientID($_SESSION['userID'] ?? '')),
+                // 'clientOrder' => $this->order->loadOrderClient($_SESSION['userID'] ?? ''),
+                'clientOrder' => $this->order->paymentComplete(),
+
+
+            ]
+        );
+    }
+    function orderWaitting()
+    {
+        $this->view(
+            "client.layout.Pages.Components.DataLayout.orderWaitting",
+            [
+                'cates' => $this->cate->all(),
+                'clientOrder' => $this->order->loadOrderClient($_SESSION['userID'] ?? ''),
+                // 'countCarts' => count($_SESSION['carts']),  
+                'countCarts' => count($this->cart->getCartByClientID($_SESSION['userID'] ?? '')),
+            ]
+        );
+    }
+    function orderProcessed()
+    {
+        $this->view(
+            "client.layout.Pages.Components.DataLayout.orderProcessed",
+            [
+                'cates' => $this->cate->all(),
+                'clientOrder' => $this->order->loadOrderClient($_SESSION['userID'] ?? ''),
+                // 'countCarts' => count($_SESSION['carts']),  
+                'countCarts' => count($this->cart->getCartByClientID($_SESSION['userID'] ?? '')),
+            ]
+        );
+    }
+    function orderDelivering()
+    {
+        $this->view(
+            "client.layout.Pages.Components.DataLayout.orderDelivering",
+            [
+                'cates' => $this->cate->all(),
+                'clientOrder' => $this->order->loadOrderClient($_SESSION['userID'] ?? ''),
+                // 'countCarts' => count($_SESSION['carts']),  
+                'countCarts' => count($this->cart->getCartByClientID($_SESSION['userID'] ?? '')),
             ]
         );
     }
