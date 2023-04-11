@@ -25,13 +25,14 @@
                         <th class="th-checkCart">Tiêu Đề</th>
                         <th class="th-checkCart">Ảnh</th>
                         <th class="th-checkCart">Giá</th>
+                        <th class="th-checkCart">Số lượng</th>
                         <th class="th-checkCart">Tổng tiền</th>
                         <th class="th-checkCart" colspan="2">Trạng Thái Đơn Hàng</th>
                     </thead>
                     <tbody>
                         <?php foreach ($data['clientOrder'] as $clientOrder) : ?>
                             <!-- hiển thị những sản phẩm ngoài trạng thái đã giao hàng -->
-                            <?php if ($clientOrder['statusID'] != 5) : ?> 
+                            <?php if ($clientOrder['statusID'] = 5) : ?> 
                                 <!-- Những sản phẩm có trạng thái là đang chở xử lý và đang chờ xác nhận có  nút hủy đơn hàng -->
                                 <?php if ($clientOrder['statusID'] == 1 || $clientOrder['statusID'] == 2) : ?>
                                     <tr class="tr-checkCart">
@@ -40,6 +41,7 @@
                                         <td class="td-checkCart"><?= $clientOrder['bookName'] ?? '' ?></td>
                                         <td class="td-checkCart"><img src="../../../../../../../DuAn1-FPT/Public/upload/<?= $clientOrder['image'] ?? '' ?>" alt=""></td>
                                         <td class="td-checkCart"><?= number_format($clientOrder['priceOrder']) ?? '' ?></td>
+                                        <td class="td-checkCart"><?= $clientOrder['quantity'] ?? '' ?></td>
                                         <td class="td-checkCart"><?= number_format($clientOrder['sumPriceOrder']) ?? '' ?></td>
                                         <td class="td-checkCart"><?= $clientOrder['statusOrderName'] ?></td>
                                         <td><a href="<?= URL ?>Home/destroyOrder/<?= $clientOrder['orderDetailID'] ?>" onclick="return confirm('Are you sure?');">HỦY</a></td>
@@ -52,6 +54,7 @@
                                         <td class="td-checkCart"><?= $clientOrder['bookName'] ?? '' ?></td>
                                         <td class="td-checkCart"><img src="../../../../../../../DuAn1-FPT/Public/upload/<?= $clientOrder['image'] ?? '' ?>" alt=""></td>
                                         <td class="td-checkCart"><?= number_format($clientOrder['priceOrder']) ?? '' ?></td>
+                                        <td class="td-checkCart"><?= $clientOrder['quantity'] ?? '' ?></td>
                                         <td class="td-checkCart"><?= number_format($clientOrder['sumPriceOrder']) ?? '' ?></td>
                                         <td class="td-checkCart"><?= $clientOrder['statusOrderName'] ?></td>
                                     </tr>
