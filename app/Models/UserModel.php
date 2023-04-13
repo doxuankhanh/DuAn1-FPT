@@ -33,6 +33,15 @@ class UserModel extends BaseModel {
             return $data;
         }
     }
+
+    function deleteClient($id) {
+        if($this->table !== null) {
+            $sql = "DELETE FROM $this->table WHERE clientID = ?";
+            return $this->_query($sql)->execute([$id]);
+        }
+        return false;
+    }
+    
     // update user
     function updateUser($email,$username,$accountName,$address,$phoneNumber,$avatar,$userID){
         if ($this->table !== null) {

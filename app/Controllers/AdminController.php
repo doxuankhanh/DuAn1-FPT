@@ -171,19 +171,23 @@ class AdminController
         );
     }
 
-    function statisticalView() {
-        $this->view("admin.layout.Components.statisticalView.statisticalView",
-        [
-            'statisticalView' => $this->book->statisticalView(),
-        ]
-    );
+    function statisticalView()
+    {
+        $this->view(
+            "admin.layout.Components.statisticalView.statisticalView",
+            [
+                'statisticalView' => $this->book->statisticalView(),
+            ]
+        );
     }
-    function statisticalSeller() {
-        $this->view("admin.layout.Components.statisticalSeller.statisticalSeller1",
-        [
-            'statisticalSeller' => $this->book->statisticalSeller(),
-        ]
-    );
+    function statisticalSeller()
+    {
+        $this->view(
+            "admin.layout.Components.statisticalSeller.statisticalSeller1",
+            [
+                'statisticalSeller' => $this->book->statisticalSeller(),
+            ]
+        );
     }
     function profile($userID)
     {
@@ -218,9 +222,36 @@ class AdminController
             ]
         );
     }
-  
+
+    function changePassword()
+    {
+        $client = $this->client->getOneUser($_SESSION['userID']);
+        $err = [];
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $_POST = filter_input_array(INPUT_POST);
+            if (!password_verify($_POST['old-password'], $client['password'])) {
+                $err['old-password'] = "Mật khẩu không đúng!";
+            } else if ($_POST['old-password'] === $_POST['new-password']) {
+                $err['confirmPassword'] = "Mật khẩu mới phải khác với mật khẩu cũ";
+            } else if ($_POST['new-password'] !== $_POST['confirmPassword']) {
+                $err['confirmPassword'] = "Mật khẩu mới và xác nhận lại mật khẩu không khớp nhau";
+            } else {
+
+                $newPass = password_hash($_POST['new-password'], PASSWORD_DEFAULT);
+                $this->client->getPassByEmail($newPass, $_SESSION['email']);
+            }
+        }
+        $this->view("admin.layout.Components.Account.changepassword", [
+            $err
+        ]);
+    }
 
    
 
-   
+
+
+
+
+
+
 }
