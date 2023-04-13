@@ -69,7 +69,7 @@
                         </div>
                     <?php endif ?>
                     </tbody>
-                    <button class=""><a href="<?= URL ?>Home/orderSuccess" class="submit-btn login">Đơn hàng đã giao</a></button>
+                    <button class="" style="padding: 9px;border-radius: 30px;border: none;background-color: #046307;"><a href="<?= URL ?>Home/orderSuccess" class="">Đơn hàng đã giao</a></button>
                 </table>
             </div>
         </div>

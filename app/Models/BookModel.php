@@ -224,4 +224,11 @@ class BookModel extends BaseModel
             return $sql;
         }
     }
+    // Update sản phẩm khi người dùng mua hàng thành công
+    function updateQuantitiesBook($id,$quantity) {
+        if($this->table !== null) {
+            $sql = "UPDATE $this->table SET quantity = quantity - '$quantity' WHERE id = '$id' ";
+            return $this->_query($sql)->execute();
+        }
+    }
 }

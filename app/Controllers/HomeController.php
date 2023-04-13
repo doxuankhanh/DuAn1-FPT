@@ -86,11 +86,12 @@ class HomeController
                                 $_SESSION['quantity_err'] = "Sản phẩm đã hết , bạn vui lòng quay lại vào thời điểm khác!";
                             } else {
                                 if ($data['quantity'] > $data['quantityBook']) {
-                                    $_SESSION['quantity_err'] = "Not enough quantity available!";
+                                    $_SESSION['quantity_err'] = "Không đủ số lượng có sẵn!";
                                 } else {
                                     if (empty($_SESSION['quantity_err'])) {
                                         $result = $this->cart->store($data['bookName'], $data['clientID'], $data['bookID'], $data['image'], $data['price'], $data['quantity']);
                                         if ($result) {
+                                            $this->book->updateQuantitiesBook($id,$data['quantity']);
                                             _redirectLo(URL . "Home/getCartByClientID");
                                         }
                                     }
@@ -255,15 +256,15 @@ class HomeController
             ];
             // validate email
             if (empty($data['email'])) {
-                $data['email_err'] = "Please enter your email";
+                $data['email_err'] = "Vui lòng nhập email của bạn";
             } else {
                 if (!$this->user->login($data['email'])) {
-                    $data['email_err'] = "Email is not founded";
+                    $data['email_err'] = "Không tìm thấy email, vui lòng đăng ký để tiếp tục!";
                 }
             }
             //validate password
             if (empty($data['password'])) {
-                $data['password_err'] = "Please enter your password";
+                $data['password_err'] = "Vui lòng nhập password";
             }
             // k có lỗi 
             if (empty($data['email_err']) && empty($data['password_err'])) {
@@ -325,36 +326,36 @@ class HomeController
             ];
             // Validate email
             if (empty($data['email'])) {
-                $data['email_err'] = "Please enter your email address";
+                $data['email_err'] = "Vui lòng nhập địa chỉ email của bạn!";
             } else {
                 if ($this->user->login($data['email'])) {
-                    $data['email_err'] = "Email is already";
+                    $data['email_err'] = "Email đã tồn tại , vui lòng thử lại!";
                 }
             }
             // Validate fullname
             if (empty($data['username'])) {
-                $data['username_err'] = "Please enter your username";
+                $data['username_err'] = "Vui lòng nhập tên của bạn!";
             }
             if (empty($data['accountName'])) {
-                $data['accountName_err'] = "Please enter your account name";
+                $data['accountName_err'] = "Vui lòng nhập tên tài khoản của bạn!";
             }
             // validate password
             if (empty($data['password'])) {
-                $data['password_err'] = "Please enter your password";
+                $data['password_err'] = "Vui lòng nhập password";
             } elseif (empty($data['passwordRepeat'])) {
-                $data['passwordRepeat_err'] = "Please enter your password";
+                $data['passwordRepeat_err'] = "Vui lòng nhập password";
             } else {
                 if ($data['password'] !== $data['passwordRepeat']) {
-                    $data['passwordRepeat_err'] = "Passwords are not matching";
+                    $data['passwordRepeat_err'] = "Passwords không giống nhau , vui lòng thử lại!";
                 }
             }
             //validate address
             if (empty($data['address'])) {
-                $data['address_err'] = "Please enter your address";
+                $data['address_err'] = "Vui lòng nhập địa chỉ email của bạn!";
             }
             //validate phone
             if (empty($data['phoneNumber'])) {
-                $data['phoneNumber_err'] = "Please enter your phone number";
+                $data['phoneNumber_err'] = "Vui lòng nhập số điện thoại của bạn!";
             }
             // kiểm tra k có lỗi thì tiến hành đăng ký
             if (empty($data['email_err']) && empty($data['username_err']) && empty($data['accountName_err']) && empty($data['password_err']) && empty($data['passwordRepeat_err']) && empty($data['address_err']) && empty($data['phoneNumber_err'])) {
