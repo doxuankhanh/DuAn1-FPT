@@ -738,5 +738,19 @@ class HomeController
             ]
         );
     }
+
+    // Tìm kiếm đơn hàng phía user
+    function searchOrder() {
+        if($_SERVER['REQUEST_METHOD'] == 'POST') {
+            if(isset($_POST['btn-searchOrder'])) {
+                $_POST = filter_input_array(INPUT_POST);
+                $data = [
+                    'orderID' => trim($_POST['orderID'] ?? ''),
+                ];
+                $result = $this->order->searchOrder($data['orderID']);
+            }
+        }
+        $this->view("client.layout.Pages.Components.DataLayout.orderSearch",['cates' => $this->cate->all(),'result' => $result]);
+    }
     
 }

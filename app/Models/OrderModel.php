@@ -98,6 +98,15 @@ class OrderModel extends BaseModel {
         }
         return false;
     }
+    // Tìm kiếm đơn hàng phía user
+    function searchOrder($orderID) {
+        if($this->table !== null && $this->sub_table !== null) {
+            $sql = $this->_sqlOrder() . " WHERE 1 AND $this->sub_table.id LIKE '$orderID'";
+            $this->_query($sql)->execute();
+            $data = $this->stmt->fetch();
+            return $data;
+        }
+    }
     // _
     function _sqlOrder() {
         $sql = "SELECT $this->sub_table.id AS orderDetailID,$this->table.id AS orderID
