@@ -33,7 +33,7 @@
                             <td class="td-cart">
                                 <form action="<?= URL ?>Home/updateCart/<?= $cart['cartID'] ?>" class="form-CountPrd" method="post">
                                     <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="subtracts-cart"></button>
-                                    <input type="number" value="<?= $cart['quantity'] ?>" style="-webkit-appearance: none;" name="quantity">
+                                    <input type="number" value="<?= $cart['quantity'] ?>" min="1" style="-webkit-appearance: none;" name="quantity">
                                     <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus-cart"></button>
                                     <button class="updateBtn" id="updateCart" type="submit" name="btn-updateCart" style="cursor: pointer;">Update</button>
                                 </form>

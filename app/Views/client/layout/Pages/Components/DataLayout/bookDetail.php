@@ -32,7 +32,7 @@
                                 <div class="flex e">
                                     <div class="quantity">
                                         <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="subtracts"></button>
-                                        <input id="input-detail" type="number" value="1" style="-webkit-appearance: none;" name="quantity">
+                                        <input id="input-detail" type="number" value="1" min="1" style="-webkit-appearance: none;" name="quantity">
                                         <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
                                     </div>
                                     <div>
