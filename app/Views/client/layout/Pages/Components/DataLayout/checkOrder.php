@@ -14,10 +14,10 @@
         </div>
     </div>
 <?php else : ?>
+    <div class="div-checkContainer">
+        <div class="div-mainCheck">
     <?php if (count($data['clientOrder']) > 0) : ?>
-        <div class="div-checkContainer">
-            <div class="div-mainCheck">
-                <h1 class="h3-checkCart">THÔNG TIN CHI TIẾT ĐƠN HÀNG</h1>
+                <h1 class="h3-checkCart" style="padding-top: 20px;">THÔNG TIN CHI TIẾT ĐƠN HÀNG</h1>
                 <table class="table-checkCart">
                     <thead class="thead-checkCart">
                         <th class="th-checkCart">Mã Đơn Hàng</th>
@@ -53,6 +53,7 @@
                                         <td class="td-checkCart"><?= $clientOrder['statusOrderName'] ?></td>
                                     </tr>
                                 <?php endif ?>
+                                <div style="display: flex;justify-content: flex-end;margin-right: 20px;"><button class="" style="padding: 9px;border-radius: 30px;border: none;background-color: #046307;"><a href="<?= URL ?>Home/orderSuccess" class="">Đơn hàng đã giao</a></button></div>
                             <?php endif ?>
                         <?php endforeach ?>
                     <?php else : ?>
@@ -69,7 +70,6 @@
                         </div>
                     <?php endif ?>
                     </tbody>
-                    <button class="" style="padding: 9px;border-radius: 30px;border: none;background-color: #046307;"><a href="<?= URL ?>Home/orderSuccess" class="">Đơn hàng đã giao</a></button>
                 </table>
             </div>
         </div>
