@@ -99,9 +99,9 @@ class OrderModel extends BaseModel {
         return false;
     }
     // Tìm kiếm đơn hàng phía user
-    function searchOrder($orderID) {
+    function searchOrder($value) {
         if($this->table !== null && $this->sub_table !== null) {
-            $sql = $this->_sqlOrder() . " WHERE 1 AND $this->sub_table.id LIKE '$orderID'";
+            $sql = $this->_sqlOrder() . " WHERE 1 AND $this->sub_table.id LIKE '%$value%'";
             $this->_query($sql)->execute();
             $data = $this->stmt->fetch();
             return $data;

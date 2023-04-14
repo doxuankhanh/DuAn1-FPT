@@ -53,7 +53,7 @@
                                         <td class="td-checkCart"><?= $clientOrder['statusOrderName'] ?></td>
                                     </tr>
                                 <?php endif ?>
-                                <button class="" style="padding: 9px;border-radius: 30px;border: none;background-color: #046307;"><a href="<?= URL ?>Home/orderSuccess" class="">Đơn hàng đã giao</a></button>
+                                <div style="display: flex;justify-content: flex-end;margin-right: 20px;"><button class="" style="padding: 9px;border-radius: 30px;border: none;background-color: #046307;"><a href="<?= URL ?>Home/orderSuccess" class="">Đơn hàng đã giao</a></button></div>
                             <?php endif ?>
                         <?php endforeach ?>
                     <?php else : ?>
