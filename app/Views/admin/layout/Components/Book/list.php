@@ -47,7 +47,7 @@
   <!-- End Header -->
 
   <!-- Begin Main -->
-  <main class="m-2">
+  <main class="m-2" style="overflow:auto">
     <table class="table text-center">
       <thead class="table-dark">
         <tr>
