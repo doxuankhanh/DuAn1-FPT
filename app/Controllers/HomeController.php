@@ -708,11 +708,13 @@ class HomeController
             ]
         );
     }
+    //load tác giả
     function loadAuthor()
     {
         $this->view(
             "client.layout.Pages.Components.DataLayout.authorView",
             [
+                'countCarts' => count($_SESSION['carts'] ?? []),
                 'cates' => $this->cate->all(),
                 'authors' => $this->author->_countBook(),
                 // 'authorCheck' => $this->book->selectAuthor(),
@@ -723,11 +725,13 @@ class HomeController
             ]
         );
     }
+    //load sách theo tên tác giả
     function getBookByAuthor($id)
     {
         $this->view(
             "client.layout.Pages.Components.DataLayout.getBookByAuthor",
             [
+                'countCarts' => count($_SESSION['carts'] ?? []),
                 'cates' => $this->cate->all(),
                 'author' => $this->book->selectAuthor($id),
                 'authors' => $this->author->_countBook(),
