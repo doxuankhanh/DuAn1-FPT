@@ -236,9 +236,9 @@ class AdminController
             } else if ($_POST['new-password'] !== $_POST['confirmPassword']) {
                 $err['confirmPassword'] = "Mật khẩu mới và xác nhận lại mật khẩu không khớp nhau";
             } else {
-
                 $newPass = password_hash($_POST['new-password'], PASSWORD_DEFAULT);
                 $this->client->getPassByEmail($newPass, $_SESSION['email']);
+                $_SESSION['success'] = "CẬP NHẬT THÀNH CÔNG";
             }
         }
         $this->view("admin.layout.Components.Account.changepassword", [
