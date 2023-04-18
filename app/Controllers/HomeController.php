@@ -46,7 +46,7 @@ class HomeController
     // liên hệ
     function _contact()
     {
-        $this->view("client.layout.Pages.Components.DataLayout.contact", ['cates' => $this->cate->all(),]);
+        $this->view("client.layout.Pages.Components.DataLayout.contact", ['cates' => $this->cate->all(),'countCarts' => count($_SESSION['carts'] ?? []),]);
     }
     // chi tiết sản phẩm
     function bookDetail($id, $cateID)
@@ -705,6 +705,7 @@ class HomeController
             [
                 'cates' => $this->cate->all(),
                 'viewBook' => $this->book->bookView(),
+                'countCarts' => count($_SESSION['carts'] ?? []),
             ]
         );
     }
