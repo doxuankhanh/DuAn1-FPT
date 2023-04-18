@@ -14,7 +14,7 @@
         </div>
     </div>
 <?php else : ?>
-    <div class="div-checkContainer">
+    <div class="div-checkContainer" style="padding-bottom: 30px">
         <div class="div-mainCheck">
     <?php if (count($data['clientOrder']) > 0) : ?>
                 <h1 class="h3-checkCart" style="padding-top: 20px;">THÔNG TIN CHI TIẾT ĐƠN HÀNG</h1>
@@ -53,9 +53,9 @@
                                         <td class="td-checkCart"><?= $clientOrder['statusOrderName'] ?></td>
                                     </tr>
                                 <?php endif ?>
-                                <div style="display: flex;justify-content: flex-end;margin-right: 20px;"><button class="" style="padding: 9px;border-radius: 30px;border: none;background-color: #046307;"><a href="<?= URL ?>Home/orderSuccess" class="">Đơn hàng đã giao</a></button></div>
                             <?php endif ?>
                         <?php endforeach ?>
+                        <div style="display: flex;justify-content: flex-end;margin-right: 20px;"><button class="" style="padding: 9px;border-radius: 30px;border: none;background-color: #046307;"><a href="<?= URL ?>Home/orderSuccess" class="">Đơn hàng đã giao</a></button></div>
                     <?php else : ?>
                         <!-- Giỏ hàng trống -->
                         <div class="div-main-cart">

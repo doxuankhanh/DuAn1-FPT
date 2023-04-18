@@ -21,9 +21,9 @@ $err=$data[0];
                     <span style="color:red;font-weight:bold;font-style:i"><?= isset($err['confirmPassword'])?$err['confirmPassword'] :''?></span>
                 </div>    
 
-                <!-- <div class="div-input-box p-3">
+                <div class="div-input-box p-3">
                     <span style="color: seagreen; text-transform: uppercase; font-size: 20px;"><?= $_SESSION['success'] ?? '';unset($_SESSION['success'])?></span>
-                </div> -->
+                </div>
 
                 <div class="div-input-box p-3">
                     <button type="submit" class="btn btn-primary">Cập nhật</button>
